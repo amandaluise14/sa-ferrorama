@@ -1,0 +1,31 @@
+#pagina_login {
+    background-image: url('../assets/image/trem_de_fundo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; 
+}
+#container{
+background-color: rgba(114, 13, 13, 0.932) !important;
+border-radius: 15px;
+padding: 30px;
+}
+button {
+  background: linear-gradient(90deg, #b34f4f, #9c2626);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  transition: 0.3s;
+}
+p{
+text-align: center;
+line-height: 1.6;
+font-size: 16px;
+max-width: 700px;
+margin: 0 auto 20px auto;
+}
+input, textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+}
