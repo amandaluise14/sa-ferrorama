@@ -2,67 +2,80 @@
     background-image: url('../assets/image/trem_de_fundo.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh; 
+    height: 100vh;
 }
-#container{
-background-color: rgba(114, 13, 13, 0.932) !important;
-border-radius: 15px;
-padding: 30px;
+
+#container {
+    background-color: rgba(114, 13, 13, 0.932) !important;
+    border-radius: 15px;
+    padding: 30px;
 
 }
+
 button {
-  background: linear-gradient(90deg, #b34f4f, #9c2626);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 12px;
-  transition: 0.3s;
+    background: linear-gradient(90deg, #b34f4f, #9c2626);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    transition: 0.3s;
 }
-p{
-text-align: center;
-line-height: 1.6;
-font-size: 16px;
-max-width: 700px;
-margin: 0 auto 20px auto;
+
+p {
+    text-align: center;
+    line-height: 1.6;
+    font-size: 16px;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
 }
-input, textarea {
+
+input,
+textarea {
     width: 100%;
     margin: 5px 0;
     padding: 8px;
 }
+
 #titulo {
-color: rgb(228, 219, 212) !important;
+    color: rgb(228, 219, 212) !important;
 }
-#subtitulo{
-color: rgb(218, 209, 201) !important;
+
+#subtitulo {
+    color: rgb(218, 209, 201) !important;
 }
-.form-label{
-color: rgb(218, 209, 201) !important;
+
+.form-label {
+    color: rgb(218, 209, 201) !important;
 }
+
 .sidebar {
-width: 220px;
-height: 100vh;
-background-color: #7b0000;
-display: flex;
-flex-direction: column;
-padding-top: 20px;
+    width: 12%;
+    height: 100vh;
+    background-color: #7b0000;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
 }
-#imagemUsuario{
+
+#imagemUsuario {
     width: 50px;
     height: 50px;
 }
+
 .sidebar ul {
-list-style: none;
-padding: 0;
-margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 .sidebar ul li {
-padding: 16px 22px;
-color: white;
-font-size: 20px;
-cursor: pointer;
+    padding: 16px 22px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
 }
-.sidebar ul li.active {
-background-color: #b30000;
-font-weight: bold;
-}
+    #imagem_logo {
+    width: 100%;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    }
