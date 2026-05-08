@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+     <div class="d-flex align-items-start">
     <div class="sidebar">
 
         <div clas="logo">
@@ -23,7 +24,7 @@
     </ul>
     </div>
 
-    <div class="d-flex align-items-start">
+
     <img src="assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
     <h2>Adicionar administrador\Usuário</h2>
     </div>
@@ -33,6 +34,8 @@
     <p>Dados do Administrador\Usuário</p>
     <p>Preencha as informações abaixo para cadastrar um novo usuário ou administrador</p>
 
+    <div class="d-flex align-items-start">
+       <div class="d-block p-2">
        <div class="row mb-3">
            <div class="col-md-6">
                 <label for="Nome">Nome Completo</label>
@@ -69,7 +72,17 @@
                     <option>Inativo</option>
                 </select>
             </div>
+          </div>
 
+          <label for="Permissões"></label>
+                <input type="radio" id="Administrador" placeholder="Trem"><h2>Administrador</h2>
+                Controle comleto do sistema, com gerenciamento de usuário, sensores,trens e relatórios 
+
+                <input type="radio" id="Usuário" placeholder="Rota"><h2>Usuário</h2>
+                Acesso restrito ao sistema, com permissão para visualização de alguns dados e relatórios.
+
+            <div id="erroLocalização" class="erro"></div><br>
+</div>
             
         
 </body>
