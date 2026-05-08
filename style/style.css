@@ -8,8 +8,7 @@
 background-color: rgba(114, 13, 13, 0.932) !important;
 border-radius: 15px;
 padding: 30px;
-border: none;
-outline: none; 
+
 }
 button {
   background: linear-gradient(90deg, #b34f4f, #9c2626);
@@ -32,8 +31,11 @@ input, textarea {
     padding: 8px;
 }
 #titulo {
-color:  rgb(228, 219, 212) !important;
+color: rgb(228, 219, 212) !important;
 }
 #subtitulo{
-color:  rgb(218, 209, 201) !important;
+color: rgb(218, 209, 201) !important;
+}
+.form-label{
+color: rgb(218, 209, 201) !important;
 }
