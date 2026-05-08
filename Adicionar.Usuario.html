@@ -24,16 +24,16 @@
     </ul>
     </div>
 
- <div class="main-content">
+ <div class="conteudo">
 
     <div class="d-flex align-items-start">
     <img src="assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
-    <h2>Adicionar administrador/Usuário</h2>
+    <h2 id="titulo_adicionar">Adicionar Administrador/Usuário</h2>
     </div>
 
       <div class="formulario">
 
-    <p>Dados do Administrador\Usuário</p>
+    <p><strong> Dados do Administrador\Usuário</strong></p>
     <p>Preencha as informações abaixo para cadastrar um novo usuário ou administrador</p>
 
        <div class="row mb-4">
@@ -51,7 +51,7 @@
 
             <div class="col-md-6">
                 <label for="E-mail">E-mail</label>
-                <input type="text" id="E-mail" placeholder="Digite o e-mail" >
+                <input type="email" id="E-mail" placeholder="Digite o e-mail" >
                 <div id="erroe-email" class="erro"></div>
             </div>
             </div>
@@ -65,7 +65,7 @@
 
             <div class="col-md-6">
                 <label for="Confirmar senha"> Confirmar Senha</label>
-                <input type="text" id="Senha" placeholder="Digite a senha " >
+                <input type="password" id="Senha" placeholder="Digite a senha " >
                 <div id="erroSenha" class="erro"></div>
             </div>
             </div>
@@ -79,23 +79,36 @@
                 </select>
             </div>
 
-        
-          <div class="row mt-4">
-    <div class="col-md-6">
-        <div class="permissao_ativo">
+      <div class="row mt-4">
+
+    <div class="col-md-6" id="permissao_ativa">
+        <label class="card-permissao ativo d-flex align-items-start gap-3">
             <input type="radio" name="perfil">
-            <h5>Administrador</h5>
-            <p>Controle completo do sistema, com gerenciamento de usuários, sensores, trens e relatórios.</p>
-        </div>
+
+            <div>
+                <h5>Administrador</h5>
+                <p>
+                    Controle completo do sistema, com gerenciamento de usuários,
+                    sensores, trens e relatórios.
+                </p>
+            </div>
+        </label>
     </div>
 
-    <div class="col-md-6">
-        <div class="permissao_inativo">
+    <div class="col-md-6" id="permissao_inativa">
+        <label class="card-permissao d-flex align-items-start gap-3">
             <input type="radio" name="perfil">
-            <h5>Usuário</h5>
-            <p>Acesso restrito ao sistema, com permissão para visualização de alguns dados e relatórios.</p>
-        </div>
+
+            <div>
+                <h5>Usuário</h5>
+                <p>
+                    Acesso restrito ao sistema, com permissão para visualização
+                    de alguns dados e relatórios.
+                </p>
+            </div>
+        </label>
     </div>
+
 </div>
 </div>
 </div>
