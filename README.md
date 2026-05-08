@@ -1,5 +1,5 @@
 # sa-ferrorama
-# README - Sistema de Gerenciamento Ferroviário
+# Sistema de Gerenciamento Ferroviário
 
 ## Proposta do Sistema
 
