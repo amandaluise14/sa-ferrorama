@@ -61,7 +61,6 @@ textarea {
 #imagemUsuario {
     margin-right: 20;
     margin-left: 20;
-    margin-top: 20;
     width: 65px;
     height: 50px;
 }
@@ -108,6 +107,7 @@ textarea {
     color: #555;
     margin: 5px 0 0 0;
 }
+<<<<<<< HEAD
   table {
     border-collapse: separate; 
     border-spacing: 10px;      
@@ -115,3 +115,29 @@ textarea {
   th, td {
     padding: 15px;     
   }        
+=======
+#botaoCadastro{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+#noticias{
+    background-color: #ffffff ;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.096);
+    border-radius: 25;
+    margin-left: 50;
+    padding-right: 110;
+    align-items:flex-start;
+}
+#blocoInfo{
+    background-color: #ffd7d7;
+    padding: 5;
+    padding-left: 10;
+    padding-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left: 30;
+    border-radius: 20px;
+    text-align: center;
+}
+>>>>>>> 1a1c14aae79dc9175828c0a9638bdda1bb0b3244
