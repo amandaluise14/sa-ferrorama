@@ -107,15 +107,14 @@ textarea {
     color: #555;
     margin: 5px 0 0 0;
 }
-<<<<<<< HEAD
-  table {
+table {
     border-collapse: separate; 
     border-spacing: 10px;      
   }
-  th, td {
+th, td {
     padding: 15px;     
   }        
-=======
+
 #botaoCadastro{
     text-align: center;
     margin-top: 40px;
@@ -140,4 +139,3 @@ textarea {
     border-radius: 20px;
     text-align: center;
 }
->>>>>>> 1a1c14aae79dc9175828c0a9638bdda1bb0b3244
