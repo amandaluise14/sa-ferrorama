@@ -108,3 +108,10 @@ textarea {
     color: #555;
     margin: 5px 0 0 0;
 }
+  table {
+    border-collapse: separate; 
+    border-spacing: 10px;      
+  }
+  th, td {
+    padding: 15px;     
+  }        
