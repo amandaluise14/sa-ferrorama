@@ -130,4 +130,6 @@ textarea {
     margin-left: 30;
     border-radius: 20px;
     text-align: center;
+    border-style: solid;
+    border-color: #8b0000;
 }
