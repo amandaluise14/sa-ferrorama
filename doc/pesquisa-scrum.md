@@ -40,8 +40,11 @@ Ao priorizar tarefas de maior valor no backlog, o Scrum evita desperdícios e ga
 Parte Carine
 
 O que é SCRUM:
+
 O Scrum é um framework de gerenciamento que as equipes usam para se auto-organizar e trabalhar em direção a um objetivo em comum. A estrutura descreve um conjunto de reuniões, ferramentas e funções para uma entrega eficiente de projetos. As equipes de software usam o Scrum para solucionar problemas complexos de maneira econômica e sustentável.  
-Objetivo da metodologias:
+
+Objetivo da metodologias
+
 É caracterizada por certos princípios e valores: 
 Transparência: todos da equipe conhecem os desafios e o andamento do trabalho.
 Reflexão: a equipe faz revisões frequentes para analisar o progresso e melhorar o planejamento.
@@ -51,13 +54,21 @@ Coragem: fazer perguntas e discutir ideias de forma honesta.
 Foco: concentração nas tarefas definidas para cumprir prazos.
 Abertura: aceitar novas ideias e oportunidades de aprendizado.
 Respeito: valorização dos membros da equipe e do processo de trabalho, incentivando a colaboração.
+
 Product Owner:
+
 O Product Owner é o responsável por maximizar o valor do produto e gerenciar o Product Backlog no Scrum. Ele atua como ponte entre stakeholders (negócios/clientes) e o time de desenvolvimento, definindo prioridades, refinando funcionalidades e garantindo que o produto atenda às necessidades do usuário.
+
 Scrum Master:
+
 O Scrum Master é um líder servidor e facilitador ágil, responsável por garantir a compreensão e aplicação do framework Scrum. Ele atua removendo impedimentos, treinando a equipe (coach), facilitando eventos e garantindo que o fluxo de trabalho seja contínuo e eficiente, sem focar em gerenciamento de tarefas tradicionais 
+
 Development Team:
+
 Um Development Team ( Time de Desenvolvimento) é um grupo multidisciplinar de profissionais responsáveis por criar, testar e entregar um produto ou software funcional. No contexto Scrum, eles são auto organizados, focados na qualidade e possuem todas as habilidades técnicas necessárias para transformar requisitos em itens prontos.
+
 Eventos do SCRUM: 
+
 Disciplina: Eventos Scrum. Eventos prescritos são usados no Scrum para criar uma rotina e minimizar a necessidade de reuniões não definidas. Todos os eventos são chamados de eventos time-boxed, de tal modo que todo evento tem uma duração máxima. 
 
 
