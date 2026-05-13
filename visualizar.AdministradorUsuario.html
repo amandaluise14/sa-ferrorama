@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">   
+    <title>Visalizar usuário\administrador</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <div class="d-flex align-items-start">
+    <div class="sidebar">
+
+        <div clas="logo">
+        <img id="imagem_logo"src="assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
+
+    <ul>
+        <li class="active">Início</li>
+        <li>Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
+    </div>
+    <div class="d-block p-2">
+    <div class="d-flex align-items-start">
+    <img src="assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
+    <h2>Bem vindo, Administrador</h2>
+    </div>
+
+    <div id="totais">
+        <div>
+      <h5>Total de funcionários</h5> 
+      <p>25</p> 
+      </div>
+
+    <div>
+    <h5>Total de administradores</h5>
+    <p>140</p> 
+     </div> 
+
+      <div>
+    <h5>Total de usuários</h5>
+    <p>2000</p> 
+     </div> 
+
+      <div>
+    <h5>Total de administradores ativos</h5>
+    <p>100</p> 
+     </div>
+    </div>  
+
+           <input type="textarea" id="motivo" placeholder="Pesquisar">
+           <div id="erroMotivo" class="erro"></div>
+
+       <label for="tipoconta"> Tipo de conta: </label>
+            <select id="conta">
+            <option value="selecione">Administrador</option>
+            <option value="selecione">Usuario</option>
+            <option value="selecione">Selecione</option>
+            </select>
+
+         <label for="status"> Status: </label>
+            <select id="status">
+            <option value="selecione">Inativo</option>
+            <option value="selecione">Ativo</option>
+            <option value="selecione">Selecione</option>
+            </select>
+
+        <button type="submit" id="botaofiltrar"> Filtrar</button>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+       <th>Email</th>
+      <th>Telefone</th>
+      <th>Status</th>
+      <th>Tipo de conta</th>
+       <th>Último acesso</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Amanda</td>
+      <td>amanda14@gmail.com</td>
+      <td>(47) 9999-2358</td>
+      <td>Ativo</td>
+      <td>Usuário</td>
+      <td>14\06</td>
+      <td><img src="assets/image/imagem_ações.png" alt="ações possiveis" width="60" height="40"></td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Ana Luíza</td>
+      <td>ana_jung@gmail.com</td>
+      <td>(47) 1349-2275</td>
+      <td>Inativo</td>
+      <td>Administrador</td>
+      <td>12\01</td>
+      <td><img src="assets/image/imagem_ações.png" alt="ações possiveis" width="60" height="40"></td>
+    </tr>
+     <tr>
+      <td>11</td>
+      <td>Carine</td>
+      <td>carine_sts@gmail.com</td>
+      <td>(47) 1234-5678</td>
+      <td>Ativo</td>
+      <td>Usuário</td>
+      <td>11\02</td>
+      <td><img src="assets/image/imagem_ações.png" alt="ações possiveis" width="60" height="40"></td>
+    </tr>
+    <tr>
+      <td>199</td>
+      <td>Gabriela</td>
+      <td>baartz291122@gmail.com</td>
+      <td>(47) 8923-8000</td>
+      <td>Inativo</td>
+      <td>Administrador</td>
+      <td>13\06</td>
+      <td><img src="assets/image/imagem_ações.png" alt="ações possiveis" width="60" height="40"></td>
+    </tr>
+  </tbody>
+</table>
+
+ <button type="submit" id="botaoadicionar"> Ir para adicionar</button>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>
