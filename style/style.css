@@ -138,14 +138,15 @@ textarea {
 }
 #blocoInfo{
     background-color: #ffd7d7;
-    padding: 5;
-    padding-left: 10;
-    padding-right: 10;
-    margin-top: 10;
-    margin-bottom: 10;
-    margin-left: 30;
+    margin: 15px;
+    margin-left: 50;
+    margin-right: 0%;
+    padding-left: 20;
+    padding-right: 20;
     border-radius: 20px;
     text-align: center;
+    border-style: solid;
+    border-color: #8b0000;
 }
 #botaoadicionar{
     background-color: #7b0000;
@@ -181,4 +182,31 @@ textarea {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+#pHome{
+    text-align: center;
+    margin-bottom: 5;
+    font-size: 20;
+    margin-top: 0%;
+}
+
+#p2Home{
+    text-align: center;
+    margin-bottom: 5;
+    font-size: small;
+    margin-top: 0%;
+}
+
+#pAlerta{
+    text-align: justify;
+    background-color: #ff02026e;
+    border-radius: 10px;
+    padding: 5;
+    border: 2px solid rgb(253, 2, 2);
+}
+
+#alert{
+    text-align: justify;
+    background: #8b0000;
+    border-radius: 20px;
 }
