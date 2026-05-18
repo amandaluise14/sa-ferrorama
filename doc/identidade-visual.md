@@ -1,0 +1,11 @@
+## Estudo dos Slides: Identidade Visual
+
+Nós usamos a cor bordô para fazer nosso site pois achamos essa cor uma cor neutra porém que traz uma sensação de elegância, na qual o cliente que entrasse no site tivesse essa impressão de um site sofisticado, trazendo também segurança e profissionalismo para a visão do cliente. 
+
+Sobre o layout procuramos também trazer segurança, tornando o site fácil de usar e sem complicações.
+
+ A tipografia utilizada prioriza legibilidade e simplicidade, permitindo que os usuários encontrem informações rapidamente. Foram escolhidas fontes modernas que combinam com sistemas administrativos e profissionais, garantindo uma aparência limpa e atual. 
+ 
+ As referências visuais utilizadas foram inspiradas em plataformas administrativas modernas. A equipe buscou criar uma interface semelhante às utilizadas em empresas de tecnologia e logística, transmitindo credibilidade e profissionalismo ao projeto. 
+ 
+ A distribuição dos componentes foi planejada para destacar as informações mais importantes, como monitoramentos, relatórios e gerenciamento de usuários, facilitando o uso do sistema tanto em computadores quanto em dispositivos móveis.  
