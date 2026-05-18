@@ -85,7 +85,6 @@ textarea {
     align-items: center;
 }
 .formulario {
-    background: #f5f5f5;
     padding: 30px;
     border-radius: 10px;
     margin-top: 60px;
@@ -101,8 +100,8 @@ textarea {
     height: 100%;
 }
 .card-permissao.ativo {
-    background: #e7cfcf;
-    border: 2px solid #8b0000;
+    background: #eeeeee;
+    
 }
 .card-permissao p {
     font-size: 14px;
@@ -209,4 +208,16 @@ textarea {
     text-align: justify;
     background: #8b0000;
     border-radius: 20px;
+}
+#table{
+    text-align: justify;
+    background: #8b0000;
+    border-radius: 50px;
+
+}
+.table th{
+    background-color: #7b0000;
+    color: white;
+    padding: 12px;
+
 }
