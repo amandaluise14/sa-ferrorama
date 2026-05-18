@@ -83,7 +83,6 @@ textarea {
     align-items: center;
 }
 .formulario {
-    background: #f5f5f5;
     padding: 30px;
     border-radius: 10px;
     margin-top: 60px;
@@ -99,8 +98,8 @@ textarea {
     height: 100%;
 }
 .card-permissao.ativo {
-    background: #e7cfcf;
-    border: 2px solid #8b0000;
+    background: #eeeeee;
+    
 }
 .card-permissao p {
     font-size: 14px;
