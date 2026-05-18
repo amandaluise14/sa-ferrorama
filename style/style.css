@@ -210,3 +210,15 @@ textarea {
     background: #8b0000;
     border-radius: 20px;
 }
+#table{
+    text-align: justify;
+    background: #8b0000;
+    border-radius: 50px;
+
+}
+.table th{
+    background-color: #7b0000;
+    color: white;
+    padding: 12px;
+
+}
