@@ -37,8 +37,6 @@ O Scrum oferece uma visão clara do andamento do projeto, das metas e das entreg
 10. Utilização mais eficiente dos recursos
 Ao priorizar tarefas de maior valor no backlog, o Scrum evita desperdícios e garante um melhor aproveitamento do tempo, esforço e recursos da equipe.
 
-Parte Carine
-
 O que é SCRUM:
 
 O Scrum é um framework de gerenciamento que as equipes usam para se auto-organizar e trabalhar em direção a um objetivo em comum. A estrutura descreve um conjunto de reuniões, ferramentas e funções para uma entrega eficiente de projetos. As equipes de software usam o Scrum para solucionar problemas complexos de maneira econômica e sustentável.  
