@@ -4,6 +4,9 @@
     background-size: cover;
     height: 100vh;
 }
+body{
+    background-color: #f2f2f2;
+}
 
 #container {
     background-color: rgba(114, 13, 13, 0.817) !important;
@@ -11,13 +14,12 @@
     padding: 30px;
 
 }
-button {
+.button_login{
     background: linear-gradient(90deg, #b34f4f, #9c2626);
     color: white;
     border: none;
     border-radius: 10px;
     padding: 12px;
-    transition: 0.3s;
 }
 
 p {
@@ -48,7 +50,7 @@ textarea {
 }
 
 .sidebar {
-    width: 12%;
+    width: 220px;
     height: 100vh;
     background-color: #670303;
     display: flex;
@@ -107,14 +109,20 @@ textarea {
     color: #555;
     margin: 5px 0 0 0;
 }
-table {
-    border-collapse: separate; 
-    border-spacing: 10px;      
-  }
-th, td {
-    padding: 15px;     
-  }        
 
+.tabela th{
+    background-color: #7b0000;
+    color: white;
+    padding: 12px;
+}       
+.tabela{
+    border-collapse: collapse;
+}
+.tabela td{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+  
 #botaoCadastro{
     text-align: center;
     margin-top: 40px;
@@ -130,14 +138,75 @@ th, td {
 }
 #blocoInfo{
     background-color: #ffd7d7;
-    padding: 5;
-    padding-left: 10;
-    padding-right: 10;
-    margin-top: 10;
-    margin-bottom: 10;
-    margin-left: 30;
+    margin: 15px;
+    margin-left: 50;
+    margin-right: 0%;
+    padding-left: 20;
+    padding-right: 20;
     border-radius: 20px;
     text-align: center;
     border-style: solid;
     border-color: #8b0000;
+}
+#botaoadicionar{
+    background-color: #7b0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.filtros button{
+    background-color: #7b0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+}
+.card-total{
+    background-color: white;
+    width: 150px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+.cards{
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.filtros{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#pHome{
+    text-align: center;
+    margin-bottom: 5;
+    font-size: 20;
+    margin-top: 0%;
+}
+
+#p2Home{
+    text-align: center;
+    margin-bottom: 5;
+    font-size: small;
+    margin-top: 0%;
+}
+
+#pAlerta{
+    text-align: justify;
+    background-color: #ff02026e;
+    border-radius: 10px;
+    padding: 5;
+    border: 2px solid rgb(253, 2, 2);
+}
+
+#alert{
+    text-align: justify;
+    background: #8b0000;
+    border-radius: 20px;
 }
