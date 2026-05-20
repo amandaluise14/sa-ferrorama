@@ -30,7 +30,7 @@ O phpMyAdmin é uma ferramenta gratuita e de código aberto desenvolvida em PHP,
 ### Baixar o XAMPP
 Você entra no site oficial do XAMPP e baixa a versão do seu sistema operacional.(Windows, Linux ou macOS).
 
-![alt text]('../assets/image/print_XAMPP')
+![alt text](../assets/image/print_XAMPP.png)
 
 ### Instalar
 Depois de baixar:
