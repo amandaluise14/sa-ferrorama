@@ -1,5 +1,31 @@
 # XAMPP
 
+É uma sigla que representa as 4 tecnologias PHP, MySQL/MariaDB, Apache e Perl. É um pacote de software livre que oferece uma solução completa para criar e gerenciar servidores web locais. Ele concentra em um só lugar todas as ferramentas necessárias para desenvolver, testar e ajustar aplicações web de forma eficiente, prática, rápida e segura.
+
+X = Multiplataforma - O programa pode ser instalado e executado nos principais sistemas operacionais do mercado (Windows, Linux e macOS);
+
+A = Apache - Servidor web;
+
+M = MariaDB/MySQL - Banco de dados relacional; 
+
+P = PHP - Linguagem de programação;
+
+P = Perl - Linguagem versátil.
+
+## Principais Componentes:
+
+### Apache  
+O Apache, oficialmente chamado de Apache HTTP Server, é o servidor web mais utilizado no mundo que interpreta  e executa arquivos HTML, PHP e outros. Ele é um software gratuito e de código aberto responsável por hospedar sites e entregar suas páginas, imagens e vídeos aos usuários pela internet. 
+
+### MariaDB/MySQL
+O MySQL e o MariaDB são sistemas de gerenciamento de banco de dados de código aberto utilizados para armazenar informações em tabelas organizadas por linhas e colunas. O MySQL é um dos bancos de dados relacionais mais populares do mundo, sendo amplamente utilizado em sites, aplicações e diversos produtos comerciais. Já o MariaDB surgiu como uma alternativa ao MySQL. 
+
+### PHP
+O PHP é uma linguagem de programação desenvolvida especialmente para aplicações web e amplamente utilizada na criação de sites e sistemas online. Sua popularidade cresce devido à facilidade de uso, à flexibilidade e à capacidade de atender desde projetos simples até aplicações mais completas e complexas. 
+
+### phpMyAdmin
+O phpMyAdmin é uma ferramenta gratuita e de código aberto desenvolvida em PHP, utilizada para administrar bancos de dados MySQL e MariaDB de forma simples e intuitiva. Por meio de uma interface gráfica acessada pelo navegador, é possível realizar diversas tarefas administrativas, como criar e gerenciar bancos de dados, executar consultas SQL, inserir e editar dados, além de criar contas de usuários e definir permissões de acesso. 
+
 ## Como realizar a instalação e configuração básica
 ### Baixar o XAMPP
 Você entra no site oficial do XAMPP e baixa a versão do seu sistema operacional.(Windows, Linux ou macOS).
