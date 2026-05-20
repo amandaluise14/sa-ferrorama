@@ -4,6 +4,8 @@
 ### Baixar o XAMPP
 Você entra no site oficial do XAMPP e baixa a versão do seu sistema operacional.(Windows, Linux ou macOS).
 
+![alt text]('../assets/image/print_XAMPP')
+
 ### Instalar
 Depois de baixar:
 * Abre o instalador;
