@@ -75,3 +75,5 @@ O Scrum oferece uma visão clara do andamento do projeto, das metas e das entreg
 
 ### Utilização mais eficiente dos recursos
 Ao priorizar tarefas de maior valor no backlog, o Scrum evita desperdícios e garante um melhor aproveitamento do tempo, esforço e recursos da equipe.
+
+[Acesse o vídeo do SCRUM](https://youtu.be/kDhp51PsgFA?si=UQT6WZgrGE9T2WJF)
