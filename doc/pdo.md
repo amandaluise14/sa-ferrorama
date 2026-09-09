@@ -2,7 +2,7 @@
  O PDO é uma extensão da linguagem php para acesso a banco de dados, ele é orientado a objetos ele possui diversos recursos importantes, além de suportar diversoso mecanismos de banco de dados 
 
  ## Para que ele é utilizado no PHP
-
+O PDO fornece uma camada de abstração de acesso a dados, o que significa que, independente de qual banco de dados estiver sendo usado, as mesmas funções serão usadas para realizar consultas e buscar dados. Ele não fornece uma abstração de banco de dados, ele não reescreve o sql nem emula os recursos ausentes. 
 
 
 ## Diferenças entre PDO e MySQLi;
@@ -52,6 +52,7 @@ if ($mysqli->connect_error) {
 echo "Conexão bem-sucedida!"; 
 
 }
+<<<<<<< HEAD
 ```
 ### Comparação entre PDO e MySQLi
 
@@ -79,3 +80,5 @@ Escolha MySQLi se:
 * Sua aplicação utiliza exclusivamente MySQL.
 * Você busca o máximo de desempenho e quer aproveitar recursos específicos do MySQL.
 * Prefere a opção de usar estilo procedural ou orientado a objetos.
+=======
+>>>>>>> fd72bd524f7efb36f8b5409d84199ebd1b746b4d
