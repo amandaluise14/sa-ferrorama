@@ -4,6 +4,9 @@
  ## Para que ele é utilizado no PHP
 O PDO fornece uma camada de abstração de acesso a dados, o que significa que, independente de qual banco de dados estiver sendo usado, as mesmas funções serão usadas para realizar consultas e buscar dados. Ele não fornece uma abstração de banco de dados, ele não reescreve o sql nem emula os recursos ausentes. 
 
+## Como funciona uma conexão utilizando PDO
+Você precisa instanciar um objeto do tipo pdo, utilizando para isso a classe pdo. Em seu construtor, essa classe recebe três parâmetros. O primeiro deles é o dsn que contem informações sobre como se conectar com o banco de dados.
+
 
 ## Diferenças entre PDO e MySQLi;
 
