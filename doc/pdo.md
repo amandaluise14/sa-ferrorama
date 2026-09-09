@@ -52,7 +52,6 @@ if ($mysqli->connect_error) {
 echo "Conexão bem-sucedida!"; 
 
 }
-<<<<<<< HEAD
 ```
 ### Comparação entre PDO e MySQLi
 
@@ -80,5 +79,5 @@ Escolha MySQLi se:
 * Sua aplicação utiliza exclusivamente MySQL.
 * Você busca o máximo de desempenho e quer aproveitar recursos específicos do MySQL.
 * Prefere a opção de usar estilo procedural ou orientado a objetos.
-=======
->>>>>>> fd72bd524f7efb36f8b5409d84199ebd1b746b4d
+
+## Vantagens e desvantagens de utilizar PDO;
