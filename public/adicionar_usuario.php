@@ -7,8 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $sql = "INSERT INTO cliente (nome, email, senha) VALUE ('$nome' , '$email', '$senha')';
- if ($conn->query($sql) === TRUE) { 
+    $sql = "INSERT INTO cliente (nome, email, senha) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $nome, $email, $senha);
+    if ($stmt->execute() === TRUE) {
         echo "Novo cliente cadastrado com sucesso!";
     } else {
         echo "Erro: " . $sql . "<br>" . $conn->error;
