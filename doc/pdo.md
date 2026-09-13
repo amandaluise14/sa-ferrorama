@@ -83,4 +83,12 @@ Escolha MySQLi se:
 * Você busca o máximo de desempenho e quer aproveitar recursos específicos do MySQL.
 * Prefere a opção de usar estilo procedural ou orientado a objetos.
 
-## Vantagens e desvantagens de utilizar PDO;
+# Vantagens e desvantagens de utilizar PDO;
+
+## Vantagens do PDO;
+
+Como vantagens, podemos citar principalmente o suporte a múltiplos bancos, pois ele funciona com MySQL, PostgreSQL, SQLite, Oracle e SQL Server, usando quase o mesmo código. Com o uso de Prepared Statements, facilita a utilização de consultas preparadas e aumenta a segurança, ajudando a evitar invasões por SQL Injection. Além disso, o try/catch (é uma estrutura usada para executar um código e, caso aconteça algum erro, capturá-lo e tratá-lo sem interromper o sistema) ele é muito utilizado para tratar erros de conexão ou de comandos SQL. Por fim, temos a portabilidade, que facilita a migração de um sistema para outro quando necessário.
+
+## Desvantagens do PDO
+Como desvantagens podemos citar principalmente a perda de recursos específicos, pois algumas funções exclusivas de determinados bancos de dados não são totalmente aproveitadas pelo PDO. A curva de aprendizado também pode ser uma dificuldade, já que é necessário entender a estrutura da API e alguns conceitos de programação orientada a objetos. Além disso, existe uma falsa ideia de troca fácil, pois mudar de banco de dados não significa apenas alterar a conexão, já que comandos SQL específicos podem precisar ser modificados. Por fim, pode existir uma pequena perda de desempenho em comparação com extensões nativas, mas essa diferença geralmente é muito pequena e pouco relevante na maioria dos sistemas. 
+
