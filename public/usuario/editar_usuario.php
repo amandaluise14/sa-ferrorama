@@ -8,3 +8,5 @@ if (isset($_POST['id'])) {
     $email = $_POST['email'];
 
 }
+
+$sql = "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?";
