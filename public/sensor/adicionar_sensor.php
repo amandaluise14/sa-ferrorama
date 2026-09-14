@@ -31,16 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cadastrar Sensor</title>
     <form method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo $sensor['nome']; ?>" required>
+        <input type="text" id="nome" name="nome" required>
         <br><br>
         <label for="localizacao">Localizacao:</label>
-        <input type="text" id="localizacao" name="localizacao" value="<?php echo $sensor['localizacao']; ?>" required>
+        <input type="text" id="localizacao" name="localizacao" required>
         <br><br>
         <label for="descricao_localizacao">Descricao da localizacao:</label>
-        <input type="text" id="descricao_localizacao" name="descricao_localizacao" value="<?php echo $sensor['descricao_localizacao']; ?>">
+        <input type="text" id="descricao_localizacao" name="descricao_localizacao" required>
         <br><br>
         <label for="dado_monitorado">Tipo do dado monitorado:</label>
-        <input type="text" id="dado_monitorado" name="dado_monitorado" value="<?php echo $sensor['dado_monitorado']; ?>">
+        <input type="text" id="dado_monitorado" name="dado_monitorado" required>
         <br><br>
         <button type="submit">Cadastrar Sensor</button>
     </form> 
