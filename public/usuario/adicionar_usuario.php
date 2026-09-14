@@ -22,24 +22,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Novo cliente</title>
+    <title>Adicionar Novo administrador/usuário</title>
 </head>
 <body>
-    <h2>Adicionar Novo Cliente</h2>
+    <h2>Adicionar Novo administrador/usuário</h2>
     <form method="POST">
-        <label for="nome">Nome:</label>
+        <label for="nome">Nome completo</label>
         <input type="text" id="nome" name="nome" required>
         <br><br>
-        <label for="email">Email:</label>
+        <label for="email">E-mail</label>
         <input type="email" id="email" name="email" required>
         <br><br>
-        <label for="telefone">Telefone:</label>
+        <label for="telefone">Senha</label>
         <input type="text" id="telefone" name="telefone">
         <br><br>
-        <label for="endereco">Endereço:</label>
+        <label for="endereco">Confirmar senha</label>
         <input type="text" id="endereco" name="endereco">
         <br><br>
-        <button type="submit">Cadastrar Cliente</button>
+        <label for="endereco">Status</label>
+        <input type="text" id="endereco" name="endereco">
+        <br><br>
+        <button type="submit">Cadastrar administrador/usuário</button>
     </form> 
     <br>  
     <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
