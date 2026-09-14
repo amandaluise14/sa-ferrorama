@@ -35,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Editar Trem</h2>
     <form method="POST">
         <form method="POST">
-        <label for="modelo">Modelo:</label>
+        <label for="modelo">Modelo trem:</label>
         <input type="text" id="modelo" name="modelo" value="<?php echo $trem['modelo']; ?>" required>
         <br><br>
-        <label for="velocidade">Velocidade:</label>
+        <label for="velocidade">Velocidade limite:</label>
         <input type="text" id="velocidade" name="velocidade" value="<?php echo $trem['velocidade']; ?>" required>
         <br><br>
         <label for="linha">Linha:</label>
