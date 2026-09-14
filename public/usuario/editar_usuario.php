@@ -24,32 +24,34 @@ if ($stmt->execute() === TRUE) {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Usuário</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar administrador/usuário</title>
 </head>
 <body>
-
-    <h2>Editar Usuário</h2>
-
-    <form action="editar.php" method="POST">
-
-        <label>Nome:</label>
-        <input type="text" name="nome" required>
-
+    <h2>Editar administrador/usuário</h2>
+    <form method="POST">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" required>
         <br><br>
-
-        <label>Email:</label>
-        <input type="email" name="email" required>
-
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
         <br><br>
-
-        <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-
-        <button type="submit">Salvar alterações</button>
-
-    </form>
-
+        <label for="telefone">Senha</label>
+        <input type="text" id="telefone" name="telefone">
+        <br><br>
+        <label for="endereco">Confirmar senha</label>
+        <input type="text" id="endereco" name="endereco">
+        <br><br>
+        <label for="endereco">Status</label>
+        <input type="text" id="endereco" name="endereco">
+        <br><br>
+        <button type="submit">Editar administrador/usuário</button>
+    </form> 
+    <br>  
+    <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
 </body>
 </html>
+
