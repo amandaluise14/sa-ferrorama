@@ -27,6 +27,11 @@ MySQLi: Oferece duas formas de uso: Orientação a Objetos e o estilo Procedural
 
 Ambos oferecem suporte a Prepared Statements, contribuindo para a segurança contra SQL Injection.
 
+## O que são Prepared Statements e por que são importantes
+
+Prepared Statements (instruções preparadas) são uma forma mais segura de executar comandos SQL em uma aplicação. Eles permitem separar o comando SQL dos dados fornecidos pelo usuário. Em vez de colocar diretamente uma informação dentro da consulta SQL, utilizamos um marcador, normalmente representado pelo símbolo ?. Depois, o valor é enviado separadamente para o banco de dados.
+O principal objetivo dos Prepared Statements é aumentar a segurança das aplicações que trabalham com bancos de dados, principalmente ajudando a evitar ataques de SQL Injection - falha de segurança em sistemas e sites que permite a um invasor inserir comandos maliciosos de banco de dados em campos de texto, como formulários de login ou buscas. Além da segurança, eles também permitem que uma mesma consulta seja executada várias vezes utilizando valores diferentes. Nesse caso, a estrutura da consulta pode ser preparada uma vez e reutilizada. 
+
 
 ### Exemplo de Conexão com PDO e MYSQLi:
 ```bash
