@@ -6,7 +6,13 @@ O PDO fornece uma camada de abstração de acesso a dados, o que significa que, 
 
 ## Como funciona uma conexão utilizando PDO
 Você precisa instanciar um objeto do tipo pdo, utilizando para isso a classe pdo. Em seu construtor, essa classe recebe três parâmetros. O primeiro deles é o dsn que contem informações sobre como se conectar com o banco de dados.
+
 ## Quais são suas principais caracteristicas
+Abstração de banco de dados: Oferece uma interface uniforme
+Suporte a múltiplos drivers: conecta-se a mais de 12 sistemas diferentes
+prepared statementes(declaração preparadas): protege o sistema contra injeção de sql
+Gerenciamento de transações: permite iniciar, confirmar ou reverter transações de forma segura para garantir a integridade dos dados
+tratamento de erros flexível: usa exceções do php para capturar e gerenciar falhas de conexão ou comandos de forma organizada
 
 ## Diferenças entre PDO e MySQLi;
 
