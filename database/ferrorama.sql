@@ -30,6 +30,6 @@ estacao_origem VARCHAR(50) NOT NULL,
 estacao_destino VARCHAR(50) NOT NULL,
 distancia_total VARCHAR(50) NOT NULL,
 sensor_id INT,
-    FOREIGN KEY (sensor_id) REFERENCES sensor(id_sensor)
+    FOREIGN KEY (sensor_id) REFERENCES sensores(id_sensor)
 );
 
