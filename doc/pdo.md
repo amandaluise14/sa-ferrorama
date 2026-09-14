@@ -95,3 +95,9 @@ Como desvantagens podemos citar principalmente a perda de recursos específicos,
 ## Em quais situações o PDO pode ser uma boa escolha; 
 
 O PDO pode ser uma boa escolha em projetos PHP que precisam de mais segurança e organização. Ele é útil quando o sistema trabalha com banco de dados e pode precisar mudar de banco no futuro. Também é uma boa opção quando queremos evitar problemas como SQL Injection e ter um melhor tratamento dos erros.
+
+### Fontes:
+https://dev.to/mega6382/mysql-vs-mysqli-vs-pdo-performance-benchmark-difference-and-security-comparison-565o
+https://blog.grancursosonline.com.br/php-pdo-vs-mysqli/
+https://www.devmedia.com.br/introducao-ao-php-data-objects-pdo/25318
+https://pt.quora.com/Em-quais-cen%C3%A1rios-%C3%A9-melhor-usar-PDO-PHP-em-vez-das-fun%C3%A7%C3%B5es-espec%C3%ADficas-do-SGBD-que-ser%C3%A1-utilizado
