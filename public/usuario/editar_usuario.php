@@ -20,3 +20,36 @@ if ($stmt->execute() === TRUE) {
 
 } else { echo "ID do usuário não fornecido."; 
 }
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuário</title>
+</head>
+<body>
+
+    <h2>Editar Usuário</h2>
+
+    <form action="editar.php" method="POST">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <br><br>
+
+        <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+
+        <button type="submit">Salvar alterações</button>
+
+    </form>
+
+</body>
+</html>
