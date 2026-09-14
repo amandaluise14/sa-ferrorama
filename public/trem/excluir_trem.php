@@ -8,8 +8,10 @@ $stmt = $conexao-> prepare ($sql);
 $stmt-> bind_param ("i", $id);
 
 if ($stmt->execute ()) {
-echo "O trem fou excluído com sucesso! <br>";
-echo "<button type='button' onclick=\"window.location.href='../../index.php'\">Voltar</button>";
+    echo "O trem fou excluído com sucesso! <br>";
+    echo "<button type='button' onclick=\"window.location.href='../../index.php'\">Voltar</button>";
+}  else {
+    echo "Erro ao excluir trem: ". $conexao->error;
 }
-echo "Erro ao excluir trem: ". $conexao->error;
-}
+
+?>
