@@ -33,10 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="nome">Nome Sensor:</label>
         <input type="text" id="nome" name="nome" required>
         <br><br>
-        <label for="localizacao">Localizacao do Sensor:</label>
-        <input type="text" id="localizacao" name="localizacao" required>
+        <label for="localizacao">Localização do Sensor:</label>
+        <br>
+        <input type="radio" id="localizacao" name="localizacao" value="Trem" required>
+        <label for="localizacao">Trem</label>
+        <br>
+        <input type="radio" id="localizacao" name="localizacao" value="Rota" required>
+        <label for="localizacao">Rota</label>
         <br><br>
-        <label for="descricao_localizacao">Descrever Localizacao:</label>
+        <label for="descricao_localizacao">Descrever Localização:</label>
         <input type="text" id="descricao_localizacao" name="descricao_localizacao" required>
         <br><br>
         <label for="dado_monitorado">Tipo do Dado Monitorado:</label>
