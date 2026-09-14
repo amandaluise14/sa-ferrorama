@@ -20,6 +20,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Sensor</title>
+</head>
+<body>
+    <title>Cadastrar Sensor</title>
+    <form method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br><br>
+        <label for="localizacao">Localizacao:</label>
+        <input type="text" id="localizacao" name="localizacao" required>
+        <br><br>
+        <label for="descricao_localizacao">Descricao da localizacao:</label>
+        <input type="text" id="descricao_localizacao" name="descricao_localizacao" required>
+        <br><br>
+        <label for="dado_monitorado">Tipo do dado monitorado:</label>
+        <input type="text" id="dado_monitorado" name="dado_monitorado" required>
+        <br><br>
+        <button type="submit">Cadastrar Sensor</button>
+    </form> 
+</body>
+</html>
 
 
 
