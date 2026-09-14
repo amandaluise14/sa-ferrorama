@@ -223,3 +223,22 @@ textarea {
     padding: 12px;
 
 }
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li {
+    padding: 16px 22px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sidebar ul li.active {
+    background-color: #b30000;
+    font-weight: bold;
+}
+.sidebar ul li:hover {
+    background-color: #990000;
+}
