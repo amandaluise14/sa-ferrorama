@@ -92,3 +92,12 @@ Como vantagens, podemos citar principalmente o suporte a múltiplos bancos, pois
 ## Desvantagens do PDO
 Como desvantagens podemos citar principalmente a perda de recursos específicos, pois algumas funções exclusivas de determinados bancos de dados não são totalmente aproveitadas pelo PDO. A curva de aprendizado também pode ser uma dificuldade, já que é necessário entender a estrutura da API e alguns conceitos de programação orientada a objetos. Além disso, existe uma falsa ideia de troca fácil, pois mudar de banco de dados não significa apenas alterar a conexão, já que comandos SQL específicos podem precisar ser modificados. Por fim, pode existir uma pequena perda de desempenho em comparação com extensões nativas, mas essa diferença geralmente é muito pequena e pouco relevante na maioria dos sistemas. 
 
+## Em quais situações o PDO pode ser uma boa escolha; 
+
+O PDO pode ser uma boa escolha em projetos PHP que precisam de mais segurança e organização. Ele é útil quando o sistema trabalha com banco de dados e pode precisar mudar de banco no futuro. Também é uma boa opção quando queremos evitar problemas como SQL Injection e ter um melhor tratamento dos erros.
+
+### Fontes:
+https://dev.to/mega6382/mysql-vs-mysqli-vs-pdo-performance-benchmark-difference-and-security-comparison-565o
+https://blog.grancursosonline.com.br/php-pdo-vs-mysqli/
+https://www.devmedia.com.br/introducao-ao-php-data-objects-pdo/25318
+https://pt.quora.com/Em-quais-cen%C3%A1rios-%C3%A9-melhor-usar-PDO-PHP-em-vez-das-fun%C3%A7%C3%B5es-espec%C3%ADficas-do-SGBD-que-ser%C3%A1-utilizado
