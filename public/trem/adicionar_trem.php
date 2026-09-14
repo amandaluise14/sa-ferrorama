@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Cadastrar Novo Trem</h2>
     <form method="POST">
         
-        <label for="modelo">Modelo:</label>
+        <label for="modelo">Modelo trem:</label>
         <input type="text" id="modelo" name="modelo" required>
         <br><br>
-        <label for="velocidade">Velocidade:</label>
+        <label for="velocidade">Velocidade limite:</label>
         <input type="text" id="velocidade" name="velocidade" required>
         <br><br>
         <label for="linha">Linha:</label>
