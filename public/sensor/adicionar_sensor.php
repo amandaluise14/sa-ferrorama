@@ -30,20 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <title>Cadastrar Sensor</title>
     <form method="POST">
-        <label for="nome">Nome:</label>
+        <label for="nome">Nome Sensor:</label>
         <input type="text" id="nome" name="nome" required>
         <br><br>
-        <label for="localizacao">Localizacao:</label>
+        <label for="localizacao">Localizacao do Sensor:</label>
         <input type="text" id="localizacao" name="localizacao" required>
         <br><br>
-        <label for="descricao_localizacao">Descricao da localizacao:</label>
+        <label for="descricao_localizacao">Descrever Localizacao:</label>
         <input type="text" id="descricao_localizacao" name="descricao_localizacao" required>
         <br><br>
-        <label for="dado_monitorado">Tipo do dado monitorado:</label>
+        <label for="dado_monitorado">Tipo do Dado Monitorado:</label>
         <input type="text" id="dado_monitorado" name="dado_monitorado" required>
         <br><br>
         <button type="submit">Cadastrar Sensor</button>
     </form> 
+    <br>
+    <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
 </body>
 </html>
 

@@ -1,5 +1,5 @@
-CREATE DATABASE sa_ferrorama
-USE sa_ferrorama
+CREATE DATABASE sa_ferrorama;
+USE sa_ferrorama;
 
 CREATE TABLE usuarios (
 id_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -8,7 +8,7 @@ senha VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE trens (
-id_trem INT PRIMARY KEY AUTO_INCREMENT NOT NOT,
+id_trem INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 modelo VARCHAR(50) NOT NULL,
 velocidade VARCHAR(50) NOT NULL,
 linha INT NOT NULL,
