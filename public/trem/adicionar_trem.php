@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="carga">Carga:</label>
         <input type="text" id="carga" name="carga" required>
         <br><br>
-        <button type="submit">Cadastrar Trem</button>
-    </form> 
-    <br>  
-    <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
-</body>
-</html>
+       
+    <button type="button" onclick="window.location.href='../../index.php'">
+        Cancelar  
+    </button>
+
+    
