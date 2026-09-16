@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="sidebar">
 
         <div class="logo">
-        <img id="imagem_logo"src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
     <ul>
@@ -50,7 +50,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Cadastrar Rota</title>
     <form method="POST">
-        <label for="nome">Nome da rota (linha) :</label>
+        <div class="container mt-4">
+ <div class="d-flex align-items-center gap-3 mb-5">
+
+    <img src="../../assets/image/imagem_usuario.png"
+        alt="imagem usuário"
+ id="imagemUsuario">
+
+<h2 class="titulo-admin">
+Cadastrar Rota
+   </h2>
+ </div>
+<div class="table-responsive">
+        <label for="nome">Nome da rota (linha):</label>
         <input type="text" id="nome" name="nome" required>
         <br><br>
         <label for="estacao_origem">Estação Origem:</label>
@@ -84,6 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }  
     ?> 
 </select>
+</div>
+</div>
 
 </body> 
 </html>
