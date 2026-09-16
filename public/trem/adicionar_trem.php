@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <div class="d-flex align-items-start">
+    <div class="pagina">
     <div class="sidebar">
 
         <div class="logo">
@@ -45,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li>Sair</li>
     </ul>
     </div>
+
+    <div class="conteudo">
     <h2>Cadastrar Novo Trem</h2>
     <form method="POST">
         
