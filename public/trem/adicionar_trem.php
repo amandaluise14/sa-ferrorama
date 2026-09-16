@@ -26,8 +26,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Trem</title>
+ <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
+    <div class="d-flex align-items-start">
+    <div class="sidebar">
+
+        <div class="logo">
+        <img id="imagem_logo"src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
+
+    <ul>
+        <li class="active">Início</li>
+        <li>Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
+    </div>
     <h2>Cadastrar Novo Trem</h2>
     <form method="POST">
         
@@ -43,9 +60,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="carga">Carga:</label>
         <input type="text" id="carga" name="carga" required>
         <br><br>
-        <button type="submit">Cadastrar Trem</button>
-    </form> 
-    <br>  
-    <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
+       
+    <button type="button" onclick="window.location.href='../../index.php'">
+        Cancelar  
+    </button>
+
+    <button type="submit">
+        Salvar
+
+    </button>
+</form>
 </body>
 </html>
