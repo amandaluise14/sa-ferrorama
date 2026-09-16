@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <h2 id="titulo">Cadastrar Sensor</h2>
+    <h2>Cadastrar Sensor</h2>
 
     <form method="POST">
         <label for="nome">Nome Sensor:</label>
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="dado_monitorado">Tipo do Dado Monitorado:</label>
         <input type="text" id="dado_monitorado" name="dado_monitorado" required>
         <br><br>
-        <button type="submit">Cadastrar Sensor</button>
+        <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
     </form> 
     <br>
     <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
