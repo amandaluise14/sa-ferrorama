@@ -52,16 +52,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <label for="modelo">Modelo trem:</label>
         <input type="text" id="modelo" name="modelo" required>
-        <br><br>
+       
         <label for="velocidade">Velocidade limite:</label>
         <input type="text" id="velocidade" name="velocidade" required>
-        <br><br>
+        
         <label for="linha">Linha:</label>
         <input type="number" id="linha" name="linha" required>
-        <br><br>
+        
         <label for="carga">Carga:</label>
         <input type="text" id="carga" name="carga" required>
-        <br><br>
+
+        <div class="botoes">
+        
        
     <button type="button" onclick="window.location.href='../../index.php'">
         Cancelar  
