@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="sidebar">
 
         <div class="logo">
-        <img id="imagem_logo"src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        <img id="imagem_logo"src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
     <ul>
