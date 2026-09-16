@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <div class="d-flex align-items-start">
+    <div class="pagina">
     <div class="sidebar">
 
         <div class="logo">
@@ -45,21 +45,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li>Sair</li>
     </ul>
     </div>
+
+    <div class="conteudo">
     <h2>Cadastrar Novo Trem</h2>
     <form method="POST">
         
         <label for="modelo">Modelo trem:</label>
         <input type="text" id="modelo" name="modelo" required>
-        <br><br>
+       
         <label for="velocidade">Velocidade limite:</label>
         <input type="text" id="velocidade" name="velocidade" required>
-        <br><br>
+        
         <label for="linha">Linha:</label>
         <input type="number" id="linha" name="linha" required>
-        <br><br>
+        
         <label for="carga">Carga:</label>
         <input type="text" id="carga" name="carga" required>
-        <br><br>
+
+        <div class="botoes">
+        
        
     <button type="button" onclick="window.location.href='../../index.php'">
         Cancelar  
@@ -69,6 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Salvar
 
     </button>
+
+</div>
 </form>
+</div>
 </body>
-</html>
+
