@@ -26,9 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Sensor</title>
+    <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <title>Cadastrar Sensor</title>
+    <h2 id="titulo">Cadastrar Sensor</h2>
+
     <form method="POST">
         <label for="nome">Nome Sensor:</label>
         <input type="text" id="nome" name="nome" required>
