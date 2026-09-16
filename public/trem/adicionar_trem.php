@@ -48,4 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Cancelar  
     </button>
 
-    
+    <button type="submit">
+        Salvar
+
+    </button>
+</form>
+</body>
+</html>
