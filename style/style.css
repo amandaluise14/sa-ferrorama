@@ -242,6 +242,7 @@ textarea {
 .sidebar ul li:hover {
     background-color: #990000;
 }
+<<<<<<< HEAD
 
 .form-container {
     width: 672px;
@@ -285,3 +286,5 @@ select {
 
     outline: none;
 }
+=======
+>>>>>>> 1b1dcb62616955d75dccc5f13c382349492a776e
