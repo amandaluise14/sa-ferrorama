@@ -54,17 +54,17 @@ $usuario = "Administrador";
 
                     <div class="card-total">
                         <h5>Total de administradores</h5>
-                        <p>140</p>
+                        <p>14</p>
                     </div>
 
                     <div class="card-total">
                         <h5>Total de usuários</h5>
-                        <p>2000</p>
+                        <p>200</p>
                     </div>
 
                     <div class="card-total">
                         <h5>Total de administradores ativos</h5>
-                        <p>100</p>
+                        <p>180</p>
                     </div>
 
                 </section>
@@ -137,7 +137,7 @@ $usuario = "Administrador";
                             <td>Carine</td>
                             <td>carine_sts@gmail.com</td>
                             <td>(47) 1234-5678</td>
-                            <td>Ativo</td>
+                            <td>Inativo</td>
                             <td>Usuário</td>
                             <td>11/02</td>
                             <td>✏️ 🗑️</td>
@@ -148,7 +148,7 @@ $usuario = "Administrador";
                             <td>Gabriela</td>
                             <td>baartz291122@gmail.com</td>
                             <td>(47) 8923-8000</td>
-                            <td>Inativo</td>
+                            <td>Ativo</td>
                             <td>Administrador</td>
                             <td>13/06</td>
                             <td>✏️ 🗑️</td>
