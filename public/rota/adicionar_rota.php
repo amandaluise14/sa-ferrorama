@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-    <div class="d-flex align-items-start">
+
+ <div class="pagina">
     <div class="sidebar">
 
         <div class="logo">
@@ -50,20 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Cadastrar Rota</title>
     <form method="POST">
-        <div class="container mt-4">
- <div class="d-flex align-items-center gap-3 mb-5">
 
-    <img src="../../assets/image/imagem_usuario.png"
-        alt="imagem usuário"
- id="imagemUsuario">
+ <div class="conteudo">
 
-<h2 class="titulo-admin">
-Cadastrar Rota
-   </h2>
+    <img src="../../assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
 
- </div>
-<div class="form container">
+<h2 class="titulo-admin">Cadastrar Rota </h2>
 
+ 
 
         <label for="nome">Nome da rota (linha):</label>
         <input type="text" id="nome" name="nome" placeholder="Ex: Linha Norte" required>
@@ -74,7 +69,7 @@ Cadastrar Rota
         <label for="estacao_destino">Estação Destino:</label>
         <input type="text" id="estacao_destino" placeholder="Ex: Linha Sudeste" name="estacao_destino" required>
         <br><br>
-        <label for="distancia_total"> Distância total </label>
+        <label for="distancia_total"> Distância total: </label>
         <select name="distancia_total" id="distancia_total" required>
         <option value="">Selecione a distância</option>
         <option value="10">10 km</option>
@@ -82,6 +77,7 @@ Cadastrar Rota
         <option value="30">30 km</option>
         <option value="40">40 km</option>
         </select>
+        <br><br>
         
      <select name="sensor_id" required>
     <option value="">Selecione o Sensor</option>
@@ -98,14 +94,26 @@ Cadastrar Rota
         </option> 
 
 <br><br>
-<br><br> <button type="submit">Cadastrar Rota</button>
 
+<div class="botoes">
+
+            <button class="btn btn-cancelar">
+                Cancelar
+            </button>
+
+            <button class="btn btn-salvar">
+                Salvar
+            </button>
+</div>
     <?php 
         }  
     ?> 
 </select>
 </div>
 </div>
+</div>
+
+
 
 </body> 
 </html>

@@ -242,49 +242,6 @@ textarea {
 .sidebar ul li:hover {
     background-color: #990000;
 }
-
-.form-container {
-    width: 672px;
-    margin-left: 40px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-row {
-    display: flex;
-    gap: 48px;
-}
-
-.form-row .form-group {
-    flex: 1;
-}
-
-label {
-    display: block;
-
-    font-size: 13px;
-
-    margin-bottom: 5px;
-}
-
-input,
-select {
-    width: 100%;
-    height: 23px;
-
-    border: none;
-    border-radius: 5px;
-
-    background-color: white;
-
-    padding: 3px 12px;
-
-    font-size: 12px;
-
-    outline: none;
-}
 .pagina{
     display: flex;
     width: 100%;
@@ -294,32 +251,4 @@ select {
 .pagina .sidebar {
     flex-shrink:0;
 
-}
-
-.conteudo-cadastro{
-    flex:1;
-       padding: 25px 50px;
-    box-sizing: border-box;
-}
-
-.conteudo-cadastro h2{
-    margin-top: 0;
-    margin-bottom: 40px;
-}
-
-.conteudo-cadastro form {
-    width: 80%;
-}
-
-.conteudo-cadastro label{
-    display: block;
-    margin-bottom: 8px;
-}
-
-.conteudo-cadastro input {
-    width: 100%;
-    height: 35px;
-    box-sizing: border-box;
-    margin: 0 0 25px 0;
-    padding: 8px;
 }
