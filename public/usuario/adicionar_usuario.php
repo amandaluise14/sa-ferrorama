@@ -28,7 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-    <div class="pagina">
+
+<div style="display: flex;">
+
+
+
+    <div class="pagina" >
         <div class="sidebar">
 
             <div class="logo">
@@ -44,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li>Sair</li>
             </ul>
         </div>
+
+        
 </div>
 
 
@@ -84,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </div>
 
-
+</div>
 </body>
 
 </html>
