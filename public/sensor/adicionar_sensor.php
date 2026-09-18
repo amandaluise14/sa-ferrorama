@@ -54,24 +54,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2 id="titulo-admin">Cadastrar Sensor</h2>
 
         <label for="nome">Nome Sensor:</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" placeholder="Ex: Sensor de velocidade do trem 77" required>
         <br><br>
         <label for="localizacao">Localização do Sensor:</label>
         <br>
-        <input type="radio" id="localizacao" name="localizacao" value="Trem" required>
+        <input type="radio" id="localizacao" name="localizacao" value="Trem"  required>
         <label for="localizacao">Trem</label>
         <br>
         <input type="radio" id="localizacao" name="localizacao" value="Rota" required>
         <label for="localizacao">Rota</label>
         <br><br>
         <label for="descricao_localizacao">Descrever Localização:</label>
-        <input type="text" id="descricao_localizacao" name="descricao_localizacao" required>
+        <input type="text" id="descricao_localizacao" name="descricao_localizacao" placeholder="Ex: Velocidade do sensor localizado na rota" required>
         <br><br>
         <label for="dado_monitorado">Tipo do Dado Monitorado:</label>
-        <input type="text" id="dado_monitorado" name="dado_monitorado" required>
+        <input type="text" id="dado_monitorado" name="dado_monitorado" placeholder="Ex: Velocidade" required>
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
-        <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+        <button id="botaoCadastro" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
     </div>
