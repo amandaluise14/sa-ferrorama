@@ -454,13 +454,13 @@ button {
 
 .botoes button[type="button"],
 .btn-cancelar {
-    background-color: #ddd;
-    color: #333;
-}
-
-.botoes button:hover,
-.botoes-cadastro button:hover {
-    opacity: 0.9;
+background-color: #7b7b7b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 /* Botões de Cadastro */

@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Cadastrar Rota</title>
+    <style>
+</style>
 </head>
 
 <body>
@@ -54,8 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li>Sair</li>
             </ul>
         </div>
-
-        <title>Cadastrar Rota</title>
 
         <div class="formulario-container">
 
@@ -85,6 +85,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
                     <br><br>
 
+                         <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
+                         <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+                         
+                    <label for="sensor_id">Sensor:</label>
+
                     <select name="sensor_id" required>
                         <option value="">Selecione o Sensor</option>
 
@@ -101,22 +106,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <br><br>
 
-                            <div class="botoes">
-
-                                <button class="btn btn-cancelar">
-                                    Cancelar
-                                </button>
-
-                                <button class="btn btn-salvar">
-                                    Salvar
-                                </button>
-                            </div>
                             <?php
                         }
                         ?>
                     </select>
                 </div>
-
             </form>
 
         </div>
@@ -127,5 +121,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </html>
 
-
->
