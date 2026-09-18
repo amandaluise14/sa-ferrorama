@@ -54,9 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 
-    <h2>Adicionar Novo administrador/usuário</h2>
-
     <div class="formulario-container">
+        <h2>Adicionar Novo administrador/usuário</h2>
 
     <form method="POST" class="forms_rotas">
 
