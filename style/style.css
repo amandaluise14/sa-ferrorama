@@ -339,8 +339,6 @@ select {
     gap: 15px;
     margin-top: 30px;
 }
-
-
 .botoes-cadastro button {
     width: 100px;
     height: 35px;
@@ -348,7 +346,6 @@ select {
     border-radius: 5px;
     cursor: pointer;
 }
-
 .botoes-cadastro button{
     width:100px;
     height:35px;
