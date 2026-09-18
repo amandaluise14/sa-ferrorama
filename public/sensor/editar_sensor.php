@@ -50,8 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Editar Sensor</h2>
             <div class="conteudo">
-                <h2>Editar Sensor</h2>
+                
                 <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome"required>
                 <br><br>
@@ -70,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" id="dado_monitorado" name="dado_monitorado" >
                 <br><br>
                 <button id="botaoCadastro" type="submit">Editar Sensor</button>
-                <button id="botaoCadastro" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+                <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
             </div>
         </form> 
     </div>

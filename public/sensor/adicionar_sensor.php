@@ -49,9 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cadastrar Rota</title>
      <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Cadastrar Sensor</h2>
             <div class="conteudo">
-
-    <h2 id="titulo-admin">Cadastrar Sensor</h2>
 
         <label for="nome">Nome Sensor:</label>
         <input type="text" id="nome" name="nome" placeholder="Ex: Sensor de velocidade do trem 77" required>
@@ -71,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="dado_monitorado" name="dado_monitorado" placeholder="Ex: Velocidade" required>
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
-        <button id="botaoCadastro" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+        <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
     </div>
