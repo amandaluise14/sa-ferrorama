@@ -198,6 +198,14 @@ h6 {
     background-color: #700000;
 }
 
+input,
+textarea {
+    width: 300%;
+    margin: 20px 0;
+    padding: 8px;
+
+}
+
 .logo {
     width: 100%;
     display: flex;
@@ -307,6 +315,38 @@ h6 {
     max-width: 700px;
 }
 
+.sidebar {
+    width: 20%;
+    min-height: 100vh;
+    background-color: #700000;
+}
+
+.conteudo {
+    min-height: 100vh;
+    width: 80%;
+    background-color: #f2f2f2;
+    align-items: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li {
+    padding: 16px 22px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+#imagem_logo {
+    width: 100%;
+    width: 250px;
+    height: 250px;
+    align-items: center;
+    margin-left: 55px;
+}
+
 .formulario {
     width: 100%;
     padding: 30px;
@@ -362,6 +402,15 @@ label {
     background-color: white;
     padding: 8px 12px;
     font-size: 14px;
+}
+input, select {
+    width: 300%;
+    height: 23px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    padding: 3px 12px;
+    font-size: 12px;
     outline: none;
     margin: 0 0 15px 0;
 }
@@ -538,6 +587,13 @@ button {
 
 .filtros label {
     margin: 0;
+
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.forms_rotas{
+    width: 130%;
 }
 
 #pesquisar {
