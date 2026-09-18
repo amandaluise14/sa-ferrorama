@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <div class="d-flex align-items-start">
+    <div class="pagina">
     <div class="sidebar">
 
         <div class="logo">
@@ -46,11 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
     </div>
 
+    <div class="conteudo">
     <title>Cadastrar Rota</title>
     <form method="POST">
-        <div class="container mt-4">
+<div class="container mt-4">
  <div class="d-flex align-items-center gap-3 mb-5">
-
     <img src="../../assets/image/imagem_usuario.png"
         alt="imagem usuário"
  id="imagemUsuario">
@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
     </form> 
+    </div>
     <br>
     <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
 </body>
