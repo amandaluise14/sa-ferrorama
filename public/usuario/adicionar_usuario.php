@@ -26,26 +26,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Adicionar Novo administrador/usuário</title>
 </head>
 
-<div class="d-flex align-items-start">
-    <div class="sidebar">
-
-        <div class="logo">
-        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-        </div>
-
-    <ul>
-        <li class="active">Início</li>
-        <li>Sensores e Trens</li>
-        <li>Monitoramento</li>
-        <li>Relatórios</li>
-        <li>Adicionar usuário</li>
-        <li>Sair</li>
-    </ul>
-    </div>
 <body>
+
+    <div class="pagina">
+        <div class="sidebar">
+
+            <div class="logo">
+                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            </div>
+
+            <ul>
+                <li>Início</li>
+                <li class="active">Sensores e Trens</li>
+                <li>Monitoramento</li>
+                <li>Relatórios</li>
+                <li>Adicionar usuário</li>
+                <li>Sair</li>
+            </ul>
+        </div>
+</div>
+
+
     <h2>Adicionar Novo administrador/usuário</h2>
 
-    <form method="POST">
+    <div class="formulario-container">
+
+    <form method="POST" class="forms_rotas">
+
+    <div class="conteudo">
+
+
         <label for="nome">Nome completo</label>
         <input type="text" id="nome" name="nome" required>
         <br><br>
@@ -67,9 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br><br>
 
         <button type="submit">Cadastrar administrador/usuário</button>
-    </form> 
-    <br>  
-    <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
 </body>
+
 </html>
 
