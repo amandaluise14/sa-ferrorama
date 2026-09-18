@@ -29,6 +29,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
+    <div class="pagina">
+    <div class="sidebar">
+
+        <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
+
+    <ul>
+        <li>Início</li>
+        <li class="active"> Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
+    </div>
+
+    <div class="conteudo">
+    <title>Cadastrar Rota</title>
+    <form method="POST">
+<div class="container mt-4">
+ <div class="d-flex align-items-center gap-3 mb-5">
+    <img src="../../assets/image/imagem_usuario.png"
+        alt="imagem usuário"
+ id="imagemUsuario">
+
     <h2>Cadastrar Sensor</h2>
 
     <form method="POST">
@@ -51,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
     </form> 
+    </div>
     <br>
     <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
 </body>

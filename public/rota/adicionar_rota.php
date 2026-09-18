@@ -23,81 +23,107 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Cadastrar Rota</title>
 </head>
+
 <body>
 
-    <div class="d-flex align-items-start">
-    <div class="sidebar">
 
-        <div class="logo">
-        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+    <div class="pagina">
+        <div class="sidebar">
+
+            <div class="logo">
+                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            </div>
+
+            <ul>
+                <li>Início</li>
+                <li class="active">Sensores e Trens</li>
+                <li>Monitoramento</li>
+                <li>Relatórios</li>
+                <li>Adicionar usuário</li>
+                <li>Sair</li>
+            </ul>
         </div>
 
-    <ul>
-        <li class="active">Início</li>
-        <li>Sensores e Trens</li>
-        <li>Monitoramento</li>
-        <li>Relatórios</li>
-        <li>Adicionar usuário</li>
-        <li>Sair</li>
-    </ul>
+        <title>Cadastrar Rota</title>
+
+        <div class="formulario-container">
+
+            <form method="POST" class="forms_rotas">
+
+                <div class="conteudo">
+
+                    <h2 class="titulo-admin">Cadastrar Rota </h2>
+
+
+
+                    <label for="nome">Nome da rota (linha):</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: Linha Norte" required>
+                    <br><br>
+                    <label for="estacao_origem">Estação Origem:</label>
+                    <input type="text" id="estacao_origem" placeholder="Ex: Linha Norte" name="estacao_origem" required>
+                    <br><br>
+                    <label for="estacao_destino">Estação Destino:</label>
+                    <input type="text" id="estacao_destino" placeholder="Ex: Linha Sudeste" name="estacao_destino"
+                        required>
+                    <br><br>
+                    <label for="distancia_total"> Distância total: </label>
+                    <select name="distancia_total" id="distancia_total" required>
+                        <option value="">Selecione a distância</option>
+                        <option value="10">10 km</option>
+                        <option value="20">20 km</option>
+                        <option value="30">30 km</option>
+                        <option value="40">40 km</option>
+                    </select>
+                    <br><br>
+
+                    <select name="sensor_id" required>
+                        <option value="">Selecione o Sensor</option>
+
+                        <?php
+                        $sql = "SELECT id, nome FROM sensores";
+                        $sensores = $conn->query($sql);
+
+                        while ($sensor = $sensores->fetch_assoc()) {
+                            ?>
+
+                            <option value="<?php echo $sensor['id']; ?>">
+                                <?php echo $sensor['nome']; ?>
+                            </option>
+
+                            <br><br>
+
+                            <div class="botoes">
+
+                                <button class="btn btn-cancelar">
+                                    Cancelar
+                                </button>
+
+                                <button class="btn btn-salvar">
+                                    Salvar
+                                </button>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
 
-    <title>Cadastrar Rota</title>
-    <form method="POST">
-        <div class="container mt-4">
- <div class="d-flex align-items-center gap-3 mb-5">
+</body>
 
-    <img src="../../assets/image/imagem_usuario.png"
-        alt="imagem usuário"
- id="imagemUsuario">
-
-<h2 class="titulo-admin">
-Cadastrar Rota
-   </h2>
- </div>
-<div class="table-responsive">
-        <label for="nome">Nome da rota (linha):</label>
-        <input type="text" id="nome" name="nome" required>
-        <br><br>
-        <label for="estacao_origem">Estação Origem:</label>
-        <input type="text" id="estacao_origem" name="estacao_origem" required>
-        <br><br>
-        <label for="estacao_destino">Estação Destino:</label>
-        <input type="text" id="estacao_destino" name="estacao_destino" required>
-        <br><br>
-        <label for="distancia_total">Distância Total:</label>
-        <input type="text" id="distancia_total" name="distancia_total" required>
-        <br><br>
-       <button type="submit">Cadastrar Rota</button>
-
-<br><br>
-
-<select name="sensor_id" required>
-    <option value="">Selecione o Sensor</option>
-
-    <?php 
-        $sql = "SELECT id, nome FROM sensores"; 
-        $sensores = $conn->query($sql); 
-
-        while ($sensor = $sensores->fetch_assoc()) { 
-    ?> 
-
-        <option value="<?php echo $sensor['id']; ?>">
-            <?php echo $sensor['nome']; ?>
-        </option> 
-
-    <?php 
-        }  
-    ?> 
-</select>
-</div>
-</div>
-
-</body> 
 </html>
+
+
+>
