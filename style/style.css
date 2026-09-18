@@ -67,7 +67,6 @@ textarea {
 }
 
 .conteudo {
-    width: 80%;
     min-height: 100vh;
     background-color: #f2f2f2;
 }
@@ -348,6 +347,13 @@ select {
     margin-top: 30px;
 }
 
+.botoes-cadastro button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .botoes-cadastro button{
     width:100px;
     height:35px;
@@ -378,4 +384,8 @@ select {
 
 .forms_rotas{
     margin:  20px;
+}
+
+.forms_sensores{
+    margin-left: 50px;
 }
