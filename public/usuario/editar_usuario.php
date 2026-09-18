@@ -18,8 +18,7 @@ if ($stmt->execute() === TRUE) {
     echo "Erro ao atualizar usuário: " . $stmt->error;
 }
 
-} else { echo "ID do usuário não fornecido."; 
-}
+} else { echo "ID do usuário não fornecido."; }
 
 ?>
 
