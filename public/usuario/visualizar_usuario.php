@@ -19,17 +19,17 @@ $usuario = "Administrador";
 
     <div class="sidebar">
 
-        <div class="logo">
-            <img id="imagem_logo" src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-        </div>
+   <div class="logo">
+   <img id="imagem_logo" src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+   </div>
 
-        <ul>
-            <li class="active">Início</li>
-            <li>Sensores e Trens</li>
-            <li>Monitoramento</li>
-            <li>Relatórios</li>
-            <li>Adicionar usuário</li>
-            <li>Sair</li>
+   <ul>
+    <li class="active">Início</li>
+     <li>Sensores e Trens</li>
+     <li>Monitoramento</li>
+     <li>Relatórios</li>
+     <li>Adicionar usuário</li>
+     <li>Sair</li>
         </ul>
 
     </div>
@@ -38,132 +38,131 @@ $usuario = "Administrador";
 
         <main class="conteudo">
 
-            <div class="d-block p-2">
+      <div class="d-block p-2">
 
-                <div class="d-flex align-items-start">
-                    <img src="../assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
-                    <h2>Bem-vindo, <?php echo $usuario; ?></h2>
-                </div>
+      <div class="d-flex align-items-start">
+      <img src="../assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
+      <h2>Bem-vindo, <?php echo $usuario; ?></h2>
+       </div>
 
-                <section class="cards">
+      <section class="cards">
 
-                    <div class="card-total">
-                        <h5>Total de funcionários</h5>
-                        <p>25</p>
-                    </div>
+      <div class="card-total">
+      <h5>Total de funcionários</h5>
+       <p>25</p>
+       </div>
 
-                    <div class="card-total">
-                        <h5>Total de administradores</h5>
-                        <p>14</p>
-                    </div>
+        <div class="card-total">
+        <h5>Total de administradores</h5>
+         <p>14</p>
+        </div>
+                   
+        <div class="card-total">
+      <h5>Total de usuários</h5>
+         <p>200</p>
+       </div>
 
-                    <div class="card-total">
-                        <h5>Total de usuários</h5>
-                        <p>200</p>
-                    </div>
+       <div class="card-total">
+        <h5>Total de administradores ativos</h5>
+         <p>180</p>
+        </div>
 
-                    <div class="card-total">
-                        <h5>Total de administradores ativos</h5>
-                        <p>180</p>
-                    </div>
+       </section>
 
-                </section>
+       <section class="filtros">
 
-                <section class="filtros">
+       <input type="text" id="pesquisar" placeholder="Pesquisar">
 
-                    <input type="text" id="pesquisar" placeholder="Pesquisar">
+        <label for="conta">Tipo de conta:</label>
+        <select id="conta">
+        <option>Administrador</option>
+        <option>Usuário</option>
+        <option>Selecione</option>
+         </select>
 
-                    <label for="conta">Tipo de conta:</label>
-                    <select id="conta">
-                        <option>Administrador</option>
-                        <option>Usuário</option>
-                        <option>Selecione</option>
-                    </select>
+        <label for="status">Status:</label>
+        <select id="status">
+        <option>Inativo</option>
+        <option>Ativo</option>
+        <option>Selecione</option>
+        </select>
 
-                    <label for="status">Status:</label>
-                    <select id="status">
-                        <option>Inativo</option>
-                        <option>Ativo</option>
-                        <option>Selecione</option>
-                    </select>
+        <button type="submit" id="botaofiltrar">
+        Filtrar
+        </button>
 
-                    <button type="submit" id="botaofiltrar">
-                        Filtrar
-                    </button>
+        </section>
 
-                </section>
+        <table class="tabela">
 
-                <table class="tabela">
+        <thead>
+        <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Status</th>
+        <th>Tipo de conta</th>
+        <th>Último acesso</th>
+        <th>Ações</th>
+        </tr>
+        </thead>
 
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Telefone</th>
-                            <th>Status</th>
-                            <th>Tipo de conta</th>
-                            <th>Último acesso</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
+        <tbody>
 
-                    <tbody>
+         <tr>
+        <td>1</td>
+        <td>Amanda</td>
+        <td>amanda14@gmail.com</td>
+        <td>(47) 9999-2358</td>
+        <td>Ativo</td>
+        <td>Usuário</td>
+        <td>14/06</td>
+        <td>✏️ 🗑️</td>
+        </tr>
 
-                        <tr>
-                            <td>1</td>
-                            <td>Amanda</td>
-                            <td>amanda14@gmail.com</td>
-                            <td>(47) 9999-2358</td>
-                            <td>Ativo</td>
-                            <td>Usuário</td>
-                            <td>14/06</td>
-                            <td>✏️ 🗑️</td>
-                        </tr>
+        <tr>
+        <td>22</td>
+        <td>Ana Luíza</td>
+        <td>ana_jung@gmail.com</td>
+        <td>(47) 1349-2275</td>
+        <td>Inativo</td>
+        <td>Administrador</td>
+        <td>12/01</td>
+        <td>✏️ 🗑️</td>
+        </tr>
 
-                        <tr>
-                            <td>22</td>
-                            <td>Ana Luíza</td>
-                            <td>ana_jung@gmail.com</td>
-                            <td>(47) 1349-2275</td>
-                            <td>Inativo</td>
-                            <td>Administrador</td>
-                            <td>12/01</td>
-                            <td>✏️ 🗑️</td>
-                        </tr>
+        <tr>
+        <td>11</td>
+        <td>Carine</td>
+        <td>carine_sts@gmail.com</td>
+        <td>(47) 1234-5678</td>
+        <td>Inativo</td>
+        <td>Usuário</td>
+        <td>11/02</td>
+        <td>✏️ 🗑️</td>
+        </tr>
 
-                        <tr>
-                            <td>11</td>
-                            <td>Carine</td>
-                            <td>carine_sts@gmail.com</td>
-                            <td>(47) 1234-5678</td>
-                            <td>Inativo</td>
-                            <td>Usuário</td>
-                            <td>11/02</td>
-                            <td>✏️ 🗑️</td>
-                        </tr>
+        <tr>
+        <td>199</td>
+        <td>Gabriela</td>
+        <td>baartz291122@gmail.com</td>
+        <td>(47) 8923-8000</td>
+        <td>Ativo</td>
+        <td>Administrador</td>
+        <td>13/06</td>
+         td>✏️ 🗑️</td>
+         </tr>
 
-                        <tr>
-                            <td>199</td>
-                            <td>Gabriela</td>
-                            <td>baartz291122@gmail.com</td>
-                            <td>(47) 8923-8000</td>
-                            <td>Ativo</td>
-                            <td>Administrador</td>
-                            <td>13/06</td>
-                            <td>✏️ 🗑️</td>
-                        </tr>
+      </tbody>
 
-                    </tbody>
+      </table>
 
-                </table>
+       <button type="submit" id="botaoadicionar">
+       Ir para adicionar
+       </button>
 
-                <button type="submit" id="botaoadicionar">
-                    Ir para adicionar
-                </button>
-
-            </div>
-
+        </div>
         </main>
 
     </div>
