@@ -285,24 +285,23 @@ select {
 
     outline: none;
 }
-.pagina{
+.pagina {
     display: flex;
     width: 100%;
     min-height: 100vh;
 }
 
 .pagina .sidebar {
-    flex-shrink:0;
-
+    flex-shrink: 0;
 }
 
-.conteudo-cadastro{
-    flex:1;
-       padding: 25px 50px;
+.conteudo-cadastro {
+    flex: 1;
+    padding: 25px 50px;
     box-sizing: border-box;
 }
 
-.conteudo-cadastro h2{
+.conteudo-cadastro h2 {
     margin-top: 0;
     margin-bottom: 40px;
 }
@@ -311,7 +310,7 @@ select {
     width: 80%;
 }
 
-.conteudo-cadastro label{
+.conteudo-cadastro label {
     display: block;
     margin-bottom: 8px;
 }
@@ -323,27 +322,27 @@ select {
     margin: 0 0 25px 0;
     padding: 8px;
 }
-.botoes-cadastro{
-    display:flex;
-    justify-content:flex-end;
-    gap:15px;
-    margin-top:30px;
+
+.botoes-cadastro {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
 }
 
-.botoes-cadastro button{
-    width:100px;
-    height:35px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;   
-}
-.botoes-cadastro button[type="button"]{
-    background-color:#ddd;
-
+.botoes-cadastro button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.botoes-cadastro button[type="submit"]{
-    background-color:#7b0000;
-    color:white;
+.botoes-cadastro button[type="button"] {
+    background-color: #ddd;
 }
 
+.botoes-cadastro button[type="submit"] {
+    background-color: #7b0000;
+    color: white;
+}
