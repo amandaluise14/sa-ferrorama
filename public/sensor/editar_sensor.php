@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <div class="d-flex align-items-start">
+    <div class="pagina">
     <div class="sidebar">
 
         <div class="logo">
@@ -48,9 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li>Sair</li>
     </ul>
     </div>
-
-    <h2>Editar Sensor</h2>
     <form method="POST">
+        <h2>Editar Sensor</h2>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome"required>
         <br><br>
