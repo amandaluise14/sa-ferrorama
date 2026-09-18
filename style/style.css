@@ -248,6 +248,13 @@ textarea {
     background-color: #990000;
 }
 
+.botoes-cadastro button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .form-container {
     width: 672px;
     margin-left: 40px;
@@ -340,13 +347,7 @@ select {
     gap: 15px;
     margin-top: 30px;
 }
-.botoes-cadastro button {
-    width: 100px;
-    height: 35px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-=======
+
 .botoes-cadastro button{
     width:100px;
     height:35px;
@@ -356,19 +357,19 @@ select {
 }
 .botoes-cadastro button[type="button"]{
     background-color:#ddd;
->>>>>>> 09284e36acd29c489e77a850eadabfea2885a7df
+
 }
 
 .botoes-cadastro button[type="button"] {
     background-color: #ddd;
 }
 
-<<<<<<< HEAD
+
 .botoes-cadastro button[type="submit"] {
     background-color: #7b0000;
     color: white;
 }
-=======
+
 .formulario-container{
     display: flex;
     justify-content: center;
@@ -378,5 +379,3 @@ select {
 .forms_rotas{
     margin:  20px;
 }
-
->>>>>>> 09284e36acd29c489e77a850eadabfea2885a7df
