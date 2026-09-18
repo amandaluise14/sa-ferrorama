@@ -51,10 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST">
 <div class="container mt-4">
  <div class="d-flex align-items-center gap-3 mb-5">
-    <img src="../../assets/image/imagem_usuario.png"
-        alt="imagem usuário"
- id="imagemUsuario">
-
     <h2>Cadastrar Sensor</h2>
 
     <form method="POST">
