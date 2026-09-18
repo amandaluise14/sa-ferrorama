@@ -42,11 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <ul>
+
                 <li>Início</li>
+                <a href="../pagina_home.php" class="menu-link active"></a>
                 <li class="active">Sensores e Trens</li>
+                <a href="../pagina_home.php" class="menu-link active"></a>
                 <li>Monitoramento</li>
                 <li>Relatórios</li>
                 <li>Adicionar usuário</li>
+                <a href="../usuario/adicionar_usuario.php" class="menu-link active"></a>
                 <li>Sair</li>
             </ul>
         </div>
