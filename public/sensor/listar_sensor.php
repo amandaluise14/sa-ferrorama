@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,12 +26,12 @@
         <li>Sair</li>
     </ul>
     </div>
-<title>Listagem de Sensores</title>
-     <div class="formulario-container">
-        <form method="POST" class="forms_sensores">
-            <div class="conteudo">
 
-    <h2 id="titulo-admin">Listagem de Sensores</h2>
+    <div class="formulario-container">
+
+        <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Listagem de Sensores</h2>
+            <div class="conteudo">
 
     <table>
         <th>ID</th>
