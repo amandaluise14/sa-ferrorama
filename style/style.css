@@ -243,6 +243,48 @@ textarea {
     background-color: #990000;
 }
 
+.form-container {
+    width: 672px;
+    margin-left: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 48px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    width: 100%;
+    height: 23px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: white;
+
+    padding: 3px 12px;
+
+    font-size: 12px;
+
+    outline: none;
+}
 .pagina{
     display: flex;
     width: 100%;
@@ -281,6 +323,7 @@ textarea {
     margin: 0 0 25px 0;
     padding: 8px;
 }
+<<<<<<< HEAD
 
 .botoes-cadastro{
     display:flex;
@@ -305,3 +348,5 @@ textarea {
     background-color:#7b0000;
     color:white;
 }
+=======
+>>>>>>> 914b452c6a877bf9d1ce08d74b28700b979a61ee

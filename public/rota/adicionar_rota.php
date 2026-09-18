@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
     <ul>
-        <li class="active">Início</li>
-        <li>Sensores e Trens</li>
+        <li>Início</li>
+        <li class="active">Sensores e Trens</li>
         <li>Monitoramento</li>
         <li>Relatórios</li>
         <li>Adicionar usuário</li>
@@ -60,25 +60,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2 class="titulo-admin">
 Cadastrar Rota
    </h2>
+
  </div>
-<div class="table-responsive">
+<div class="form container">
+
+
         <label for="nome">Nome da rota (linha):</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" placeholder="Ex: Linha Norte" required>
         <br><br>
         <label for="estacao_origem">Estação Origem:</label>
-        <input type="text" id="estacao_origem" name="estacao_origem" required>
+        <input type="text" id="estacao_origem" placeholder="Ex: Linha Norte" name="estacao_origem" required>
         <br><br>
         <label for="estacao_destino">Estação Destino:</label>
-        <input type="text" id="estacao_destino" name="estacao_destino" required>
+        <input type="text" id="estacao_destino" placeholder="Ex: Linha Sudeste" name="estacao_destino" required>
         <br><br>
-        <label for="distancia_total">Distância Total:</label>
-        <input type="text" id="distancia_total" name="distancia_total" required>
-        <br><br>
-       <button type="submit">Cadastrar Rota</button>
-
-<br><br>
-
-<select name="sensor_id" required>
+        <label for="distancia_total"> Distância total </label>
+        <select name="distancia_total" id="distancia_total" required>
+        <option value="">Selecione a distância</option>
+        <option value="10">10 km</option>
+        <option value="20">20 km</option>
+        <option value="30">30 km</option>
+        <option value="40">40 km</option>
+        </select>
+        
+     <select name="sensor_id" required>
     <option value="">Selecione o Sensor</option>
 
     <?php 
@@ -92,6 +97,9 @@ Cadastrar Rota
             <?php echo $sensor['nome']; ?>
         </option> 
 
+<br><br>
+<br><br> <button type="submit">Cadastrar Rota</button>
+
     <?php 
         }  
     ?> 
@@ -101,3 +109,6 @@ Cadastrar Rota
 
 </body> 
 </html>
+
+
+>

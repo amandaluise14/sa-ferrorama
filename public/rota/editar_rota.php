@@ -35,6 +35,24 @@ if ($stmt->execute() === TRUE) {
     <title>Editar Rota</title>
 </head>
 <body>
+
+    <div class="d-flex align-items-start">
+    <div class="sidebar">
+
+        <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
+
+    <ul>
+        <li>Início</li>
+        <li class="active">Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
+    </div>
+
     <h2>Editar Rota</h2>
     <form method="POST">
         <label for="nome">Nome:</label>
