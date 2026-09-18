@@ -283,9 +283,25 @@ textarea {
 }
 
 .botoes-cadastro{
-    
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:30px;
+}
+
+.botoes-cadastro button{
+    width:100px;
+    height:35px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;   
+}
+.botoes-cadastro button[type="button"]{
+    background-color:#ddd;
 
 }
 
-
-
+.botoes-cadastro button[type="submit"]{
+    background-color:#7b0000;
+    color:white;
+}
