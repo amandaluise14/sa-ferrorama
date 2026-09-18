@@ -67,7 +67,6 @@ textarea {
 }
 
 .conteudo {
-    width: 80%;
     min-height: 100vh;
     background-color: #f2f2f2;
 }
@@ -380,3 +379,6 @@ select {
     margin:  20px;
 }
 
+.forms_sensores{
+    margin-left: 50px;
+}
