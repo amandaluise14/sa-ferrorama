@@ -306,11 +306,47 @@ input, select {
 .pagina .sidebar {
     flex-shrink: 0;
 }
+
 .botoes-cadastro{
     display:flex;
     justify-content:flex-end;
     gap:15px;
     margin-top:30px;
+}
+.conteudo-cadastro {
+    flex: 1;
+    padding: 25px 50px;
+    box-sizing: border-box;
+}
+
+.conteudo-cadastro h2 {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.conteudo-cadastro form {
+    width: 80%;
+}
+
+.conteudo-cadastro label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.conteudo-cadastro input {
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
+    margin: 0 0 25px 0;
+    padding: 8px;
+}
+
+.botoes-cadastro {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+
 }
 
 .botoes-cadastro button {
