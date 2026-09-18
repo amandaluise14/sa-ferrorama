@@ -323,8 +323,6 @@ select {
     margin: 0 0 25px 0;
     padding: 8px;
 }
-<<<<<<< HEAD
-
 .botoes-cadastro{
     display:flex;
     justify-content:flex-end;
@@ -348,5 +346,4 @@ select {
     background-color:#7b0000;
     color:white;
 }
-=======
->>>>>>> 914b452c6a877bf9d1ce08d74b28700b979a61ee
+
