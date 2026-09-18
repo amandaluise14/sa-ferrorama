@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <div class="d-flex align-items-start">
+    <div class="pagina">
     <div class="sidebar">
 
         <div class="logo">
@@ -48,14 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li>Sair</li>
     </ul>
     </div>
-
-    <h2>Editar Sensor</h2>
-    <form method="POST">
+    <div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+            <div class="conteudo">
+        <h2>Editar Sensor</h2>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome"required>
         <br><br>
-        <label for="localizacao">Localizacao:</label>
-        <input type="text" id="localizacao" name="localizacao" required>
+        <label for="localizacao">Localização do Sensor:</label>
+        <br>
+        <input type="radio" id="localizacao" name="localizacao" value="Trem" required>
+        <label for="localizacao">Trem</label>
+        <br>
+        <input type="radio" id="localizacao" name="localizacao" value="Rota" required>
+        <label for="localizacao">Rota</label>
         <br><br>
         <label for="descricao_localizacao">Descricao da localizacao:</label>
         <input type="text" id="descricao_localizacao" name="descricao_localizacao" >
@@ -64,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="dado_monitorado" name="dado_monitorado" >
         <br><br>
         <button type="submit">Editar Sensor</button>
+</div>
     </form> 
+    </div>
 </body>
 </html>

@@ -46,16 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
     </div>
 
-    <div class="conteudo">
     <title>Cadastrar Rota</title>
-    <form method="POST">
-<div class="container mt-4">
- <div class="d-flex align-items-center gap-3 mb-5">
-    <img src="../../assets/image/imagem_usuario.png"
-        alt="imagem usuário"
- id="imagemUsuario">
+     <div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+            <div class="conteudo">
 
-    <h2>Cadastrar Sensor</h2>
+    <h2 id="titulo-admin">Cadastrar Sensor</h2>
 
     <form method="POST">
         <label for="nome">Nome Sensor:</label>
@@ -76,10 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="dado_monitorado" name="dado_monitorado" required>
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
+        <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </form> 
-    </div>
-    <br>
-    <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+    
 </body>
 </html>
 

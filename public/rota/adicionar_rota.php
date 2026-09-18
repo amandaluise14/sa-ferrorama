@@ -65,8 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <h2 class="titulo-admin">Cadastrar Rota </h2>
 
-
-
                     <label for="nome">Nome da rota (linha):</label>
                     <input type="text" id="nome" name="nome" placeholder="Ex: Linha Norte" required>
                     <br><br>

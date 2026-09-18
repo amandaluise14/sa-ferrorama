@@ -1,12 +1,4 @@
-<?php
 
-session_start();
-
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../index.php');
-    exit();
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,89 +6,32 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/style.css">
-    <title>Administrador</title>
+    <link rel="stylesheet" href="../../style/style.css">
+    <title>Listagem de sensores</title>
 </head>
 
 <body>
 
-<div class="d-flex align-items-start">
-
+   <div class="pagina">
     <div class="sidebar">
+
         <div class="logo">
-            <img id="imagem_logo" src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
-        <ul>
-            <li class="active">Início</li>
-            <li>Sensores e Trens</li>
-            <li>Monitoramento</li>
-            <li>Relatórios</li>
-            <li>Adicionar usuário</li>
-            <li>Sair</li>
-        </ul>
+    <ul>
+        <li>Início</li>
+        <li class="active"> Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
     </div>
+    <form method="POST">
+            <h2>Bem vindo, usuário administrador!</h2>
 
-    <div class="container mt-4">
-
-        <div class="d-flex align-items-center gap-3 mb-5">
-            <img src="../assets/image/imagem_usuario.png"
-                 alt="imagem usuário"
-                 id="imagemUsuario">
-
-            <h2 class="titulo-admin">
-                Bem vindo, <?php echo $_SESSION['usuario']; ?>
-            </h2>
-        </div>
-
-        <div class="table-responsive">
-
-            <table class="table tabela-sensores">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Localização</th>
-                        <th>Tipo de Dado</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Km 12 - Estação Guanabara</td>
-                        <td>Velocidade</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>14</td>
-                        <td>Km 20 - Estação Espinheiros</td>
-                        <td>Temperatura</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>500</td>
-                        <td>Km 50 - Estação Pirabeiraba</td>
-                        <td>Falha</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</div>
+        </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
