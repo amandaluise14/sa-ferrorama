@@ -311,14 +311,13 @@ select {
 .pagina .sidebar {
     flex-shrink: 0;
 }
-<<<<<<< HEAD
+
 .botoes-cadastro{
     display:flex;
     justify-content:flex-end;
     gap:15px;
     margin-top:30px;
-=======
-
+}
 .conteudo-cadastro {
     flex: 1;
     padding: 25px 50px;
@@ -352,7 +351,7 @@ select {
     justify-content: flex-end;
     gap: 15px;
     margin-top: 30px;
->>>>>>> 4097096a1f32001896a3c395afcedae60463eacb
+
 }
 
 .botoes-cadastro button {
