@@ -21,7 +21,7 @@ if ($stmt->execute() === TRUE) {
 } else { echo "ID do usuário não fornecido."; }
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +30,9 @@ if ($stmt->execute() === TRUE) {
     <title>Editar administrador/usuário</title>
 </head>
 <body>
+   
+      
+
     <h2>Editar administrador/usuário</h2>
     <form method="POST">
         <label for="nome">Nome completo</label>
