@@ -183,7 +183,7 @@ h6 {
 
 input,
 textarea {
-    width: 300%;
+    width: 200%;
     margin: 20px 0;
     padding: 8px;
 
@@ -357,7 +357,7 @@ label {
 .conteudo form input[type="password"],
 .conteudo form select,
 .conteudo form textarea {
-    width: 100%;
+    width: 200%;
     min-height: 38px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -366,7 +366,7 @@ label {
     font-size: 14px;
 }
 input, select {
-    width: 300%;
+    width: 200%;
     height: 23px;
     border: none;
     border-radius: 5px;
