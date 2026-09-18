@@ -247,6 +247,56 @@ textarea {
 .sidebar ul li:hover {
     background-color: #990000;
 }
+<<<<<<< HEAD
+
+.form-container {
+    width: 672px;
+    margin-left: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 48px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    width: 100%;
+    height: 23px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: white;
+
+    padding: 3px 12px;
+
+    font-size: 12px;
+
+    outline: none;
+}
+.pagina {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
 .pagina{
     display: flex;
     width: 100%;
@@ -254,17 +304,16 @@ textarea {
 }
 
 .pagina .sidebar {
-    flex-shrink:0;
-
+    flex-shrink: 0;
 }
 
-.conteudo-cadastro{
-    flex:1;
-       padding: 25px 50px;
+.conteudo-cadastro {
+    flex: 1;
+    padding: 25px 50px;
     box-sizing: border-box;
 }
 
-.conteudo-cadastro h2{
+.conteudo-cadastro h2 {
     margin-top: 0;
     margin-bottom: 40px;
 }
@@ -273,7 +322,7 @@ textarea {
     width: 80%;
 }
 
-.conteudo-cadastro label{
+.conteudo-cadastro label {
     display: block;
     margin-bottom: 8px;
 }
@@ -285,13 +334,22 @@ textarea {
     margin: 0 0 25px 0;
     padding: 8px;
 }
-.botoes-cadastro{
-    display:flex;
-    justify-content:flex-end;
-    gap:15px;
-    margin-top:30px;
+
+.botoes-cadastro {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
 }
 
+<<<<<<< HEAD
+.botoes-cadastro button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+=======
 .botoes-cadastro button{
     width:100px;
     height:35px;
@@ -301,13 +359,19 @@ textarea {
 }
 .botoes-cadastro button[type="button"]{
     background-color:#ddd;
+>>>>>>> 09284e36acd29c489e77a850eadabfea2885a7df
 }
 
-.botoes-cadastro button[type="submit"]{
-    background-color:#7b0000;
-    color:white;
+.botoes-cadastro button[type="button"] {
+    background-color: #ddd;
 }
 
+<<<<<<< HEAD
+.botoes-cadastro button[type="submit"] {
+    background-color: #7b0000;
+    color: white;
+}
+=======
 .formulario-container{
     display: flex;
     justify-content: center;
@@ -318,3 +382,4 @@ textarea {
     margin:  20px;
 }
 
+>>>>>>> 09284e36acd29c489e77a850eadabfea2885a7df
