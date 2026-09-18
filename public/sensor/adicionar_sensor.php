@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="dado_monitorado" name="dado_monitorado" placeholder="Ex: Velocidade" required>
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
-        <button type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+        <button id="botaoCadastro" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
     </div>
