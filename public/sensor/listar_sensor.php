@@ -33,7 +33,9 @@
             <h2 id="titulo-admin">Listagem de Sensores</h2>
             <div class="conteudo">
 
-    <table>
+             <div class="table-responsive">
+
+    <table class="table tabela-sensores">
         <th>ID</th>
         <th>Nome</th>
         <th>Localização</th>
@@ -63,6 +65,7 @@
         }
         ?>
     </table>
+    </div>
  
     </div>
     </form> 

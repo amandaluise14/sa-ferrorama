@@ -1,11 +1,11 @@
 <?php
 
-$id = $_GET ['id'];
+$id_trem = $_GET ['id_trem'];
 include '../../infra/conexao.php';
 
-$sql = "DELETE FROM trens WHERE id = ?";
+$sql = "DELETE FROM trens WHERE id_trem = ?";
 $stmt = $conn-> prepare ($sql);
-$stmt-> bind_param ("i", $id);
+$stmt-> bind_param ("i", $id_trem);
 
 if ($stmt->execute ()) {
     echo "O trem foi excluído com sucesso! <br>";
