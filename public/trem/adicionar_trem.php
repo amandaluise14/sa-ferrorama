@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $linha = $_POST['linha'];
     $carga = $_POST['carga'];
 
-    $sql = "INSERT INTO trem (modelo, velocidade, linha, carga) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO trens (modelo, velocidade, linha, carga) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssis", $modelo, $velocidade, $linha, $carga);
     if ($stmt->execute() === TRUE) {
