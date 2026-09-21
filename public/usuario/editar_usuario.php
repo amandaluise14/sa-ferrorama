@@ -28,10 +28,24 @@ if ($stmt->execute() === TRUE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar administrador/usuário</title>
+    <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-   
-      
+   <div class="pagina">
+    <div class="sidebar">
+
+    <ul>
+        <li>Início</li>
+        <li class="active"> Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
+
+ <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
 
     <h2>Editar administrador/usuário</h2>
     <form method="POST">
