@@ -496,6 +496,15 @@ background-color: #858484;
     margin-top: 20px;
     cursor: pointer;
 }
+.botaoVisualizar{
+  background-color: #7b0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
 
 #botaoCadastro:hover {
     background-color: #990000;
