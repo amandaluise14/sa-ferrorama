@@ -10,7 +10,7 @@ $usuario = "Administrador";
     <title>Visualizar Usuários/Administradores</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../../style/style.css">
 </head>
 
 <body>

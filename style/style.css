@@ -457,6 +457,7 @@ background-color: #858484;
     color: white;
     border: none;
     border-radius: 6px;
+    margin-top: 0px !important;
     padding: 10px 20px;
     cursor: pointer;
 }
