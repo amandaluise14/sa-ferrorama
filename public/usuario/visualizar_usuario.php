@@ -8,7 +8,13 @@ $usuario = "Administrador";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Usuários/Administradores</title>
+<<<<<<< HEAD
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../style/style.css">
+=======
    <link rel="stylesheet" href="../../style/style.css">
+>>>>>>> debf86f4901c86bd5e9c3848f437b30464c42d3b
 </head>
 <body>
 

@@ -1,11 +1,8 @@
 <?php
-
 session_start();
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../index.php');
-    exit();
-}
+include '../../infra/conexao.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +11,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../../style/style.css">
     <title>Administrador</title>
 </head>
 
@@ -24,7 +21,7 @@ if (!isset($_SESSION['usuario'])) {
 
     <div class="sidebar">
         <div class="logo">
-            <img id="imagem_logo" src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
         <ul>
@@ -52,12 +49,12 @@ if (!isset($_SESSION['usuario'])) {
     <div class="container mt-4">
 
         <div class="d-flex align-items-center gap-3 mb-5">
-            <img src="../assets/image/imagem_usuario.png"
+            <img src="../../assets/image/imagem_usuario.png"
                  alt="imagem usuário"
                  id="imagemUsuario">
 
             <h2 class="titulo-admin">
-                Bem vindo, <?php echo $_SESSION['usuario']; ?>
+                Bem vindo, <?php echo $_SESSION['usuario'] ?? ''; ?>
             </h2>
         </div>
 

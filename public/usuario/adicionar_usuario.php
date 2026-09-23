@@ -78,12 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <input type="submit" value="Cadastrar" id="botao-cadastrar">
 
-    <button id="botaoCadastro" type="submit">Cadastrar Usuário/administrador</button>
         <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
     </div>
 </body>
 </html>
-
-

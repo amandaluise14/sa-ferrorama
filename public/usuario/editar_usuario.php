@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="pagina">
     <div class="sidebar">
-
-        <div class="logo">
+<div class="logo">
         <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
-
     <ul>
         <li>Início</li>
         <li class="active"> Sensores e Trens</li>
@@ -50,22 +48,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Editar Usuário</h2>
-            <div class="conteudo">
-                
-                <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome"required>
-                <br><br>
-                <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                <br><br>
-                <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" required>
-                <br><br>
-                <button id="botaoCadastro" type="submit">Editar Usuário</button>
-                <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
-            </div>
-        </form> 
-    </div>
+            <h2 id="titulo-admin"Editar usuario>
+</head>
+<body> 
+ 
+        <div class= "formulario-container">
+<form method="POST">
+        <div class="conteudo">
+        <h2>Editar administrador/usuário</h2>
+    
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" required>
+        <br><br>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="telefone">Senha</label>
+        <input type="text" id="telefone" name="telefone">
+        <br><br>
+
+        <label for="endereco">Confirmar senha</label>
+        <input type="text" id="endereco" name="endereco">
+        <br><br>
+        
+        <label for="endereco">Status</label>
+        <input type="text" id="endereco" name="endereco">
+        <br><br>
+        <button type="submit">Editar administrador/usuário</button>
+    <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
+    </div> 
+    
+    </form>
+        </div>
+        
 </body>
 </html>
