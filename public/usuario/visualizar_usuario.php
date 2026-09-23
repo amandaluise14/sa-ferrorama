@@ -44,7 +44,6 @@ $usuario = "Administrador";
       <div class="d-block p-2">
 
       <div class="d-flex align-items-start">
-      <img src="../assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
       <h2>Bem-vindo, <?php echo $usuario; ?></h2>
        </div>
 
@@ -121,7 +120,8 @@ $usuario = "Administrador";
         <td>Ativo</td>
         <td>Usuário</td>
         <td>14/06</td>
-        <td>✏️ 🗑️</td>
+        <td> <a href="#" class="excluir">Excluir</a>
+         <a href="#" class="editar">Editar</a></td>
         </tr>
 
         <tr>
@@ -132,7 +132,8 @@ $usuario = "Administrador";
         <td>Inativo</td>
         <td>Administrador</td>
         <td>12/01</td>
-        <td>✏️ 🗑️</td>
+        <td> <a href="#" class="excluir">Excluir</a>
+         <a href="#" class="editar">Editar</a></td>
         </tr>
 
         <tr>
@@ -143,7 +144,8 @@ $usuario = "Administrador";
         <td>Inativo</td>
         <td>Usuário</td>
         <td>11/02</td>
-        <td>✏️ 🗑️</td>
+        <td> <a href="#" class="excluir">Excluir</a>
+         <a href="#" class="editar">Editar</a></td>
         </tr>
 
         <tr>
@@ -154,7 +156,8 @@ $usuario = "Administrador";
         <td>Ativo</td>
         <td>Administrador</td>
         <td>13/06</td>
-         td>✏️ 🗑️</td>
+         <td>  <a href="#" class="excluir">Excluir</a>
+        <a href="#" class="editar">Editar</a></td>
          </tr>
 
       </tbody>
