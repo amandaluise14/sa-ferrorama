@@ -42,7 +42,7 @@ include '../../infra/conexao.php';
                  id="imagemUsuario">
 
             <h2 class="titulo-admin">
-                Bem vindo, <?phpecho $_SESSION['usuario'] ?? '';?>
+                Bem vindo, <?php echo $_SESSION['usuario'] ?? ''; ?>
             </h2>
         </div>
 
