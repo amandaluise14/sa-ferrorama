@@ -1,5 +1,5 @@
-CREATE DATABASE sa_ferrorama;
-USE sa_ferrorama;
+CREATE DATABASE sa_ferrorama1;
+USE sa_ferrorama1;
 
 CREATE TABLE usuarios (
 id_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,

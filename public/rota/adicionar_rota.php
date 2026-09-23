@@ -84,32 +84,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="40">40 km</option>
                     </select>
                     <br><br>
-
-                         <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
-                         <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
                          
                     <label for="sensor_id">Sensor:</label>
 
                     <select name="sensor_id" required>
                         <option value="">Selecione o Sensor</option>
 
-                        <?php
-                        $sql = "SELECT id, nome FROM sensores";
-                        $sensores = $conn->query($sql);
-
-                        while ($sensor = $sensores->fetch_assoc()) {
-                            ?>
-
-                            <option value="<?php echo $sensor['id']; ?>">
-                                <?php echo $sensor['nome']; ?>
-                            </option>
-
-                            <br><br>
-
-                            <?php
-                        }
-                        ?>
                     </select>
+                    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
+                    <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
                 </div>
             </form>
 
