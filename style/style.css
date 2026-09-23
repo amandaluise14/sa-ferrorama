@@ -240,6 +240,8 @@ textarea {
 .titulo-admin {
     color: #700000;
     font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 #titulo-admin {
@@ -496,6 +498,15 @@ background-color: #858484;
     margin-top: 20px;
     cursor: pointer;
 }
+.botaoVisualizar{
+  background-color: #7b0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
 
 #botaoCadastro:hover {
     background-color: #990000;
@@ -638,7 +649,7 @@ background-color: #858484;
     overflow-x: auto;
 }
 
-/* Ações de excluir */
+/* Ações de excluir e editar */
 
 .excluir {
     color: #8b0000;
@@ -649,6 +660,16 @@ background-color: #858484;
 .excluir:hover {
     color: #c00000;
     text-decoration: underline;
+}
+
+.editar {
+    color: #8b0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.editar:hover {
+    color: #8b0000;
 }
 
 

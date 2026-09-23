@@ -92,7 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </select>
                     <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
-                    <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+                    <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
+                    <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas Cadastradas</button>
+                   <!-- <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';"> Visualizar Rotas Cadastradas </button> -->
                 </div>
             </form>
 

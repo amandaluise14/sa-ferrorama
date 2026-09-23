@@ -33,11 +33,14 @@
             <h2 id="titulo-admin">Listagem de Sensores</h2>
             <div class="conteudo">
 
-    <table>
+             <div class="table-responsive">
+
+    <table class="table tabela-sensores">
         <th>ID</th>
         <th>Nome</th>
-        <th>Email</th>
-        <th>Telefone</th>
+        <th>Localização</th>
+        <th>Descrição da Localização</th>
+        <th>Dado Monitorado</th>
         <th>Ações</th>
         <?php
         include '../../infra/conexao.php';
@@ -47,13 +50,14 @@
         ?>
 
             <tr>
-                <td><?php echo $sensor['id']; ?></td>
+                <td><?php echo $sensor['id_sensor']; ?></td>
                 <td><?php echo $sensor['nome']; ?></td>
-                <td><?php echo $sensor['email']; ?></td>
-                <td><?php echo $sensor['telefone']; ?></td>
+                <td><?php echo $sensor['localizacao']; ?></td>
+                <td><?php echo $sensor['descricao_localizacao']; ?></td>
+                <td><?php echo $sensor['dado_monitorado']; ?></td>
                 <td>
-                    <button type="button" onclick="window.location.href='public/sensor/editar_sensor.php?id=<?php echo $sensor['id']; ?>'">Editar</button>
-                    <button type="button" onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) { window.location.href='public/sensor/excluir_sensor.php?id=<?php echo $sensor['id']; ?>'; }">Excluir</button>
+                    <button type="button" onclick="window.location.href='editar_sensor.php?id=<?php echo $sensor['id_sensor']; ?>'">Editar</button>
+                    <button type="button" onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) { window.location.href='excluir_sensor.php?id=<?php echo $sensor['id_sensor']; ?>'; }">Excluir</button>
                 </td>
             </tr>
 
@@ -61,6 +65,7 @@
         }
         ?>
     </table>
+    </div>
  
     </div>
     </form> 

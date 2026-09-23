@@ -8,31 +8,40 @@ $usuario = "Administrador";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Usuários/Administradores</title>
+<<<<<<< HEAD
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
+=======
+   <link rel="stylesheet" href="../../style/style.css">
+>>>>>>> debf86f4901c86bd5e9c3848f437b30464c42d3b
 </head>
-
 <body>
 
-<div class="d-flex align-items-start">
-
+</head>
+<body>
+    <div class="pagina">
     <div class="sidebar">
 
-   <div class="logo">
-   <img id="imagem_logo" src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-   </div>
+        <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
 
-   <ul>
-    <li class="active">Início</li>
-     <li>Sensores e Trens</li>
-     <li>Monitoramento</li>
-     <li>Relatórios</li>
-     <li>Adicionar usuário</li>
-     <li>Sair</li>
-        </ul>
-
+    <ul>
+        <li>Início</li>
+        <li class="active"> Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
+    </ul>
     </div>
+
+    <title>Visualizar Usuários/Administradores</title>
+     <div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
+            <div class="conteudo">
 
     <div class="container mt-3">
 
@@ -41,7 +50,6 @@ $usuario = "Administrador";
       <div class="d-block p-2">
 
       <div class="d-flex align-items-start">
-      <img src="../assets/image/imagem_usuario.png" alt="imagem usuário" id="imagemUsuario">
       <h2>Bem-vindo, <?php echo $usuario; ?></h2>
        </div>
 
@@ -118,7 +126,8 @@ $usuario = "Administrador";
         <td>Ativo</td>
         <td>Usuário</td>
         <td>14/06</td>
-        <td>✏️ 🗑️</td>
+        <td> <a href="#" class="excluir">Excluir</a>
+         <a href="#" class="editar">Editar</a></td>
         </tr>
 
         <tr>
@@ -129,7 +138,8 @@ $usuario = "Administrador";
         <td>Inativo</td>
         <td>Administrador</td>
         <td>12/01</td>
-        <td>✏️ 🗑️</td>
+        <td> <a href="#" class="excluir">Excluir</a>
+         <a href="#" class="editar">Editar</a></td>
         </tr>
 
         <tr>
@@ -140,7 +150,8 @@ $usuario = "Administrador";
         <td>Inativo</td>
         <td>Usuário</td>
         <td>11/02</td>
-        <td>✏️ 🗑️</td>
+        <td> <a href="#" class="excluir">Excluir</a>
+         <a href="#" class="editar">Editar</a></td>
         </tr>
 
         <tr>
@@ -151,7 +162,8 @@ $usuario = "Administrador";
         <td>Ativo</td>
         <td>Administrador</td>
         <td>13/06</td>
-         td>✏️ 🗑️</td>
+         <td>  <a href="#" class="excluir">Excluir</a>
+        <a href="#" class="editar">Editar</a></td>
          </tr>
 
       </tbody>
