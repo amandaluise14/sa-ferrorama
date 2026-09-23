@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
     </div>
 
-    <title>Cadastrar Rota</title>
+    <title>Cadastrar Sensor</title>
      <div class="formulario-container">
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Sensor</h2>
