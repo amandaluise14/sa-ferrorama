@@ -22,11 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<<<<<<< HEAD
  
-=======
-
->>>>>>> debf86f4901c86bd5e9c3848f437b30464c42d3b
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,12 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="pagina">
     <div class="sidebar">
-<<<<<<< HEAD
 <div class="logo">
-=======
-
-        <div class="logo">
->>>>>>> debf86f4901c86bd5e9c3848f437b30464c42d3b
         <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
     <ul>
@@ -57,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">
-<<<<<<< HEAD
             <h2 id="titulo-admin"Editar usuario>
 </head>
 <body> 
@@ -93,24 +83,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
         </div>
         
-=======
-            <h2 id="titulo-admin">Editar Usuário</h2>
-            <div class="conteudo">
-                
-                <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome"required>
-                <br><br>
-                <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                <br><br>
-                <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" required>
-                <br><br>
-                <button id="botaoCadastro" type="submit">Editar Usuário</button>
-                <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
-            </div>
-        </form> 
-    </div>
->>>>>>> debf86f4901c86bd5e9c3848f437b30464c42d3b
 </body>
 </html>
