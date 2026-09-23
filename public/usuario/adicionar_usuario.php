@@ -76,9 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
     <br><br>
 
-    <input type="submit" value="Cadastrar" id="botao-cadastrar">
+    <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
+   <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';">Visualizar Usuários Cadastrados</button>
 
-        <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
     </div>
