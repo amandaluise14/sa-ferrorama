@@ -1,11 +1,8 @@
 <?php
-
 session_start();
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../../index.php');
-    exit();
-}
+include '../../infra/conexao.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +42,7 @@ if (!isset($_SESSION['usuario'])) {
                  id="imagemUsuario">
 
             <h2 class="titulo-admin">
-                Bem vindo, <?php echo $_SESSION['usuario']; ?>
+                Bem vindo, <?phpecho $_SESSION['usuario'] ?? '';?>
             </h2>
         </div>
 
