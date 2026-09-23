@@ -77,12 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="botoes">
         
        
-    <button type="button" onclick="window.location.href='../../index.php'">
-        Cancelar  
-    </button>
-
-    <button type="submit">
-        Salvar
+    <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
+    <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
+    <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_trem.php';">Visualizar Trens Cadastrados</button>
 
     </button>
 
