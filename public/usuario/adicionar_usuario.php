@@ -66,19 +66,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <label for="noeme">Nome:</label>
      <input type="text" id="nome" name="nome" placeholder="Ex: Sensor de velocidade do trem 77" required>
-        <br><br>
+     <br><br> 
     <label for="email">Email:</label>
-    <br>
     <input type="email" id="email" name="email" placeholder="Ex: usuario@infotem" required>
-    <br><br>
+     <br><br>
     <label for= "senha">Senha:</label>
-    <br>
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
-    <br><br>
+     <br><br>
 
-    <input type="submit" value="Cadastrar" id="botao-cadastrar">
+    <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
+   <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';">Visualizar Usuários Cadastrados</button>
 
-        <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
     </div>
