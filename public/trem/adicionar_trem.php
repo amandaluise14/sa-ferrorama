@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="botoes">
 
-                        <button id="botaoCadastro" type="submit">
+                        <button id="botaoCadastro" type="button">
                             Cadastrar Trem
                         </button>
 

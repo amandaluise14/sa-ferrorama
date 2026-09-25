@@ -16,7 +16,7 @@
 
     <ul>
         <li>Início</li>
-        <li class="active"> Sensores e Trens</li>
+        <li>Sensores e Trens</li>
         <li>Monitoramento</li>
         <li>Relatórios</li>
         <li>Adicionar usuário</li>
