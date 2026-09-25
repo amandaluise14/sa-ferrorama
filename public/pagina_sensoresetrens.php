@@ -36,7 +36,7 @@
     </ul>
     </div>
 
-    <title>Página Home</title>
+    <title>Sensores e Trens</title>
      <div class="formulario-container">
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Bem vindo, Administrador</h2>
