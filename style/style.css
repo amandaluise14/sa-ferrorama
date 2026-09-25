@@ -585,10 +585,12 @@ background-color: #858484;
 
 .cards {
     display: flex;
+    
     gap: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
     flex-wrap: wrap;
+    
 }
 
 .card-total {

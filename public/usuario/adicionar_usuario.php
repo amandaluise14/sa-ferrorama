@@ -64,8 +64,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
     <br><br>
 
-    <input type="submit" value="Cadastrar" id="botao-cadastrar">
+    <label for="confirmar_senha">Confirmar Senha:</label>
+<input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Digite a senha novamente" required>
 
+<div id="erroSenha" class="erro"></div>
+
+<br><br>
+
+<label>Status:</label>
+<select class="form-select" id="status" name="status" required>
+    <option value="">Escolha</option>
+    <option value="Ativo">Ativo</option>
+    <option value="Inativo">Inativo</option>
+</select>
+
+<br><br>
+
+<h3>Permissão de Acesso</h3>
+
+<div class="row mt-4">
+
+    <div class="col-md-6" id="permissao_ativa">
+        <label class="card-permissao ativo d-flex align-items-start gap-3">
+            <input type="radio" name="perfil" value="Administrador" required>
+
+            <div>
+                <h5>Administrador</h5>
+                <p>
+                    Controle completo do sistema, com gerenciamento de usuários,
+                    sensores, trens e relatórios.
+                </p>
+            </div>
+        </label>
+    </div>
+
+    <div class="col-md-6" id="permissao_inativa">
+        <label class="card-permissao d-flex align-items-start gap-3">
+            <input type="radio" name="perfil" value="Usuario">
+
+            <div>
+                <h5>Usuário</h5>
+                <p>
+                    Acesso restrito ao sistema, com permissão para visualização
+                    de alguns dados e relatórios.
+                </p>
+            </div>
+        </label>
+    </div>
+
+</div>
+
+<br>
+<input type="button" value="Cadastrar" id="btn-cadastrar">
         <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
     </div>
     </form> 
