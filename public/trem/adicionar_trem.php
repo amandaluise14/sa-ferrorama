@@ -22,61 +22,106 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Trem</title>
- <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../style/style.css">
 </head>
-<body>
-    <div class="pagina">
-    <div class="sidebar">
 
-        <div class="logo">
-        <img id="imagem_logo"src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+<body>
+
+    <div class="pagina">
+
+        <div class="sidebar">
+
+            <div class="logo">
+                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            </div>
+
+            <ul>
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
+                </a>
+
+                <a href="../pagina_sensoresetrens.php" class="menu-link">
+                    <li>Sensores e Trens</li>
+                </a>
+
+                <a href="../pagina_monitoramento.php" class="menu-link">
+                    <li>Monitoramento</li>
+                </a>
+
+                <a href="../pagina_relatorios.php" class="menu-link">
+                    <li>Relatórios</li>
+                </a>
+
+                <a href="../usuario/adicionar_usuario.php" class="menu-link">
+                    <li>Adicionar usuário</li>
+                </a>
+
+                <a href="../logout.php" class="menu-link">
+                    <li>Sair</li>
+                </a>
+            </ul>
+
         </div>
 
-    <ul>
-        <li class="active">Início</li>
-        <li>Sensores e Trens</li>
-        <li>Monitoramento</li>
-        <li>Relatórios</li>
-        <li>Adicionar usuário</li>
-        <li>Sair</li>
-    </ul>
+        <div class="formulario-container">
+
+            <form method="POST" class="forms_rotas">
+
+                <div class="conteudo">
+
+                    <h2 class="titulo-admin">Cadastrar Novo Trem</h2>
+
+                    <label for="modelo">Modelo trem:</label>
+                    <input type="text" id="modelo" name="modelo" required>
+
+                    <br><br>
+
+                    <label for="velocidade">Velocidade limite:</label>
+                    <input type="text" id="velocidade" name="velocidade" required>
+
+                    <br><br>
+
+                    <label for="linha">Linha:</label>
+                    <input type="number" id="linha" name="linha" required>
+
+                    <br><br>
+
+                    <label for="carga">Carga:</label>
+                    <input type="text" id="carga" name="carga" required>
+
+                    <br><br>
+
+                    <div class="botoes">
+
+                        <button id="botaoCadastro" type="button">
+                            Cadastrar Trem
+                        </button>
+
+                        <button class="btn-cancelar" type="button"
+                            onclick="window.location.href='../../pagina_home.php';">
+                            Cancelar
+                        </button>
+
+                        <button class="botaoVisualizar" type="button"
+                            onclick="window.location.href='listar_trem.php';">
+                            Visualizar Trens Cadastrados
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
 
-    <div class="conteudo">
-    <h2>Cadastrar Novo Trem</h2>
-    <form method="POST">
-        
-        <label for="modelo">Modelo trem:</label>
-        <input type="text" id="modelo" name="modelo" required>
-       
-        <label for="velocidade">Velocidade limite:</label>
-        <input type="text" id="velocidade" name="velocidade" required>
-        
-        <label for="linha">Linha:</label>
-        <input type="number" id="linha" name="linha" required>
-        
-        <label for="carga">Carga:</label>
-        <input type="text" id="carga" name="carga" required>
-
-        <div class="botoes">
-        
-       
-    <button type="button" onclick="window.location.href='../../index.php'">
-        Cancelar  
-    </button>
-
-    <button type="submit">
-        Salvar
-
-    </button>
-
-</div>
-</form>
-</div>
-</div>
 </body>
 
+</html>

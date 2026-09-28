@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Sensores e Trens</title>
         <link rel="stylesheet" href="../style/style.css">
     </head>
     <body>
@@ -36,7 +36,7 @@
     </ul>
     </div>
 
-    <title>Página Home</title>
+    <title>Sensores e Trens</title>
      <div class="formulario-container">
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Bem vindo, Administrador</h2>
@@ -48,11 +48,6 @@
         <br><br>
         <button id="botaoHome" type="button" onclick="window.location.href='rota/adicionar_rota.php';">Cadastrar Rotas</button>
         <br>
-        <select id="botaoHome" name="select">Visualizar Cadastros
-            <option type="button" value="rota">Visualizar Rotas</option>
-            <option type="button" value="trens">Visualizar Trens</option>
-            <option type="button" value="sensores">Visualizar Sensores</option>
-        </select>
     </div>
     </form> 
     </div>

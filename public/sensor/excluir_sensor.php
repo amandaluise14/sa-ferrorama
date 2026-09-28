@@ -1,8 +1,8 @@
 <?php
 
-$id = $_GET ['id_sensor'];
 include '../../infra/conexao.php';
 
+$id = $_GET['id'] ?? '';
 $sql = "DELETE FROM sensores WHERE id_sensor = ?";
 $stmt = $conn-> prepare ($sql);
 $stmt-> bind_param ("i", $id);
