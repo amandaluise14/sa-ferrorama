@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $endereco = $_POST ['endereco'];
     $CPF = $_POST ['CPF'];
     $cargo = $_POST ['cargo'];
+    $data = $_POST ['data'];
     
     $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -80,9 +81,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="endereco">Endereço:</label>
      <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
      <br><br> 
-    <label for="CPF">CPF:</label>
-     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
+    <label for="data">Data de nascimento:</label>
+     <input type="date" id="data" name="data" placeholder="Ex: 21/02/09" required>
      <br><br> 
+    <label for="CPF">CPF:</label>
+     <input type="text" id="CPF" name="CPF" placeholder="Ex: 123.456.789.1011" required>
+     <br><br> 
+    <label for="cargo">Cargo:</label>
+        <select id="conta">
+        <option>Selecione</option>
+        <option>Administrador</option>
+        <option>Usuário</option>
+         </select>
 
     <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
