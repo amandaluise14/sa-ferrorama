@@ -1,11 +1,10 @@
 <?php
 
-$id = $_GET ['id'];
+$id_usuario = $_GET ['id'];
 include '../../infra/conexao.php';
-
-$sql = "DELETE FROM usuarios WHERE id = ?";
-$stmt = $conn-> prepare ($sql);
-$stmt-> bind_param ("i", $id);
+$sql = "DELETE FROM id_usuario WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt-> bind_param ("i", $id_usuario);
 
 if ($stmt->execute ()) {
     echo " O usuário foi excluído com sucesso! <br>";
