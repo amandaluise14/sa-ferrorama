@@ -75,9 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <br><br>
 
     <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
-   <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
+   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
    <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';">Visualizar Usuários Cadastrados</button>
-
     </div>
     </form> 
     </div>
