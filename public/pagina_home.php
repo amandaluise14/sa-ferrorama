@@ -11,16 +11,28 @@
     <div class="sidebar">
 
         <div class="logo">
-        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        <img id="imagem_logo" src="../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
     <ul>
-        <li>Início</li>
-        <li class="active"> Sensores e Trens</li>
-        <li>Monitoramento</li>
-        <li>Relatórios</li>
-        <li>Adicionar usuário</li>
-        <li>Sair</li>
+        <a href="pagina_home.php" class="menu-link ">
+                   <li>Início</li>
+                </a>
+                <a href="pagina_sensoresetrens.php" class="menu-link ">
+                    <li>Sensores e Trens</li>
+                </a>
+                <a href="pagina_monitoramento.php" class="menu-link ">
+                    <li>Monitoramento</li>
+                </a>
+                <a href="pagina_relatorios.php" class="menu-link ">
+                    <li>Relatórios</li>
+                </a>
+                <a href="usuario/adicionar_usuario.php" class="menu-link ">
+                    <li>Adicionar usuário</li>
+                </a>
+                <a href="logout.php" class="menu-link ">
+                    <li>Sair</li>
+                </a>
     </ul>
     </div>
 
@@ -31,12 +43,16 @@
             <div class="conteudo">
 
         
-        <button id="botaoHome" type="submit" onclick="window.location.href='../../adicionar_sensor.php';">Cadastrar Sensor</button>
-        <button id="botaoHome" type="submit" onclick="window.location.href='../../adicionar_trens.php';">Cadastrar Trens</button>
+        <button id="botaoHome" type="button" onclick="window.location.href='sensor/adicionar_sensor.php';">Cadastrar Sensor</button>
+        <button id="botaoHome" type="button" onclick="window.location.href='trem/adicionar_trem.php';">Cadastrar Trens</button>
         <br><br>
-        <button id="botaoHome" type="submit" onclick="window.location.href='../../adicionar_rotas.php';">Cadastrar Rotas</button>
-        <button id="botaoHome" type="submit">Visualizar Cadastros</button>
-        
+        <button id="botaoHome" type="button" onclick="window.location.href='rota/adicionar_rota.php';">Cadastrar Rotas</button>
+        <br>
+        <select id="botaoHome" name="select">Visualizar Cadastros
+            <option type="button" value="rota">Visualizar Rotas</option>
+            <option type="button" value="trens">Visualizar Trens</option>
+            <option type="button" value="sensores">Visualizar Sensores</option>
+        </select>
     </div>
     </form> 
     </div>

@@ -2,7 +2,6 @@
 
 $id_usuario = $_GET ['id'];
 include '../../infra/conexao.php';
-
 $sql = "DELETE FROM id_usuario WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt-> bind_param ("i", $id_usuario);

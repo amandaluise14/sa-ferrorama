@@ -1,19 +1,30 @@
 <?php
-$usuario = "Administrador";
+
+include 'infra/conexao.php';
+$sql = "SELECT * FROM usuarios";
+$resultado = mysqli_query($conn, $sql);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_usuario = $_POST['usuario'] ?? null;
+
+    if ($id_usuario) {
+        $sql = "SELECT * FROM usuarios WHERE id = $id_usuario";
+        $resultado = mysqli_query($conn, $sql);
+    } else {
+        $sql = "SELECT * FROM usuarios";
+        $resultado = mysqli_query($conn, $sql);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Usuários/Administradores</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../style/style.css">
-
    <link rel="stylesheet" href="../../style/style.css">
-
 </head>
 <body>
 
@@ -27,31 +38,18 @@ $usuario = "Administrador";
         </div>
 
     <ul>
-    <a href="../pagina_home.php" class="menu-link ">
-                   <li>Início</li>
-                </a>
-                <a href="../pagina_sensoresetrens.php" class="menu-link ">
-                    <li>Sensores e Trens</li>
-                </a>
-                <a href="../pagina_monitoramento.php" class="menu-link ">
-                    <li>Monitoramento</li>
-                </a>
-                <a href="../pagina_relatorios.php" class="menu-link ">
-                    <li>Relatórios</li>
-                </a>
-                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
-                    <li>Adicionar usuário</li>
-                </a>
-                <a href="../logout.php" class="menu-link ">
-                    <li>Sair</li>
-                </a>
+        <li>Início</li>
+        <li class="active"> Sensores e Trens</li>
+        <li>Monitoramento</li>
+        <li>Relatórios</li>
+        <li>Adicionar usuário</li>
+        <li>Sair</li>
     </ul>
     </div>
 
     <title>Visualizar Usuários/Administradores</title>
      <div class="formulario-container">
         <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
             <div class="conteudo">
 
     <div class="container mt-3">
@@ -61,7 +59,6 @@ $usuario = "Administrador";
       <div class="d-block p-2">
 
       <div class="d-flex align-items-start">
-      <h2>Bem-vindo, <?php echo $usuario; ?></h2>
        </div>
 
       <section class="cards">
@@ -91,6 +88,23 @@ $usuario = "Administrador";
        <section class="filtros">
 
        <input type="text" id="pesquisar" placeholder="Pesquisar">
+
+               <form method="POST">
+            <label for="usuario">Filtro por Usuário</label>
+            <select id="usuario" name="usuario">
+                <option value="">Todos</option>
+                <?php
+                $sqlUsuarios = "SELECT * FROM usuarios";
+                $resultadoUsuarios = mysqli_query($conn, $sqlUsuarios);
+                while ($usuario = mysqli_fetch_assoc($resultadoUsuarios)) {
+                    echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+                }
+
+                ?>
+            </select>
+            <button type="submit">Filtrar</button>
+            <br>
+            <br>
 
         <label for="conta">Tipo de conta:</label>
         <select id="conta">
@@ -179,20 +193,11 @@ $usuario = "Administrador";
 
       </tbody>
 
-      </table>
-
-       <button type="submit" id="botaoadicionar">
-       Ir para adicionar
-       </button>
+      </table> <button type="submit" id="botaoadicionar"> adicionar</button>
 
         </div>
         </main>
 
     </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
