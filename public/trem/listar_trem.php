@@ -49,9 +49,6 @@ include '../../infra/conexao.php';
     <div class="container mt-4">
 
         <div class="d-flex align-items-center gap-3 mb-5">
-            <img src="../../assets/image/imagem_usuario.png"
-                 alt="imagem usuário"
-                 id="imagemUsuario">
 
             <h2 class="titulo-admin">
                 Bem vindo, <?php echo $_SESSION['usuario'] ?? ''; ?>
