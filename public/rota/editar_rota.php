@@ -12,7 +12,7 @@ if (isset($_POST['id'])) {
 
 
 $sql = "UPDATE rotas SET nome = ?, estacao_origem = ?, estacao_destino = ?, distancia_total = ?, sensor_id = ? WHERE id = ?";
-$stmt = $conexao->prepare($sql); 
+$stmt = $conn->prepare($sql); 
 $stmt->bind_param("sssssi", $nome, $estacao_origem, $estacao_destino, $distancia_total, $sensor_id, $id);
 
 if ($stmt->execute() === TRUE) {
