@@ -4,7 +4,6 @@ include '../../infra/conexao.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_usuario = $_POST['id_usuario'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -12,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=? WHERE id_usuario=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $nome, $email, $senha, $id_usuario);
+    $stmt->bind_param("ssss", $nome, $email, $senha);
     if ($stmt->execute() === TRUE) {
         echo "Usuário atualizado com sucesso!";
     } else {
@@ -47,13 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
     </div>
     <div class="formulario-container">
-        <form method="POST" class="forms_sensores">
+       <form method="POST" class="forms_usuarios">
             <h2 id="titulo-admin"Editar usuario>
 </head>
 <body> 
  
         <div class= "formulario-container">
-<form method="POST">
         <div class="conteudo">
         <h2>Editar administrador/usuário</h2>
     
@@ -65,16 +63,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" id="email" name="email" required>
         <br><br>
 
-        <label for="telefone">Senha</label>
-        <input type="text" id="telefone" name="telefone">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha">
         <br><br>
 
-        <label for="endereco">Confirmar senha</label>
-        <input type="text" id="endereco" name="endereco">
+        <label for="confirmar senha">Confirmar senha</label>
+        <input type="password" id="senha" name="senha">
         <br><br>
         
-        <label for="endereco">Status</label>
-        <input type="text" id="endereco" name="endereco">
+        <label for="status">Status</label>
+        <input type="text" id="status" name="status">
         <br><br>
         <button type="submit">Editar administrador/usuário</button>
     <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
