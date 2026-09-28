@@ -1,3 +1,23 @@
+<?php
+
+include 'infra/conexao.php';
+$sql = "SELECT * FROM usuarios";
+$resultado = mysqli_query($conn, $sql);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_usuario = $_POST['usuario'] ?? null;
+
+    if ($id_usuario) {
+        $sql = "SELECT * FROM usuarios WHERE id = $id_usuario";
+        $resultado = mysqli_query($conn, $sql);
+    } else {
+        $sql = "SELECT * FROM usuarios";
+        $resultado = mysqli_query($conn, $sql);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +71,23 @@
        <section class="filtros">
 
        <input type="text" id="pesquisar" placeholder="Pesquisar">
+
+               <form method="POST">
+            <label for="usuario">Filtro por Usuário</label>
+            <select id="usuario" name="usuario">
+                <option value="">Todos</option>
+                <?php
+                $sqlUsuarios = "SELECT * FROM usuarios";
+                $resultadoUsuarios = mysqli_query($conn, $sqlUsuarios);
+                while ($usuario = mysqli_fetch_assoc($resultadoUsuarios)) {
+                    echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+                }
+
+                ?>
+            </select>
+            <button type="submit">Filtrar</button>
+            <br>
+            <br>
 
         <label for="conta">Tipo de conta:</label>
         <select id="conta">
