@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_usuario = $_POST['usuario'] ?? null;
 
     if ($id_usuario) {
-        $sql = "SELECT * FROM usuarios WHERE id = $id_usuario";
+        $sql = "SELECT * FROM usuarios WHERE id_usuario = $id_usuario";
         $resultado = mysqli_query($conn, $sql);
     } else {
         $sql = "SELECT * FROM usuarios";
