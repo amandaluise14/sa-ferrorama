@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="dado_monitorado" name="dado_monitorado" placeholder="Ex: Velocidade" required>
         <br><br>
         <button id="botaoCadastro" type="submit">Cadastrar Sensor</button>
-        <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+        <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
         <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_sensor.php';">Visualizar Sensores Cadastrados</button>
     </div>
     </form> 
