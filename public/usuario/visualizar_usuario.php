@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
        <section class="filtros">
 
-       <input type="text" id="pesquisar" placeholder="Pesquisar">
+       <input type="text" id="pesquisar" name="pesquisar" placeholder="Pesquisar">
 
                <form method="POST">
             <label for="usuario">Filtro por Usuário</label>
