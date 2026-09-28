@@ -1,6 +1,6 @@
 <?php
 
-include 'infra/conexao.php';
+include '../../infra/conexao.php';
 $sql = "SELECT * FROM usuarios";
 $resultado = mysqli_query($conn, $sql);
 
