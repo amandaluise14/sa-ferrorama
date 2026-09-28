@@ -1,12 +1,9 @@
-<?php
-$usuario = "Administrador";
-?>
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Visualizar Usuários/Administradores</title>
    <link rel="stylesheet" href="../../style/style.css">
 </head>
@@ -33,6 +30,39 @@ $usuario = "Administrador";
 
     <title>Visualizar Usuários/Administradores</title>
      <div class="formulario-container">
+=======
+    <link rel="stylesheet" href="../../style/style.css">
+    <title>Listagem de Usuários</title>
+</head>
+<body>
+    <div class="pagina">
+        <div class="sidebar">
+            <div class="logo">
+            <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            </div>
+            <ul>
+                <a href="../pagina_home.php" class="menu-link ">
+                <li>Início</li>
+                </a>
+                <a href="../pagina_sensoresetrens.php" class="menu-link ">
+                <li>Sensores e Trens</li>
+                </a>
+                <a href="../pagina_monitoramento.php" class="menu-link ">
+                <li>Monitoramento</li>
+                </a>
+                <a href="../pagina_relatorios.php" class="menu-link ">
+                <li>Relatórios</li>
+                </a>
+                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
+                <li>Adicionar usuário</li>
+                </a>
+                <a href="../logout.php" class="menu-link ">
+                <li>Sair</li>
+                </a>
+            </ul>
+        </div>
+        <div class="formulario-container">
+>>>>>>> c00530250d5aff4652ea20b48d299007fdb88cfc
         <form method="POST" class="forms_sensores">
             <div class="conteudo">
 
@@ -43,7 +73,6 @@ $usuario = "Administrador";
       <div class="d-block p-2">
 
       <div class="d-flex align-items-start">
-      <h2>Bem-vindo, <?php echo $usuario; ?></h2>
        </div>
 
       <section class="cards">
@@ -167,10 +196,5 @@ $usuario = "Administrador";
         </main>
 
     </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
