@@ -4,7 +4,14 @@ USE sa_ferrorama1;
 CREATE TABLE usuarios (
 id_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 email VARCHAR(100) NOT NULL,
-senha VARCHAR(50) NOT NULL
+senha VARCHAR(50) NOT NULL,
+telefone VARCHAR(20) NOT NULL,
+nome VARCHAR(100) NOT NULL,
+endereco VARCHAR(200) NOT NULL,
+cpf VARCHAR(20) NOT NULL,
+data_nascimento DATE NOT NULL,
+cargo ENUM('usuário', 'administrador') NOT NULL,
+status_usuario ENUM('ativo', 'inativo') NOT NULL
 );
 
 CREATE TABLE trens (
