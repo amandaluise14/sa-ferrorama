@@ -528,6 +528,18 @@ background-color: #858484;
     background-color: #990000;
 }
 
+/* Botão de cadastros Home */
+
+#botaoHome{
+    background-color: #7b0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
 /* Filtros */
 
 .filtros {
