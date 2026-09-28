@@ -146,7 +146,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         ?>
 
-      </table> <button type="submit" id="botaoadicionar"> adicionar</button>
+      </table>
+      <button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_usuario.php';">Ir para adicionar</button>
 
         </div>
         </main>
