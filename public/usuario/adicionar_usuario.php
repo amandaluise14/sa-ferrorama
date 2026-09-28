@@ -6,7 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-
+    $telefone = $_POST ['telefone'];
+    $endereco = $_POST ['endereco'];
+    $CPF = $_POST ['CPF'];
+    $cargo = $_POST ['cargo'];
+    
     $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $nome, $email, $senha);
@@ -64,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
             <div class="conteudo">
 
-    <label for="noeme">Nome:</label>
+    <label for="nome">Nome:</label>
      <input type="text" id="nome" name="nome" placeholder="Ex: Sensor de velocidade do trem 77" required>
      <br><br> 
     <label for="email">Email:</label>
@@ -73,6 +77,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for= "senha">Senha:</label>
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
      <br><br>
+    <label for="endereco">Endereço:</label>
+     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
+     <br><br> 
+    <label for="CPF">CPF:</label>
+     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
+     <br><br> 
 
     <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
