@@ -92,6 +92,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option>Selecione</option>
         <option>Administrador</option>
         <option>Usuário</option>
+</select>
+ <br><br> 
+    <label for="status">Status:</label>
+        <select id="status">
+        <option>Selecione</option>
+        <option>Ativo</option>
+        <option>Inativo</option>
          </select>
 
     <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
