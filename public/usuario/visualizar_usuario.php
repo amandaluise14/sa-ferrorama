@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $sqlUsuarios = "SELECT * FROM usuarios";
                 $resultadoUsuarios = mysqli_query($conn, $sqlUsuarios);
                 while ($usuario = mysqli_fetch_assoc($resultadoUsuarios)) {
-                    echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+                    echo "<option value='{$usuario['id_usuario']}'>{$usuario['nome']}</option>";
                 }
 
                 ?>
