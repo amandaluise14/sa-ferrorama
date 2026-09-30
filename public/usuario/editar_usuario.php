@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=? WHERE id_usuario=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $nome, $email, $senha);
+    $stmt->bind_param("sssi", $nome, $email, $senha, $id_usuario);
     if ($stmt->execute() === TRUE) {
         echo "Usuário atualizado com sucesso!";
     } else {

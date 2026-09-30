@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="conteudo">
 
     <label for="nome">Nome:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Sensor de velocidade do trem 77" required>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Gabriela" required>
      <br><br> 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" placeholder="Ex: usuario@infotem" required>
