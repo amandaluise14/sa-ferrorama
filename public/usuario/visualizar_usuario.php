@@ -118,6 +118,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                             <input type="text" id="pesquisar" name="pesquisar" placeholder="Buscar por nome ou email">
 
                             <select id="Usuario" name="Usuario">
+                                <option value="">Selecione um usuário</option>
 
                                 <?php
                                 $sqlUsuarios = "SELECT * FROM usuarios";
@@ -134,7 +135,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                             <select id="conta" name="cargo">
 
-                                <option value=""> Todos </option>
+                                <option value="">Tipo de conta</option>
 
                                 <option value="administrador"> Administrador</option>
 
@@ -143,7 +144,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                             </select>
 
                             <select id="status" name="status">
-                                <option value=""> Todos </option>
+                                <option value="">Status</option>
 
                                 <option value="ativo"> Ativo </option>
 
