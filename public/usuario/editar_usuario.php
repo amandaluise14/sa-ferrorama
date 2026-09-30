@@ -37,23 +37,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
     <ul>
-        <li>Início</li>
-        <li class="active"> Sensores e Trens</li>
-        <li>Monitoramento</li>
-        <li>Relatórios</li>
-        <li>Adicionar usuário</li>
-        <li>Sair</li>
+                <a href="../pagina_home.php" class="menu-link ">
+                   <li>Início</li>
+                </a>
+                <a href="../pagina_sensoresetrens.php" class="menu-link ">
+                    <li>Sensores e Trens</li>
+                </a>
+                <a href="../pagina_monitoramento.php" class="menu-link ">
+                    <li>Monitoramento</li>
+                </a>
+                <a href="../pagina_relatorios.php" class="menu-link ">
+                    <li>Relatórios</li>
+                </a>
+                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
+                    <li>Adicionar usuário</li>
+                </a>
+                <a href="../logout.php" class="menu-link ">
+                    <li>Sair</li>
+                </a>
     </ul>
     </div>
     <div class="formulario-container">
        <form method="POST" class="forms_usuarios">
-            <h2 id="titulo-admin"Editar usuario>
+            <h2 class="titulo-admin">Editar administrador/usuário</h2>
 </head>
 <body> 
  
         <div class= "formulario-container">
         <div class="conteudo">
-        <h2>Editar administrador/usuário</h2>
     
         <label for="nome">Nome completo</label>
         <input type="text" id="nome" name="nome" required>
@@ -74,8 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="status">Status</label>
         <input type="text" id="status" name="status">
         <br><br>
-        <button type="submit">Editar administrador/usuário</button>
-    <button type="button" onclick="window.location.href='../../index.php'">Voltar</button>
+        <button id="botaoCadastro" type="submit">Editar Usuário</button>
+        <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
+        <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';"> Voltar para Usuários Cadastrados </button>
     </div> 
     
     </form>
