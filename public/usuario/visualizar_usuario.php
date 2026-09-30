@@ -88,7 +88,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                 </ul>
             </div>
             <div class="formulario-container">
-                <form method="POST" class="forms_sensores">
+                <form method="POST" class="forms">
                     <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
                     <div class="conteudo">
 
@@ -159,7 +159,10 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <th>ID</th>
                                     <th>Nome</th>
                                     <th>Email</th>
-                                    <th>Status</th>
+                                    <th>Telefone</th>
+                                    <th>Endereço</th>
+                                    <th>Data de Nascimento</th>
+                                    <th>CPF</th>
                                     <th>Tipo de conta</th>
                                     <th>Último acesso</th>
                                     <th>Ações</th>
