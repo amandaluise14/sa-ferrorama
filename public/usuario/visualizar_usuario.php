@@ -53,6 +53,9 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Usuários/Administradores</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 
@@ -112,8 +115,9 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                         </section>
 
                         <section class="filtros">
+                            <input type="text" id="pesquisar" name="pesquisar" placeholder="Buscar por nome ou email">
 
-                            <input type="text" id="pesquisar" name="pesquisar" placeholder="Pesquisar">
+                            <select id="Usuario" name="Usuario">
 
                                 <?php
                                 $sqlUsuarios = "SELECT * FROM usuarios";
@@ -123,6 +127,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                 }
 
                                 ?>
+
                             </select>
                             <br>
                             <br>
@@ -186,11 +191,11 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['cargo']; ?></td>
                                     <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
-                                    
-                                    <button class= "editar" type="button"
-                                            onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'">Editar</button>
+
+                                        <button class="editar" type="button"
+                                            onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'"><i class="bi bi-pencil"></i></button>
                                         <button type="button"
-                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }">Excluir</button>
+                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }"><i class="bi bi-person-dash-fill"></i></button>
                                     </td>
                                 </tr>
 
