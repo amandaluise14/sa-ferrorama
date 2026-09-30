@@ -5,7 +5,7 @@ $user = "root";
 $password = "";
 $database = "sa_ferrorama1";
 
-$conn = mysqli_connect($host, $user, $password, $database,3309);
+$conn = mysqli_connect($host, $user, $password, $database);
 
 
 if (!$conn) {
