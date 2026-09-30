@@ -164,7 +164,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <th>Data de Nascimento</th>
                                     <th>CPF</th>
                                     <th>Tipo de conta</th>
-                                    <th>Último acesso</th>
+                                    <th>Status</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -182,7 +182,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['telefone']; ?></td>
                                     <td><?php echo $usuario['endereco']; ?></td>
                                     <td><?php echo $usuario['data_nascimento']; ?></td>
-                                    <td><?php echo $usuario['cpf']; ?></td>
+                                    <td><?php $cpf = $usuario['cpf']; echo '***.***.***-' . substr($cpf, -2);?></td>
                                     <td><?php echo $usuario['cargo']; ?></td>
                                     <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
