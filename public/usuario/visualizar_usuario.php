@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_usuario = $_POST['usuario'] ?? null;
 
     if ($id_usuario) {
-        $sql = "SELECT * FROM usuarios WHERE id = $id_usuario";
+        $sql = "SELECT * FROM usuarios WHERE id_usuario = $id_usuario";
         $resultado = mysqli_query($conn, $sql);
     } else {
         $sql = "SELECT * FROM usuarios";
@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $sqlUsuarios = "SELECT * FROM usuarios";
                 $resultadoUsuarios = mysqli_query($conn, $sqlUsuarios);
                 while ($usuario = mysqli_fetch_assoc($resultadoUsuarios)) {
-                    echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+                    echo "<option value='{$usuario['id_usuario']}'>{$usuario['nome']}</option>";
                 }
 
                 ?>
@@ -133,9 +133,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <td><?php echo $usuario['id_usuario']; ?></td>
                 <td><?php echo $usuario['nome']; ?></td>
                 <td><?php echo $usuario['email']; ?></td>
-                <td><?php echo $usuario['status']; ?></td>
-                <td><?php echo $usuario['tipo_conta']; ?></td>
-                <td><?php echo $usuario['ultimo_acesso']; ?></td>
+                <td><?php echo $usuario['telefone']; ?></td>
+                <td><?php echo $usuario['endereco']; ?></td>
+                <td><?php echo $usuario['data_nascimento']; ?></td>
+                <td><?php echo $usuario['cpf']; ?></td>
+                <td><?php echo $usuario['cargo']; ?></td>
+                <td><?php echo $usuario['status_usuario']; ?></td>
                 <td>
                     <button type="button" onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'">Editar</button>
                     <button type="button" onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }">Excluir</button>
