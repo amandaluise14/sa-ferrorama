@@ -94,19 +94,19 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                         <section class="cards">
                             <div class="card-total">
-                                <h5>Total de funcionários</h5>
+                                <h5>Total de Funcionários</h5>
                                 <p><?php echo $totalFuncionarios; ?></p>
                             </div>
                             <div class="card-total">
-                                <h5>Total de administradores</h5>
+                                <h5>Total de Administradores</h5>
                                 <p><?php echo $totalAdmins; ?></p>
                             </div>
                             <div class="card-total">
-                                <h5>Total de usuários</h5>
+                                <h5>Total de Usuários</h5>
                                 <p><?php echo $totalUsuarios; ?></p>
                             </div>
                             <div class="card-total">
-                                <h5>Total de administradores ativos</h5>
+                                <h5>Total de Administradores Ativos</h5>
                                 <p><?php echo $totalAtivos; ?></p>
                             </div>
                         </section>
@@ -183,7 +183,8 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['cargo']; ?></td>
                                     <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
-                                        <button type="button"
+                                    
+                                    <button class= "editar" type="button"
                                             onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'">Editar</button>
                                         <button type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }">Excluir</button>
