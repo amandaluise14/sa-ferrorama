@@ -8,13 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
     $telefone = $_POST ['telefone'];
     $endereco = $_POST ['endereco'];
-    $CPF = $_POST ['CPF'];
+    $cpf = $_POST ['cpf'];
     $cargo = $_POST ['cargo'];
-    $data = $_POST ['data'];
-    
-    $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+    $data_nascimento = $_POST ['data_nascimento'];
+    $status_usuario = $_POST ['status_usuario'];
+
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $nome, $email, $senha);
+    $stmt->bind_param("ssssssss", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
         echo "Novo usuário/administrador cadastrado com sucesso";
  } else {
@@ -22,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  }
 
 }
-
 ?>
 
 <!DOCTYPE html>
