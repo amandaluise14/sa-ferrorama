@@ -8,13 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
     $telefone = $_POST ['telefone'];
     $endereco = $_POST ['endereco'];
-    $CPF = $_POST ['CPF'];
+    $cpf = $_POST ['cpf'];
     $cargo = $_POST ['cargo'];
-    $data = $_POST ['data'];
-    
-    $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+    $data_nascimento = $_POST ['data_nascimento'];
+    $status_usuario = $_POST ['status_usuario'];
+
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $nome, $email, $senha);
+    $stmt->bind_param("sssisisds", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
         echo "Novo usuário/administrador cadastrado com sucesso";
  } else {
@@ -22,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  }
 
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="conteudo">
 
     <label for="nome">Nome:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Sensor de velocidade do trem 77" required>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Gabriela" required>
      <br><br> 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" placeholder="Ex: usuario@infotem" required>
@@ -78,24 +78,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for= "senha">Senha:</label>
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
      <br><br>
+     <label for= "telefone">Telefone:</label>
+    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+     <br><br>
     <label for="endereco">Endereço:</label>
      <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
      <br><br> 
-    <label for="data">Data de nascimento:</label>
-     <input type="date" id="data" name="data" placeholder="Ex: 21/02/09" required>
+    <label for="data_nascimento">Data de nascimento:</label>
+     <input type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex: 21/02/09" required>
      <br><br> 
-    <label for="CPF">CPF:</label>
-     <input type="text" id="CPF" name="CPF" placeholder="Ex: 123.456.789.1011" required>
+    <label for="cpf">CPF:</label>
+     <input type="text" id="cpf" name="cpf" placeholder="Ex: 123.456.789.1011" required>
      <br><br> 
     <label for="cargo">Cargo:</label>
-        <select id="conta">
+        <select id="cargo" name="cargo">
         <option>Selecione</option>
         <option>Administrador</option>
         <option>Usuário</option>
 </select>
  <br><br> 
-    <label for="status">Status:</label>
-        <select id="status">
+    <label for="status_usuario">Status:</label>
+        <select id="status_usuario" name="status_usuario">
         <option>Selecione</option>
         <option>Ativo</option>
         <option>Inativo</option>
