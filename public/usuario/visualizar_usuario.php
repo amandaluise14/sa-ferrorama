@@ -115,9 +115,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                             <input type="text" id="pesquisar" name="pesquisar" placeholder="Pesquisar">
 
-                            <label for="usuario">Filtro por Usuário</label>
-                            <select id="usuario" name="usuario">
-                                <option value="">Todos</option>
                                 <?php
                                 $sqlUsuarios = "SELECT * FROM usuarios";
                                 $resultadoUsuarios = mysqli_query($conn, $sqlUsuarios);
@@ -127,7 +124,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                                 ?>
                             </select>
-                            <button type="submit">Filtrar</button>
                             <br>
                             <br>
 
