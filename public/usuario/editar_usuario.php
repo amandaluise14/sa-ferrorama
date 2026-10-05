@@ -100,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </ul>
         </div>
 
+
 <div class="formulario-container">
 <form method="POST" class="forms_sensores">
 
@@ -166,6 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </form>
 </div>
+
 
 </body>
 </html>

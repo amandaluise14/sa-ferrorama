@@ -281,10 +281,8 @@ textarea {
     padding: 60px 50px;
 }
 
-.forms_rotas,
-.forms_sensores {
+.forms {
     width: 100%;
-    max-width: 700px;
 }
 
 .sidebar {
@@ -665,8 +663,10 @@ background-color: #858484;
 
 /* Ações de excluir e editar */
 
-.excluir {
+#excluir {
     color: #8b0000;
+    background-color:#9c2626;
+    border: none;
     text-decoration: none;
     font-weight: bold;
 }
@@ -676,8 +676,10 @@ background-color: #858484;
     text-decoration: underline;
 }
 
-.editar {
+#editar {
     color: #8b0000;
+    background-color: #9c2626;
+    border: none;
     text-decoration: none;
     font-weight: bold;
 }
