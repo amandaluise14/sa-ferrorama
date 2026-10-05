@@ -8,6 +8,6 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 if ($_SESSION['cargo'] !== 'administrador') {
-    header("Location: ../dashboard.php");
+    header("Location: ../pagina_monitoramento.php");
     exit;
 }
