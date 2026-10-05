@@ -193,9 +193,11 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
 
+
                                         <button class="editar" type="button"
                                             onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'"><i class="bi bi-pencil"></i></button>
-                                        <button type="button"
+
+                                        <button class="excluir" type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }"><i class="bi bi-person-dash-fill"></i></button>
                                     </td>
                                 </tr>
