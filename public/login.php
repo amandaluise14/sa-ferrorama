@@ -6,19 +6,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    // Consulta para verificar se o usuário existe
-    $sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+    $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $senha);
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Usuário autenticado com sucesso
-        echo "Login bem-sucedido!";
-        // Aqui você pode redirecionar para a página principal ou iniciar uma sessão
+        $usuario = $result->fetch_assoc();
+        if (password_verify($senha, $usuario['senha'])) {
+            echo "Login bem-sucedido!";
+        } else {
+            echo "E-mail ou senha incorretos.";
+        }
     } else {
-        // Usuário não encontrado ou senha incorreta
         echo "E-mail ou senha incorretos.";
     }
 }
@@ -41,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label>Senha:</label>
     <input type="password" name="senha" required>
     <br><br>
-    <button type="submit">Entrar</button>
+    <button type="submit" onclick="window.location.href='pagina_home.php';">Entrar</button>
     </form>
 </body>
 </html>

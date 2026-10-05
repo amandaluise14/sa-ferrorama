@@ -13,9 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_nascimento = $_POST ['data_nascimento'];
     $status_usuario = $_POST ['status_usuario'];
 
+    // Cria um hash seguro para a senha 
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
     $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssisisds", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
+    $stmt->bind_param("sssisisds", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
         echo "Novo usuário/administrador cadastrado com sucesso";
  } else {
