@@ -1,6 +1,7 @@
 <?php
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -44,8 +45,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <ul>
+              
+            <a href="../pagina_monitoramento.php" class="menu-link ">
+                    <li>Monitoramento</li>
+                </a>
 
-                
+                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+        <hr>
+
+        <h6>ADMINISTRAÇÃO</h6>
+
+         
                 <a href="../pagina_home.php" class="menu-link ">
                    <li>Início</li>
                 </a>
@@ -64,6 +75,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="../logout.php" class="menu-link ">
                     <li>Sair</li>
                 </a>
+
+    <?php endif; ?>
+
+
+    <a href="../logout.php">Sair</a>
+
+
             </ul>
         </div>
 
