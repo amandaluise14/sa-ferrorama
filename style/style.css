@@ -542,7 +542,6 @@ background-color: #858484;
 
 .filtros {
     display: flex;
-    align-items: center;
     gap: 15px;
     flex-wrap: wrap;
     margin-bottom: 25px;
@@ -670,8 +669,6 @@ background-color: #858484;
     text-decoration: none;
     margin-right: 10px;
     margin-top: 5px;
-    width: 300px; 
-    height: 150px;
 
 }
 

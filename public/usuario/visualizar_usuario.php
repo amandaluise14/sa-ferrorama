@@ -117,18 +117,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                         <section class="filtros">
                             <input type="text" id="pesquisar" name="pesquisar" placeholder="Buscar por nome ou email">
 
-                            <select id="Usuario" name="Usuario">
-                                <option value="">Selecione um usuário</option>
-
-                                <?php
-                                $sqlUsuarios = "SELECT * FROM usuarios";
-                                $resultadoUsuarios = mysqli_query($conn, $sqlUsuarios);
-                                while ($usuario = mysqli_fetch_assoc($resultadoUsuarios)) {
-                                    echo "<option value='{$usuario['id_usuario']}'>{$usuario['nome']}</option>";
-                                }
-
-                                ?>
-
                             </select>
                             <br>
                             <br>
