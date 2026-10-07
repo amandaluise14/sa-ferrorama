@@ -668,9 +668,11 @@ background-color: #858484;
     background-color:transparent;
     border: none;
     text-decoration: none;
-    font-weight: bold;
     margin-right: 10px;
     margin-top: 5px;
+    width: 300px; 
+    height: 150px;
+
 }
 
 .excluir:hover {
