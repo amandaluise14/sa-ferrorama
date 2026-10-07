@@ -1,48 +1,66 @@
 <?php
-
+session_start();
 include '../infra/conexao.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
+    if (!$stmt) {
+        die("Erro no prepare: " . $conn->error);
+    }
+    $stmt->bind_param("s", $email);
+    if (!$stmt->execute()) {
+        die("Erro no execute: " . $stmt->error);
+    }
+    $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
+        echo "Usuário encontrado!<br>";
+        echo "E-mail: " . $usuario['email'] . "<br>";
+        echo "Hash salvo: " . $usuario['senha'] . "<br>";
+        echo "Senha digitada: " . password_hash($senha, PASSWORD_DEFAULT) . "<br>";
+        echo "Senha Encriptada: " . $usuario['senha'] . "<br>";
+
         if (password_verify($senha, $usuario['senha'])) {
-            echo "Login bem-sucedido!";
+            echo "Senha correta!<br>";
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['cargo'] = $usuario['cargo'];
+            header("Location: pagina_home.php");
+            exit;
         } else {
-            echo "E-mail ou senha incorretos.";
+            echo "Senha INCORRETA!<br>";
         }
     } else {
-        echo "E-mail ou senha incorretos.";
+        echo "E-mail não encontrado!<br>";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login InfoTrem</title>
 </head>
+
 <body>
     <h2>Login</h2>
     <form method="POST">
-    <label>E-mail:</label>
-    <input type="email" name="email" required>
-    <br><br>
-    <label>Senha:</label>
-    <input type="password" name="senha" required>
-    <br><br>
-    <button type="submit" onclick="window.location.href='pagina_home.php';">Entrar</button>
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+        <br><br>
+        <label>Senha:</label>
+        <input type="password" name="senha" required>
+        <br><br>
+        <button type="submit">Entrar</button>
     </form>
 </body>
+
 </html>
