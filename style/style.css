@@ -57,7 +57,7 @@ h6 {
 }
 
 #container label {
-    color: #f0e8e4;
+    color: #f0e4e4;
     display: block;
     margin-bottom: 7px;
 }
@@ -966,3 +966,10 @@ text-align: center;
 font-size: 12px;
 margin-bottom: 12px;
 }
+
+/* Correção das cores dos textos dos formulários */
+.formulario-container label,
+.conteudo-cadastro label {
+    color: #333 !important;
+}
+
