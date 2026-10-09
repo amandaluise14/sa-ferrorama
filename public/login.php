@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <link rel="stylesheet" href="../style/style.css">
 </head>
 
-<body>
+<body id="pagina_login">
       <div id="container">
     <h2>Login</h2>
 
