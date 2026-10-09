@@ -46,10 +46,15 @@ var_dump(password_verify($senha, $usuario['senha']));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login InfoTrem</title>
+     <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
+      <div id="container">
     <h2>Login</h2>
+
+    <p class="subtitulo">Preencha os dados abaixo para realizar login no site.</p>
+    
     <form method="POST">
         <label>E-mail:</label>
         <input type="email" name="email" required>
