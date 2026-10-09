@@ -1,6 +1,7 @@
 <?php
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 if (!isset($_GET['id_trem']) || empty($_GET['id_trem'])) {
     die("ID do trem não foi informado.");

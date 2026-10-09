@@ -2,6 +2,7 @@
 
 $id = $_GET ['id'];
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 $sql = "DELETE FROM rotas WHERE id = ?";
 $stmt = $conn-> prepare ($sql);
