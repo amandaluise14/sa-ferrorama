@@ -5,11 +5,10 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../login.php");
+    header("Location: login.php");
     exit;
 }
 
 if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] !== 'administrador') {
-    header("Location: ../pagina_monitoramento.php");
-    exit;
+    
 }

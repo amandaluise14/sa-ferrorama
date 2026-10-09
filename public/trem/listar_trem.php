@@ -28,29 +28,31 @@ include '../../infra/verificar_admin.php';
         <ul>
                     
              
-            <a href="pagina_monitoramento.php" class="menu-link ">
-                    <li>Monitoramento</li>
-                </a>
+        
+<?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-            <a href="logout.php" class="menu-link ">
-                    <li>Sair</li>
-                </a>
+      <a href="../pagina_home.php" class="menu-link">
+        <li>Início</li>
+    </a>
 
-                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+    <a href="../pagina_relatorios.php" class="menu-link">
+        <li>Relatórios</li>
+    </a>
 
+    <a href="../usuario/adicionar_usuario.php" class="menu-link">
+        <li>Adicionar usuário</li>
+    </a>
 
-         <!-- Adminitrador pode acessar  -->
-                <a href="pagina_home.php" class="menu-link ">
-                   <li>Início</li>
-                </a>
-                <a href="pagina_relatorios.php" class="menu-link ">
-                    <li>Relatórios</li>
-                </a>
-                <a href="usuario/adicionar_usuario.php" class="menu-link ">
-                    <li>Adicionar usuário</li>
-                </a>
+<?php endif; ?>
 
-    <?php endif; ?>
+<!-- Aparece para administrador e usuário comum -->
+<a href="../pagina_monitoramento.php" class="menu-link">
+    <li>Monitoramento</li>
+</a>
+
+<a href="../logout.php" class="menu-link">
+    <li>Sair</li>
+</a>
 
         </ul>
     </div>
