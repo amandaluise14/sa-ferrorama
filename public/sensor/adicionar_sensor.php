@@ -1,6 +1,7 @@
 <?php
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];

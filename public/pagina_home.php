@@ -1,3 +1,9 @@
+<?php
+
+include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br"> 
     <head>

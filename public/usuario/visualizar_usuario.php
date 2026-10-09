@@ -1,6 +1,9 @@
 <?php
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
+
+
 $sql = "SELECT * FROM usuarios";
 $resultado = mysqli_query($conn, $sql);
 
