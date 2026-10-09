@@ -876,7 +876,7 @@ background-color: #858484;
   box-sizing: border-box;
   }
 
-body {
+#pagina_login {
 background-image: url('../assets/image/trem_de_fundo.png');
 background-repeat: no-repeat;
 background-size: cover;

@@ -19,14 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
 
-        echo "Usuário encontrado!<br>";
-        echo "E-mail: " . $usuario['email'] . "<br>";
-        echo "Hash salvo: " . $usuario['senha'] . "<br>";
-        echo "Senha digitada: " . password_hash($senha, PASSWORD_DEFAULT) . "<br>";
-        echo "Senha Encriptada: " . $usuario['senha'] . "<br>";
-
-
-
         if (password_verify($senha, $usuario['senha'])) {
             echo "Senha correta!<br>";
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
