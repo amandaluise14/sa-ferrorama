@@ -57,7 +57,7 @@ h6 {
 }
 
 #container label {
-    color: #f0e8e4;
+    color: #f0e4e4;
     display: block;
     margin-bottom: 7px;
 }
@@ -965,4 +965,25 @@ border-radius: 5px;
 text-align: center;
 font-size: 12px;
 margin-bottom: 12px;
+}
+
+/* Correção das cores dos textos dos formulários */
+.formulario-container label,
+.conteudo-cadastro label {
+    color: #333 !important;
+}
+
+/* Títulos de todas as páginas */
+.conteudo h1,
+.conteudo h2,
+.conteudo h3,
+.conteudo-cadastro h1,
+.conteudo-cadastro h2,
+.conteudo-cadastro h3,
+.formulario-container h1,
+.formulario-container h2,
+.formulario-container h3 {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
 }
