@@ -18,10 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
-       echo "Tamanho do hash salvo: " . strlen($usuario['senha']) . "<br>";
-echo "Verificação: ";
 
-var_dump(password_verify($senha, $usuario['senha']));
         if (password_verify($senha, $usuario['senha'])) {
             echo "Senha correta!<br>";
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
