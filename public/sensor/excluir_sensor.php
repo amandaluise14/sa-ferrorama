@@ -1,6 +1,7 @@
 <?php
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 $id = $_GET['id'] ?? '';
 $sql = "DELETE FROM sensores WHERE id_sensor = ?";

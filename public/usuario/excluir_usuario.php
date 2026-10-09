@@ -8,6 +8,7 @@ if (!isset($_GET['id'])) {
 $id_usuario = $_GET['id'];
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 $sql = "DELETE FROM usuarios WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);

@@ -1,6 +1,7 @@
 <?php
 
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 if (!isset($_GET['id'])) {
     echo "ID do usuário não informado.";

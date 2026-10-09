@@ -2,6 +2,7 @@
 
 $id_trem = $_GET ['id_trem'];
 include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
 
 $sql = "DELETE FROM trens WHERE id_trem = ?";
 $stmt = $conn-> prepare ($sql);
