@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssisisds", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
+    $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
         echo "Novo usuário/administrador cadastrado com sucesso";
  } else {
