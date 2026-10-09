@@ -42,30 +42,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login InfoTrem</title>
-     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 
-<body>
-      <div id="container">
-    <h2>Login</h2>
+<body id="pagina_login">
 
-    <p class="subtitulo">Preencha os dados abaixo para realizar login no site.</p>
-    
-    <form method="POST">
-        <label>E-mail:</label>
-        <input type="email" name="email" required>
-        <br><br>
-        <label>Senha:</label>
-        <input type="password" name="senha" required>
-        <br><br>
-        <button type="submit">Entrar</button>
-    </form>
+    <div id="container_login">
+
+        <h2 id="titulo_login">Login</h2>
+
+        <p id="subtitulo_login">
+            Preencha os dados abaixo para realizar login no site.
+        </p>
+
+        <?php if (isset($erro)) { ?>
+            <p class="erro"><?php echo $erro; ?></p>
+        <?php } ?>
+
+        <form id="form_login" method="POST">
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <button type="submit">Entrar</button>
+
+        </form>
+
+    </div>
+
 </body>
 
 </html>
