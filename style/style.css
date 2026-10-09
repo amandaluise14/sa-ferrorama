@@ -877,7 +877,7 @@ background-color: #858484;
   }
 
 #pagina_login {
-background-image: url('../assets/image/trem_de_fundo.png');
+background-image: url('../assets/image/imagem\ de\ fundo.png');
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
@@ -886,7 +886,18 @@ display: flex;
 justify-content: center;
 align-items: center;
 font-family: Arial, sans-serif;
+position: relative;
+isolation: isolate;
 }
+
+#pagina_login::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   background-color: rgba(0, 0, 0, 0.55);
+   z-index: -1;
+}
+
 
 #container {
 background-color: rgba(145, 20, 20, 0.88);
