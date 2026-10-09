@@ -23,11 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (password_verify($senha, $usuario['senha'])) {
             echo "Senha correta!<br>";
-            $_SESSION['id_usuario'] = $usuario['id_usuario'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['cargo'] = $usuario['cargo'];
-            header("Location: pagina_home.php");
+            header("Location: pagina_monitoramento.php");
             exit;
         } else {
             echo "Senha INCORRETA!<br>";
