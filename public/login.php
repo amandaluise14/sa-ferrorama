@@ -48,10 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login InfoTrem</title>
+     <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
+      <div id="container">
     <h2>Login</h2>
+        <p class="subtitulo">Preencha os dados abaixo para realizar login no site.</p>
+
+         <?php if (isset($erro)) { ?>
+            <p class="erro"><?php echo $erro; ?></p>
+        <?php } ?>
+
     <form method="POST">
         <label>E-mail:</label>
         <input type="email" name="email" required>
@@ -61,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br><br>
         <button type="submit">Entrar</button>
     </form>
+</div>
 </body>
 
 </html>
