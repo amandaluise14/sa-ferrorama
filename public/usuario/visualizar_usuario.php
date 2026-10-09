@@ -74,11 +74,12 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                 </div>
                 <ul>
                       
-            <a href="../pagina_monitoramento.php" class="menu-link ">
+         
+            <a href="../../pagina_monitoramento.php" class="menu-link ">
                     <li>Monitoramento</li>
                 </a>
 
-            <a href="../logout.php" class="menu-link ">
+            <a href="../../logout.php" class="menu-link ">
                     <li>Sair</li>
                 </a>
 
@@ -86,17 +87,18 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
 
          <!-- Adminitrador pode acessar  -->
-                <a href="../pagina_home.php" class="menu-link ">
+                <a href="../../pagina_home.php" class="menu-link ">
                    <li>Início</li>
                 </a>
-                <a href="../pagina_relatorios.php" class="menu-link ">
+                <a href="../../pagina_relatorios.php" class="menu-link ">
                     <li>Relatórios</li>
                 </a>
-                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
+                <a href="../../usuario/adicionar_usuario.php" class="menu-link ">
                     <li>Adicionar usuário</li>
                 </a>
 
     <?php endif; ?>
+
 
 
                     </a>
