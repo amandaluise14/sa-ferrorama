@@ -1,7 +1,7 @@
 <?php
 
-include '../../infra/conexao.php';
-include '../../infra/verificar_admin.php';
+include '../infra/conexao.php';
+include '../infra/verificar_admin.php';
 
 ?>
 <!DOCTYPE html>
