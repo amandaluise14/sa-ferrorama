@@ -54,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
       <div id="container">
     <h2>Login</h2>
+
+    <p class="subtitulo">Preencha os dados abaixo para realizar login no site.</p>
+    
     <form method="POST">
         <label>E-mail:</label>
         <input type="email" name="email" required>
