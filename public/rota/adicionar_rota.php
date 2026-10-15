@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
@@ -8,45 +8,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estacao_origem = $_POST['estacao_origem'];
     $estacao_destino = $_POST['estacao_destino'];
     $distancia_total = $_POST['distancia_total'];
-    $sensor_id = $_POST['sensor_id'];
+    $sensor_id = $_POST ['sensor_id'];
 
-    $sql = "INSERT INTO rota (nome, estacao_origem, estacao_destino, distancia_total, sensor_id) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO rotas (nome, estacao_origem, estacao_destino, distancia_total, sensor_id) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $nome, $estacao_origem, $estacao_destino, $distancia_total, $sensor_id);
-    if ($stmt->execute() === TRUE) {
-        echo "Nova rota cadastrada com sucesso!";
-    } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
-    }
-}
+    $stmt->bind_param("sssssi", $nome, $estacao_origem, $estacao_destino, $distancia_total, $sensor_id);
+     if ($stmt->execute() === TRUE) {
+        echo "Nova rota cadastrada com sucesso";
+ } else {
+    echo "erro: " . $sql . "<br>" . $conn->error;
+ }
 
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/style.css">
     <title>Cadastrar Rota</title>
-    <style>
-</style>
+    <link rel="stylesheet" href="../../style/style.css">
 </head>
-
 <body>
-
-
     <div class="pagina">
-        <div class="sidebar">
+    <div class="sidebar">
 
-            <div class="logo">
-                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-            </div>
+        <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
 
-            <ul>
-              
-        
+    <ul>
+          
+           
 <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
     <a href="../pagina_home.php" class="menu-link">
@@ -57,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li>Relatórios</li>
     </a>
 
-    <a href="../usuario/adicionar_usuario.php" class="menu-link">
+    <a href="adicionar_usuario.php" class="menu-link">
         <li>Adicionar usuário</li>
     </a>
 
@@ -72,55 +66,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <li>Sair</li>
 </a>
 
-            </ul>
-        </div>
 
-        <div class="formulario-container">
-
-            <form method="POST" class="forms_rotas">
-
-                <div class="conteudo">
-
-                    <h2 class="titulo-admin">Cadastrar Rota </h2>
-
-                    <label for="nome">Nome da rota (linha):</label>
-                    <input type="text" id="nome" name="nome" placeholder="Ex: Linha Norte" required>
-                    <br><br>
-                    <label for="estacao_origem">Estação Origem:</label>
-                    <input type="text" id="estacao_origem" placeholder="Ex: Linha Norte" name="estacao_origem" required>
-                    <br><br>
-                    <label for="estacao_destino">Estação Destino:</label>
-                    <input type="text" id="estacao_destino" placeholder="Ex: Linha Sudeste" name="estacao_destino"
-                        required>
-                    <br><br>
-                    <label for="distancia_total"> Distância total: </label>
-                    <select name="distancia_total" id="distancia_total" required>
-                        <option value="">Selecione a distância</option>
-                        <option value="10">10 km</option>
-                        <option value="20">20 km</option>
-                        <option value="30">30 km</option>
-                        <option value="40">40 km</option>
-                    </select>
-                    <br><br>
-                         
-                    <label for="sensor_id">Sensor:</label>
-
-                    <select name="sensor_id" required>
-                        <option value="">Selecione o Sensor</option>
-
-                    </select>
-                    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
-                    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-                    <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas Cadastradas</button>
-
-                </div>
-            </form>
-
-        </div>
-
+    </ul>
     </div>
 
+    <title>Cadastrar Rota</title>
+      <div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Cadastrar Rota</h2>
+            <div class="conteudo">
+
+    <label for="nome">Nome da rota:</label>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Rota 53" required>
+     <br><br> 
+    <label for="estacao_origem">Estação de origem:</label>
+    <input type="text" id="estacao_origem" name="estacao_origem" placeholder="Ex: São Paulo" required>
+     <br><br>
+    <label for="estacao_destino">Estação de destino:</label>
+    <input type="text" id="estacao_destino" name="estacao_destino" placeholder="Ex: Rio de Janeiro" required>
+     <br><br>
+    <label for= "distancia_total">Distância total:</label>
+    <input type="number" id="distancia_total" name="distancia_total" placeholder="Ex: 100km" required>
+     <br><br>
+    <label for= "sensor_id">ID do sensor:</label>
+    <input type="number" id="sensor_id" name="sensor_id" placeholder="Ex: 1" required>
+     <br><br>
+    
+
+    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
+   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_rota.php';">Visualizar Rotas Cadastradas</button>
+    </div>
+    </form> 
+    </div>
 </body>
-
 </html>
-
