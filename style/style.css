@@ -987,3 +987,32 @@ margin-bottom: 12px;
     margin-left: 0 !important;
     margin-right: auto !important;
 }
+
+.acao-tooltip {
+    position: relative;
+}
+
+.acao-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.acao-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
