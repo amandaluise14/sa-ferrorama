@@ -16,7 +16,7 @@ $stmt-> bind_param ("i", $id_trem);
 
 if ($stmt->execute ()) {
     echo "O trem foi excluído com sucesso! <br>";
-    echo "<button type='button' onclick=\"window.location.href='../listar_trem.php'\">Voltar</button>";
+    echo "<button type='button' onclick=\"window.location.href='listar_trem.php'\">Voltar</button>";
 }  else {
     echo "Erro ao excluir trem: ". $conn->error;
 }
