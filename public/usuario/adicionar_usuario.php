@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Cria um hash seguro para a senha 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    
 
     $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);

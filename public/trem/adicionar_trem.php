@@ -4,16 +4,15 @@ include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'];
     $modelo = $_POST['modelo'];
     $velocidade = $_POST['velocidade'];
     $linha = $_POST ['linha'];
     $carga = $_POST ['carga'];
-                              
+    $usuario= $_POST['usuario'];                          
 
     $sql = "INSERT INTO trens (nome, modelo, velocidade, linha, carga) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $nome, $modelo, $velocidade, $linha, $carga);
+    $stmt->bind_param("sssssi", $modelo, $velocidade, $linha, $carga, $usuario);
      if ($stmt->execute() === TRUE) {
         echo "Novo trem cadastrado com sucesso";
  } else {
@@ -77,9 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2 id="titulo-admin">Cadastrar Trem</h2>
             <div class="conteudo">
 
-    <label for="nome">Nome:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Gabriela" required>
-     <br><br> 
     <label for="modelo">Modelo Trem:</label>
     <input type="text" id="modelo" name="modelo" placeholder="Ex: Modelo A" required>
      <br><br>
@@ -91,6 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <br><br>
     <label for="carga">Carga:</label>
      <input type="number" id="carga" name="carga" placeholder="Ex: 100 toneladas" required>
+     <br><br> 
+      <label for="nome">Usuário Responsável :</label>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Usuário 2 " required>
      <br><br> 
 
     <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
