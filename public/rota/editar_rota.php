@@ -73,17 +73,25 @@ if ($stmt->execute() === TRUE) {
 <input type="text" name="descricao" value="<?php echo $rotas['descricao']; ?>" required>
 <br><br>
 
-<label>Selecione o Sensor:</label>
-<select name="sensor_id" required>
-    <option value="" >Selecione o Sensor</option>
+<label>Tempo previsto ou duração: </label>
+<input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
+<br><br>
+
+<label>Data de criação: </label>
+<input type="date" name="data_criacao" value="<?php echo $rotas['data_criacao']; ?>" required>
+<br><br>
+
+<label>Selecione o Trem Vinculado:</label>
+<select name="trem_id" required>
+    <option value="" >Selecione o Trem</option>
     <?php
-        $sql = "SELECT id, nome FROM sensores";
-        $sensores = $conn->query($sql);
-        while ($sensor = $sensores->fetch_assoc()) {
+        $sql = "SELECT id, nome FROM trens";
+        $trens = $conn->query($sql);
+        while ($trem = $trens->fetch_assoc()) {
     ?>
 
-    <option value="<?php echo $sensor['id'];?>" <?php if ($rota['sensor_id'] == $sensor['id']) echo 'selected'; ?>>
-        <?php echo $sensor['nome'];?>
+    <option value="<?php echo $trem['id'];?>" <?php if ($rota['trem_id'] == $trem['id']) echo 'selected'; ?>>
+        <?php echo $trem['nome'];?>
     </option>
 
 
