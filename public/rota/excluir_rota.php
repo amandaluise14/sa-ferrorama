@@ -1,10 +1,10 @@
 <?php
-if (!isset($_GET['id_trem'])) {
-    echo "ID do trem não foi enviado.";
+if (!isset($_GET['id_rota'])) {
+    echo "ID da rota não foi enviado.";
     exit;
 }
 
-$id = $_GET ['id'];
+$id = $_GET ['id_rota'];
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
