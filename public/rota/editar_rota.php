@@ -9,12 +9,34 @@ if (isset($_POST['id'])) {
     $estacao_origem = $_POST['estacao_origem'];
     $estacao_destino = $_POST['estacao_destino'];
     $distancia_total = $_POST['distancia_total'];
-    $sensor_id = $_POST['sensor_id'];
+    $descricao = $_POST['descricao'];
+    $duracao = $_POST['duracao'];
+    $trem_id = $_POST['trem_id'];
 
 
-$sql = "UPDATE rotas SET nome = ?, estacao_origem = ?, estacao_destino = ?, distancia_total = ?, sensor_id = ? WHERE id = ?";
-$stmt = $conn->prepare($sql); 
-$stmt->bind_param("sssssi", $nome, $estacao_origem, $estacao_destino, $distancia_total, $sensor_id, $id);
+$sql = "UPDATE rotas 
+        SET nome = ?, 
+            estacao_origem = ?, 
+            estacao_destino = ?, 
+            distancia_total = ?, 
+            descricao = ?, 
+            duracao = ?, 
+            trem_id = ? 
+        WHERE id = ?";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+    "ssssssii",
+    $nome,
+    $estacao_origem,
+    $estacao_destino,
+    $distancia_total,
+    $descricao,
+    $duracao,
+    $trem_id,
+    $id
+);
 
 if ($stmt->execute() === TRUE) {
     echo "Rota atualizada com sucesso!";
@@ -45,46 +67,77 @@ if ($stmt->execute() === TRUE) {
         </div>
 
     <ul>
+
+       <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+    <a href="../pagina_home.php" class="menu-link">
         <li>Início</li>
-        <li class="active">Sensores e Trens</li>
-        <li>Monitoramento</li>
+    </a>
+
+    <a href="../pagina_relatorios.php" class="menu-link">
         <li>Relatórios</li>
+    </a>
+
+    <a href="adicionar_usuario.php" class="menu-link">
         <li>Adicionar usuário</li>
-        <li>Sair</li>
+    </a>
+
+<?php endif; ?>
+
+<!-- Aparece para administrador e usuário comum -->
+<a href="../pagina_monitoramento.php" class="menu-link">
+    <li>Monitoramento</li>
+</a>
+
+<a href="../logout.php" class="menu-link">
+    <li>Sair</li>
+</a>
+
     </ul>
     </div>
 
     <h2>Editar Rota</h2>
     <form method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-        <br><br>
-        <label for="estacao_origem">Estação Origem:</label>
-        <input type="text" id="estacao_origem" name="estacao_origem" required>
-        <br><br>
-        <label for="estacao_destino">Estação Destino:</label>
-        <input type="text" id="estacao_destino" name="estacao_destino" required>
-        <br><br>
-        <label for="distancia_total">Distância Total:</label>
-        <input type="text" id="distancia_total" name="distancia_total" required>
-        <br><br>
-        <select name="sensor_id" required>
-            <option value="" >Selecione o Sensor</option>
-            <?php
-                $sql = "SELECT id, nome FROM sensores";
-                $sensores = $conn->query($sql);
-                while ($sensor = $sensores->fetch_assoc()) {
-            ?>
 
-            <option value="<?php echo $sensor['id'];?>" <?php if ($rota['sensor_id'] == $sensor['id']) echo 'selected'; ?>>
-                <?php echo $sensor['nome'];?>
-            </option>
+<label>Nome:</label>
+<input type="text" name="nome" value="<?php echo $rotas['nome']; ?>" required>
+<br><br>
+
+<label>Estação Origem:</label>
+<input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
+<br><br>
+
+<label>Estação Destino:</label>
+<input type="text" name="estacao_destino" value="<?php echo $rotas['estacao_destino']; ?>" required>
+<br><br>
+
+<label>Descrição:</label>
+<input type="longdescription" name="descricao" value="<?php echo $rotas['descricao']; ?>" required>
+<br><br>
+
+<label>Tempo previsto ou duração: </label>
+<input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
+<br><br>
+
+<label>Selecione o Trem Vinculado:</label>
+<select name="trem_id" required>
+    <option value="" >Selecione o Trem</option>
+    <?php
+        $sql = "SELECT id, nome FROM trens";
+        $trens = $conn->query($sql);
+        while ($trem = $trens->fetch_assoc()) {
+    ?>
+
+    <option value="<?php echo $trem['id'];?>" <?php if ($rota['trem_id'] == $trem['id']) echo 'selected'; ?>>
+        <?php echo $trem['nome'];?>
+    </option>
 
 
-            <?php
-                } 
-            ?>
-        </select>
+    <?php
+        } 
+    ?>
+</select>
+<br><br>
         <button type="submit">Editar Rota</button>
     </form> 
 </body>

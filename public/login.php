@@ -7,6 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
+<<<<<<< HEAD
+=======
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    echo "senhaHash". $senhaHash;
+>>>>>>> fdccfdb0d361965b58e00404651243e43261180a
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
@@ -36,12 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             } else {
             echo "Senha INCORRETA!<br>";
+<<<<<<< HEAD
                
 
+=======
+            echo "senhaHash: " . $senhaHash;
+            
+>>>>>>> fdccfdb0d361965b58e00404651243e43261180a
         }
 
     } else {
         echo "E-mail não encontrado!<br>";
+        echo "senhaHash: " . $senhaHash;
     }
 }
 ?>

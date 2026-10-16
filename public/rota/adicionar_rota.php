@@ -42,11 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <ul>
           
-            <a href="../../pagina_monitoramento.php" class="menu-link ">
+            <a href="../pagina_monitoramento.php" class="menu-link ">
                     <li>Monitoramento</li>
                 </a>
 
-            <a href="../../logout.php" class="menu-link ">
+            <a href="../logout.php" class="menu-link ">
                     <li>Sair</li>
                 </a>
 
@@ -54,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
          <!-- Adminitrador pode acessar  -->
-                <a href="../../pagina_home.php" class="menu-link ">
+                <a href="../pagina_home.php" class="menu-link ">
                    <li>Início</li>
                 </a>
-                <a href="../../pagina_relatorios.php" class="menu-link ">
+                <a href="../pagina_relatorios.php" class="menu-link ">
                     <li>Relatórios</li>
                 </a>
-                <a href="../../usuario/adicionar_usuario.php" class="menu-link ">
+                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
                     <li>Adicionar usuário</li>
                 </a>
 
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';">Visualizar Usuários Cadastrados</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas Cadastradas</button>
     </div>
     </form> 
     </div>
