@@ -17,17 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$stmt->execute()) {
         die("Erro no execute: " . $stmt->error);
     }
+
     $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
 
         if (password_verify($senha, $usuario['senha'])) {
             echo "Senha correta!<br>";
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['cargo'] = $usuario['cargo'];
+
             header("Location: pagina_monitoramento.php");
-            exit;
-        } else {
+
+            } else {
             echo "Senha INCORRETA!<br>";
         }
+
     } else {
         echo "E-mail não encontrado!<br>";
     }
@@ -50,15 +57,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <p class="subtitulo">Preencha os dados abaixo para realizar login no site.</p>
     
-    <form method="POST">
-        <label>E-mail:</label>
-        <input type="email" name="email" required>
+  
+    <form action="login.php" method="POST">
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
         <br><br>
-        <label>Senha:</label>
-        <input type="password" name="senha" required>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
         <br><br>
-        <button type="submit">Entrar</button>
+        <input type="submit" value="Entrar">
+
     </form>
+
+
 </body>
 
 </html>
