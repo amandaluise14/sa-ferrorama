@@ -10,9 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $carga = $_POST ['carga'];
     $usuario= $_POST['usuario'];                          
 
-    $sql = "INSERT INTO trens (nome, modelo, velocidade, linha, carga) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $modelo, $velocidade, $linha, $carga, $usuario);
+   $sql = "INSERT INTO trens (modelo, velocidade, linha, carga)
+        VALUES (?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+    "ssss",
+    $modelo,
+    $velocidade,
+    $linha,
+    $carga
+);
      if ($stmt->execute() === TRUE) {
         echo "Novo trem cadastrado com sucesso";
  } else {
@@ -94,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_trem.php';">Visualizar Trens Cadastrados</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_trem.php';">Visualizar Trens Cadastrados</button>
     </div>
     </form> 
     </div>

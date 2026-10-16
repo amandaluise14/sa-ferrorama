@@ -56,6 +56,48 @@ if ($stmt->execute() === TRUE) {
 
     <h2>Editar Rota</h2>
     <form method="POST">
+
+<label>Nome:</label>
+<input type="text" name="nome" value="<?php echo $rotas['nome']; ?>" required>
+<br><br>
+
+<label>Estação Origem:</label>
+<input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
+<br><br>
+
+<label>Estação Destino:</label>
+<input type="text" name="estacao_destino" value="<?php echo $rotas['estacao_destino']; ?>" required>
+<br><br>
+
+<label>Descrição:</label>
+<input type="text" name="descricao" value="<?php echo $rotas['descricao']; ?>" required>
+<br><br>
+
+<label>Selecione o Sensor:</label>
+<select name="sensor_id" required>
+    <option value="" >Selecione o Sensor</option>
+    <?php
+        $sql = "SELECT id, nome FROM sensores";
+        $sensores = $conn->query($sql);
+        while ($sensor = $sensores->fetch_assoc()) {
+    ?>
+
+    <option value="<?php echo $sensor['id'];?>" <?php if ($rota['sensor_id'] == $sensor['id']) echo 'selected'; ?>>
+        <?php echo $sensor['nome'];?>
+    </option>
+
+
+    <?php
+        } 
+    ?>
+</select>
+<br><br>
+
+
+
+
+
+
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
         <br><br>
@@ -67,6 +109,9 @@ if ($stmt->execute() === TRUE) {
         <br><br>
         <label for="distancia_total">Distância Total:</label>
         <input type="text" id="distancia_total" name="distancia_total" required>
+        <br><br>
+         <label for="Descrição">Descrição da Rota:</label>
+        <input type="text" id="descricao" name="descricao" required>
         <br><br>
         <select name="sensor_id" required>
             <option value="" >Selecione o Sensor</option>
