@@ -3,37 +3,56 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-if (!isset($_GET['id_trem']) || empty($_GET['id_trem'])) {
-    die("ID do trem não foi informado.");
+if (!isset($_GET['id'])) {
+    echo "ID do usuário não informado.";
+    exit;
 }
 
-$id_trem = (int) $_GET['id_trem'];
+$id_trem = $_GET['id'];
 
-$sql = "SELECT * FROM trens WHERE id_trem = $id_trem";
+$sql = "SELECT * FROM trens WHERE id_trem = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_trem);
+$stmt->execute();
 
-$trem_editantes = $conn->query($sql);
+$resultado = $stmt->get_result();
+$trem = $resultado->fetch_assoc();
 
-if (!$trem_editantes) {
-    die("Erro na consulta: " . $conn->error);
+if (!$trem) {
+    echo "Trem não encontrado.";
+    exit;
 }
-
-if ($trem_editantes->num_rows == 0) {
-    die("Trem não encontrado.");
-}
-
-$trem = $trem_editantes->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $modelo = $_POST['modelo'];
     $velocidade = $_POST['velocidade'];
     $linha = $_POST['linha'];
     $carga = $_POST['carga'];
 
-    $sql = "UPDATE trens SET modelo='$modelo', velocidade='$velocidade', linha='$linha', carga='$carga' WHERE id_trem=$id_trem";
-    if ($conn->query($sql) === TRUE) {
-        echo "Trem atualizado com sucesso!";
+    $sql = "UPDATE trens
+            SET modelo=?,
+                velocidade=?,
+                linha=?,
+                carga=?
+            WHERE id_trem=?";
+
+    $stmt = $conn->prepare($sql);
+
+   $stmt->bind_param(
+    "ssssi",
+    $modelo,
+    $velocidade,
+    $linha,
+    $carga,
+    $id_trem
+);
+
+    if ($stmt->execute()) {
+        header("Location: visualizar_trem.php");
+        exit();
     } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
+        echo "Erro ao atualizar trem: " . $stmt->error;
     }
 }
 
@@ -45,26 +64,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Trem</title>
+    <title>Visualizar Usuários/Administradores</title>
+   <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
-    <h2>Editar Trem</h2>
-    <form method="POST">
-        <form method="POST">
-        <label for="modelo">Modelo trem:</label>
-        <input type="text" id="modelo" name="modelo" value="<?php echo $trem['modelo']; ?>" required>
-        <br><br>
-        <label for="velocidade">Velocidade limite:</label>
-        <input type="text" id="velocidade" name="velocidade" value="<?php echo $trem['velocidade']; ?>" required>
-        <br><br>
-        <label for="linha">Linha:</label>
-        <input type="number" id="linha" name="linha" value="<?php echo $trem['linha']; ?>" required>
-        <br><br>
-        <label for="carga">Carga:</label>
-        <input type="text" id="carga" name="carga" value="<?php echo $trem['carga']; ?>" required>
-        <br><br>
-        <button type="submit">Editar Trem</button>
-    </form> 
-    </form> 
+
+</head>
+<body>
+    <div class="pagina">
+        <div class="sidebar">
+            <div class="logo">
+            <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            </div>
+            <ul>
+            <a href="../pagina_home.php" class="menu-link "><li>Início</li></a>
+            <a href="../pagina_sensoresetrens.php" class="menu-link "><li>Sensores e Trens</li></a>
+            <a href="../pagina_monitoramento.php" class="menu-link "><li>Monitoramento</li></a>
+            <a href="../pagina_relatorios.php" class="menu-link "><li>Relatórios</li></a>
+            <a href="../usuario/adicionar_usuario.php" class="menu-link "><li>Adicionar usuário</li></a>
+            <a href="../logout.php" class="menu-link "><li>Sair</li></a>
+            </ul>
+        </div>
+
+
+<div class="formulario-container">
+<form method="POST" class="forms_sensores">
+
+<h2 id="titulo-admin">Editar Trem</h2>
+
+<label>Modelo Trem:</label>
+<input type="text" name="modelo" value="<?php echo $trens['modelo']; ?>" required>
+<br><br>
+
+<label>Velocidade Limite:</label>
+<input type="text" name="velocidade" value="<?php echo $trens['velocidade']; ?>" required>
+<br><br>
+
+<label>Linha:</label>
+<input type="text" name="linha" value="<?php echo $trens['linha']; ?>" required>
+<br><br>
+
+<label>Carga:</label>
+<input type="text" name="carga" value="<?php echo $trens['carga']; ?>" required>
+<br><br>
+
+
+<button id="botaoCadastro" type="submit">Editar Trem</button>
+   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
+
+
+
+</form>
+</div>
+
+
 </body>
 </html>

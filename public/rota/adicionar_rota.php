@@ -5,16 +5,23 @@ include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
-    $estacao_origem = $_POST['estacao_origem'];
-    $estacao_destino = $_POST['estacao_destino'];
-    $distancia_total = $_POST['distancia_total'];
-    $sensor_id = $_POST ['sensor_id'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST ['telefone'];
+    $endereco = $_POST ['endereco'];
+    $cpf = $_POST ['cpf'];
+    $cargo = $_POST ['cargo'];
+    $data_nascimento = $_POST ['data_nascimento'];
+    $status_usuario = $_POST ['status_usuario'];
 
-    $sql = "INSERT INTO rotas (nome, estacao_origem, estacao_destino, distancia_total, sensor_id) VALUES (?, ?, ?, ?, ?)";
+    // Cria um hash seguro para a senha 
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $nome, $estacao_origem, $estacao_destino, $distancia_total, $sensor_id);
+    $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
-        echo "Nova rota cadastrada com sucesso";
+        echo "Novo usuário/administrador cadastrado com sucesso";
  } else {
     echo "erro: " . $sql . "<br>" . $conn->error;
  }
@@ -27,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Rota</title>
+    <title>Cadastrar Usuário</title>
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
@@ -40,62 +47,79 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <ul>
           
-           
-<?php if ($_SESSION['cargo'] === 'administrador'): ?>
+            <a href="../../pagina_monitoramento.php" class="menu-link ">
+                    <li>Monitoramento</li>
+                </a>
 
-    <a href="../pagina_home.php" class="menu-link">
-        <li>Início</li>
-    </a>
+            <a href="../../logout.php" class="menu-link ">
+                    <li>Sair</li>
+                </a>
 
-    <a href="../pagina_relatorios.php" class="menu-link">
-        <li>Relatórios</li>
-    </a>
+                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-    <a href="adicionar_usuario.php" class="menu-link">
-        <li>Adicionar usuário</li>
-    </a>
 
-<?php endif; ?>
+         <!-- Adminitrador pode acessar  -->
+                <a href="../../pagina_home.php" class="menu-link ">
+                   <li>Início</li>
+                </a>
+                <a href="../../pagina_relatorios.php" class="menu-link ">
+                    <li>Relatórios</li>
+                </a>
+                <a href="../../usuario/adicionar_usuario.php" class="menu-link ">
+                    <li>Adicionar usuário</li>
+                </a>
 
-<!-- Aparece para administrador e usuário comum -->
-<a href="../pagina_monitoramento.php" class="menu-link">
-    <li>Monitoramento</li>
-</a>
+    <?php endif; ?>
 
-<a href="../logout.php" class="menu-link">
-    <li>Sair</li>
-</a>
 
 
     </ul>
     </div>
 
-    <title>Cadastrar Rota</title>
+    <title>Cadastar Usuario/Administrador </title>
       <div class="formulario-container">
         <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Cadastrar Rota</h2>
+            <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
             <div class="conteudo">
 
-    <label for="nome">Nome da rota:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Rota 53" required>
+    <label for="nome">Nome:</label>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Gabriela" required>
      <br><br> 
-    <label for="estacao_origem">Estação de origem:</label>
-    <input type="text" id="estacao_origem" name="estacao_origem" placeholder="Ex: São Paulo" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Ex: usuario@infotem" required>
      <br><br>
-    <label for="estacao_destino">Estação de destino:</label>
-    <input type="text" id="estacao_destino" name="estacao_destino" placeholder="Ex: Rio de Janeiro" required>
+    <label for= "senha">Senha:</label>
+    <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
      <br><br>
-    <label for= "distancia_total">Distância total:</label>
-    <input type="number" id="distancia_total" name="distancia_total" placeholder="Ex: 100km" required>
+     <label for= "telefone">Telefone:</label>
+    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
      <br><br>
-    <label for= "sensor_id">ID do sensor:</label>
-    <input type="number" id="sensor_id" name="sensor_id" placeholder="Ex: 1" required>
-     <br><br>
-    
+    <label for="endereco">Endereço:</label>
+     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
+     <br><br> 
+    <label for="data_nascimento">Data de nascimento:</label>
+     <input type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex: 21/02/09" required>
+     <br><br> 
+    <label for="cpf">CPF:</label>
+     <input type="text" id="cpf" name="cpf" placeholder="Ex: 123.456.789.1011" required>
+     <br><br> 
+    <label for="cargo">Cargo:</label>
+        <select id="cargo" name="cargo">
+        <option>Selecione</option>
+        <option>Administrador</option>
+        <option>Usuário</option>
+</select>
+ <br><br> 
+    <label for="status_usuario">Status:</label>
+        <select id="status_usuario" name="status_usuario">
+        <option>Selecione</option>
+        <option>Ativo</option>
+        <option>Inativo</option>
+         </select>
 
-    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
+    <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_rota.php';">Visualizar Rotas Cadastradas</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';">Visualizar Usuários Cadastrados</button>
     </div>
     </form> 
     </div>
