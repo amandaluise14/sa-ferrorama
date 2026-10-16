@@ -19,7 +19,9 @@ id_trem INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 modelo VARCHAR(50) NOT NULL,
 velocidade VARCHAR(50) NOT NULL,
 linha INT NOT NULL,
-carga VARCHAR(50) NOT NULL
+carga VARCHAR(50) NOT NULL,
+usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id_usuario)
 );
 
 CREATE TABLE sensores (
