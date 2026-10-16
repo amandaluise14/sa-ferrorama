@@ -1,51 +1,52 @@
-<?php
+<?php 
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
-    $estacao_origem = $_POST['estacao_origem'];
-    $estacao_destino = $_POST['estacao_destino'];
-    $distancia_total = $_POST['distancia_total'];
-    $sensor_id = $_POST['sensor_id'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST ['telefone'];
+    $endereco = $_POST ['endereco'];
+    $cpf = $_POST ['cpf'];
+    $cargo = $_POST ['cargo'];
+    $data_nascimento = $_POST ['data_nascimento'];
+    $status_usuario = $_POST ['status_usuario'];
 
-    $sql = "INSERT INTO rota (nome, estacao_origem, estacao_destino, distancia_total, sensor_id) VALUES (?, ?, ?, ?, ?)";
+    // Cria um hash seguro para a senha 
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $nome, $estacao_origem, $estacao_destino, $distancia_total, $sensor_id);
-    if ($stmt->execute() === TRUE) {
-        echo "Nova rota cadastrada com sucesso!";
-    } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
-    }
-}
+    $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
+     if ($stmt->execute() === TRUE) {
+        echo "Novo usuário/administrador cadastrado com sucesso";
+ } else {
+    echo "erro: " . $sql . "<br>" . $conn->error;
+ }
 
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
     <link rel="stylesheet" href="../../style/style.css">
-    <title>Cadastrar Rota</title>
-    <style>
-</style>
 </head>
-
 <body>
-
-
     <div class="pagina">
-        <div class="sidebar">
+    <div class="sidebar">
 
-            <div class="logo">
-                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-            </div>
+        <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
 
-            <ul>
-              
+    <ul>
+          
             <a href="../../pagina_monitoramento.php" class="menu-link ">
                     <li>Monitoramento</li>
                 </a>
@@ -72,55 +73,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-            </ul>
-        </div>
-
-        <div class="formulario-container">
-
-            <form method="POST" class="forms_rotas">
-
-                <div class="conteudo">
-
-                    <h2 class="titulo-admin">Cadastrar Rota </h2>
-
-                    <label for="nome">Nome da rota (linha):</label>
-                    <input type="text" id="nome" name="nome" placeholder="Ex: Linha Norte" required>
-                    <br><br>
-                    <label for="estacao_origem">Estação Origem:</label>
-                    <input type="text" id="estacao_origem" placeholder="Ex: Linha Norte" name="estacao_origem" required>
-                    <br><br>
-                    <label for="estacao_destino">Estação Destino:</label>
-                    <input type="text" id="estacao_destino" placeholder="Ex: Linha Sudeste" name="estacao_destino"
-                        required>
-                    <br><br>
-                    <label for="distancia_total"> Distância total: </label>
-                    <select name="distancia_total" id="distancia_total" required>
-                        <option value="">Selecione a distância</option>
-                        <option value="10">10 km</option>
-                        <option value="20">20 km</option>
-                        <option value="30">30 km</option>
-                        <option value="40">40 km</option>
-                    </select>
-                    <br><br>
-                         
-                    <label for="sensor_id">Sensor:</label>
-
-                    <select name="sensor_id" required>
-                        <option value="">Selecione o Sensor</option>
-
-                    </select>
-                    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
-                    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-                    <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas Cadastradas</button>
-
-                </div>
-            </form>
-
-        </div>
-
+    </ul>
     </div>
 
+    <title>Cadastar Usuario/Administrador </title>
+      <div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
+            <div class="conteudo">
+
+    <label for="nome">Nome:</label>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Gabriela" required>
+     <br><br> 
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Ex: usuario@infotem" required>
+     <br><br>
+    <label for= "senha">Senha:</label>
+    <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
+     <br><br>
+     <label for= "telefone">Telefone:</label>
+    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+     <br><br>
+    <label for="endereco">Endereço:</label>
+     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
+     <br><br> 
+    <label for="data_nascimento">Data de nascimento:</label>
+     <input type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex: 21/02/09" required>
+     <br><br> 
+    <label for="cpf">CPF:</label>
+     <input type="text" id="cpf" name="cpf" placeholder="Ex: 123.456.789.1011" required>
+     <br><br> 
+    <label for="cargo">Cargo:</label>
+        <select id="cargo" name="cargo">
+        <option>Selecione</option>
+        <option>Administrador</option>
+        <option>Usuário</option>
+</select>
+ <br><br> 
+    <label for="status_usuario">Status:</label>
+        <select id="status_usuario" name="status_usuario">
+        <option>Selecione</option>
+        <option>Ativo</option>
+        <option>Inativo</option>
+         </select>
+
+    <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
+   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='visualizar_usuario.php';">Visualizar Usuários Cadastrados</button>
+    </div>
+    </form> 
+    </div>
 </body>
-
 </html>
-
