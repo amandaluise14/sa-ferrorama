@@ -259,7 +259,8 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                                         </button>
 
-                                        <buttonclass="excluir acao-tooltip"
+                                        <button
+                                            class="excluir acao-tooltip"
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {
