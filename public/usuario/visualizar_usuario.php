@@ -246,10 +246,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
 
-                                    </td>
-
-                                    <td>
-
                                         <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
