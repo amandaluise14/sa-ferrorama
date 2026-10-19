@@ -235,51 +235,22 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                                 <tr>
 
+                         <td><?php echo $usuario['id_usuario']; ?></td>
+                                    <td><?php echo $usuario['nome']; ?></td>
+                                    <td><?php echo $usuario['email']; ?></td>
+                                    <td><?php echo $usuario['telefone']; ?></td>
+                                    <td><?php echo $usuario['endereco']; ?></td>
+                                    <td><?php echo $usuario['data_nascimento']; ?></td>
+                                    <td><?php $cpf = $usuario['cpf']; echo '***.***.***-' . substr($cpf, -2);?></td>
+                                    <td><?php echo $usuario['cargo']; ?></td>
+                                    <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
-                                        <?php echo htmlspecialchars((string) $usuario['id_usuario']); ?>
-                                    </td>
 
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['nome'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['telefone'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['endereco'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['data_nascimento'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php
-                                        $cpf = $usuario['cpf'] ?? '';
-                                        echo $cpf !== ''
-                                            ? '***.***.***-' . substr($cpf, -2)
-                                            : '';
-                                        ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['cargo'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['status_usuario'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
                                     </td>
 
                                     <td>
 
-                                        <button
-                                            class="editar acao-tooltip"
+                                        <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">
@@ -288,8 +259,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                                         </button>
 
-                                        <button
-                                            class="excluir acao-tooltip"
+                                        <buttonclass="excluir acao-tooltip"
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {

@@ -2,19 +2,7 @@
 session_start();
 
 include '../../infra/conexao.php';
-
-if (!isset($_SESSION['usuario'])) {
-    header("Location: ../login.php");
-    exit();
-}
-
-$administrador = isset($_SESSION['cargo']) && $_SESSION['cargo'] === 'administrador';
-$sql = "SELECT * FROM trens";
-$resultado = mysqli_query($conn, $sql);
-
-if(!$resultado) {
-    die("Erro ao consultar os trens.");
-}
+include '../../infra/verificar_admin.php';
 
 ?>
 
