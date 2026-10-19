@@ -2,15 +2,18 @@
 session_start();
 include '../infra/conexao.php';
 
-
+$erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
+<<<<<<< HEAD
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     echo "senhaHash". $senhaHash;
 
+=======
+>>>>>>> 79f126cb85362c63f5d322b43571a62c39b9eb52
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
 
@@ -30,23 +33,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         if (password_verify($senha, $usuario['senha'])) {
-            echo "Senha correta!<br>";
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nome'] = $usuario['nome'];
             $_SESSION['cargo'] = $usuario['cargo'];
 
             header("Location: pagina_monitoramento.php");
+            exit;
 
             } else {
+<<<<<<< HEAD
             echo "Senha INCORRETA!<br>";
                
             echo "senhaHash: " . $senhaHash;
             
-        }
+=======
 
+            $erro = "Senha incorreta!"
+>>>>>>> 79f126cb85362c63f5d322b43571a62c39b9eb52
+        }
     } else {
-        echo "E-mail não encontrado!<br>";
-        echo "senhaHash: " . $senhaHash;
+        $erro = "E-mail não encontrado!";
     }
 }
 ?>
@@ -60,14 +66,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login InfoTrem</title>
      <link rel="stylesheet" href="../style/style.css">
 </head>
-
 <body id="pagina_login">
+    <?php if (!empty($erro)) { ?>
+        <div class="mensagem-erro">
+            <span class="icone-alerta">!</span>
+            <div class="texto-alerta">
+                <strong>Ops! Não foi possível entrar.</strong>
+                <p><?php echo htmlspecialchars($erro); ?></p>
+            </div>
+        </div>
+    <?php } ?>
       <div id="container">
     <h2>Login</h2>
 
     <p class="subtitulo">Preencha os dados abaixo para realizar login no site.</p>
-    
-  
     <form action="login.php" method="POST">
 
         <label for="email">E-mail:</label>
