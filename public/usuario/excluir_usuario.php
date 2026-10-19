@@ -15,8 +15,8 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_usuario);
 
 if ($stmt->execute()) {
-    echo "O usuário foi excluído com sucesso!<br>";
-    echo "<button type='button' onclick=\"window.location.href='visualizar_usuario.php'\">Voltar</button>";
+    header("Location: visualizar_usuario.php");
+    exit;
 } else {
     echo "Erro ao excluir o usuário: " . $conn->error;
 }

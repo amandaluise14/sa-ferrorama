@@ -13,8 +13,8 @@ $stmt = $conn-> prepare ($sql);
 $stmt-> bind_param ("i", $id);
 
 if ($stmt->execute ()) {
-    echo " A rota foi excluído com sucesso! <br>";
-    echo "<button type='button' onclick=\"window.location.href='listar_rotas.php'\">Voltar</button>";
+    header("Location: listar_rota.php");
+    exit;
 }  else {
     echo "Erro ao excluir a rota: ". $conn->error;
 }

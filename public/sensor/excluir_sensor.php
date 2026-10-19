@@ -1,21 +1,23 @@
 <?php
+if (!isset($_GET['id_sensor'])) {
+    echo "ID do sensor não foi enviado.";
+    exit;
+}
+
+$id_sensor = $_GET ['id_sensor'];
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-$id = $_GET['id'] ?? '';
 $sql = "DELETE FROM sensores WHERE id_sensor = ?";
 $stmt = $conn-> prepare ($sql);
-$stmt-> bind_param ("i", $id);
+$stmt-> bind_param ("i", $id_sensor);
 
 if ($stmt->execute ()) {
-    echo "O sensor foi excluído com sucesso! <br>";
-    echo "<button type='button' onclick=\"window.location.href='listar_sensor.php'\">Voltar</button>";
+    header("Location: listar_sensor.php");
+    exit;
 }  else {
     echo "Erro ao excluir o sensor: ". $conn->error;
 }
-
-$stmt->close();
-$conn->close();
 
 ?>
