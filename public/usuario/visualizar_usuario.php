@@ -199,10 +199,10 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td>
 
 
-                                        <button class="editar" type="button"
+                                        <button class="editar acao-tooltip" data-tooltip="Editar" type="button"
                                             onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'"><i class="bi bi-pencil"></i></button>
 
-                                        <button class="excluir" type="button"
+                                        <button class="excluir acao-tooltip" data-tooltip="Excluir" type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }"><i class="bi bi-person-dash-fill"></i></button>
                                     </td>
                                 </tr>

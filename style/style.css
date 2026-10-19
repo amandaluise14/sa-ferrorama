@@ -673,12 +673,12 @@ background-color: #858484;
 }
 
 .excluir:hover {
-    color: #c00000;
+    color: #f5dddd67;
     text-decoration: underline;
 }
 
 .editar {
-    color: #8b0000;
+    color: #700101;
     background-color: transparent;
     border: none;
     text-decoration: none;
@@ -686,7 +686,7 @@ background-color: #858484;
 }
 
 .editar:hover {
-    color: #8b0000;
+    color: #f5dddd67;
 }
 
 
@@ -987,3 +987,4 @@ margin-bottom: 12px;
     margin-left: 0 !important;
     margin-right: auto !important;
 }
+

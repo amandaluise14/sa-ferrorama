@@ -5,23 +5,18 @@ include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $telefone = $_POST ['telefone'];
-    $endereco = $_POST ['endereco'];
-    $cpf = $_POST ['cpf'];
-    $cargo = $_POST ['cargo'];
-    $data_nascimento = $_POST ['data_nascimento'];
-    $status_usuario = $_POST ['status_usuario'];
+    $descricao= $_POST['Descricao'];
+    $distancia = $_POST['Dista ncia'];
+    $trem_vinculado = $_POST ['distancia_total'];
+    $tempo= $_POST ['sensores_vinculados'];
+    $data_criacao = $_POST ['data_criacao'];
 
-    // Cria um hash seguro para a senha 
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO usuarios (nome, descricao , distancia , trem_vinculado ,tempo, data_criacao) VALUES (?, ?, ?, ?, ?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
+    $stmt->bind_param("sssssssss", $nome, $descricao , $distancia, $trem_vinculado , $tempo, $data_criacao );
      if ($stmt->execute() === TRUE) {
-        echo "Novo usuário/administrador cadastrado com sucesso";
+        echo "Nova Rota cadastrada com sucesso";
  } else {
     echo "erro: " . $sql . "<br>" . $conn->error;
  }
@@ -34,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Usuário</title>
+    <title>Cadastrar Rota</title>
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
@@ -76,17 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
     </div>
 
-    <title>Cadastar Usuario/Administrador </title>
+    <title>Cadastar Rota  </title>
       <div class="formulario-container">
         <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
+            <h2 id="titulo-admin">Cadastrar Rota</h2>
             <div class="conteudo">
 
-    <label for="nome">Nome:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Gabriela" required>
+    <label for="nome">Nome da rota:</label>
+     <input type="text" id="nome" name="nome" placeholder="Ex: rota " required>
      <br><br> 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Ex: usuario@infotem" required>
+    <label for="descricao">Descrição da rota :</label>
+    <input type="descricao" id="descricao" name="descricaol" placeholder="Ex: Ela " required>
      <br><br>
     <label for= "senha">Senha:</label>
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
