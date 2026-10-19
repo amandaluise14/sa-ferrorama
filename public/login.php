@@ -7,6 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
+
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
 
@@ -31,12 +35,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: pagina_monitoramento.php");
             exit;
             } else {
+<<<<<<< HEAD
             $erro = "Senha incorreta!";
+=======
+<<<<<<< HEAD
+            echo "Senha INCORRETA!<br>";               
+            
+=======
+
+            $erro = "Senha incorreta!"
+>>>>>>> 79f126cb85362c63f5d322b43571a62c39b9eb52
+>>>>>>> 9c16d89a5de14d68f343d6551923ea6ea08b7d91
         }
     } else {
+<<<<<<< HEAD
+        echo "E-mail não encontrado!<br>";
+ 
+=======
         $erro = "E-mail não encontrado!";
+<<<<<<< HEAD
 }
 $stmt->close();
+=======
+>>>>>>> 79f126cb85362c63f5d322b43571a62c39b9eb52
+    }
+>>>>>>> 9c16d89a5de14d68f343d6551923ea6ea08b7d91
 }
 ?>
 <!DOCTYPE html>
