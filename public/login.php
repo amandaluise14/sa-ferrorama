@@ -7,10 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
+<<<<<<< HEAD
 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     echo "senhaHash". $senhaHash;
+=======
+>>>>>>> d69645d908d10851c72019828f18c01a4ac2f3dc
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
@@ -39,10 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: pagina_monitoramento.php");
 
             } else {
+<<<<<<< HEAD
             echo "Senha INCORRETA!<br>";               
 
             echo "senhaHash: " . $senhaHash;
             
+=======
+            echo "Senha INCORRETA!<br>";
+               
+
+>>>>>>> d69645d908d10851c72019828f18c01a4ac2f3dc
         }
 
     } else {
