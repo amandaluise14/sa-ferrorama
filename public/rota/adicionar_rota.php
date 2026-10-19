@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $distancia = $_POST['Dista ncia'];
     $trem_vinculado = $_POST ['distancia_total'];
     $tempo= $_POST ['sensores_vinculados'];
-    $data_criacao $_POST ['data_criacao'];
+    $data_criacao = $_POST ['data_criacao'];
 
 
     $sql = "INSERT INTO usuarios (nome, descricao , distancia , trem_vinculado ,tempo, data_criacao) VALUES (?, ?, ?, ?, ?,?)";
