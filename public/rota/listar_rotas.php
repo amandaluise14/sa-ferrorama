@@ -13,6 +13,9 @@ include '../../infra/verificar_admin.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Listar Rotas</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -20,6 +23,12 @@ include '../../infra/verificar_admin.php';
 
 <div class="pagina">
 
+ <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
+        
     <div class="sidebar">
         <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
