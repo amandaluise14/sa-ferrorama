@@ -88,7 +88,7 @@ $stmt->bind_param(
     <label for="modelo">Modelo Trem:</label>
     <input type="text" id="modelo" name="modelo" placeholder="Ex: Modelo A" required>
      <br><br>
-    <label for= "velocidade">velocidade:</label>
+    <label for= "velocidade">Velocidade Limite:</label>
     <input type="number" id="velocidade" name="velocidade" placeholder="Ex: 120 km/h" required>
      <br><br>
      <label for= "linha">Linha:</label>
