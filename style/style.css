@@ -672,11 +672,6 @@ background-color: #858484;
 
 }
 
-.excluir:hover {
-    color: #f5dddd67;
-    text-decoration: underline;
-}
-
 .editar {
     color: #700101;
     background-color: transparent;
@@ -685,10 +680,13 @@ background-color: #858484;
     font-weight: bold;
 }
 
-.editar:hover {
-    color: #f5dddd67;
+.editar:hover,
+.excluir:hover {
+    background-color: transparent !important;
+    color: #8b0000;
+    box-shadow: none !important;
+    text-decoration: none;
 }
-
 
 /* Cards de permissão */
 
@@ -933,7 +931,7 @@ margin-bottom: 5px;
 }
 
 input {
-width: 100%;
+width: 200%;
 padding: 10px;
 border: none;
 border-radius: 7px;
