@@ -13,7 +13,7 @@ $sql = "SELECT * FROM trens";
 $resultado = mysqli_query($conn, $sql);
 
 if(!$resultado) {
-    die("Erro ao consultar os trens.");
+    die("Erro ao consultar os trens: " . mysqli_error($conn));
 }
 
 ?>
