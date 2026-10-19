@@ -4,14 +4,6 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-$administrador = isset($_SESSION['cargo']) && $_SESSION['cargo'] === 'administrador';
-$sql = "SELECT * FROM trens";
-$resultado = mysqli_query($conn, $sql);
-
-if(!$resultado) {
-    die("Erro ao consultar os trens: " . mysqli_error($conn));
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +28,7 @@ if(!$resultado) {
         <ul>
                     
              
- 
- <!-- aqui ja verifica o cargo do usuario logado e mostra os links de acordo com o cargo -->
-<?php if ($administrador): ?>
+<?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
       <a href="../pagina_home.php" class="menu-link">
         <li>Início</li>
@@ -88,58 +78,52 @@ if(!$resultado) {
 
         <div class="table-responsive">
 
-           <table class="tabela">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Modelo</th>
-            <th>Velocidade</th>
-            <th>Linha</th>
-            <th>Carga</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+            <table class="table tabela-sensores">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Identificação</th>
+                        <th>Modelo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
 
-    <tbody>
-        <?php
-        while ($trem = $resultado->fetch_assoc()) {
-        ?>
-            <tr>
-                <td><?php echo $trem['id_trem']; ?></td>
-                <td><?php echo $trem['modelo']; ?></td>
-                <td><?php echo $trem['velocidade']; ?></td>
-                <td><?php echo $trem['linha']; ?></td>
-                <td><?php echo $trem['carga']; ?></td>
+                <tbody>
 
-                <td>
-                    <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+                    <tr>
+                        <td>1</td>
+                        <td>TR-001</td>
+                        <td>Carga</td>
+                        <td>Ativo</td>
+                        <td>
+                            <a href="#" class="excluir">Excluir</a>
+                        </td>
+                    </tr>
 
-                        <button
-                            class="editar acao-tooltip"
-                            data-tooltip="Editar"
-                            type="button"
-                            onclick="window.location.href='editar_trem.php?id_trem=<?php echo $trem['id_trem']; ?>'">
-                            Alterar
-                        </button>
+                    <tr>
+                        <td>14</td>
+                        <td>TR-014</td>
+                        <td>Passageiros</td>
+                        <td>Em manutenção</td>
+                        <td>
+                            <a href="#" class="excluir">Excluir</a>
+                        </td>
+                    </tr>
 
-                        <button
-                            class="excluir acao-tooltip"
-                            data-tooltip="Excluir"
-                            type="button"
-                            onclick="if (confirm('Tem certeza que deseja excluir este trem?')) { window.location.href='excluir_trem.php?id_trem=<?php echo $trem['id_trem']; ?>'; }">
-                            Excluir
-                        </button>
+                    <tr>
+                        <td>500</td>
+                        <td>TR-500</td>
+                        <td>Expresso</td>
+                        <td>Ativo</td>
+                        <td>
+                            <a href="#" class="excluir">Excluir</a>
+                        </td>
+                    </tr>
 
-                    <?php else: ?>
-                        Visualização
-                    <?php endif; ?>
-                </td>
-            </tr>
-        <?php
-        }
-        ?>
-    </tbody>
-</table>
+                </tbody>
+
+            </table>
 
         </div>
 
