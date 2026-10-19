@@ -27,8 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
 
-
-
         if (password_verify($senha, $usuario['senha'])) {
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nome'] = $usuario['nome'];
@@ -36,18 +34,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             header("Location: pagina_monitoramento.php");
             exit;
-
             } else {
+            echo "Senha INCORRETA!<br>";               
+            
+
+            $erro = "Senha incorreta!";
             echo "Senha INCORRETA!<br>";               
             
         }
     } else {
         echo "E-mail não encontrado!<br>";
  
-    }
+        $erro = "E-mail não encontrado!";
+
+}
+$stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
