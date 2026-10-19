@@ -84,7 +84,7 @@ if ($stmt->execute() === TRUE) {
 
 <?php endif; ?>
 
-<!-- Aparece para administrador e usuário comum -->
+
 <a href="../pagina_monitoramento.php" class="menu-link">
     <li>Monitoramento</li>
 </a>

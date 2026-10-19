@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $distancia = $_POST['Dista ncia'];
     $trem_vinculado = $_POST ['distancia_total'];
     $tempo= $_POST ['sensores_vinculados'];
-    $data_criacao = $_POST ['data_criacao'];
+    $data_criacao= $_POST ['data_criacao'];
 
 
     $sql = "INSERT INTO usuarios (nome, descricao , distancia , trem_vinculado ,tempo, data_criacao) VALUES (?, ?, ?, ?, ?,?)";
@@ -42,29 +42,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <ul>
           
-            <a href="../pagina_monitoramento.php" class="menu-link ">
-                    <li>Monitoramento</li>
+    <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
                 </a>
 
-            <a href="../logout.php" class="menu-link ">
-                    <li>Sair</li>
-                </a>
-
-                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
-
-
-         <!-- Adminitrador pode acessar  -->
-                <a href="../pagina_home.php" class="menu-link ">
-                   <li>Início</li>
-                </a>
-                <a href="../pagina_relatorios.php" class="menu-link ">
+                <a href="../pagina_relatorios.php" class="menu-link">
                     <li>Relatórios</li>
                 </a>
-                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
+
+                <a href="../usuario/adicionar_usuario.php" class="menu-link">
                     <li>Adicionar usuário</li>
                 </a>
 
-    <?php endif; ?>
+            <?php endif; ?>
+
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li>Monitoramento</li>
+            </a>
+
+            <a href="../logout.php" class="menu-link">
+                <li>Sair</li>
+            </a>
 
 
 
