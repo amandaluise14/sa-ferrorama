@@ -5,7 +5,7 @@ include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
 // aqui busca os trens cadastrados
-$sql = "SELECT * FROM trens ORDER BY id_trem";
+$sql = "SELECT * FROM trens";
 $trens = mysqli_query($conn, $sql);
 
 if (!$trens) {
@@ -13,7 +13,6 @@ if (!$trens) {
 }
 ?>
 
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
