@@ -133,4 +133,4 @@ if (!$trens) {
 </body>
 </html>
 
-<!-- nesta pagina precisei de ajuda do chat gpt para criar a tabela de listagem dos trens cadastrados, pois não sabia como fazer -->
+<!-- nesta pagina precisei de ajuda do chat gpt para criar a tabela de listagem dos trens cadastrados -->
