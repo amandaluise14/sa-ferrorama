@@ -96,36 +96,23 @@ if (!$resultado) {
 
                 <tbody>
 
-                    <tr>
-                        <td>1</td>
-                        <td>Joinville</td>
-                        <td>Jaraguá do Sul</td>
-                        <td>42 km</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                            <a href="#" class="editar">Editar</a>
-                        </td>
-                    </tr>
+                   <tbody>
 
-                    <tr>
-                        <td>2</td>
-                        <td>Joinville</td>
-                        <td>São Francisco do Sul</td>
-                        <td>45 km</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+    <?php while ($rota = mysqli_fetch_assoc($resultado)): ?>
+<!-- Aqui é onde os dados das rotas serão exibidos na tabela e cria uma linha pra cada uma -->
+        <tr>
+            <td><?php echo $rota['id_rota']; ?></td>
+            <td><?php echo $rota['origem']; ?></td>
+            <td><?php echo $rota['destino']; ?></td>
+            <td><?php echo $rota['distancia']; ?></td>
+            <td>
+                <span class="text-muted">Ações pendentes</span>
+            </td>
+        </tr>
 
-                    <tr>
-                        <td>3</td>
-                        <td>Joinville</td>
-                        <td>Curitiba</td>
-                        <td>130 km</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+    <?php endwhile; ?>
+
+</tbody>
 
                 </tbody>
 
