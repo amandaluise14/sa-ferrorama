@@ -100,36 +100,24 @@ if (!$trens) {
                 </thead>
 
                 <tbody>
+<!-- Aqui é onde os dados dos trens serão exibidos na tabela -->
+                   <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
 
-                    <tr>
-                        <td>1</td>
-                        <td>TR-001</td>
-                        <td>Carga</td>
-                        <td>Ativo</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+        <tr>
+            <td><?php echo $trem['id_trem']; ?></td>
+            <td><?php echo $trem['identificacao']; ?></td>
+            <td><?php echo $trem['modelo']; ?></td>
+            <td><?php echo $trem['status']; ?></td>
+            <td>
+                <a href="excluir_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
+                   class="excluir"
+                   onclick="return confirm('Tem certeza que deseja excluir este trem?')">
+                    Excluir
+                </a>
+            </td>
+        </tr>
 
-                    <tr>
-                        <td>14</td>
-                        <td>TR-014</td>
-                        <td>Passageiros</td>
-                        <td>Em manutenção</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>500</td>
-                        <td>TR-500</td>
-                        <td>Expresso</td>
-                        <td>Ativo</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+    <?php endwhile; ?>
 
                 </tbody>
 
@@ -145,3 +133,5 @@ if (!$trens) {
 
 </body>
 </html>
+
+<!-- nesta pagina precisei de ajuda do chat gpt para criar a tabela de listagem dos trens cadastrados, pois não sabia como fazer -->
