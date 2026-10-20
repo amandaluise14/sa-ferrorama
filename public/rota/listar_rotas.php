@@ -3,6 +3,14 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+// aqui busca as rotas cadastradas 
+$sql = "SELECT * FROM rotas ORDER BY id_rota";
+$resultado = mysqli_query($conn, $sql);
+
+if (!$resultado) {
+    die("Erro ao consultar as rotas: " . mysqli_error($conn));
+} 
+
 ?>
 
 <!DOCTYPE html>
