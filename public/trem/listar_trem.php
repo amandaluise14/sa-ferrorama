@@ -4,6 +4,15 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+// aqui busca os trens cadastrados
+$sql = "SELECT * FROM trens ORDER BY id_trem";
+$trens = mysqli_query($conn, $sql);
+
+if (!$trens) {
+    die("Erro ao consultar os trens: " . mysqli_error($conn));
+}
+?>
+
 ?>
 
 <!DOCTYPE html>
