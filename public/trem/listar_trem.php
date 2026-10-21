@@ -4,16 +4,6 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-<<<<<<< HEAD
-=======
-// aqui busca os trens cadastrados
-$sql = "SELECT * FROM trens";
-$trens = mysqli_query($conn, $sql);
-
-if (!$trens) {
-    die("Erro ao consultar os trens: " . mysqli_error($conn));
-}
->>>>>>> c7ebc39ecca432f09e6695d794f4180aa42ad80e
 ?>
 
 
