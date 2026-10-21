@@ -42,8 +42,6 @@ $stmt->bind_param(
 </head>
 <body>
     <div class="pagina">
-        
-        
     <div class="sidebar">
 
         <div class="logo">

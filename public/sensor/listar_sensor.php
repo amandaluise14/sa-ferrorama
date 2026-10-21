@@ -19,9 +19,6 @@ include '../../infra/verificar_admin.php';
 <body>
 
    <div class="pagina">
-
-      
-        
     <div class="sidebar">
 
         <div class="logo">

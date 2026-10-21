@@ -22,9 +22,6 @@ include '../../infra/verificar_admin.php';
 <div class="d-flex align-items-start">
 
     <div class="sidebar">
-
-       
-
         <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
