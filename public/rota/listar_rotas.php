@@ -96,7 +96,16 @@ if (!$resultado) {
                                 <td><?php echo $rota['estacao_destino']; ?></td>
                                 <td><?php echo $rota['distancia_total']; ?></td>
                                 <td>
-                                    <span class="text-muted">Ações pendentes</span>
+                                    <a href="editar_rota.php?id_rota=<?php echo $rota['id_rota']; ?>"
+                                       class="editar"
+                                       onclick="window.location.href='editar_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>'">
+                                        Editar
+                                    </a>
+                                    <a href="excluir_rota.php?id_rota=<?php echo $rota['id_rota']; ?>"
+                                       class="excluir"
+                                       onclick="return confirm('Tem certeza que deseja excluir esta rota?')">
+                                        Excluir
+                                    </a>
                                 </td>
                             </tr>
 

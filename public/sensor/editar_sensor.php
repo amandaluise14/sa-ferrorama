@@ -47,29 +47,30 @@ $id_sensor = (int) $_POST['id_sensor'];
 
     <ul>
 
-            <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+    <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-                <a href="../pagina_home.php" class="menu-link">
-                    <li>Início</li>
-                </a>
+    <a href="../../pagina_home.php" class="menu-link">
+        <li>Início</li>
+    </a>
 
-                <a href="../pagina_relatorios.php" class="menu-link">
-                    <li>Relatórios</li>
-                </a>
+    <a href="../../pagina_relatorios.php" class="menu-link">
+        <li>Relatórios</li>
+    </a>
 
-                <a href="../usuario/adicionar_usuario.php" class="menu-link">
-                    <li>Adicionar usuário</li>
-                </a>
+    <a href="../../pagina_usuario.php" class="menu-link">
+        <li>Adicionar usuário</li>
+    </a>
 
-            <?php endif; ?>
+<?php endif; ?>
 
-            <a href="../pagina_monitoramento.php" class="menu-link">
-                <li>Monitoramento</li>
-            </a>
+<!-- Aparece para administrador e usuário comum -->
+<a href="../../pagina_monitoramento.php" class="menu-link">
+    <li>Monitoramento</li>
+</a>
 
-            <a href="../logout.php" class="menu-link">
-                <li>Sair</li>
-            </a>
+<a href="../../logout.php" class="menu-link">
+    <li>Sair</li>
+</a>
 
         </ul>
     </div>
@@ -96,7 +97,7 @@ $id_sensor = (int) $_POST['id_sensor'];
                     <input type="text" id="dado_monitorado" name="dado_monitorado" >
                 <br><br>
                 <button id="botaoCadastro" type="submit">Editar Sensor</button>
-                <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
+                <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
             </div>
         </form> 
     </div>

@@ -37,19 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: pagina_monitoramento.php");
             exit;
             } else {
-
-            echo "Senha INCORRETA!<br>";
-               
-
-
-            echo "Senha INCORRETA!<br>";
-               
+                $erro = "Senha incorreta!";
             echo "senhaHash: " . $senhaHash;
             
 
         }
     } else {
-        echo "E-mail não encontrado!<br>";
+        
     }
         $erro = "E-mail não encontrado!";
 }

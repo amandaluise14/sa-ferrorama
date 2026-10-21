@@ -104,10 +104,11 @@ if (!$trens) {
         </ul>
 
     </div>
-
-    <div class="conteudo">
-
-        <h2>Cadastrar Rota</h2>
+ <title>Cadastar Rota </title>
+      <div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">Cadastrar Rota</h2>
+            <div class="conteudo">
 
         <?php if ($mensagem !== ''): ?>
             <p><?php echo htmlspecialchars($mensagem); ?></p>

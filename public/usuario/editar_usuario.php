@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $telefone  = $_POST['telefone'];
-    $endereco =
-    $cpf
-    $cargo
-    $data_nascimento
-    $status_usuario
+    $endereco = $_POST['endereco'];
+    $cpf = $_POST['cpf'];
+    $cargo = $_POST['cargo'];
+    $data_nascimento = $_POST['data_nascimento'];
+    $status_usuario = $_POST['status_usuario'];
    
 
     $sql = "UPDATE sensores SET nome=?, localizacao=?, descricao_localizacao=?, dado_monitorado=? WHERE id_sensor=?";
@@ -46,12 +46,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
     <ul>
+
+         <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+    <a href="../pagina_home.php" class="menu-link">
         <li>Início</li>
-        <li class="active"> Sensores e Trens</li>
-        <li>Monitoramento</li>
+    </a>
+
+    <a href="../pagina_relatorios.php" class="menu-link">
         <li>Relatórios</li>
+    </a>
+
+    <a href="../../adicionar_usuario.php" class="menu-link">
         <li>Adicionar usuário</li>
-        <li>Sair</li>
+    </a>
+
+<?php endif; ?>
+
+
+<a href="../pagina_monitoramento.php" class="menu-link">
+    <li>Monitoramento</li>
+</a>
+
+<a href="../logout.php" class="menu-link">
+    <li>Sair</li>
+</a>
+
     </ul>
     </div>
     <div class="formulario-container">
