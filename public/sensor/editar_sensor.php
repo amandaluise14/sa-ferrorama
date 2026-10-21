@@ -5,7 +5,11 @@ include '../../infra/verificar_admin.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_sensor = $_POST['id_sensor'];
+    if (!isset($_POST['id_sensor']) || empty($_POST['id_sensor'])) {
+    die("ID do sensor não foi enviado.");
+}
+
+$id_sensor = (int) $_POST['id_sensor'];
     $nome = $_POST['nome'];
     $localizacao = $_POST['localizacao'];
     $descricao_localizacao = $_POST['descricao_localizacao'];
@@ -42,13 +46,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
     <ul>
-        <li>Início</li>
-        <li class="active"> Sensores e Trens</li>
-        <li>Monitoramento</li>
-        <li>Relatórios</li>
-        <li>Adicionar usuário</li>
-        <li>Sair</li>
-    </ul>
+
+            <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
+                </a>
+
+                <a href="../pagina_relatorios.php" class="menu-link">
+                    <li>Relatórios</li>
+                </a>
+
+                <a href="../usuario/adicionar_usuario.php" class="menu-link">
+                    <li>Adicionar usuário</li>
+                </a>
+
+            <?php endif; ?>
+
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li>Monitoramento</li>
+            </a>
+
+            <a href="../logout.php" class="menu-link">
+                <li>Sair</li>
+            </a>
+
+        </ul>
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">

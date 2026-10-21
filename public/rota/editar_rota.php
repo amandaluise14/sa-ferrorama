@@ -3,8 +3,8 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
+if (isset($_POST['id_rota'])) {
+    $id = $_POST['id_rota'];
     $nome = $_POST['nome'];
     $estacao_origem = $_POST['estacao_origem'];
     $estacao_destino = $_POST['estacao_destino'];
@@ -22,7 +22,7 @@ $sql = "UPDATE rotas
             descricao = ?, 
             duracao = ?, 
             trem_id = ? 
-        WHERE id = ?";
+        WHERE id_rota = ?";
 
 $stmt = $conn->prepare($sql);
 
@@ -110,8 +110,8 @@ if ($stmt->execute() === TRUE) {
 <input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
 <br><br>
 
-<label>Distanciatotal:</label>
-<input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
+<label>Distancia total:</label>
+<input type="text" name="distancia_total" value="<?php echo $rotas['distancia_total']; ?>" required>
 <br><br>
 
 <label>Estação Destino:</label>
@@ -126,9 +126,7 @@ if ($stmt->execute() === TRUE) {
 <input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
 <br><br>
 
-<label>Data de criacao: </label>
-<input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
-<br><br>
+
 
 <label>Selecione o Trem Vinculado:</label>
 <select name="trem_id" required>
