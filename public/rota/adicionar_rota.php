@@ -6,12 +6,20 @@ include '../../infra/verificar_admin.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $nome = $_POST['nome'];
+<<<<<<< HEAD
     $estacao_origem = $_POST['estacao_origem'];
     $estacao_destino = $_POST['estacao_destino'];
     $distancia_total = $_POST['distancia_total'];
     $descricao = $_POST['descricao'];
     $duracao = $_POST['duracao'];
     $trem_id = $_POST['trem_id'];
+=======
+    $descricao= $_POST['Descricao'];
+    $distancia = $_POST['Dista ncia'];
+    $trem_vinculado = $_POST ['distancia_total'];
+    $tempo= $_POST ['sensores_vinculados'];
+    $data_criacao= $_POST ['data_criacao'];
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
 
 
     $sql = "INSERT INTO usuarios
@@ -46,9 +54,19 @@ $stmt->bind_param(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Rota</title>
     <link rel="stylesheet" href="../../style/style.css">
+
+     <!-- Bootstrap Icons -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
 </head>
 <body>
     <div class="pagina">
+        <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
     <div class="sidebar">
 
         <div class="logo">
@@ -57,29 +75,29 @@ $stmt->bind_param(
 
     <ul>
           
-            <a href="../pagina_monitoramento.php" class="menu-link ">
-                    <li>Monitoramento</li>
+    <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
                 </a>
 
-            <a href="../logout.php" class="menu-link ">
-                    <li>Sair</li>
-                </a>
-
-                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
-
-
-         <!-- Adminitrador pode acessar  -->
-                <a href="../pagina_home.php" class="menu-link ">
-                   <li>Início</li>
-                </a>
-                <a href="../pagina_relatorios.php" class="menu-link ">
+                <a href="../pagina_relatorios.php" class="menu-link">
                     <li>Relatórios</li>
                 </a>
-                <a href="../usuario/adicionar_usuario.php" class="menu-link ">
+
+                <a href="../usuario/adicionar_usuario.php" class="menu-link">
                     <li>Adicionar usuário</li>
                 </a>
 
-    <?php endif; ?>
+            <?php endif; ?>
+
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li>Monitoramento</li>
+            </a>
+
+            <a href="../logout.php" class="menu-link">
+                <li>Sair</li>
+            </a>
 
 
 

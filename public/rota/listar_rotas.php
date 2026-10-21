@@ -3,7 +3,16 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+// aqui busca as rotas cadastradas 
+$sql = "SELECT * FROM rotas ORDER BY id_rota";
+$resultado = mysqli_query($conn, $sql);
+
+if (!$resultado) {
+    die("Erro ao consultar as rotas: " . mysqli_error($conn));
+} 
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +21,9 @@ include '../../infra/verificar_admin.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Listar Rotas</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -19,6 +31,12 @@ include '../../infra/verificar_admin.php';
 
 <div class="pagina">
 
+ <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
+        
     <div class="sidebar">
         <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
@@ -78,36 +96,23 @@ include '../../infra/verificar_admin.php';
 
                 <tbody>
 
-                    <tr>
-                        <td>1</td>
-                        <td>Joinville</td>
-                        <td>Jaraguá do Sul</td>
-                        <td>42 km</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                            <a href="#" class="editar">Editar</a>
-                        </td>
-                    </tr>
+                   <tbody>
 
-                    <tr>
-                        <td>2</td>
-                        <td>Joinville</td>
-                        <td>São Francisco do Sul</td>
-                        <td>45 km</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+    <?php while ($rota = mysqli_fetch_assoc($resultado)): ?>
+<!-- Aqui é onde os dados das rotas serão exibidos na tabela e cria uma linha pra cada uma -->
+        <tr>
+            <td><?php echo $rota['id_rota']; ?></td>
+            <td><?php echo $rota['origem']; ?></td>
+            <td><?php echo $rota['destino']; ?></td>
+            <td><?php echo $rota['distancia']; ?></td>
+            <td>
+                <span class="text-muted">Ações pendentes</span>
+            </td>
+        </tr>
 
-                    <tr>
-                        <td>3</td>
-                        <td>Joinville</td>
-                        <td>Curitiba</td>
-                        <td>130 km</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+    <?php endwhile; ?>
+
+</tbody>
 
                 </tbody>
 
@@ -125,3 +130,4 @@ include '../../infra/verificar_admin.php';
 
 </body>
 </html>
+<!-- nesta pagina precisei de ajuda do chat gpt para dar auxilio na criação da tabela de listagem de rotas -->

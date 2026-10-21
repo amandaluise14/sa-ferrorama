@@ -1,10 +1,10 @@
 <?php
-if (!isset($_GET['id_trem'])) {
-    echo "ID do trem não foi enviado.";
+if (!isset($_GET['id_rota'])) {
+    echo "ID da rota não foi enviado.";
     exit;
 }
 
-$id = $_GET ['id'];
+$id = $_GET ['id_rota'];
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
@@ -13,8 +13,8 @@ $stmt = $conn-> prepare ($sql);
 $stmt-> bind_param ("i", $id);
 
 if ($stmt->execute ()) {
-    echo " A rota foi excluído com sucesso! <br>";
-    echo "<button type='button' onclick=\"window.location.href='listar_rotas.php'\">Voltar</button>";
+    header("Location: listar_rota.php");
+    exit;
 }  else {
     echo "Erro ao excluir a rota: ". $conn->error;
 }

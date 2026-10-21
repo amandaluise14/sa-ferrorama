@@ -38,9 +38,19 @@ $stmt->bind_param(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Trem </title>
     <link rel="stylesheet" href="../../style/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
     <div class="pagina">
+        
+         <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            aria-label="Voltar para a página anterior"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
+
     <div class="sidebar">
 
         <div class="logo">
@@ -88,7 +98,7 @@ $stmt->bind_param(
     <label for="modelo">Modelo Trem:</label>
     <input type="text" id="modelo" name="modelo" placeholder="Ex: Modelo A" required>
      <br><br>
-    <label for= "velocidade">velocidade:</label>
+    <label for= "velocidade">Velocidade Limite:</label>
     <input type="number" id="velocidade" name="velocidade" placeholder="Ex: 120 km/h" required>
      <br><br>
      <label for= "linha">Linha:</label>

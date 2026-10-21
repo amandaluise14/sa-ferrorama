@@ -1,193 +1,250 @@
 <?php
-
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+// Recebe os filtros
+$pesquisa = trim($_POST['pesquisar'] ?? '');
+$cargo = $_POST['cargo'] ?? '';
+$status = $_POST['status'] ?? '';
 
-$sql = "SELECT * FROM usuarios";
-$resultado = mysqli_query($conn, $sql);
+$busca = "%{$pesquisa}%";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Consulta de usuários com filtros
+$sql = "SELECT * FROM usuarios
+        WHERE (? = '' OR nome LIKE ? OR email LIKE ?)
+        AND (? = '' OR cargo = ?)
+        AND (? = '' OR status_usuario = ?)
+        ORDER BY id_usuario";
 
-    $id_usuario = $_POST['usuario'] ?? '';
+$stmt = $conn->prepare($sql);
 
-    if (!empty($id_usuario)) {
+$stmt->bind_param(
+    "sssssss",
+    $pesquisa,
+    $busca,
+    $busca,
+    $cargo,
+    $cargo,
+    $status,
+    $status
+);
 
-        $id_usuario = (int) $id_usuario;
+$stmt->execute();
+$usuarios = $stmt->get_result();
 
-        $sql = "SELECT * FROM usuarios WHERE id_usuario = $id_usuario";
-
-        $resultado = mysqli_query($conn, $sql);
-
-    } else {
-
-        $sql = "SELECT * FROM usuarios";
-
-        $resultado = mysqli_query($conn, $sql);
-    }
-}
-
-//funcionarios
+// Total de funcionários
 $sqlTotal = "SELECT COUNT(*) AS total FROM usuarios";
 $resultadoTotal = $conn->query($sqlTotal);
 $totalFuncionarios = $resultadoTotal->fetch_assoc()['total'];
 
-//administradores
-$sqlAdmins = "SELECT COUNT(*) AS total FROM usuarios WHERE cargo = 'administrador'";
+// Total de administradores
+$sqlAdmins = "SELECT COUNT(*) AS total
+              FROM usuarios
+              WHERE cargo = 'administrador'";
 $resultadoAdmins = $conn->query($sqlAdmins);
 $totalAdmins = $resultadoAdmins->fetch_assoc()['total'];
 
-//usuarios
-$sqlUsuarios = "SELECT COUNT(*) AS total FROM usuarios WHERE cargo = 'usuário'";
+// Total de usuários comuns
+$sqlUsuarios = "SELECT COUNT(*) AS total
+                FROM usuarios
+                WHERE cargo = 'usuário'";
 $resultadoUsuarios = $conn->query($sqlUsuarios);
 $totalUsuarios = $resultadoUsuarios->fetch_assoc()['total'];
 
-//ativos
-$sqlAtivos = "SELECT COUNT(*) AS total FROM usuarios WHERE status_usuario = 'ativo'";
+// Total de usuários ativos
+$sqlAtivos = "SELECT COUNT(*) AS total
+              FROM usuarios
+              WHERE status_usuario = 'ativo'";
 $resultadoAtivos = $conn->query($sqlAtivos);
 $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Visualizar Usuários/Administradores</title>
+
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 
 <body>
 
-    </head>
+<div class="pagina">
+    
+    <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            aria-label="Voltar para a página anterior"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
 
-    <body>
-        <div class="pagina">
-            <div class="sidebar">
-                <div class="logo">
-                    <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-                </div>
-                <ul>
-                      
-         
-      
-             
-<?php if ($_SESSION['cargo'] === 'administrador'): ?>
+    <div class="sidebar">
 
- <a href="../pagina_home.php" class="menu-link">
-        <li>Início</li>
-    </a>
+        <div class="logo">
+            <img
+                id="imagem_logo"
+                src="../../assets/image/logo_png_branca.png"
+                alt="Logo Info Trem">
+        </div>
 
-    <a href="../pagina_relatorios.php" class="menu-link">
-        <li>Relatórios</li>
-    </a>
+        <ul>
 
-    <a href="adicionar_usuario.php" class="menu-link">
-        <li>Adicionar usuário</li>
-    </a>
+            <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-<?php endif; ?>
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
+                </a>
 
-<!-- Aparece para administrador e usuário comum -->
-<a href="../pagina_monitoramento.php" class="menu-link">
-    <li>Monitoramento</li>
-</a>
+                <a href="../pagina_relatorios.php" class="menu-link">
+                    <li>Relatórios</li>
+                </a>
 
-<a href="../logout.php" class="menu-link">
-    <li>Sair</li>
-</a>
+                <a href="adicionar_usuario.php" class="menu-link">
+                    <li>Adicionar usuário</li>
+                </a>
 
+            <?php endif; ?>
 
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li>Monitoramento</li>
+            </a>
 
-                    </a>
-                </ul>
-            </div>
-            <div class="formulario-container">
-                <form method="POST" class="forms">
-                    <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
-                    <div class="conteudo">
+            <a href="../logout.php" class="menu-link">
+                <li>Sair</li>
+            </a>
 
-                        <section class="cards">
-                            <div class="card-total">
-                                <h5>Total de Funcionários</h5>
-                                <p><?php echo $totalFuncionarios; ?></p>
-                            </div>
-                            <div class="card-total">
-                                <h5>Total de Administradores</h5>
-                                <p><?php echo $totalAdmins; ?></p>
-                            </div>
-                            <div class="card-total">
-                                <h5>Total de Usuários</h5>
-                                <p><?php echo $totalUsuarios; ?></p>
-                            </div>
-                            <div class="card-total">
-                                <h5>Total de Administradores Ativos</h5>
-                                <p><?php echo $totalAtivos; ?></p>
-                            </div>
-                        </section>
+        </ul>
 
-                        <section class="filtros">
-                            <input type="text" id="pesquisar" name="pesquisar" placeholder="Buscar por nome ou email">
+    </div>
 
-                            </select>
-                            <br>
-                            <br>
+    <div class="formulario-container">
 
-                            <select id="conta" name="cargo">
+        <form method="POST" class="forms">
 
-                                <option value="">Tipo de conta</option>
+            <h2 id="titulo-admin">
+                Visualizar Usuários/Administradores
+            </h2>
 
-                                <option value="administrador"> Administrador</option>
+            <div class="conteudo">
 
-                                <option value="usuário"> Usuário </option>
+    
+                <section class="cards">
 
-                            </select>
+                    <div class="card-total">
+                        <h5>Total de Funcionários</h5>
+                        <p><?php echo $totalFuncionarios; ?></p>
+                    </div>
 
-                            <select id="status" name="status">
-                                <option value="">Status</option>
+                    <div class="card-total">
+                        <h5>Total de Administradores</h5>
+                        <p><?php echo $totalAdmins; ?></p>
+                    </div>
 
-                                <option value="ativo"> Ativo </option>
+                    <div class="card-total">
+                        <h5>Total de Usuários</h5>
+                        <p><?php echo $totalUsuarios; ?></p>
+                    </div>
 
-                                <option value="inativo"> Inativo </option>
+                    <div class="card-total">
+                        <h5>Total de Usuários Ativos</h5>
+                        <p><?php echo $totalAtivos; ?></p>
+                    </div>
 
-                            </select>
+                </section>
 
-                            <button type="submit" id="botaofiltrar">
-                                Filtrar
-                            </button>
+        
+                <section class="filtros">
 
-                        </section>
+                    <input
+                        type="text"
+                        id="pesquisar"
+                        name="pesquisar"
+                        placeholder="Buscar por nome ou e-mail"
+                        value="<?php echo htmlspecialchars($pesquisa, ENT_QUOTES, 'UTF-8'); ?>">
 
-                        <table class="tabela">
+                    <select id="conta" name="cargo">
 
-                            <thead>
+                        <option value="">Tipo de conta</option>
+
+                        <option
+                            value="administrador"
+                            <?php echo ($cargo === 'administrador') ? 'selected' : ''; ?>>
+                            Administrador
+                        </option>
+
+                        <option
+                            value="usuário"
+                            <?php echo ($cargo === 'usuário') ? 'selected' : ''; ?>>
+                            Usuário
+                        </option>
+
+                    </select>
+
+                    <select id="status" name="status">
+
+                        <option value="">Status</option>
+
+                        <option
+                            value="ativo"
+                            <?php echo ($status === 'ativo') ? 'selected' : ''; ?>>
+                            Ativo
+                        </option>
+
+                        <option
+                            value="inativo"
+                            <?php echo ($status === 'inativo') ? 'selected' : ''; ?>>
+                            Inativo
+                        </option>
+
+                    </select>
+
+                    <button type="submit" id="botaofiltrar">
+                        Filtrar
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="window.location.href=window.location.pathname">
+                        Limpar filtros
+                    </button>
+
+                </section>
+
+                <table class="tabela">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
+                            <th>Data de Nascimento</th>
+                            <th>CPF</th>
+                            <th>Tipo de conta</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <?php if ($usuarios->num_rows > 0): ?>
+
+                            <?php while ($usuario = $usuarios->fetch_assoc()): ?>
+
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>Telefone</th>
-                                    <th>Endereço</th>
-                                    <th>Data de Nascimento</th>
-                                    <th>CPF</th>
-                                    <th>Tipo de conta</th>
-                                    <th>Status</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <?php
-                            include '../../infra/conexao.php';
-                            $sql = "SELECT * FROM usuarios";
-                            $usuarios = $conn->query($sql);
-                            while ($usuario = $usuarios->fetch_assoc()) {
-                                ?>
 
-                                <tr>
-                                    <td><?php echo $usuario['id_usuario']; ?></td>
+                         <td><?php echo $usuario['id_usuario']; ?></td>
                                     <td><?php echo $usuario['nome']; ?></td>
                                     <td><?php echo $usuario['email']; ?></td>
                                     <td><?php echo $usuario['telefone']; ?></td>
@@ -198,30 +255,71 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
 
+                                        <button class="editar acao-tooltip"
+                                            data-tooltip="Editar"
+                                            type="button"
+                                            onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">
 
-                                        <button class="editar acao-tooltip" data-tooltip="Editar" type="button"
-                                            onclick="window.location.href='editar_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'"><i class="bi bi-pencil"></i></button>
+                                            <i class="bi bi-pencil"></i>
 
-                                        <button class="excluir acao-tooltip" data-tooltip="Excluir" type="button"
-                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) { window.location.href='excluir_usuario.php?id=<?php echo $usuario['id_usuario']; ?>'; }"><i class="bi bi-person-dash-fill"></i></button>
+                                        </button>
+
+                                        <button
+                                            class="excluir acao-tooltip"
+                                            data-tooltip="Excluir"
+                                            type="button"
+                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                                                window.location.href='excluir_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>';
+                                            }">
+
+                                            <i class="bi bi-person-dash-fill"></i>
+
+                                        </button>
+
                                     </td>
+
                                 </tr>
 
-                                <?php
-                            }
-                            ?>
+                            <?php endwhile; ?>
 
+<<<<<<< HEAD
                         </table>
                         <button class="botaoVisualizar" type="button"
                             onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
+=======
+                        <?php else: ?>
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
 
-                    </div>
-                    </main>
+                            <tr>
+                                <td colspan="10">
+                                    Nenhum usuário encontrado.
+                                </td>
+                            </tr>
+
+                        <?php endif; ?>
+
+                    </tbody>
+
+                </table>
+
+                <button
+                    class="botaoVisualizar"
+                    type="button"
+                    onclick="window.location.href='adicionar_usuario.php'">
+
+                    Ir para adicionar
+
+                </button>
 
             </div>
-        </div>
-        </div>
-        </div>
-    </body>
 
+        </form>
+
+    </div>
+
+</div>
+
+</body>
 </html>
+
+<!-- Foi utilizado ajuda da inteligência artrificial para auxiliar na criação da funcionalidade da pesquisa e filtros  -->
