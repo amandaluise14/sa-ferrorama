@@ -213,7 +213,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                         </table>
                         <button class="botaoVisualizar" type="button"
-                            onclick="window.location.href='adicionar_usuario.php';">Ir para adicionar</button>
+                            onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
 
                     </div>
                     </main>

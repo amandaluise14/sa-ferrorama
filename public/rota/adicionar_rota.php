@@ -4,17 +4,32 @@ include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
     $nome = $_POST['nome'];
-    $descricao= $_POST['Descricao'];
-    $distancia = $_POST['Dista ncia'];
-    $trem_vinculado = $_POST ['distancia_total'];
-    $tempo= $_POST ['sensores_vinculados'];
-    $data_criacao $_POST ['data_criacao'];
+    $estacao_origem = $_POST['estacao_origem'];
+    $estacao_destino = $_POST['estacao_destino'];
+    $distancia_total = $_POST['distancia_total'];
+    $descricao = $_POST['descricao'];
+    $duracao = $_POST['duracao'];
+    $trem_id = $_POST['trem_id'];
 
 
-    $sql = "INSERT INTO usuarios (nome, descricao , distancia , trem_vinculado ,tempo, data_criacao) VALUES (?, ?, ?, ?, ?,?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssss", $nome, $descricao , $distancia, $trem_vinculado , $tempo, $data_criacao );
+    $sql = "INSERT INTO usuarios
+        (nome, descricao, distancia, trem_vinculado, tempo, data_criacao)
+        VALUES (?, ?, ?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+    "ssssss",
+    $nome,
+    $descricao,
+    $distancia,
+    $trem_vinculado,
+    $tempo,
+    $data_criacao
+);
+
      if ($stmt->execute() === TRUE) {
         echo "Nova Rota cadastrada com sucesso";
  } else {
@@ -71,46 +86,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
     </div>
 
-    <title>Cadastar Rota  </title>
-      <div class="formulario-container">
-        <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Cadastrar Rota</h2>
-            <div class="conteudo">
+   <h2>Editar Rota</h2>
+    <form method="POST">
 
-    <label for="nome">Nome da rota:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: rota " required>
-     <br><br> 
-    <label for="descricao">Descrição da rota :</label>
-    <input type="descricao" id="descricao" name="descricaol" placeholder="Ex: Ela " required>
-     <br><br>
-    <label for= "senha">Senha:</label>
-    <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
-     <br><br>
-     <label for= "telefone">Telefone:</label>
-    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
-     <br><br>
-    <label for="endereco">Endereço:</label>
-     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
-     <br><br> 
-    <label for="data_nascimento">Data de nascimento:</label>
-     <input type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex: 21/02/09" required>
-     <br><br> 
-    <label for="cpf">CPF:</label>
-     <input type="text" id="cpf" name="cpf" placeholder="Ex: 123.456.789.1011" required>
-     <br><br> 
-    <label for="cargo">Cargo:</label>
-        <select id="cargo" name="cargo">
-        <option>Selecione</option>
-        <option>Administrador</option>
-        <option>Usuário</option>
+<label>Nome:</label>
+<input type="text" name="nome" value="<?php echo $rotas['nome']; ?>" required>
+<br><br>
+
+<label>Estação Origem:</label>
+<input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
+<br><br>
+
+<label>Estação Destino:</label>
+<input type="text" name="estacao_destino" value="<?php echo $rotas['estacao_destino']; ?>" required>
+<br><br>
+
+<label>Descrição:</label>
+<input type="longdescription" name="descricao" value="<?php echo $rotas['descricao']; ?>" required>
+<br><br>
+
+<label>Tempo previsto ou duração: </label>
+<input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
+<br><br>
+
+<label>Selecione o Trem Vinculado:</label>
+<select name="trem_id" required>
+    <option value="" >Selecione o Trem</option>
+    <?php
+        $sql = "SELECT id, nome FROM trens";
+        $trens = $conn->query($sql);
+        while ($trem = $trens->fetch_assoc()) {
+    ?>
+
+    <option value="<?php echo $trem['id'];?>" <?php if ($rota['trem_id'] == $trem['id']) echo 'selected'; ?>>
+        <?php echo $trem['nome'];?>
+    </option>
+
+
+    <?php
+        } 
+    ?>
 </select>
- <br><br> 
-    <label for="status_usuario">Status:</label>
-        <select id="status_usuario" name="status_usuario">
-        <option>Selecione</option>
-        <option>Ativo</option>
-        <option>Inativo</option>
-         </select>
+<br><br>
 
     <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
