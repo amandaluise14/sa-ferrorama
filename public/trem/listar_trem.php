@@ -4,16 +4,6 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-<<<<<<< HEAD
-=======
-// aqui busca os trens cadastrados
-$sql = "SELECT * FROM trens";
-$trens = mysqli_query($conn, $sql);
-
-if (!$trens) {
-    die("Erro ao consultar os trens: " . mysqli_error($conn));
-}
->>>>>>> c7ebc39ecca432f09e6695d794f4180aa42ad80e
 ?>
 
 
@@ -33,12 +23,7 @@ if (!$trens) {
 
     <div class="sidebar">
 
-        <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            aria-label="Voltar para a página anterior"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
+       
 
         <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
