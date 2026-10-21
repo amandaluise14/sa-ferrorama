@@ -57,18 +57,12 @@ if ($stmt->execute() === TRUE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Rota</title>
 
-     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
 </head>
 <body>
 
     <div class="d-flex align-items-start">
-        <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
-        
+      
     <div class="sidebar">
 
         <div class="logo">
@@ -116,6 +110,10 @@ if ($stmt->execute() === TRUE) {
 <input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
 <br><br>
 
+<label>Distanciatotal:</label>
+<input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
+<br><br>
+
 <label>Estação Destino:</label>
 <input type="text" name="estacao_destino" value="<?php echo $rotas['estacao_destino']; ?>" required>
 <br><br>
@@ -125,6 +123,10 @@ if ($stmt->execute() === TRUE) {
 <br><br>
 
 <label>Tempo previsto ou duração: </label>
+<input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
+<br><br>
+
+<label>Data de criacao: </label>
 <input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
 <br><br>
 

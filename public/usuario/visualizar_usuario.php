@@ -282,7 +282,13 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                             <?php endwhile; ?>
 
+<<<<<<< HEAD
+                        </table>
+                        <button class="botaoVisualizar" type="button"
+                            onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
+=======
                         <?php else: ?>
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
 
                             <tr>
                                 <td colspan="10">

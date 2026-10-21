@@ -5,6 +5,24 @@ include '../../infra/verificar_admin.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+<<<<<<< HEAD
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone  = $_POST['telefone'];
+    $endereco =
+    $cpf
+    $cargo
+    $data_nascimento
+    $status_usuario
+   
+
+    $sql = "UPDATE sensores SET nome=?, localizacao=?, descricao_localizacao=?, dado_monitorado=? WHERE id_sensor=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $nome, $localizacao, $descricao_localizacao, $dado_monitorado, $id_sensor);
+    if ($stmt->execute() === TRUE) {
+        echo "Sensor atualizado com sucesso!";
+=======
     $id_usuario = $_POST['id_usuario'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -21,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssss", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario, $id_usuario);
     if ($stmt->execute() === TRUE) {
         echo "Usuário atualizado com sucesso!";
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
     } else {
         echo "Erro: " . $sql . "<br>" . $conn->error;
     }
@@ -34,6 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Editar Sensor</title>
+    <link rel="stylesheet" href="../../style/style.css">
+</head>
+<body>
+    <div class="pagina">
+=======
     <title>Editar Usuário</title>
     <link rel="stylesheet" href="../../style/style.css">
     <!-- Bootstrap Icons -->
@@ -50,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <i class="bi bi-arrow-90deg-left"></i>
         </button>
         
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
     <div class="sidebar">
 
         <div class="logo">
@@ -67,12 +94,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+<<<<<<< HEAD
+            <h2 id="titulo-admin">Editar Sensor</h2>
+=======
             <h2 id="titulo-admin">Editar Usuário</h2>
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
             <div class="conteudo">
                 
                 <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome"required>
                 <br><br>
+<<<<<<< HEAD
+                <label for="localizacao">Localização do Sensor:</label>
+                <br>
+                    <input type="radio" id="localizacao" name="localizacao" value="Trem" required>
+                <label for="localizacao">Trem</label>
+                <br>
+                    <input type="radio" id="localizacao" name="localizacao" value="Rota" required>
+                <label for="localizacao">Rota</label>
+                <br><br>
+                <label for="descricao_localizacao">Descricao da localizacao:</label>
+                    <input type="text" id="descricao_localizacao" name="descricao_localizacao" >
+                <br><br>
+                <label for="dado_monitorado">Tipo do dado monitorado:</label>
+                    <input type="text" id="dado_monitorado" name="dado_monitorado" >
+                <br><br>
+                <button id="botaoCadastro" type="submit">Editar Sensor</button>
+=======
                 <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 <br><br>
@@ -101,6 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
             
                 <button id="botaoCadastro" type="submit">Editar Usuário</button>
+>>>>>>> 8feb9ade1509999c9d51b54940cd4c868fdf902c
                 <button class="btn-cancelar" type="button" onclick="window.location.href='../../home.php';">Cancelar</button>
             </div>
         </form> 
