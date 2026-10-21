@@ -107,6 +107,10 @@ if ($stmt->execute() === TRUE) {
 <input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
 <br><br>
 
+<label>Distanciatotal:</label>
+<input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
+<br><br>
+
 <label>Estação Destino:</label>
 <input type="text" name="estacao_destino" value="<?php echo $rotas['estacao_destino']; ?>" required>
 <br><br>
@@ -116,6 +120,10 @@ if ($stmt->execute() === TRUE) {
 <br><br>
 
 <label>Tempo previsto ou duração: </label>
+<input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
+<br><br>
+
+<label>Data de criacao: </label>
 <input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
 <br><br>
 
