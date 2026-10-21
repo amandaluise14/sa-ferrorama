@@ -4,7 +4,18 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+<<<<<<< HEAD
+=======
+// aqui busca os trens cadastrados
+$sql = "SELECT * FROM trens";
+$trens = mysqli_query($conn, $sql);
+
+if (!$trens) {
+    die("Erro ao consultar os trens: " . mysqli_error($conn));
+}
+>>>>>>> c7ebc39ecca432f09e6695d794f4180aa42ad80e
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,6 +32,14 @@ include '../../infra/verificar_admin.php';
 <div class="d-flex align-items-start">
 
     <div class="sidebar">
+
+        <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            aria-label="Voltar para a página anterior"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
+
         <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
@@ -90,36 +109,24 @@ include '../../infra/verificar_admin.php';
                 </thead>
 
                 <tbody>
+<!-- Aqui é onde os dados dos trens serão exibidos na tabela -->
+                   <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
 
-                    <tr>
-                        <td>1</td>
-                        <td>TR-001</td>
-                        <td>Carga</td>
-                        <td>Ativo</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+        <tr>
+            <td><?php echo $trem['id_trem']; ?></td>
+            <td><?php echo $trem['identificacao']; ?></td>
+            <td><?php echo $trem['modelo']; ?></td>
+            <td><?php echo $trem['status']; ?></td>
+            <td>
+                <a href="excluir_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
+                   class="excluir"
+                   onclick="return confirm('Tem certeza que deseja excluir este trem?')">
+                    Excluir
+                </a>
+            </td>
+        </tr>
 
-                    <tr>
-                        <td>14</td>
-                        <td>TR-014</td>
-                        <td>Passageiros</td>
-                        <td>Em manutenção</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>500</td>
-                        <td>TR-500</td>
-                        <td>Expresso</td>
-                        <td>Ativo</td>
-                        <td>
-                            <a href="#" class="excluir">Excluir</a>
-                        </td>
-                    </tr>
+    <?php endwhile; ?>
 
                 </tbody>
 

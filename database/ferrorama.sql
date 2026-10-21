@@ -42,3 +42,9 @@ sensor_id INT,
     FOREIGN KEY (sensor_id) REFERENCES sensores(id_sensor)
 );
 
+ALTER TABLE rotas (
+ADD descricao VARCHAR(200),
+ADD duracao time,
+ADD trem_id INT,
+ADD data_criacao DATETIME;
+);

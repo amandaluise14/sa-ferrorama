@@ -70,6 +70,8 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="../../style/style.css">
 </head>
@@ -77,6 +79,13 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 <body>
 
 <div class="pagina">
+    
+    <!-- Botão de voltar -->
+        <button type="button" onclick="history.back()"
+            aria-label="Voltar para a página anterior"
+            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
+            <i class="bi bi-arrow-90deg-left"></i>
+        </button>
 
     <div class="sidebar">
 
@@ -235,51 +244,18 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                                 <tr>
 
-                                    <td>
-                                        <?php echo htmlspecialchars((string) $usuario['id_usuario']); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['nome'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['telefone'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['endereco'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['data_nascimento'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php
-                                        $cpf = $usuario['cpf'] ?? '';
-                                        echo $cpf !== ''
-                                            ? '***.***.***-' . substr($cpf, -2)
-                                            : '';
-                                        ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['cargo'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo htmlspecialchars($usuario['status_usuario'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-
+                         <td><?php echo $usuario['id_usuario']; ?></td>
+                                    <td><?php echo $usuario['nome']; ?></td>
+                                    <td><?php echo $usuario['email']; ?></td>
+                                    <td><?php echo $usuario['telefone']; ?></td>
+                                    <td><?php echo $usuario['endereco']; ?></td>
+                                    <td><?php echo $usuario['data_nascimento']; ?></td>
+                                    <td><?php $cpf = $usuario['cpf']; echo '***.***.***-' . substr($cpf, -2);?></td>
+                                    <td><?php echo $usuario['cargo']; ?></td>
+                                    <td><?php echo $usuario['status_usuario']; ?></td>
                                     <td>
 
-                                        <button
-                                            class="editar acao-tooltip"
+                                        <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">

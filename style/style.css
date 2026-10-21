@@ -986,66 +986,124 @@ margin-bottom: 12px;
     margin-right: auto !important;
 }
 
-/* Mensagem de erro */ 
-/*Nessa parte tive ajuda de IA */
-
-body#pagina_login .mensagem-erro {
-    position: fixed !important;
-    top: 20px !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-
-    display: flex !important;
-    align-items: center;
-    gap: 14px;
-
-    width: calc(100% - 32px) !important;
-    max-width: 460px !important;
-    box-sizing: border-box;
-
-    padding: 18px 22px;
-    margin: 0 !important;
-
-    background: #7b0000 !important;
-    color: white !important;
-    border: 1px solid #b85c5c;
-    border-radius: 12px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    z-index: 999999 !important;
-
-    font-family: Arial, sans-serif;
-    text-align: left;
+/* Área dos cartões */
+.cards-cadastro {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: 30px;
 }
 
-body#pagina_login .icone-alerta {
+/* Cartão */
+.card-cadastro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+    padding: 20px;
+    background-color: #fffafa;
+    border: 1px solid #eee2e2;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #670303;
+    box-shadow: 0 2px 8px rgba(80, 0, 0, 0.04);
+    transition: 0.3s;
+}
+
+/* Efeito ao passar o mouse */
+.card-cadastro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(80, 0, 0, 0.10);
+    border-color: #d9bcbc;
+}
+
+/* Quadrado do ícone */
+.icone-cadastro {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: white;
-    color: #7b0000;
-
-    font-size: 23px;
-    font-weight: bold;
-}
-
-body#pagina_login .texto-alerta strong {
-    display: block;
+    width: 70px;
+    height: 70px;
+    background-color: #670303;
     color: white;
-    font-size: 15px;
-    margin-bottom: 5px;
+    border-radius: 17px;
 }
 
-body#pagina_login .texto-alerta p {
-    color: #ffe6e6;
-    font-size: 13px;
-    margin: 0;
-    line-height: 1.5;
+.icone-cadastro i {
+    font-size: 32px;
 }
+
+/* Textos */
+.info-cadastro {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-cadastro h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #670303;
+}
+
+.info-cadastro p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #66616a;
+}
+
+/* Círculo da seta */
+.seta-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    background-color: #f5e1e0;
+    color: #670303;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.seta-cadastro i {
+    font-size: 17px;
+}
+
+.card-cadastro:hover .seta-cadastro {
+    background-color: #670303;
+    color: white;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 1100px) {
+    .cards-cadastro {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 650px) {
+    .cards-cadastro {
+        grid-template-columns: 1fr;
+    }
+
+    .card-cadastro {
+        padding: 16px;
+        gap: 15px;
+    }
+
+    .icone-cadastro {
+        width: 58px;
+        height: 58px;
+    }
+
+    .icone-cadastro i {
+        font-size: 27px;
+    }
+}
+
