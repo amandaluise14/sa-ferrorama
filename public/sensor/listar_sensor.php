@@ -9,7 +9,9 @@ include '../../infra/verificar_admin.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+     <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Listagem de sensores</title>
 
@@ -86,8 +88,26 @@ include '../../infra/verificar_admin.php';
                 <td><?php echo $sensor['descricao_localizacao']; ?></td>
                 <td><?php echo $sensor['dado_monitorado']; ?></td>
                 <td>
-                    <button type="button" onclick="window.location.href='editar_sensor.php?id=<?php echo $sensor['id_sensor']; ?>'">Editar</button>
-                    <button type="button" onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) { window.location.href='excluir_sensor.php?id=<?php echo $sensor['id_sensor']; ?>'; }">Excluir</button>
+                     <button class="editar acao-tooltip"
+                                            data-tooltip="Editar"
+                                            type="button"
+                                            onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>'">
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+                                        <button
+                                            class="excluir acao-tooltip"
+                                            data-tooltip="Excluir"
+                                            type="button"
+                                            onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) {
+                                                window.location.href='excluir_sensor.php?id=<?php echo (int) $sensor['id_sensor']; ?>';
+                                            }">
+
+                                            <i class="bi bi-person-dash-fill"></i>
+
+                                        </button>
                 </td>
             </tr>
 
