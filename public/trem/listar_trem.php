@@ -1,11 +1,17 @@
+
 <?php
 session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-?>
+$sql = "SELECT * FROM trens";
+$trens = mysqli_query($conn, $sql);
 
+if (!$trens) {
+    die("Erro ao consultar os trens: " . mysqli_error($conn));
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,32 +33,30 @@ include '../../infra/verificar_admin.php';
         </div>
 
         <ul>
-                    
-             
-<?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-      <a href="../pagina_home.php" class="menu-link">
-        <li>Início</li>
-    </a>
+            <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-    <a href="../pagina_relatorios.php" class="menu-link">
-        <li>Relatórios</li>
-    </a>
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
+                </a>
 
-    <a href="../usuario/adicionar_usuario.php" class="menu-link">
-        <li>Adicionar usuário</li>
-    </a>
+                <a href="../pagina_relatorios.php" class="menu-link">
+                    <li>Relatórios</li>
+                </a>
 
-<?php endif; ?>
+                <a href="../usuario/adicionar_usuario.php" class="menu-link">
+                    <li>Adicionar usuário</li>
+                </a>
 
-<!-- Aparece para administrador e usuário comum -->
-<a href="../pagina_monitoramento.php" class="menu-link">
-    <li>Monitoramento</li>
-</a>
+            <?php endif; ?>
 
-<a href="../logout.php" class="menu-link">
-    <li>Sair</li>
-</a>
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li>Monitoramento</li>
+            </a>
+
+            <a href="../logout.php" class="menu-link">
+                <li>Sair</li>
+            </a>
 
         </ul>
     </div>
@@ -65,55 +69,56 @@ include '../../infra/verificar_admin.php';
                 Bem vindo <?php echo $_SESSION['usuario'] ?? ''; ?>
             </h2>
 
-           
 
-          <?php if ($administrador): ?>
 
-            <a href="adicionar_trem.php" class="btn btn-danger mb-3">
-                Cadastrar trem
-            </a>
-
-        <?php endif; ?>
-        
-    </div>
+        </div>
 
         <div class="table-responsive">
 
-            <table class="table tabela-sensores">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Identificação</th>
-                        <th>Modelo</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
+    <table class="table tabela-sensores">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Velocidade</th>
+                <th>Linha</th>
+                <th>Carga</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
 
-                <tbody>
-<!-- Aqui é onde os dados dos trens serão exibidos na tabela -->
-                   <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
+        <tbody>
 
-        <tr>
-            <td><?php echo $trem['id_trem']; ?></td>
-            <td><?php echo $trem['identificacao']; ?></td>
-            <td><?php echo $trem['modelo']; ?></td>
-            <td><?php echo $trem['status']; ?></td>
-            <td>
-                <a href="excluir_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
-                   class="excluir"
-                   onclick="return confirm('Tem certeza que deseja excluir este trem?')">
-                    Excluir
-                </a>
-            </td>
-        </tr>
+            <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
 
-    <?php endwhile; ?>
+                <tr>
+                    <td><?php echo $trem['id_trem']; ?></td>
+                    <td><?php echo $trem['modelo']; ?></td>
+                    <td><?php echo $trem['velocidade']; ?></td>
+                    <td><?php echo $trem['linha']; ?></td>
+                    <td><?php echo $trem['carga']; ?></td>
+                    <td>
+                        <a href="excluir_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
+                           class="excluir"
+                           onclick="return confirm('Tem certeza que deseja excluir este trem?')">
+                            Excluir
+                        </a>
+                        <a href="editar_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
+                           class="editar"
+                           onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
 
-                </tbody>
+            <?php endwhile; ?>
 
-            </table>
-
+        </tbody>
+    </table>
+<a href="adicionar_trem.php" class="btn btn-danger mb-3">
+                Cadastrar trem
+            </a>
+</div>
         </div>
 
     </div>
@@ -124,3 +129,4 @@ include '../../infra/verificar_admin.php';
 
 </body>
 </html>
+```

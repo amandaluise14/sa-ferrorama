@@ -1,10 +1,10 @@
 <?php
-if (!isset($_GET['id_sensor'])) {
+if (!isset($_GET['id'])) {
     echo "ID do sensor não foi enviado.";
     exit;
 }
 
-$id_sensor = $_GET ['id_sensor'];
+$id_sensor = $_GET ['id'];
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';

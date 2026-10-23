@@ -47,4 +47,3 @@ ADD descricao VARCHAR(200),
 ADD duracao time,
 ADD trem_id INT,
 ADD data_criacao DATETIME;
-
