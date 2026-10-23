@@ -1108,36 +1108,106 @@ margin-bottom: 12px;
 }
 
 /* Mensagem de erro - Nessa parte tive ajuda da IA para criar o bloco de aviso */
-body#pagina_login .mensagem-erro {
-    position: fixed !important;
-    top: 20px !important;
-    left: 50% !important;
-    right: auto !important;
-
-    transform: translateX(-50%) !important;
-
-    width: 90% !important;
-    max-width: 460px !important;
-    box-sizing: border-box !important;
-
-    margin: 0 !important;
-    padding: 18px 22px !important;
-
-    background: #7b0000 !important;
-    color: #ffffff !important;
-
-    border: 1px solid #c75b5b;
-    border-radius: 12px;
-
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    z-index: 999999 !important;
-}
 
 body#pagina_login .mensagem-erro strong {
     color: #ffffff !important;
     margin-right: 5px;
+}
+
+.mensagem-erro,
+.mensagem-sucesso {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    width: calc(100% - 40px);
+    max-width: 480px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 18px 22px;
+    border-radius: 12px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    z-index: 99999;
+}
+
+/* Erro */
+.mensagem-erro {
+    background-color: #7b0000 !important;
+    color: #ffffff !important;
+    border: 1px solid #bd6666;
+}
+
+/* Sucesso */
+.mensagem-sucesso {
+    background-color: #185c38 !important;
+    color: #ffffff !important;
+    border: 1px solid #6cbd91;
+}
+
+/* Ícone */
+.icone-mensagem {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.mensagem-erro .icone-mensagem {
+    color: #7b0000;
+}
+
+.mensagem-sucesso .icone-mensagem {
+    color: #185c38;
+}
+
+/* Textos */
+.mensagem-erro strong,
+.mensagem-sucesso strong {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.mensagem-erro p,
+.mensagem-sucesso p {
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.5;
+}
+.mensagem-erro,
+.mensagem-sucesso {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 45px 20px 20px;
+}
+.mensagem-erro button,
+.mensagem-sucesso button {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
 }

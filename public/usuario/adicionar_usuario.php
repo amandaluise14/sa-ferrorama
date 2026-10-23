@@ -2,7 +2,8 @@
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-
+$erro = '';
+$sucesso = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -22,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
-        echo "Novo usuário/administrador cadastrado com sucesso";
+        $sucesso = "Novo usuário/administrador cadastrado!";
  } else {
-    echo "erro: " . $sql . "<br>" . $conn->error;
+    $erro = "Erro ao cadastrar usuário/administrador: " . $conn->error;
  }
 
 }
@@ -84,6 +85,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Cadastar Usuario/Administrador </title>
       <div class="formulario-container">
+        <?php if (!empty($erro)) { ?>
+    <div class="mensagem-erro">
+        <strong>⚠️ Ops!</strong>
+        <?php echo htmlspecialchars($erro); ?>
+        <button type="button"
+        onclick="document.getElementById('alertaErro').style.display='none'">
+        ✕
+    </button>
+    </div>
+<?php } ?>
+            <?php if (!empty($sucesso)) { ?>
+    <div class="mensagem-sucesso">
+        <strong>✅ Sucesso!</strong>
+        <?php echo htmlspecialchars($sucesso); ?>
+        <button type="button"
+        onclick="document.getElementById('sucesso').style.display='none'">
+        ✕
+    </button>
+    </div>
+<?php } ?>
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
             <div class="conteudo">
