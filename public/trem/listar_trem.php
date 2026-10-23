@@ -19,6 +19,8 @@ if (!$trens) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Listar Trens</title>
 </head>
@@ -66,7 +68,7 @@ if (!$trens) {
         <div class="d-flex align-items-center gap-3 mb-5">
 
             <h2 class="titulo-admin mb-4">
-                Bem vindo <?php echo $_SESSION['usuario'] ?? ''; ?>
+                Listagem de Trens
             </h2>
 
 
@@ -98,16 +100,26 @@ if (!$trens) {
                     <td><?php echo $trem['linha']; ?></td>
                     <td><?php echo $trem['carga']; ?></td>
                     <td>
-                        <a href="excluir_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
-                           class="excluir"
-                           onclick="return confirm('Tem certeza que deseja excluir este trem?')">
-                            Excluir
-                        </a>
-                        <a href="editar_trem.php?id_trem=<?php echo $trem['id_trem']; ?>"
-                           class="editar"
-                           onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">
-                            Editar
-                        </a>
+                      <button class="editar acao-tooltip"
+                                            data-tooltip="Editar"
+                                            type="button"
+                                            onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+                                        <button
+                                            class="excluir acao-tooltip"
+                                            data-tooltip="Excluir"
+                                            type="button"
+                                            onclick="if (confirm('Tem certeza que deseja excluir este trem?')) {
+                                                window.location.href='excluir_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>';
+                                            }">
+
+                                            <i class="bi bi-person-dash-fill"></i>
+
+                                        </button>
                     </td>
                 </tr>
 
@@ -115,9 +127,11 @@ if (!$trens) {
 
         </tbody>
     </table>
-<a href="adicionar_trem.php" class="btn btn-danger mb-3">
-                Cadastrar trem
-            </a>
+
+<button>
+Cadastrar trem 
+</button>
+
 </div>
         </div>
 
