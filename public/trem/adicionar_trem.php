@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
@@ -8,26 +8,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $velocidade = $_POST['velocidade'];
     $linha = $_POST ['linha'];
     $carga = $_POST ['carga'];
-    $usuario= $_POST['usuario'];                          
+    $usuario_id = $_POST['usuario_id'];                          
 
-   $sql = "INSERT INTO trens (modelo, velocidade, linha, carga)
-        VALUES (?, ?, ?, ?)";
+   $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id)
+        VALUES (?, ?, ?, ? , ?)";
 
 $stmt = $conn->prepare($sql);
 
 $stmt->bind_param(
-    "ssss",
+    "ssssi",
     $modelo,
     $velocidade,
     $linha,
-    $carga
+    $carga,
+    $usuario_id
 );
      if ($stmt->execute() === TRUE) {
         echo "Novo trem cadastrado com sucesso";
  } else {
     echo "erro: " . $sql . "<br>" . $conn->error;
  }
-
+$stmt->close();
 }
 ?>
 
@@ -89,17 +90,17 @@ $stmt->bind_param(
     <label for="modelo">Modelo Trem:</label>
     <input type="text" id="modelo" name="modelo" placeholder="Ex: Modelo A" required>
      <br><br>
-    <label for= "velocidade">Velocidade Limite:</label>
+    <label for= "velocidade">Velocidade Limite (km/h):</label>
     <input type="number" id="velocidade" name="velocidade" placeholder="Ex: 120 km/h" required>
      <br><br>
      <label for= "linha">Linha:</label>
     <input type="text" id="linha" name="linha" placeholder="Ex: Linha 1" required>
      <br><br>
     <label for="carga">Carga:</label>
-     <input type="number" id="carga" name="carga" placeholder="Ex: 100 toneladas" required>
+     <input type="text" id="carga" name="carga" placeholder="Ex: Carvão" required>
      <br><br> 
-      <label for="nome">Usuário Responsável :</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Usuário 2 " required>
+      <label for="usuario_id">Usuário Responsável :</label>
+     <input type="text" id="usuario_id" name="usuario_id" placeholder="Ex: Usuário 2 " required>
      <br><br> 
 
     <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
