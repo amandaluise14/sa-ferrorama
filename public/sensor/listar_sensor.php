@@ -81,14 +81,16 @@ include '../../infra/verificar_admin.php';
         while ($sensor = $sensores->fetch_assoc()) {
         ?>
 
-            <tr>
-                <td><?php echo $sensor['id_sensor']; ?></td>
-                <td><?php echo $sensor['nome']; ?></td>
-                <td><?php echo $sensor['localizacao']; ?></td>
-                <td><?php echo $sensor['descricao_localizacao']; ?></td>
-                <td><?php echo $sensor['dado_monitorado']; ?></td>
-                <td>
-                     <button class="editar acao-tooltip"
+
+
+               <tr>
+                    <td><?php echo $sensor['id_sensor']; ?></td>
+                    <td><?php echo $sensor['nome']; ?></td>
+                    <td><?php echo $sensor['localizacao']; ?></td>
+                    <td><?php echo $sensor['descricao_localizacao']; ?></td>
+                    <td><?php echo $sensor['dado_monitorado']; ?></td>
+                    <td>
+                      <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>'">
@@ -108,9 +110,8 @@ include '../../infra/verificar_admin.php';
                                             <i class="bi bi-person-dash-fill"></i>
 
                                         </button>
-                </td>
-            </tr>
-
+                    </td>
+                </tr>
         <?php
         }
         ?>
