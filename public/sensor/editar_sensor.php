@@ -3,6 +3,11 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+$id_sensor = $_GET['id_sensor'] ?? '';
+
+$sql = "SELECT * FROM sensores WHERE id_sensor = $id_sensor";
+$resultado = $conn->query($sql);
+$sensor = $resultado->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['id_sensor']) || empty($_POST['id_sensor'])) {
@@ -76,27 +81,30 @@ $id_sensor = (int) $_POST['id_sensor'];
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+            <input type="hidden" name="id_sensor"
+       value="<?php echo $sensor['id_sensor']; ?>">
             <h2 id="titulo-admin">Editar Sensor</h2>
             <div class="conteudo">
                 
                 <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome"required>
+                    <input type="text" id="nome" name="nome" value="<?php echo $sensor['nome']; ?>" placeholder="Sensor 1" required>
                 <br><br>
                 <label for="localizacao">Localização do Sensor:</label>
                 <br>
-                    <input type="radio" id="localizacao" name="localizacao" value="Trem" required>
+                    <input type="radio" id="localizacao" name="localizacao" value="Trem" <?php if ($sensor['localizacao'] === 'Trem') echo 'checked'; ?> required>
                 <label for="localizacao">Trem</label>
                 <br>
-                    <input type="radio" id="localizacao" name="localizacao" value="Rota" required>
+                    <input type="radio" id="localizacao" name="localizacao" value="Rota" <?php if ($sensor['localizacao'] === 'Rota') echo 'checked'; ?> required>
                 <label for="localizacao">Rota</label>
                 <br><br>
                 <label for="descricao_localizacao">Descricao da localizacao:</label>
-                    <input type="text" id="descricao_localizacao" name="descricao_localizacao" >
+                    <input type="text" id="descricao_localizacao" name="descricao_localizacao" value="<?php echo $sensor['descricao_localizacao']; ?>" placeholder="Descrição da localização" required>
                 <br><br>
                 <label for="dado_monitorado">Tipo do dado monitorado:</label>
-                    <input type="text" id="dado_monitorado" name="dado_monitorado" >
+                    <input type="text" id="dado_monitorado" name="dado_monitorado" value="<?php echo $sensor['dado_monitorado']; ?>" placeholder="Ex: Temperatura, Umidade" required>
                 <br><br>
                 <button id="botaoCadastro" type="submit">Editar Sensor</button>
+                <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_sensor.php';">Visualizar Sensores Cadastrados</button>
                 <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
             </div>
         </form> 
