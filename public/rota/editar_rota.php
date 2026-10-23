@@ -150,6 +150,7 @@ if ($stmt->execute() === TRUE) {
 </select>
 <br><br>
         <button type="submit">Editar Rota</button>
+        <button type= "button"  onclick="window.location.href='../adicionar_rota.php';">voltar</button>
     </form> 
 </body>
 </html>
