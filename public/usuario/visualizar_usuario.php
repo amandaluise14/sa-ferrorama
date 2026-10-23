@@ -250,7 +250,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                         <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
-                                            onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">
+                                            onclick="window.location.href='editar_usuario.php?id_usuario=<?php echo (int) $usuario['id_usuario']; ?>'">
 
                                             <i class="bi bi-pencil"></i>
 
