@@ -37,15 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
             } else {
 
-           $erro = "Senha INCORRETA!<br>";
+           $erro = "Senha incorreta! Tente novamente.";
            echo "senhaHash: " . $senhaHash;
         
         }
     } else {
         
         $erro = "E-mail não encontrado!";
-        $stmt->close();
 }
+$stmt->close();
 }
 
 ?>
@@ -60,14 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body id="pagina_login">
     <?php if (!empty($erro)) { ?>
-        <div class="mensagem-erro">
-            <span class="icone-alerta">!</span>
-            <div class="texto-alerta">
-                <strong>Ops! Não foi possível entrar.</strong>
-                <p><?php echo htmlspecialchars($erro); ?></p>
-            </div>
-        </div>
-    <?php } ?>
+    <div class="mensagem-erro">
+        <strong>⚠️ Ops!</strong>
+        <?php echo htmlspecialchars($erro); ?>
+    </div>
+<?php } ?>
       <div id="container">
     <h2>Login</h2>
 

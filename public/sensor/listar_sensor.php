@@ -81,8 +81,6 @@ include '../../infra/verificar_admin.php';
         while ($sensor = $sensores->fetch_assoc()) {
         ?>
 
-
-
                <tr>
                     <td><?php echo $sensor['id_sensor']; ?></td>
                     <td><?php echo $sensor['nome']; ?></td>
