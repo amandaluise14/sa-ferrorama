@@ -86,8 +86,8 @@ include '../../infra/verificar_admin.php';
                 <td><?php echo $sensor['descricao_localizacao']; ?></td>
                 <td><?php echo $sensor['dado_monitorado']; ?></td>
                 <td>
-                    <button type="button" onclick="window.location.href='editar_sensor.php?id=<?php echo $sensor['id_sensor']; ?>'">Editar</button>
-                    <button type="button" onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) { window.location.href='excluir_sensor.php?id=<?php echo $sensor['id_sensor']; ?>'; }">Excluir</button>
+                    <button type="button" onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo $sensor['id_sensor']; ?>'">Editar</button>
+                    <button type="button" onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) { window.location.href='excluir_sensor.php?id_sensor=<?php echo $sensor['id_sensor']; ?>'; }">Excluir</button>
                 </td>
             </tr>
 
