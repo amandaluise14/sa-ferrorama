@@ -3,12 +3,23 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+$sql = "SELECT * FROM usuarios";
+$resultado = mysqli_query($conn, $sql);
+
+if ($resultado === false) {
+    die('Erro ao consultar usuários: ' . mysqli_error($conn));
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $modelo = $_POST['modelo'];
     $velocidade = $_POST['velocidade'];
     $linha = $_POST ['linha'];
     $carga = $_POST ['carga'];
-    $usuario_id = $_POST['usuario_id'];                          
+    $usuario_id = $_POST['usuario'];  
+    
+    if (empty($usuario_id)) {
+        echo "Selecione um usuário antes de cadastrar o trem.";
+    } else {
 
    $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id)
         VALUES (?, ?, ?, ? , ?)";
@@ -29,6 +40,7 @@ $stmt->bind_param(
     echo "erro: " . $sql . "<br>" . $conn->error;
  }
 $stmt->close();
+    }
 }
 ?>
 
@@ -99,8 +111,15 @@ $stmt->close();
     <label for="carga">Carga:</label>
      <input type="text" id="carga" name="carga" placeholder="Ex: Carvão" required>
      <br><br> 
-      <label for="usuario_id">Usuário Responsável :</label>
-     <input type="text" id="usuario_id" name="usuario_id" placeholder="Ex: Usuário 2 " required>
+      <label for="usuario">Usuário:</label>
+        <select name="usuario" id="usuario">
+            <option value="">Selecione um Usuário</option>
+            <?php
+            while ($usuario = mysqli_fetch_assoc($resultado)) {
+                echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+            }
+            ?>
+        </select>
      <br><br> 
 
     <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
