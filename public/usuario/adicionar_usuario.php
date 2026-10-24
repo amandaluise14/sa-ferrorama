@@ -37,8 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../style/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="../../style/style.css">
    
 </head>
 <body>
@@ -133,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
      <br><br>
      <label for= "telefone">Telefone:</label>
-    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+    <input type="tel" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
      <br><br>
     <label for="endereco">Endereço:</label>
      <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
