@@ -13,7 +13,7 @@ $stmt = $conn-> prepare ($sql);
 $stmt-> bind_param ("i", $id_rota);
 
 if ($stmt->execute ()) {
-    header("Location: listar_rota.php");
+    header("Location: listar_rotas.php");
     exit;
 }  else {
     echo "Erro ao excluir a rota: ". $conn->error;

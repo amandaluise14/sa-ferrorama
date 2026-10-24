@@ -3,6 +3,12 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+$sql = "SELECT * FROM trens";
+$resultado = mysqli_query($conn, $sql);
+
+if ($resultado === false) {
+    die('Erro ao consultar trens: ' . mysqli_error($conn));
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -104,7 +110,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <input type="text" id="duracao" name="duracao" placeholder="5 horas" required>
      <br><br> 
     <label for="trem_id">Trem vinculado:</label>
-     <input type="text" id="trem_id" name="trem_vinculado" placeholder="trem 5 " required>
+        <select name="trem_id" id="trem_id">
+            <option value="">Selecione um Trem</option>
+            <?php
+            while ($trem = mysqli_fetch_assoc($resultado)) {
+                echo "<option value='{$trem['id']}'>{$trem['modelo']}</option>";
+            }
+            ?>
+        </select>
      <br><br> 
 
 
