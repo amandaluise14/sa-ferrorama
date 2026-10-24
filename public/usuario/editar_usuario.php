@@ -24,39 +24,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status_usuario = $_POST['status_usuario'];
    
  if ($senha !== '') {
-            // Atualiza também a senha
-            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    // Atualiza também a senha
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, endereco=?, cpf=?, cargo=?, data_nascimento=?, status_usuario=? WHERE id_usuario=?";
     $stmt = $conn->prepare($sql);
-   $stmt->bind_param("sssssssssi", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario, $id_usuario);
-   }
-        } else {
-            // Mantém a senha atual se o campo ficar vazio
-            $sql = "UPDATE usuarios SET
-                    nome=?, email=?, telefone=?, endereco=?,
-                    cpf=?, cargo=?, data_nascimento=?, status_usuario=?
-                    WHERE id_usuario=?";
+    $stmt->bind_param("sssssssssi", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario, $id_usuario);
 
-            $stmt = $conn->prepare($sql);
+} else {
+    // Mantém a senha atual se o campo ficar vazio
+    $sql = "UPDATE usuarios SET
+            nome=?, email=?, telefone=?, endereco=?,
+            cpf=?, cargo=?, data_nascimento=?, status_usuario=?
+            WHERE id_usuario=?";
 
-            if ($stmt) {
-                $stmt->bind_param(
-                    "ssssssssi",
-                    $nome, $email, $telefone, $endereco,
-                    $cpf, $cargo, $data_nascimento,
-                    $status_usuario, $id_usuario
-                );
-            }
-        }
+    $stmt = $conn->prepare($sql);
 
-   if ($stmt->execute() === TRUE) {
-       $sucesso = 'Usuário atualizado com sucesso!';
-    } else {
-       $erro = 'Erro ao atualizar o usuário.';
+    if ($stmt) {
+        $stmt->bind_param(
+            "ssssssssi",
+            $nome, $email, $telefone, $endereco,
+            $cpf, $cargo, $data_nascimento,
+            $status_usuario, $id_usuario
+        );
     }
-     $stmt->close();
-?>
+}
 
+if ($stmt->execute() === TRUE) {
+    $sucesso = 'Usuário atualizado com sucesso!';
+} else {
+    $erro = 'Erro ao atualizar o usuário.';
+}
+
+$stmt->close();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -157,17 +159,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         value="<?php echo $usuario['cpf']; ?>" placeholder="123.456.789-00" required>
                 <br><br>
 
+                <label for="data_nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" 
+                        value="<?php echo $usuario['data_nascimento']; ?>" required>
+                <br><br>
+
+                <label for="cargo">Cargo:</label>
                 <select name="cargo" id="cargo" required>
                     <option value="">Selecione o cargo</option>
                     <option value="administrador" <?php if ($usuario['cargo'] === 'administrador') echo 'selected'; ?>>Administrador</option>
                     <option value="usuário" <?php if ($usuario['cargo'] === 'usuário') echo 'selected'; ?>>Usuário</option>
                 </select>
                 <br><br>
-                <label for="data_nascimento">Data de Nascimento:</label>
-                    <input type="date" id="data_nascimento" name="data_nascimento" 
-                        value="<?php echo $usuario['data_nascimento']; ?>" required>
-                <br><br>
 
+                <label for="status_usuario">Status:</label>
                 <select name="status_usuario" id="status_usuario" required>
                     <option value="">Selecione o status</option>
                     <option value="ativo" <?php if ($usuario['status_usuario'] === 'ativo') echo 'selected'; ?>>Ativo</option>
@@ -180,6 +185,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form> 
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
