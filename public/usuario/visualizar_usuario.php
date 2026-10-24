@@ -1,7 +1,22 @@
 <?php
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+//mensagem de erro e sucesso ao excluir
+$mensagem = '';
+$tipoMensagem = '';
 
+if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
+    $mensagem = 'Usuário excluído com sucesso!';
+    $tipoMensagem = 'success';
+} elseif (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'nao_encontrado') {
+        $mensagem = 'O usuário não foi encontrado.';
+    } else {
+        $mensagem = 'Erro ao excluir o usuário. Tente novamente.';
+    }
+
+    $tipoMensagem = 'danger';
+}
 // Recebe os filtros
 $pesquisa = trim($_POST['pesquisar'] ?? '');
 $cargo = $_POST['cargo'] ?? '';
@@ -68,9 +83,8 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
     <title>Visualizar Usuários/Administradores</title>
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-      
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">      
 
     <link rel="stylesheet" href="../../style/style.css">
 </head>
@@ -119,6 +133,27 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     </div>
 
     <div class="formulario-container">
+        <?php if (!empty($mensagem)): ?>
+    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <?php if ($tipoMensagem === 'success'): ?>
+            <strong>✅ Sucesso!</strong>
+        <?php else: ?>
+            <strong>⚠️ Atenção!</strong>
+        <?php endif; ?>
+
+        <?= htmlspecialchars($mensagem) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
 
         <form method="POST" class="forms">
 
@@ -308,7 +343,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     </div>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      if ($stmt->execute() === TRUE) {
         $sucesso = "Novo usuário/administrador cadastrado!";
  } else {
-    $erro = "Erro ao cadastrar usuário/administrador: " . $conn->error;
+    $erro = "Erro ao cadastrar usuário/administrador: " . $stmt->error;
  }
 
 }
@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
    
 </head>
@@ -85,26 +86,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Cadastar Usuario/Administrador </title>
       <div class="formulario-container">
-        <?php if (!empty($erro)) { ?>
-    <div class="mensagem-erro">
+      <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
         <strong>⚠️ Ops!</strong>
-        <?php echo htmlspecialchars($erro); ?>
+        <?= htmlspecialchars($erro) ?>
+
         <button type="button"
-        onclick="document.getElementById('alertaErro').style.display='none'">
-        ✕
-    </button>
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
     </div>
-<?php } ?>
-            <?php if (!empty($sucesso)) { ?>
-    <div class="mensagem-sucesso">
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
         <strong>✅ Sucesso!</strong>
-        <?php echo htmlspecialchars($sucesso); ?>
+        <?= htmlspecialchars($sucesso) ?>
+
         <button type="button"
-        onclick="document.getElementById('sucesso').style.display='none'">
-        ✕
-    </button>
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
     </div>
-<?php } ?>
+<?php endif; ?>
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
             <div class="conteudo">
@@ -150,5 +164,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     </form> 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

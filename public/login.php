@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
 
 
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    //$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    echo "senhaHash". $senhaHash;
+    //echo "senhaHash". $senhaHash;
     
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
 
            $erro = "Senha incorreta! Tente novamente.";
-           echo "senhaHash: " . $senhaHash;
+           //echo "senhaHash: " . $senhaHash;
         
         }
     } else {
@@ -57,15 +57,26 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login InfoTrem</title>
-     <link rel="stylesheet" href="../style/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../style/style.css">
 </head>
 <body id="pagina_login">
-    <?php if (!empty($erro)) { ?>
-    <div class="mensagem-erro">
-        <strong>⚠️ Ops!</strong>
-        <?php echo htmlspecialchars($erro); ?>
+    <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show 
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
     </div>
-<?php } ?>
+<?php endif; ?>
       <div id="container">
     <h2>Login</h2>
 
@@ -82,7 +93,6 @@ $stmt->close();
 
     </form>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
