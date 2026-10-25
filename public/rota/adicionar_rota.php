@@ -2,7 +2,8 @@
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-
+$erro = '';
+$sucesso = '';
 $sql = "SELECT * FROM trens";
 $resultado = mysqli_query($conn, $sql);
 
@@ -25,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssss", $nome, $estacao_origem, $estacao_destino, $distancia_total,  $descricao, $duracao,$trem_id);
      if ($stmt->execute() === TRUE) {
-        echo "Nova Rota cadastrada com sucesso";
+        $sucesso = "Nova Rota cadastrada com sucesso";
  } else {
-    echo "erro: " . $sql . "<br>" . $conn->error;
+     $erro = "Erro ao cadastrar rota: " . $stmt->error;
  }
 
 }
@@ -39,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Rota</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
    
 </head>
@@ -87,6 +90,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Cadastar Rota </title>
       <div class="formulario-container">
+        <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Rota</h2>
             <div class="conteudo">
@@ -128,5 +164,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     </form> 
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

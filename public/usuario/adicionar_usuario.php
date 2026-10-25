@@ -44,9 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="pagina">
-        
-    
-
     <div class="sidebar">
 
         <div class="logo">
