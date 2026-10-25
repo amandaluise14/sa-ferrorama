@@ -5,7 +5,22 @@ session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+//mensagem de erro e sucesso ao excluir
+$mensagem = '';
+$tipoMensagem = '';
 
+if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
+    $mensagem = 'Rota excluída com sucesso!';
+    $tipoMensagem = 'success';
+} elseif (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'nao_encontrado') {
+        $mensagem = 'A rota não foi encontrado.';
+    } else {
+        $mensagem = 'Erro ao excluir a rota. Tente novamente.';
+    }
+
+    $tipoMensagem = 'danger';
+}
 $sql = "SELECT * FROM rotas ORDER BY id_rota";
 $resultado = mysqli_query($conn, $sql);
 
@@ -69,6 +84,27 @@ if (!$resultado) {
     </div>
 
     <div class="formulario-container">
+        <?php if (!empty($mensagem)): ?>
+    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <?php if ($tipoMensagem === 'success'): ?>
+            <strong>✅ Sucesso!</strong>
+        <?php else: ?>
+            <strong>⚠️ Atenção!</strong>
+        <?php endif; ?>
+
+        <?= htmlspecialchars($mensagem) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
 
         <div class="conteudo">
 
