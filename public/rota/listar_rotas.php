@@ -96,6 +96,27 @@ if (!$resultado) {
                                 <td><?php echo $rota['estacao_origem']; ?></td>
                                 <td><?php echo $rota['estacao_destino']; ?></td>
                                 <td><?php echo $rota['distancia_total']; ?></td>
+                                
+                                         <button class="editar acao-tooltip"
+                                            data-tooltip="Editar"
+                                            type="button"
+                                            onclick="window.location.href='editar_usuario.php?id_usuario=<?php echo (int) $usuario['id_usuario']; ?>'">
+
+                                            <i class="bi bi-pencil"></i>
+
+                                        </button>
+
+                                        <button
+                                            class="excluir acao-tooltip"
+                                            data-tooltip="Excluir"
+                                            type="button"
+                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                                                window.location.href='excluir_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>';
+                                            }">
+
+                                            <i class="bi bi-person-dash-fill"></i>
+
+                                        </button>
                                 <td>
                                     <a href="editar_rota.php?id_rota=<?php echo $rota['id_rota']; ?>"
                                        class="editar"
