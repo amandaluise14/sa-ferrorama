@@ -4,6 +4,22 @@ session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+//mensagem de erro e sucesso ao excluir
+$mensagem = '';
+$tipoMensagem = '';
+
+if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
+    $mensagem = 'Trem excluído com sucesso!';
+    $tipoMensagem = 'success';
+} elseif (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'nao_encontrado') {
+        $mensagem = 'O trem não foi encontrado.';
+    } else {
+        $mensagem = 'Erro ao excluir o trem. Tente novamente.';
+    }
+
+    $tipoMensagem = 'danger';
+}
 
 $sql = "SELECT * FROM trens";
 $trens = mysqli_query($conn, $sql);
@@ -62,7 +78,27 @@ if (!$trens) {
     </div>
 
     <div class="container mt-4">
+<?php if (!empty($mensagem)): ?>
+    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
 
+        <?php if ($tipoMensagem === 'success'): ?>
+            <strong>✅ Sucesso!</strong>
+        <?php else: ?>
+            <strong>⚠️ Atenção!</strong>
+        <?php endif; ?>
+
+        <?= htmlspecialchars($mensagem) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
         <div class="d-flex align-items-center gap-3 mb-5">
 
             <h2 class="titulo-admin mb-4">

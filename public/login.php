@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
 
 
-    //$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    //echo "senhaHash". $senhaHash;
+    echo "senhaHash". $senhaHash;
     
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
 
            $erro = "Senha incorreta! Tente novamente.";
-           //echo "senhaHash: " . $senhaHash;
+           echo "senhaHash: " . $senhaHash;
         
         }
     } else {
