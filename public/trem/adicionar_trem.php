@@ -1,4 +1,22 @@
-<?php 
+<?php
+
+session_start();
+
+include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
+
+$erro = '';
+$sucesso = '';
+
+// Buscar usuários para preencher o campo de seleção
+$sql = "SELECT id_usuario, nome FROM usuarios";
+$resultado = mysqli_query($conn, $sql);
+
+if (!$resultado) {
+    die("Erro ao consultar usuários: " . mysqli_error($conn));
+}
+
+// Cadastrar trem
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $modelo = $_POST['modelo'];
@@ -7,30 +25,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $carga = $_POST['carga'];
     $usuario_id = $_POST['usuario_id'];
 
-    $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id)
-            VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id) VALUES (?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param(
-        "sissi",
-        $modelo,
-        $velocidade,
-        $linha,
-        $carga,
-        $usuario_id
-    );
+    if ($stmt) {
 
-    if ($stmt->execute()) {
-        $sucesso = "Novo trem cadastrado com sucesso!";
+        $stmt->bind_param(
+            "sissi",
+            $modelo,
+            $velocidade,
+            $linha,
+            $carga,
+            $usuario_id
+        );
+
+        if ($stmt->execute()) {
+            $sucesso = "Novo trem cadastrado com sucesso!";
+        } else {
+            $erro = "Erro ao cadastrar trem: " . $stmt->error;
+        }
+
+        $stmt->close();
+
     } else {
-        $erro = "Erro ao cadastrar trem: " . $stmt->error;
+        $erro = "Erro ao preparar cadastro: " . $conn->error;
     }
-
-    $stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <ul>
           
            
-<?php if ($_SESSION['cargo'] === 'administrador'): ?>
+<?php 
+
+if ($_SESSION['cargo'] === 'administrador'): ?>
 
     <a href="../pagina_home.php" class="menu-link">
         <li>Início</li>
@@ -148,13 +172,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </select>
 
 <br><br>
+<button id="botaoCadastro" type="submit">
+    Cadastrar Trem
+</button>
 
-    <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
-   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-   <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_trem.php';">Visualizar Trens Cadastrados</button>
-    </div>
-    </form> 
-    </div>
+<button class="btn-cancelar" type="button"
+    onclick="window.location.href='../pagina_home.php';">
+    Cancelar
+</button>
+
+<button class="botaoVisualizar" type="button"
+    onclick="window.location.href='listar_trem.php';">
+    Visualizar Trens Cadastrados
+</button>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
