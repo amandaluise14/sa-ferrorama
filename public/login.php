@@ -11,10 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     echo "senhaHash". $senhaHash;
-<<<<<<< HEAD
-=======
-    
->>>>>>> 7742b69a780279f42c3b198ef1b6c808d0f44e1d
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
