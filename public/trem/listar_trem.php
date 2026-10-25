@@ -164,9 +164,7 @@ if (!$trens) {
 
         </tbody>
     </table>
-<a href="adicionar_trem.php" class="btn btn-danger mb-3">
-                Cadastrar trem
-            </a>
+<button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Ir para adicionar </button>
 </div>
         </div>
 
