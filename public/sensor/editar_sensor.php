@@ -2,7 +2,8 @@
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-
+$erro = '';
+$sucesso = '';
 $id_sensor = $_GET['id_sensor'] ?? '';
 
 $sql = "SELECT * FROM sensores WHERE id_sensor = $id_sensor";
@@ -24,9 +25,9 @@ $id_sensor = (int) $_POST['id_sensor'];
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssss", $nome, $localizacao, $descricao_localizacao, $dado_monitorado, $id_sensor);
     if ($stmt->execute() === TRUE) {
-        echo "Sensor atualizado com sucesso!";
+        $sucesso = "Sensor atualizado com sucesso!";
     } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
+        $erro =  'Erro ao atualizar o sensor!' . $stmt->error;
     }
 }
 
@@ -38,6 +39,7 @@ $id_sensor = (int) $_POST['id_sensor'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Sensor</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
 
 
@@ -81,6 +83,29 @@ $id_sensor = (int) $_POST['id_sensor'];
     </div>
     <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+            <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show"
+         role="alert">
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show"
+         role="alert">
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
             <input type="hidden" name="id_sensor"
        value="<?php echo $sensor['id_sensor']; ?>">
             <h2 id="titulo-admin">Editar Sensor</h2>
@@ -109,5 +134,6 @@ $id_sensor = (int) $_POST['id_sensor'];
             </div>
         </form> 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
