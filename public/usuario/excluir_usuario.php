@@ -12,13 +12,22 @@ include '../../infra/verificar_admin.php';
 
 $sql = "DELETE FROM usuarios WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);
+if (!$stmt) {
+    header("Location: visualizar_usuario.php?erro=falha");
+    exit;
+}
 $stmt->bind_param("i", $id_usuario);
 
 if ($stmt->execute()) {
-    header("Location: visualizar_usuario.php");
-    exit;
+    if ($stmt->affected_rows > 0) {
+        header("Location: visualizar_usuario.php?sucesso=excluido");
+    } else {
+        header("Location: visualizar_usuario.php?erro=nao_encontrado");
+    }
 } else {
-    echo "Erro ao excluir o usuário: " . $conn->error;
+    header("Location: visualizar_usuario.php?erro=falha");
 }
 
+$stmt->close();
+exit;
 ?>

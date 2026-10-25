@@ -10,6 +10,6 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] !== 'administrador') {
-    header("Location: login.php");
+    header("Location: ../index.php");
     exit;
 }

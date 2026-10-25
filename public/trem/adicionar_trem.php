@@ -1,34 +1,43 @@
 <?php 
-
+session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+$erro = '';
+$sucesso = '';
+$sql = "SELECT * FROM usuarios";
+$resultado = mysqli_query($conn, $sql);
+
+if ($resultado === false) {
+    die('Erro ao consultar usuários: ' . mysqli_error($conn));
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $modelo = $_POST['modelo'];
     $velocidade = $_POST['velocidade'];
     $linha = $_POST ['linha'];
     $carga = $_POST ['carga'];
-    $usuario= $_POST['usuario'];                          
+    $usuario_id = $_POST['usuario_id'];  
 
-   $sql = "INSERT INTO trens (modelo, velocidade, linha, carga)
-        VALUES (?, ?, ?, ?)";
+   $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id)
+        VALUES (?, ?, ?, ? , ?)";
 
 $stmt = $conn->prepare($sql);
 
 $stmt->bind_param(
-    "ssss",
+    "ssssi",
     $modelo,
     $velocidade,
     $linha,
-    $carga
+    $carga,
+    $usuario_id
 );
      if ($stmt->execute() === TRUE) {
-        echo "Novo trem cadastrado com sucesso";
+        $sucesso = "Novo trem cadastrado com sucesso";
  } else {
-    echo "erro: " . $sql . "<br>" . $conn->error;
+    $erro = "Erro ao cadastrar trem: " . $stmt->error;
  }
-
-}
+$stmt->close();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -37,20 +46,13 @@ $stmt->bind_param(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Trem </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
 </head>
 <body>
     <div class="pagina">
-        
-         <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            aria-label="Voltar para a página anterior"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
-
     <div class="sidebar">
 
         <div class="logo">
@@ -91,6 +93,39 @@ $stmt->bind_param(
 
     <title>Cadastar Trem  </title>
       <div class="formulario-container">
+        <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Trem</h2>
             <div class="conteudo">
@@ -98,17 +133,24 @@ $stmt->bind_param(
     <label for="modelo">Modelo Trem:</label>
     <input type="text" id="modelo" name="modelo" placeholder="Ex: Modelo A" required>
      <br><br>
-    <label for= "velocidade">Velocidade Limite:</label>
+    <label for= "velocidade">Velocidade Limite (km/h):</label>
     <input type="number" id="velocidade" name="velocidade" placeholder="Ex: 120 km/h" required>
      <br><br>
      <label for= "linha">Linha:</label>
     <input type="text" id="linha" name="linha" placeholder="Ex: Linha 1" required>
      <br><br>
     <label for="carga">Carga:</label>
-     <input type="number" id="carga" name="carga" placeholder="Ex: 100 toneladas" required>
+     <input type="text" id="carga" name="carga" placeholder="Ex: Carvão" required>
      <br><br> 
-      <label for="nome">Usuário Responsável :</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Usuário 2 " required>
+      <label for="usuario">Usuário:</label>
+        <select name="usuario" id="usuario">
+            <option value="">Selecione um Usuário</option>
+            <?php
+            while ($usuario = mysqli_fetch_assoc($resultado)) {
+                echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+            }
+            ?>
+        </select>
      <br><br> 
 
     <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
@@ -117,5 +159,6 @@ $stmt->bind_param(
     </div>
     </form> 
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

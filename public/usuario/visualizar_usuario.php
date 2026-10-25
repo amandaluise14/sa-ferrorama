@@ -1,7 +1,22 @@
 <?php
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+//mensagem de erro e sucesso ao excluir
+$mensagem = '';
+$tipoMensagem = '';
 
+if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
+    $mensagem = 'Usuário excluído com sucesso!';
+    $tipoMensagem = 'success';
+} elseif (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'nao_encontrado') {
+        $mensagem = 'O usuário não foi encontrado.';
+    } else {
+        $mensagem = 'Erro ao excluir o usuário. Tente novamente.';
+    }
+
+    $tipoMensagem = 'danger';
+}
 // Recebe os filtros
 $pesquisa = trim($_POST['pesquisar'] ?? '');
 $cargo = $_POST['cargo'] ?? '';
@@ -67,11 +82,10 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Visualizar Usuários/Administradores</title>
-
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">      
 
     <link rel="stylesheet" href="../../style/style.css">
 </head>
@@ -79,13 +93,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 <body>
 
 <div class="pagina">
-    
-    <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            aria-label="Voltar para a página anterior"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
 
     <div class="sidebar">
 
@@ -127,6 +134,27 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     </div>
 
     <div class="formulario-container">
+        <?php if (!empty($mensagem)): ?>
+    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <?php if ($tipoMensagem === 'success'): ?>
+            <strong>✅ Sucesso!</strong>
+        <?php else: ?>
+            <strong>⚠️ Atenção!</strong>
+        <?php endif; ?>
+
+        <?= htmlspecialchars($mensagem) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
 
         <form method="POST" class="forms">
 
@@ -258,7 +286,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                         <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
-                                            onclick="window.location.href='editar_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>'">
+                                            onclick="window.location.href='editar_usuario.php?id_usuario=<?php echo (int) $usuario['id_usuario']; ?>'">
 
                                             <i class="bi bi-pencil"></i>
 
@@ -281,6 +309,10 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                 </tr>
 
                             <?php endwhile; ?>
+
+                        </table>
+                        <button class="botaoVisualizar" type="button"
+                            onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
 
                         <?php else: ?>
 
@@ -312,7 +344,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     </div>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

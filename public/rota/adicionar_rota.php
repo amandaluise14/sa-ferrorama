@@ -2,23 +2,33 @@
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+$erro = '';
+$sucesso = '';
+$sql = "SELECT * FROM trens";
+$resultado = mysqli_query($conn, $sql);
+
+if ($resultado === false) {
+    die('Erro ao consultar trens: ' . mysqli_error($conn));
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
-    $descricao= $_POST['Descricao'];
-    $distancia = $_POST['Dista ncia'];
-    $trem_vinculado = $_POST ['distancia_total'];
-    $tempo= $_POST ['sensores_vinculados'];
-    $data_criacao= $_POST ['data_criacao'];
+    $estacao_origem = $_POST['estacao_origem'];
+    $estacao_destino = $_POST['estacao_destino'];
+    $distancia_total = $_POST['distancia_total'];
+    $descricao= $_POST ['descricao'];
+    $duracao = $_POST ['duracao'];
+    $trem_id = $_POST ['trem_id'];
 
 
-    $sql = "INSERT INTO usuarios (nome, descricao , distancia , trem_vinculado ,tempo, data_criacao) VALUES (?, ?, ?, ?, ?,?)";
+
+    $sql = "INSERT INTO rotas (nome, estacao_origem, estacao_destino, distancia_total, descricao, duracao, trem_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssss", $nome, $descricao , $distancia, $trem_vinculado , $tempo, $data_criacao );
+    $stmt->bind_param("sssssss", $nome, $estacao_origem, $estacao_destino, $distancia_total,  $descricao, $duracao,$trem_id);
      if ($stmt->execute() === TRUE) {
-        echo "Nova Rota cadastrada com sucesso";
+        $sucesso = "Nova Rota cadastrada com sucesso";
  } else {
-    echo "erro: " . $sql . "<br>" . $conn->error;
+     $erro = "Erro ao cadastrar rota: " . $stmt->error;
  }
 
 }
@@ -30,20 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Rota</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
-
-     <!-- Bootstrap Icons -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-
+   
 </head>
 <body>
     <div class="pagina">
-        <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
+        
+    
+
     <div class="sidebar">
 
         <div class="logo">
@@ -52,81 +58,112 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <ul>
           
-    <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+           
+<?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-                <a href="../pagina_home.php" class="menu-link">
-                    <li>Início</li>
-                </a>
+    <a href="../pagina_home.php" class="menu-link">
+        <li>Início</li>
+    </a>
 
-                <a href="../pagina_relatorios.php" class="menu-link">
-                    <li>Relatórios</li>
-                </a>
+    <a href="../pagina_relatorios.php" class="menu-link">
+        <li>Relatórios</li>
+    </a>
 
-                <a href="../usuario/adicionar_usuario.php" class="menu-link">
-                    <li>Adicionar usuário</li>
-                </a>
+    <a href="adicionar_usuario.php" class="menu-link">
+        <li>Adicionar usuário</li>
+    </a>
 
-            <?php endif; ?>
+<?php endif; ?>
 
-            <a href="../pagina_monitoramento.php" class="menu-link">
-                <li>Monitoramento</li>
-            </a>
+<!-- Aparece para administrador e usuário comum -->
+<a href="../pagina_monitoramento.php" class="menu-link">
+    <li>Monitoramento</li>
+</a>
 
-            <a href="../logout.php" class="menu-link">
-                <li>Sair</li>
-            </a>
-
+<a href="../logout.php" class="menu-link">
+    <li>Sair</li>
+</a>
 
 
     </ul>
     </div>
 
-    <title>Cadastar Rota  </title>
+    <title>Cadastar Rota </title>
       <div class="formulario-container">
+        <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Rota</h2>
             <div class="conteudo">
 
-    <label for="nome">Nome da rota:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: rota " required>
+    <label for="nome">Nome:</label>
+     <input type="text" id="nome" name="nome" placeholder="Ex: Rota da camomila" required>
      <br><br> 
-    <label for="descricao">Descrição da rota :</label>
-    <input type="descricao" id="descricao" name="descricaol" placeholder="Ex: Ela " required>
+    <label for="estacao_origem">Estação de origem:</label>
+    <input type="text" id="estacao_origem" name="estacao_origem" placeholder="Ex: Estação Guanabara" required>
      <br><br>
-    <label for= "senha">Senha:</label>
-    <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
+    <label for= "estacao_destino">Estação destino:</label>
+    <input type="text" id="estacao_destino" name="estacao_destino" placeholder="Ex: Estação itaum " required>
      <br><br>
-     <label for= "telefone">Telefone:</label>
-    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+     <label for= "distancia_total">Distância total(km):</label>
+    <input type="number" id="distancia_total" name="distancia_total" placeholder="Ex: 5km" required>
      <br><br>
-    <label for="endereco">Endereço:</label>
-     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
+    <label for="descricao">Descrição:</label>
+     <input type="text" id="endereco" name="descricao" placeholder="Ex: Um caminho longo" required>
      <br><br> 
-    <label for="data_nascimento">Data de nascimento:</label>
-     <input type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex: 21/02/09" required>
+    <label for="duracao">Tempo previsto de viagem:</label>
+     <input type="text" id="duracao" name="duracao" placeholder="5 horas" required>
      <br><br> 
-    <label for="cpf">CPF:</label>
-     <input type="text" id="cpf" name="cpf" placeholder="Ex: 123.456.789.1011" required>
+    <label for="trem_id">Trem vinculado:</label>
+        <select name="trem_id" id="trem_id">
+            <option value="">Selecione um Trem</option>
+            <?php
+            while ($trem = mysqli_fetch_assoc($resultado)) {
+                echo "<option value='{$trem['id']}'>{$trem['modelo']}</option>";
+            }
+            ?>
+        </select>
      <br><br> 
-    <label for="cargo">Cargo:</label>
-        <select id="cargo" name="cargo">
-        <option>Selecione</option>
-        <option>Administrador</option>
-        <option>Usuário</option>
-</select>
- <br><br> 
-    <label for="status_usuario">Status:</label>
-        <select id="status_usuario" name="status_usuario">
-        <option>Selecione</option>
-        <option>Ativo</option>
-        <option>Inativo</option>
-         </select>
 
-    <button id="botaoCadastro" type="submit">Cadastrar Usuário</button>
+
+
+    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-   <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas Cadastradas</button>
+   <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas cadastradas</button>
     </div>
     </form> 
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -11,6 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     echo "senhaHash". $senhaHash;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 7742b69a780279f42c3b198ef1b6c808d0f44e1d
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
@@ -35,14 +39,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: pagina_monitoramento.php");
             exit;
             } else {
-            $erro = "Senha incorreta!";                
-            }
-    } else { 
+
+           $erro = "Senha incorreta! Tente novamente.";
+           echo "senhaHash: " . $senhaHash;
+        
+        }
+    } else {
+        
         $erro = "E-mail não encontrado!";
           echo "senhaHash". $senhaHash;
 }
 $stmt->close();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,18 +60,26 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login InfoTrem</title>
-     <link rel="stylesheet" href="../style/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../style/style.css">
 </head>
 <body id="pagina_login">
-    <?php if (!empty($erro)) { ?>
-        <div class="mensagem-erro">
-            <span class="icone-alerta">!</span>
-            <div class="texto-alerta">
-                <strong>Ops! Não foi possível entrar.</strong>
-                <p><?php echo htmlspecialchars($erro); ?></p>
-            </div>
-        </div>
-    <?php } ?>
+    <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show 
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
       <div id="container">
     <h2>Login</h2>
 
@@ -79,7 +96,6 @@ $stmt->close();
 
     </form>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

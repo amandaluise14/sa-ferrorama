@@ -2,7 +2,8 @@
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-
+$erro = '';
+$sucesso = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -22,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
      if ($stmt->execute() === TRUE) {
-        echo "Novo usuário/administrador cadastrado com sucesso";
+        $sucesso = "Novo usuário/administrador cadastrado!";
  } else {
-    echo "erro: " . $sql . "<br>" . $conn->error;
+    $erro = "Erro ao cadastrar usuário/administrador: " . $stmt->error;
  }
 
 }
@@ -36,20 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
-    <link rel="stylesheet" href="../../style/style.css">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="../../style/style.css">
+   
 </head>
 <body>
     <div class="pagina">
-        
-         <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            aria-label="Voltar para a página anterior"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
-
     <div class="sidebar">
 
         <div class="logo">
@@ -90,6 +84,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Cadastar Usuario/Administrador </title>
       <div class="formulario-container">
+      <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Cadastrar Usuário/administrador</h2>
             <div class="conteudo">
@@ -104,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" id="senha" name="senha" placeholder="Ex: 12345" required>
      <br><br>
      <label for= "telefone">Telefone:</label>
-    <input type="number" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
+    <input type="tel" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
      <br><br>
     <label for="endereco">Endereço:</label>
      <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
@@ -135,5 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     </form> 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

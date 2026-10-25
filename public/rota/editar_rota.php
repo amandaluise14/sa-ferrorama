@@ -3,8 +3,8 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
+if (isset($_POST['id_rota'])) {
+    $id = $_POST['id_rota'];
     $nome = $_POST['nome'];
     $estacao_origem = $_POST['estacao_origem'];
     $estacao_destino = $_POST['estacao_destino'];
@@ -22,7 +22,7 @@ $sql = "UPDATE rotas
             descricao = ?, 
             duracao = ?, 
             trem_id = ? 
-        WHERE id = ?";
+        WHERE id_rota = ?";
 
 $stmt = $conn->prepare($sql);
 
@@ -55,20 +55,15 @@ if ($stmt->execute() === TRUE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style/style.css">
     <title>Editar Rota</title>
 
-     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
 </head>
 <body>
 
     <div class="d-flex align-items-start">
-        <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
-        
+      
     <div class="sidebar">
 
         <div class="logo">
@@ -116,6 +111,10 @@ if ($stmt->execute() === TRUE) {
 <input type="text" name="estacao_origem" value="<?php echo $rotas['estacao_origem']; ?>" required>
 <br><br>
 
+<label>Distancia total:</label>
+<input type="text" name="distancia_total" value="<?php echo $rotas['distancia_total']; ?>" required>
+<br><br>
+
 <label>Estação Destino:</label>
 <input type="text" name="estacao_destino" value="<?php echo $rotas['estacao_destino']; ?>" required>
 <br><br>
@@ -127,6 +126,8 @@ if ($stmt->execute() === TRUE) {
 <label>Tempo previsto ou duração: </label>
 <input type="text" name="duracao" value="<?php echo $rotas['duracao']; ?>" required>
 <br><br>
+
+
 
 <label>Selecione o Trem Vinculado:</label>
 <select name="trem_id" required>
@@ -148,6 +149,7 @@ if ($stmt->execute() === TRUE) {
 </select>
 <br><br>
         <button type="submit">Editar Rota</button>
+        <button type= "button"  onclick="window.location.href='../adicionar_rota.php';">voltar</button>
     </form> 
 </body>
 </html>

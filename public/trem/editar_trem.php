@@ -3,12 +3,12 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-if (!isset($_GET['id'])) {
-    echo "ID do usuário não informado.";
+if (!isset($_GET['id_trem'])) {
+    echo "ID do trem não informado.";
     exit;
 }
 
-$id_trem = $_GET['id'];
+$id_trem = (int) $_GET['id_trem'];
 
 $sql = "SELECT * FROM trens WHERE id_trem = ?";
 $stmt = $conn->prepare($sql);
@@ -64,24 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Usuários/Administradores</title>
+    <title>Editar Trem</title>
    <link rel="stylesheet" href="../../style/style.css">
-   <!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
 </head>
 <body>
 
 </head>
 <body>
     <div class="pagina">
-
-          <!-- Botão de voltar -->
-        <button type="button" onclick="history.back()"
-            aria-label="Voltar para a página anterior"
-            style="position: absolute; top: 10px; left: 165px; background: none; border: none; cursor: pointer; font-size: 20px; color: black;">
-            <i class="bi bi-arrow-90deg-left"></i>
-        </button>
-        
         <div class="sidebar">
             <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
@@ -117,35 +108,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <div class="formulario-container">
-<form method="POST" class="forms_sensores">
-
-<h2 id="titulo-admin">Editar Trem</h2>
+        <form method="POST" class="forms_sensores">
+            <input type="hidden" name="id_trem"
+       value="<?php echo $trem['id_trem']; ?>">
+            <h2 id="titulo-admin">Editar Trem</h2>
+            <div class="conteudo">
 
 <label>Modelo Trem:</label>
-<input type="text" name="modelo" value="<?php echo $trens['modelo']; ?>" required>
+<input type="text" name="modelo" value="<?php echo $trem['modelo']; ?>" placeholder="Modelo 01" required>
 <br><br>
 
 <label>Velocidade Limite:</label>
-<input type="text" name="velocidade" value="<?php echo $trens['velocidade']; ?>" required>
+<input type="text" name="velocidade" value="<?php echo $trem['velocidade']; ?>" placeholder="120 km/h" required>
 <br><br>
 
 <label>Linha:</label>
-<input type="text" name="linha" value="<?php echo $trens['linha']; ?>" required>
+<input type="text" name="linha" value="<?php echo $trem['linha']; ?>" placeholder="Linha 1" required>
 <br><br>
 
 <label>Carga:</label>
-<input type="text" name="carga" value="<?php echo $trens['carga']; ?>" required>
+<input type="text" name="carga" value="<?php echo $trem['carga']; ?>" placeholder="Carga Madeireira"required>
 <br><br>
 
 
 <button id="botaoCadastro" type="submit">Editar Trem</button>
-   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
+<button class="botaoVisualizar" type="button" onclick="window.location.href='listar_trem.php';">Visualizar Trens Cadastrados</button>
+<button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
 
-
-
+</div>
 </form>
 </div>
-
-
 </body>
 </html>
+
+
