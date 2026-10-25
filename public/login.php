@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
+    echo "senhaHash". $senhaHash;
 
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
@@ -21,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$stmt->execute()) {
         die("Erro no execute: " . $stmt->error);
     }
-
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
     } else { 
         $erro = "E-mail não encontrado!";
+          echo "senhaHash". $senhaHash;
 }
 $stmt->close();
 }
