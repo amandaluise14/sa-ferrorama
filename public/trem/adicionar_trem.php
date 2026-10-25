@@ -1,43 +1,34 @@
 <?php 
-session_start();
-include '../../infra/conexao.php';
-include '../../infra/verificar_admin.php';
-$erro = '';
-$sucesso = '';
-$sql = "SELECT * FROM usuarios";
-$resultado = mysqli_query($conn, $sql);
-
-if ($resultado === false) {
-    die('Erro ao consultar usuários: ' . mysqli_error($conn));
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $modelo = $_POST['modelo'];
     $velocidade = $_POST['velocidade'];
-    $linha = $_POST ['linha'];
-    $carga = $_POST ['carga'];
-    $usuario_id = $_POST['usuario_id'];  
+    $linha = $_POST['linha'];
+    $carga = $_POST['carga'];
+    $usuario_id = $_POST['usuario_id'];
 
-   $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id)
-        VALUES (?, ?, ?, ? , ?)";
+    $sql = "INSERT INTO trens (modelo, velocidade, linha, carga, usuario_id)
+            VALUES (?, ?, ?, ?, ?)";
 
-$stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($sql);
 
-$stmt->bind_param(
-    "ssssi",
-    $modelo,
-    $velocidade,
-    $linha,
-    $carga,
-    $usuario_id
-);
-     if ($stmt->execute() === TRUE) {
-        $sucesso = "Novo trem cadastrado com sucesso";
- } else {
-    $erro = "Erro ao cadastrar trem: " . $stmt->error;
- }
-$stmt->close();
+    $stmt->bind_param(
+        "sissi",
+        $modelo,
+        $velocidade,
+        $linha,
+        $carga,
+        $usuario_id
+    );
+
+    if ($stmt->execute()) {
+        $sucesso = "Novo trem cadastrado com sucesso!";
+    } else {
+        $erro = "Erro ao cadastrar trem: " . $stmt->error;
     }
+
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -142,16 +133,21 @@ $stmt->close();
     <label for="carga">Carga:</label>
      <input type="text" id="carga" name="carga" placeholder="Ex: Carvão" required>
      <br><br> 
-      <label for="usuario">Usuário:</label>
-        <select name="usuario" id="usuario">
-            <option value="">Selecione um Usuário</option>
-            <?php
-            while ($usuario = mysqli_fetch_assoc($resultado)) {
-                echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
-            }
-            ?>
-        </select>
-     <br><br> 
+    <label for="usuario_id">Usuário:</label>
+
+    <select name="usuario_id" id="usuario_id" required>
+    <option value="">Selecione um Usuário</option>
+
+    <?php
+    while ($usuario = mysqli_fetch_assoc($resultado)) {
+        echo "<option value='{$usuario['id_usuario']}'>";
+        echo htmlspecialchars($usuario['nome']);
+        echo "</option>";
+    }
+    ?>
+</select>
+
+<br><br>
 
     <button id="botaoCadastro" type="submit">Cadastrar Trem</button>
    <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
