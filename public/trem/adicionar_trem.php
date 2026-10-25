@@ -172,19 +172,11 @@ if ($_SESSION['cargo'] === 'administrador'): ?>
 </select>
 
 <br><br>
-<button id="botaoCadastro" type="submit">
-    Cadastrar Trem
-</button>
+<button id="botaoCadastro" type="submit"> Cadastrar Trem</button>
 
-<button class="btn-cancelar" type="button"
-    onclick="window.location.href='../pagina_home.php';">
-    Cancelar
-</button>
+<button class="btn-cancelar" type="button"onclick="window.location.href='../pagina_home.php';">Cancelar</button>
 
-<button class="botaoVisualizar" type="button"
-    onclick="window.location.href='listar_trem.php';">
-    Visualizar Trens Cadastrados
-</button>
+<button class="botaoVisualizar" type="button" onclick="window.location.href='listar_trem.php';">Visualizar Trens Cadastrados</button>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
