@@ -40,9 +40,8 @@ estacao_destino VARCHAR(50) NOT NULL,
 distancia_total VARCHAR(50) NOT NULL,
 descricao VARCHAR(200),
 duracao TIME,
-data_criacao DATETIME CURRENT_TIMESTAMP,
+data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
 trem_id INT,
-
 FOREIGN KEY (trem_id) REFERENCES trens(id_trem)
 );
 
