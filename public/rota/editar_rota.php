@@ -197,10 +197,6 @@ if (isset($_POST['id_rota'])) {
 
             <br><br>
 
-           <button id="botaoCadastro" type="submit">Editar Rota</button>
-                <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rota.php';">Visualizar Rotas Cadastradas</button>
-                <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
- </div>
             </div>
         </form>
 
