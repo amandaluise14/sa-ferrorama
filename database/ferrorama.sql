@@ -44,9 +44,3 @@ data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
 trem_id INT,
 FOREIGN KEY (trem_id) REFERENCES trens(id_trem)
 );
-
-ALTER TABLE rotas 
-ADD descricao VARCHAR(200),
-ADD duracao time,
-ADD trem_id INT,
-ADD data_criacao DATETIME; 
