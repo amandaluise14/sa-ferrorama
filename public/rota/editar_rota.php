@@ -136,7 +136,7 @@ if (isset($_POST['id_rota'])) {
         <form method="POST" class="forms_sensores">
 <input type="hidden" name="id_rota" value="<?php echo $id_rota; ?>">
 
-            <h2 id="titulo-admin">Editar Sensor</h2>
+            <h2 id="titulo-admin">Editar Rota</h2>
             <div class="conteudo">
 
             <?php if (!empty($erro)): ?>
@@ -171,37 +171,39 @@ if (isset($_POST['id_rota'])) {
             <input type="time" name="duracao" value="<?php echo htmlspecialchars($rota['duracao']); ?>" required>
             <br><br>
 
-            <label>Selecione o Trem Vinculado:</label>
+<label>Selecione o Trem Vinculado:</label>
 
-            <select name="trem_id" required>
+<select name="trem_id" required>
 
-                <option value="">Selecione o Trem</option>
+    <option value="">Selecione o Trem</option>
 
-                <?php
-                $sql = "SELECT id_trem FROM trens";
-                $trens = $conn->query($sql);
+    <?php
+    $sql = "SELECT id_trem, modelo FROM trens";
+    $trens = $conn->query($sql);
 
-                while ($trem = $trens->fetch_assoc()) {
-                ?>
+    while ($trem = $trens->fetch_assoc()) {
+    ?>
 
-                    <option value="<?php echo $trem['id']; ?>"
-                        <?php if ($rota['trem_id'] == $trem['id']) echo 'selected'; ?>>
-                        <?php echo htmlspecialchars($trem['nome']); ?>
-                    </option>
+        <option value="<?php echo $trem['id_trem']; ?>"
+            <?php if ($rota['trem_id'] == $trem['id_trem']) echo 'selected'; ?>>
+            <?php echo htmlspecialchars($trem['modelo']); ?>
+        </option>
 
-                <?php
-                }
-                ?>
+    <?php
+    }
+    ?>
+
+</select>
+
 
             </select>
 
             <br><br>
-<button id="botaoCadastro" type="submit">Editar Rota</button>
-                <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rota.php';">Visualizar Rotas Cadastradas</button>
+                <button id="botaoCadastro" type="submit">Editar Rota</button>
+                <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas Cadastradas</button>
                 <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
- </div>
             </div>
         </form>
-
+            </div>
 </body>
 </html>
