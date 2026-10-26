@@ -3,6 +3,9 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+$erro = '';
+$sucesso = '';
+
 $id_usuario = $_GET['id_usuario'] ?? '';
 
 $sql = "SELECT * FROM usuarios WHERE id_usuario = $id_usuario";
@@ -20,19 +23,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_nascimento = $_POST['data_nascimento'];
     $status_usuario = $_POST['status_usuario'];
    
+ if ($senha !== '') {
+    // Atualiza também a senha
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, endereco=?, cpf=?, cargo=?, data_nascimento=?, status_usuario=? WHERE id_usuario=?";
     $stmt = $conn->prepare($sql);
-   $stmt->bind_param("sssssssssi", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario, $id_usuario);
-    if ($stmt->execute() === TRUE) {
-        echo "Usuário atualizado com sucesso!";
-    } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
+    $stmt->bind_param("sssssssssi", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario, $id_usuario);
+
+} else {
+    // Mantém a senha atual se o campo ficar vazio
+    $sql = "UPDATE usuarios SET
+            nome=?, email=?, telefone=?, endereco=?,
+            cpf=?, cargo=?, data_nascimento=?, status_usuario=?
+            WHERE id_usuario=?";
+
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        $stmt->bind_param(
+            "ssssssssi",
+            $nome, $email, $telefone, $endereco,
+            $cpf, $cargo, $data_nascimento,
+            $status_usuario, $id_usuario
+        );
     }
 }
 
-?>
+if ($stmt->execute() === TRUE) {
+    $sucesso = 'Usuário atualizado com sucesso!';
+} else {
+    $erro = 'Erro ao atualizar o usuário.';
+}
 
+$stmt->close();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
 </head>
 <body>
@@ -82,6 +109,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <title>Editar Usuário </title>
       <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+            <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show"
+         role="alert">
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show"
+         role="alert">
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
             <h2 id="titulo-admin">Editar Usuário</h2>
             <div class="conteudo">
                 
@@ -97,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="password" id="senha" name="senha" required>
                 <br><br>
                 <label for="telefone">Telefone:</label>
-                    <input type="text" id="telefone" name="telefone" 
+                    <input type="tel" id="telefone" name="telefone" 
                         value="<?php echo $usuario['telefone']; ?>" placeholder="(11) 99999-9999" required>
                 <br><br>
                 <label for="endereco">Endereço:</label>
@@ -109,17 +159,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         value="<?php echo $usuario['cpf']; ?>" placeholder="123.456.789-00" required>
                 <br><br>
 
+                <label for="data_nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" 
+                        value="<?php echo $usuario['data_nascimento']; ?>" required>
+                <br><br>
+
+                <label for="cargo">Cargo:</label>
                 <select name="cargo" id="cargo" required>
                     <option value="">Selecione o cargo</option>
                     <option value="administrador" <?php if ($usuario['cargo'] === 'administrador') echo 'selected'; ?>>Administrador</option>
                     <option value="usuário" <?php if ($usuario['cargo'] === 'usuário') echo 'selected'; ?>>Usuário</option>
                 </select>
                 <br><br>
-                <label for="data_nascimento">Data de Nascimento:</label>
-                    <input type="date" id="data_nascimento" name="data_nascimento" 
-                        value="<?php echo $usuario['data_nascimento']; ?>" required>
-                <br><br>
 
+                <label for="status_usuario">Status:</label>
                 <select name="status_usuario" id="status_usuario" required>
                     <option value="">Selecione o status</option>
                     <option value="ativo" <?php if ($usuario['status_usuario'] === 'ativo') echo 'selected'; ?>>Ativo</option>
@@ -132,6 +185,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form> 
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

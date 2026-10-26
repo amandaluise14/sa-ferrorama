@@ -12,13 +12,22 @@ include '../../infra/verificar_admin.php';
 
 $sql = "DELETE FROM trens WHERE id_trem = ?";
 $stmt = $conn-> prepare ($sql);
+if (!$stmt) {
+    header("Location: listar_trem.php?erro=falha");
+    exit;
+}
 $stmt-> bind_param ("i", $id_trem);
 
-if ($stmt->execute ()) {
-    header("Location: listar_trem.php");
-    exit;
-}  else {
-    echo "Erro ao excluir trem: ". $conn->error;
+if ($stmt->execute()) {
+    if ($stmt->affected_rows > 0) {
+        header("Location: listar_trem.php?sucesso=excluido");
+    } else {
+        header("Location: listar_trem.php?erro=nao_encontrado");
+    }
+} else {
+    header("Location: listar_trem.php?erro=falha");
 }
 
+$stmt->close();
+exit;
 ?>

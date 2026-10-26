@@ -4,6 +4,22 @@ session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+//mensagem de erro e sucesso ao excluir
+$mensagem = '';
+$tipoMensagem = '';
+
+if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
+    $mensagem = 'Trem excluído com sucesso!';
+    $tipoMensagem = 'success';
+} elseif (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'nao_encontrado') {
+        $mensagem = 'O trem não foi encontrado.';
+    } else {
+        $mensagem = 'Erro ao excluir o trem. Tente novamente.';
+    }
+
+    $tipoMensagem = 'danger';
+}
 
 $sql = "SELECT * FROM trens";
 $trens = mysqli_query($conn, $sql);
@@ -18,6 +34,7 @@ if (!$trens) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -64,7 +81,27 @@ if (!$trens) {
     </div>
 
     <div class="container mt-4">
+<?php if (!empty($mensagem)): ?>
+    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
 
+        <?php if ($tipoMensagem === 'success'): ?>
+            <strong>✅ Sucesso!</strong>
+        <?php else: ?>
+            <strong>⚠️ Atenção!</strong>
+        <?php endif; ?>
+
+        <?= htmlspecialchars($mensagem) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
         <div class="d-flex align-items-center gap-3 mb-5">
 
             <h2 class="titulo-admin mb-4">
@@ -100,7 +137,12 @@ if (!$trens) {
                     <td><?php echo $trem['linha']; ?></td>
                     <td><?php echo $trem['carga']; ?></td>
                     <td>
+<<<<<<< HEAD
                       <button class="editar acao-tooltip"
+=======
+
+                                        <button class="editar acao-tooltip"
+>>>>>>> e0d6ef117953ee2e7bbe971af96f76d325a0ee53
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
@@ -120,18 +162,27 @@ if (!$trens) {
                                             <i class="bi bi-person-dash-fill"></i>
 
                                         </button>
+<<<<<<< HEAD
                     </td>
+=======
+
+                                    </td>
+>>>>>>> e0d6ef117953ee2e7bbe971af96f76d325a0ee53
                 </tr>
 
             <?php endwhile; ?>
 
         </tbody>
     </table>
+<<<<<<< HEAD
 
 <button>
 Cadastrar trem 
 </button>
 
+=======
+<button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Ir para adicionar </button>
+>>>>>>> e0d6ef117953ee2e7bbe971af96f76d325a0ee53
 </div>
         </div>
 

@@ -38,12 +38,16 @@ nome VARCHAR(50) NOT NULL,
 estacao_origem VARCHAR(50) NOT NULL, 
 estacao_destino VARCHAR(50) NOT NULL,
 distancia_total VARCHAR(50) NOT NULL,
-sensor_id INT,
-    FOREIGN KEY (sensor_id) REFERENCES sensores(id_sensor)
+descricao VARCHAR(200),
+duracao TIME,
+data_criacao DATETIME CURRENT_TIMESTAMP,
+trem_id INT,
+
+FOREIGN KEY (trem_id) REFERENCES trens(id_trem)
 );
 
 ALTER TABLE rotas 
 ADD descricao VARCHAR(200),
 ADD duracao time,
 ADD trem_id INT,
-ADD data_criacao DATETIME;
+ADD data_criacao DATETIME; 
