@@ -94,13 +94,14 @@ if (isset($_POST['id_rota'])) {
 
 <body>
 
-    <div class="d-flex align-items-start">
+<div class="pagina">
+    <div class="sidebar">
 
-        <div class="sidebar">
+        <div class="logo">
+        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+        </div>
 
-            <div class="logo">
-                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
-            </div>
+    <ul>
 
             <ul>
 
@@ -131,11 +132,12 @@ if (isset($_POST['id_rota'])) {
             </ul>
         </div>
 
-        <h2>Editar Rota</h2>
+<div class="formulario-container">
+        <form method="POST" class="forms_sensores">
+<input type="hidden" name="id_rota" value="<?php echo $id_rota; ?>">
 
-        <form method="POST">
-
-            <input type="hidden" name="id_rota" value="<?php echo $id_rota; ?>">
+            <h2 id="titulo-admin">Editar Sensor</h2>
+            <div class="conteudo">
 
             <?php if (!empty($erro)): ?>
                 <p><?php echo htmlspecialchars($erro); ?></p>
@@ -204,6 +206,7 @@ if (isset($_POST['id_rota'])) {
         </form>
 
     </div>
+            </div>
 
 </body>
 </html>
