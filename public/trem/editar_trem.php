@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 );
 
     if ($stmt->execute()) {
-        header("Location: visualizar_trem.php");
+        header("Location: listar_trem.php");
         exit();
     } else {
         echo "Erro ao atualizar trem: " . $stmt->error;

@@ -58,15 +58,11 @@ include '../infra/verificar_admin.php';
 
         
         <button id="botaoHome" type="button" onclick="window.location.href='sensor/adicionar_sensor.php';">Cadastrar Sensor</button>
+        <br>
         <button id="botaoHome" type="button" onclick="window.location.href='trem/adicionar_trem.php';">Cadastrar Trens</button>
-        <br><br>
+        <br>
         <button id="botaoHome" type="button" onclick="window.location.href='rota/adicionar_rota.php';">Cadastrar Rotas</button>
         <br>
-        <select id="botaoHome" name="select">Visualizar Cadastros
-            <option type="button" value="rota">Visualizar Rotas</option>
-            <option type="button" value="trens">Visualizar Trens</option>
-            <option type="button" value="sensores">Visualizar Sensores</option>
-        </select>
     </div>
     </form> 
     </div>
