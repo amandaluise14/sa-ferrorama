@@ -138,10 +138,13 @@ if (!$trens) {
                     <td><?php echo $trem['carga']; ?></td>
                     <td>
 
+
                       <button class="editar acao-tooltip"
 
 
                                         <button class="editar acao-tooltip"
+
+                      <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
@@ -167,6 +170,7 @@ if (!$trens) {
 
                                     </td>
 
+                    </td>
                 </tr>
 
             <?php endwhile; ?>
@@ -175,10 +179,7 @@ if (!$trens) {
     </table>
 
 
-
-
 <button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Cadastrar Trem </button>
-
 </div>
         </div>
 
@@ -190,4 +191,4 @@ if (!$trens) {
 
 </body>
 </html>
-```
+
