@@ -168,7 +168,7 @@ if (isset($_POST['id_rota'])) {
             <br><br>
 
             <label>Tempo previsto ou duração:</label>
-            <input type="text" name="duracao" value="<?php echo htmlspecialchars($rota['duracao']); ?>" required>
+            <input type="time" name="duracao" value="<?php echo htmlspecialchars($rota['duracao']); ?>" required>
             <br><br>
 
             <label>Selecione o Trem Vinculado:</label>
@@ -178,7 +178,7 @@ if (isset($_POST['id_rota'])) {
                 <option value="">Selecione o Trem</option>
 
                 <?php
-                $sql = "SELECT id, nome FROM trens";
+                $sql = "SELECT id_trem FROM trens";
                 $trens = $conn->query($sql);
 
                 while ($trem = $trens->fetch_assoc()) {
@@ -196,7 +196,10 @@ if (isset($_POST['id_rota'])) {
             </select>
 
             <br><br>
-
+<button id="botaoCadastro" type="submit">Editar Rota</button>
+                <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rota.php';">Visualizar Rotas Cadastradas</button>
+                <button class="btn-cancelar" type="button" onclick="window.location.href='../../pagina_home.php';">Cancelar</button>
+ </div>
             </div>
         </form>
 
