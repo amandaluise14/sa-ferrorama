@@ -42,6 +42,7 @@ descricao VARCHAR(200),
 duracao TIME,
 data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
 trem_id INT,
+
 FOREIGN KEY (trem_id) REFERENCES trens(id_trem)
 );
 
