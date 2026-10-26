@@ -88,6 +88,7 @@ if (isset($_POST['id_rota'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Editar Rota</title>
 </head>
@@ -134,18 +135,34 @@ if (isset($_POST['id_rota'])) {
 
 <div class="formulario-container">
         <form method="POST" class="forms_sensores">
+             <?php if (!empty($erro)): ?>
+    <div class="alert alert-danger alert-dismissible fade show"
+         role="alert">
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($sucesso)): ?>
+    <div class="alert alert-success alert-dismissible fade show"
+         role="alert">
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
 <input type="hidden" name="id_rota" value="<?php echo $id_rota; ?>">
 
             <h2 id="titulo-admin">Editar Rota</h2>
             <div class="conteudo">
 
-            <?php if (!empty($erro)): ?>
-                <p><?php echo htmlspecialchars($erro); ?></p>
-            <?php endif; ?>
-
-            <?php if (!empty($sucesso)): ?>
-                <p><?php echo htmlspecialchars($sucesso); ?></p>
-            <?php endif; ?>
 
             <label>Nome:</label>
             <input type="text" name="nome" value="<?php echo htmlspecialchars($rota['nome']); ?>" required>
@@ -205,5 +222,7 @@ if (isset($_POST['id_rota'])) {
             </div>
         </form>
             </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
