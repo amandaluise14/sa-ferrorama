@@ -137,12 +137,11 @@ if (!$trens) {
                     <td><?php echo $trem['linha']; ?></td>
                     <td><?php echo $trem['carga']; ?></td>
                     <td>
-<<<<<<< HEAD
+
                       <button class="editar acao-tooltip"
-=======
+
 
                                         <button class="editar acao-tooltip"
->>>>>>> e0d6ef117953ee2e7bbe971af96f76d325a0ee53
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
@@ -162,27 +161,24 @@ if (!$trens) {
                                             <i class="bi bi-person-dash-fill"></i>
 
                                         </button>
-<<<<<<< HEAD
+
                     </td>
-=======
+
 
                                     </td>
->>>>>>> e0d6ef117953ee2e7bbe971af96f76d325a0ee53
+
                 </tr>
 
             <?php endwhile; ?>
 
         </tbody>
     </table>
-<<<<<<< HEAD
 
-<button>
-Cadastrar trem 
-</button>
 
-=======
-<button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Ir para adicionar </button>
->>>>>>> e0d6ef117953ee2e7bbe971af96f76d325a0ee53
+
+
+<button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Cadastrar Trem </button>
+
 </div>
         </div>
 
