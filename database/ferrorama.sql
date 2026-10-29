@@ -45,3 +45,18 @@ trem_id INT,
 
 FOREIGN KEY (trem_id) REFERENCES trens(id_trem)
 );
+
+CREATE TABLE enderecos (
+    id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+    cep VARCHAR(9) NOT NULL,
+    logradouro VARCHAR(150) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    uf CHAR(2) NOT NULL
+);
+
+ALTER TABLE usuarios
+ADD COLUMN id_endereco INT NULL,
+ADD CONSTRAINT fk_usuario_endereco
+FOREIGN KEY (id_endereco)
+REFERENCES enderecos(id_endereco);

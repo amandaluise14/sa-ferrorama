@@ -25,12 +25,15 @@ $status = $_POST['status'] ?? '';
 $busca = "%{$pesquisa}%";
 
 // Consulta de usuários com filtros
-$sql = "SELECT * FROM usuarios
-        WHERE (? = '' OR nome LIKE ? OR email LIKE ?)
-        AND (? = '' OR cargo = ?)
-        AND (? = '' OR status_usuario = ?)
-        ORDER BY id_usuario";
-
+$sql = "SELECT usuarios.*, enderecos.cidade
+        FROM usuarios
+        LEFT JOIN enderecos
+        ON usuarios.id_endereco = enderecos.id_endereco
+        WHERE (? = '' OR usuarios.nome LIKE ? OR usuarios.email LIKE ?)
+        AND (? = '' OR usuarios.cargo = ?)
+        AND (? = '' OR usuarios.status_usuario = ?)
+        ORDER BY usuarios.id_usuario";
+        
 $stmt = $conn->prepare($sql);
 
 $stmt->bind_param(
@@ -72,6 +75,7 @@ $sqlAtivos = "SELECT COUNT(*) AS total
               WHERE status_usuario = 'ativo'";
 $resultadoAtivos = $conn->query($sqlAtivos);
 $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
+
 ?>
 
 <!DOCTYPE html>
@@ -277,7 +281,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                     <td><?php echo $usuario['nome']; ?></td>
                                     <td><?php echo $usuario['email']; ?></td>
                                     <td><?php echo $usuario['telefone']; ?></td>
-                                    <td><?php echo $usuario['endereco']; ?></td>
+                                    <td><?php echo $usuario['cidade']; ?></td>
                                     <td><?php echo $usuario['data_nascimento']; ?></td>
                                     <td><?php $cpf = $usuario['cpf']; echo '***.***.***-' . substr($cpf, -2);?></td>
                                     <td><?php echo $usuario['cargo']; ?></td>
