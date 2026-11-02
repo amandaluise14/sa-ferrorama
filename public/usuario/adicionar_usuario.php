@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $telefone = $_POST ['telefone'];
-    $endereco = $_POST ['endereco'];
     $cpf = $_POST ['cpf'];
     $cargo = $_POST ['cargo'];
     $data_nascimento = $_POST ['data_nascimento'];
@@ -18,16 +17,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Cria um hash seguro para a senha 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
     
+    // Dados do endereço
+    $cep = preg_replace('/\D/', '', $_POST['cep']);
+    $endereco = $_POST['endereco'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $uf = strtoupper($_POST['uf']);
 
-    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, cpf, cargo, data_nascimento, status_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssss", $nome, $email, $senhaHash, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario);
-     if ($stmt->execute() === TRUE) {
+    // Inicia a transação para evitar cadastros incompletos
+    $conn->begin_transaction();
+
+    try {
+
+        // Cadastra o endereço
+        $sqlEndereco = "INSERT INTO enderecos
+        (cep, logradouro, bairro, cidade, uf)
+        VALUES (?, ?, ?, ?, ?)";
+
+        $stmtEndereco = $conn->prepare($sqlEndereco);
+
+        $stmtEndereco->bind_param(
+            "sssss",
+            $cep,
+            $endereco,
+            $bairro,
+            $cidade,
+            $uf
+        );
+
+        if (!$stmtEndereco->execute()) {
+            throw new Exception($stmtEndereco->error);
+        }
+
+        // Recupera o ID do endereço cadastrado
+        $id_endereco = $conn->insert_id;
+
+        $stmtEndereco->close();
+
+
+    $sql = "INSERT INTO usuarios
+(nome, email, senha, telefone, cpf, cargo,
+data_nascimento, status_usuario, id_endereco)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+    "ssssssssi",
+    $nome,
+    $email,
+    $senhaHash,
+    $telefone,
+    $cpf,
+    $cargo,
+    $data_nascimento,
+    $status_usuario,
+    $id_endereco
+);
+    if (!$stmt->execute()) {
+            throw new Exception($stmt->error);
+        }
+
+        $stmt->close();
+
+        // Confirma os cadastros
+        $conn->commit();
+
         $sucesso = "Novo usuário/administrador cadastrado!";
- } else {
-    $erro = "Erro ao cadastrar usuário/administrador: " . $stmt->error;
- }
 
+    } catch (Exception $e) {
+
+        // Desfaz o cadastro se ocorrer um erro
+        $conn->rollback();
+
+        $erro = "Erro ao cadastrar usuário/administrador: "
+              . $e->getMessage();
+    }
 }
 ?>
 
@@ -133,9 +198,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <label for= "telefone">Telefone:</label>
     <input type="tel" id="telefone" name="telefone" placeholder="Ex: (11) 91234-5678" required>
      <br><br>
-    <label for="endereco">Endereço:</label>
-     <input type="text" id="endereco" name="endereco" placeholder="Ex: Bairo guanabara rua guanabara numero 7" required>
-     <br><br> 
+    <label for="cep">CEP:</label>
+    <input type="text" id="cep" name="cep"
+        placeholder="Ex: 89239-415"
+        maxlength="9" required>
+    <br><br>
+
+    <label for="endereco">Logradouro:</label>
+    <input type="text" id="endereco" name="endereco"
+        placeholder="Rua ou avenida" required>
+    <br><br>
+
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" name="bairro"
+        placeholder="Bairro" required>
+    <br><br>
+
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" name="cidade"
+        placeholder="Cidade" required>
+    <br><br>
+
+    <label for="uf">Estado (UF):</label>
+    <input type="text" id="uf" name="uf"
+        placeholder="Ex: SC"
+        maxlength="2" required>
+    <br><br>
     <label for="data_nascimento">Data de nascimento:</label>
      <input type="date" id="data_nascimento" name="data_nascimento" placeholder="Ex: 21/02/09" required>
      <br><br> 
@@ -162,6 +250,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     </form> 
     </div>
+    <script>
+document.getElementById('cep').addEventListener('blur', async function () {
+
+    const cep = this.value.replace(/\D/g, '');
+
+    if (cep.length !== 8) {
+        return;
+    }
+
+    try {
+        const resposta = await fetch(
+            'https://viacep.com.br/ws/' + cep + '/json/'
+        );
+
+        if (!resposta.ok) {
+            throw new Error('Falha na consulta');
+        }
+
+        const dados = await resposta.json();
+
+        if (dados.erro) {
+            alert('CEP não encontrado!');
+            return;
+        }
+
+        document.getElementById('cep').value = dados.cep || '';
+        document.getElementById('endereco').value = dados.logradouro || '';
+        document.getElementById('bairro').value = dados.bairro || '';
+        document.getElementById('cidade').value = dados.localidade || '';
+        document.getElementById('uf').value = dados.uf || '';
+
+    } catch (erro) {
+        alert('Não foi possível consultar o CEP.');
+    }
+});
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -10,13 +10,22 @@ include '../../infra/verificar_admin.php';
 
 $sql = "DELETE FROM rotas WHERE id_rota = ?";
 $stmt = $conn-> prepare ($sql);
-$stmt-> bind_param ("i", $id_rota);
-
-if ($stmt->execute ()) {
-    header("Location: listar_rotas.php");
+if (!$stmt) {
+    header("Location: listar_rotas.php?erro=falha");
     exit;
-}  else {
-    echo "Erro ao excluir a rota: ". $conn->error;
+}
+$stmt-> bind_param ("i", $id);
+
+if ($stmt->execute()) {
+    if ($stmt->affected_rows > 0) {
+        header("Location: listar_rotas.php?sucesso=excluido");
+    } else {
+        header("Location: listar_rotas.php?erro=nao_encontrado");
+    }
+} else {
+    header("Location: listar_rotas.php?erro=falha");
 }
 
+$stmt->close();
+exit;
 ?>

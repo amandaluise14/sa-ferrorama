@@ -40,14 +40,23 @@ estacao_destino VARCHAR(50) NOT NULL,
 distancia_total VARCHAR(50) NOT NULL,
 descricao VARCHAR(200),
 duracao TIME,
-data_criacao DATETIME CURRENT_TIMESTAMP,
+data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
 trem_id INT,
 
 FOREIGN KEY (trem_id) REFERENCES trens(id_trem)
 );
 
-ALTER TABLE rotas 
-ADD descricao VARCHAR(200),
-ADD duracao time,
-ADD trem_id INT,
-ADD data_criacao DATETIME; 
+CREATE TABLE enderecos (
+    id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+    cep VARCHAR(9) NOT NULL,
+    logradouro VARCHAR(150) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    uf CHAR(2) NOT NULL
+);
+
+ALTER TABLE usuarios
+ADD COLUMN id_endereco INT NULL,
+ADD CONSTRAINT fk_usuario_endereco
+FOREIGN KEY (id_endereco)
+REFERENCES enderecos(id_endereco);

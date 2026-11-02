@@ -36,6 +36,8 @@ if (!$trens) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../style/style.css">
     <title>Listar Trens</title>
 </head>
@@ -103,7 +105,7 @@ if (!$trens) {
         <div class="d-flex align-items-center gap-3 mb-5">
 
             <h2 class="titulo-admin mb-4">
-                Bem vindo <?php echo $_SESSION['usuario'] ?? ''; ?>
+                Listagem de Trens
             </h2>
 
 
@@ -136,7 +138,13 @@ if (!$trens) {
                     <td><?php echo $trem['carga']; ?></td>
                     <td>
 
+
+                      <button class="editar acao-tooltip"
+
+
                                         <button class="editar acao-tooltip"
+
+                      <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
@@ -157,14 +165,21 @@ if (!$trens) {
 
                                         </button>
 
+                    </td>
+
+
                                     </td>
+
+                    </td>
                 </tr>
 
             <?php endwhile; ?>
 
         </tbody>
     </table>
-<button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Ir para adicionar </button>
+
+
+<button class="botaoVisualizar" type="button" onclick="window.location.href='adicionar_trem.php'"> Cadastrar Trem </button>
 </div>
         </div>
 
@@ -176,4 +191,4 @@ if (!$trens) {
 
 </body>
 </html>
-```
+

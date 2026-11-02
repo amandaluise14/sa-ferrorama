@@ -5,7 +5,22 @@ session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+//mensagem de erro e sucesso ao excluir
+$mensagem = '';
+$tipoMensagem = '';
 
+if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
+    $mensagem = 'Rota excluída com sucesso!';
+    $tipoMensagem = 'success';
+} elseif (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'nao_encontrado') {
+        $mensagem = 'A rota não foi encontrado.';
+    } else {
+        $mensagem = 'Erro ao excluir a rota. Tente novamente.';
+    }
+
+    $tipoMensagem = 'danger';
+}
 $sql = "SELECT * FROM rotas ORDER BY id_rota";
 $resultado = mysqli_query($conn, $sql);
 
@@ -21,6 +36,7 @@ if (!$resultado) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style/style.css">
     
@@ -68,6 +84,27 @@ if (!$resultado) {
     </div>
 
     <div class="formulario-container">
+        <?php if (!empty($mensagem)): ?>
+    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+         role="alert"
+         style="z-index: 1055; width: 90%; max-width: 500px;">
+
+        <?php if ($tipoMensagem === 'success'): ?>
+            <strong>✅ Sucesso!</strong>
+        <?php else: ?>
+            <strong>⚠️ Atenção!</strong>
+        <?php endif; ?>
+
+        <?= htmlspecialchars($mensagem) ?>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
+    </div>
+<?php endif; ?>
 
         <div class="conteudo">
 
@@ -112,7 +149,11 @@ if (!$resultado) {
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
+<<<<<<< HEAD
                                                 window.location.href='excluir_rota.php?id=<?php echo (int) $rota['id_rota']; ?>';
+=======
+                                                window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
+>>>>>>> 04929003a0c12ebe07befc78b4c45d54e45c2cbd
                                             }">
 
                                             <i class="bi bi-person-dash-fill"></i>

@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 );
 
     if ($stmt->execute()) {
-        header("Location: visualizar_trem.php");
+        header("Location: listar_trem.php");
         exit();
     } else {
         echo "Erro ao atualizar trem: " . $stmt->error;
@@ -66,9 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Trem</title>
    <link rel="stylesheet" href="../../style/style.css">
-  
-</head>
-<body>
 
 </head>
 <body>

@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li>Relatórios</li>
     </a>
 
-    <a href="adicionar_usuario.php" class="menu-link">
+    <a href="../usuario/adicionar_usuario.php" class="menu-link">
         <li>Adicionar usuário</li>
     </a>
 
