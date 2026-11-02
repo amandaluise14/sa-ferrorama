@@ -101,7 +101,7 @@ if (!$resultado) {
                                         <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
-                                            onclick="window.location.href='editar_usuario.php?id_usuario=<?php echo (int) $usuario['id_usuario']; ?>'">
+                                            onclick="window.location.href='editar_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>'">
 
                                             <i class="bi bi-pencil"></i>
 
@@ -111,8 +111,8 @@ if (!$resultado) {
                                             class="excluir acao-tooltip"
                                             data-tooltip="Excluir"
                                             type="button"
-                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {
-                                                window.location.href='excluir_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>';
+                                            onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
+                                                window.location.href='excluir_rota.php?id=<?php echo (int) $rota['id_rota']; ?>';
                                             }">
 
                                             <i class="bi bi-person-dash-fill"></i>
