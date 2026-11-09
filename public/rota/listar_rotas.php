@@ -155,7 +155,7 @@ if (!$resultado) {
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
-                                                window.location.href='excluir_rota.php?id=<?php echo (int) $rota['id_rota']; ?>';
+                                                window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
                                             }">
 
                                             <i class="bi bi-person-dash-fill"></i>
