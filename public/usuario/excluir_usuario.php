@@ -33,14 +33,11 @@ if ($dados['total'] > 0) {
     header("Location: visualizar_usuario.php?erro=possui_trens");
     exit;
 }
-
-// Impede a exclusão se possuir trens
 if ($dados['total'] > 0) {
     header("Location: visualizar_usuario.php?erro=possui_trens");
     exit;
 }
 
-// Exclui o usuário
 $sql = "DELETE FROM usuarios WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);
 

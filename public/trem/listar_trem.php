@@ -4,7 +4,7 @@ session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-//mensagem de erro e sucesso ao excluir
+
 $mensagem = '';
 $tipoMensagem = '';
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {

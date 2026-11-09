@@ -10,7 +10,6 @@ $id_trem = $_GET['id_trem'];
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-// Verifica se o trem possui usuário vinculado
 $sql_verifica = "SELECT COUNT(*) AS total FROM trens WHERE id_trem = ? AND usuario_id IS NOT NULL";
 $stmt = $conn->prepare($sql_verifica);
 
@@ -27,13 +26,11 @@ $dados = $resultado->fetch_assoc();
 
 $stmt->close();
 
-// Impede a exclusão se houver usuário vinculado
 if ($dados['total'] > 0) {
     header("Location: listar_trem.php?erro=possui_usuarios");
     exit;
 }
 
-// Exclui o trem
 $sql = "DELETE FROM trens WHERE id_trem = ?";
 $stmt = $conn->prepare($sql);
 

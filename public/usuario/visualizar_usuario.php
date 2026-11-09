@@ -1,7 +1,7 @@
 <?php
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-//mensagem de erro e sucesso ao excluir
+
 $mensagem = '';
 $tipoMensagem = '';
 
@@ -24,14 +24,12 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $tipoMensagem = 'danger';
 }
 
-// Recebe os filtros
 $pesquisa = trim($_POST['pesquisar'] ?? '');
 $cargo = $_POST['cargo'] ?? '';
 $status = $_POST['status'] ?? '';
 
 $busca = "%{$pesquisa}%";
 
-// Consulta de usuários com filtros
 $sql = "SELECT usuarios.*, enderecos.cidade
         FROM usuarios
         LEFT JOIN enderecos
