@@ -1226,7 +1226,7 @@ margin-bottom: 12px;
     }
 }
 
-<<<<<<< HEAD
+
 /* PAGINA DE LOGIN */
 
 
@@ -1460,8 +1460,7 @@ margin-bottom: 12px;
     font-size: 17px;
     line-height: 1.9;
     margin-bottom: 35px;
-=======
-
+}
 /* =====================================
    TELA DE CADASTRAR USUÁRIO
 ===================================== */
@@ -1634,7 +1633,7 @@ margin-bottom: 12px;
 .form-cadastro-usuario .campo textarea:focus {
     border-color: #6478bd;
     box-shadow: 0 0 0 3px rgba(67, 86, 160, 0.08);
->>>>>>> 8c7bc4d62b35ccdb4176505612691627b5ee0dd0
+
 }
 
 /* BOTÕES */
@@ -1908,7 +1907,7 @@ margin-bottom: 12px;
 #landing_page .landing_rodape p {
     margin: 0;
     font-size: 13px;
-=======
+}
 .acoes-formulario {
     display: flex;
     justify-content: flex-end;
