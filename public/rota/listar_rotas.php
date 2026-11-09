@@ -117,9 +117,12 @@ if (!$resultado) {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Origem</th>
-                            <th>Destino</th>
+                            <th>Estação de Origem</th>
+                            <th>Estação de Destino</th>
                             <th>Distância</th>
+                            <th>Descrição</th>
+                            <th>Tempo Estimado</th>
+                            <th>Trem vinculado</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -133,6 +136,9 @@ if (!$resultado) {
                                 <td><?php echo $rota['estacao_origem']; ?></td>
                                 <td><?php echo $rota['estacao_destino']; ?></td>
                                 <td><?php echo $rota['distancia_total']; ?></td>
+                                <td><?php echo $rota['descricao']; ?></td>
+                                <td><?php echo $rota['duracao']; ?></td>
+                                <td><?php echo $rota['trem_id']; ?></td>
                                 <td>
 
                                         <button class="editar acao-tooltip"
@@ -149,11 +155,7 @@ if (!$resultado) {
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
-<<<<<<< HEAD
                                                 window.location.href='excluir_rota.php?id=<?php echo (int) $rota['id_rota']; ?>';
-=======
-                                                window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
->>>>>>> 04929003a0c12ebe07befc78b4c45d54e45c2cbd
                                             }">
 
                                             <i class="bi bi-person-dash-fill"></i>
