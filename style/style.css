@@ -1374,3 +1374,439 @@ margin-bottom: 12px;
     background-color: #801313;
     transform: translateY(-2px);
 }
+
+/*lading page */
+
+
+/* ==================================
+   LANDING PAGE - SA FERRORAMA
+================================== */
+
+#landing_page {
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #17251b;
+    background-color: #ffffff;
+}
+
+#landing_page * {
+    box-sizing: border-box;
+}
+
+#landing_page html {
+    scroll-behavior: smooth;
+}
+
+/* APRESENTAÇÃO PRINCIPAL */
+
+#landing_page .landing_inicio {
+    position: relative;
+    min-height: 570px;
+    padding: 100px 10%;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(77, 160, 91, 0.22), transparent 35%),
+        linear-gradient(120deg, #071b0d, #10351b 65%, #174625);
+    color: white;
+    overflow: hidden;
+}
+
+#landing_page .landing_inicio::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+    right: -100px;
+    bottom: -180px;
+    box-shadow:
+        0 0 0 35px rgba(255,255,255,0.025),
+        0 0 0 70px rgba(255,255,255,0.02);
+}
+
+#landing_page .landing_conteudo {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+}
+
+#landing_page .landing_etiqueta {
+    display: inline-block;
+    color: #39884b;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+#landing_page .landing_inicio .landing_etiqueta {
+    color: #9bd8a5;
+    padding: 10px 16px;
+    border: 1px solid rgba(155, 216, 165, 0.35);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.05);
+}
+
+#landing_page .landing_inicio h1 {
+    max-width: 750px;
+    font-size: 54px;
+    line-height: 1.13;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin: 28px 0 22px;
+}
+
+#landing_page .landing_inicio p {
+    max-width: 650px;
+    color: #d0ddd2;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+/* BOTÕES */
+
+#landing_page .landing_botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 27px;
+    border-radius: 7px;
+    background-color: #a71919;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#landing_page .landing_botao:hover {
+    background-color: #801313;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* SOBRE O PROJETO */
+
+#landing_page .landing_secao {
+    padding: 105px 12%;
+    background-color: #ffffff;
+}
+
+#landing_page .landing_texto {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+#landing_page .landing_texto h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 20px 0;
+    color: #15351e;
+}
+
+#landing_page .landing_texto p {
+    color: #68756b;
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+/* FUNCIONALIDADES */
+
+#landing_page .landing_funcionalidades {
+    padding: 100px 9%;
+    background-color: #f5f8f5;
+}
+
+#landing_page .landing_titulo {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+
+#landing_page .landing_titulo h2 {
+    color: #15351e;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 18px 0;
+}
+
+#landing_page .landing_titulo p {
+    color: #738075;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+#landing_page .landing_cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+#landing_page .landing_card {
+    position: relative;
+    padding: 32px 25px;
+    min-height: 260px;
+    background-color: #ffffff;
+    border: 1px solid #e5ece5;
+    border-radius: 13px;
+    box-shadow: 0 5px 20px rgba(20, 55, 29, 0.035);
+    transition: 0.3s;
+}
+
+#landing_page .landing_card:hover {
+    transform: translateY(-7px);
+    border-color: #9cc9a3;
+    box-shadow: 0 15px 35px rgba(20, 55, 29, 0.10);
+}
+
+#landing_page .landing_icone {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: #eaf4eb;
+    font-size: 27px;
+    margin-bottom: 25px;
+}
+
+#landing_page .landing_card h3 {
+    color: #193b22;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+#landing_page .landing_card p {
+    color: #718075;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* MONITORAMENTO IOT */
+
+#landing_page .landing_monitoramento {
+    padding: 105px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 75px;
+    background-color: #ffffff;
+}
+
+#landing_page .landing_monitoramento_texto h2 {
+    color: #15351e;
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 20px 0;
+}
+
+#landing_page .landing_monitoramento_texto p {
+    color: #68756b;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+#landing_page .landing_monitoramento_itens {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+#landing_page .landing_monitoramento_itens div {
+    min-height: 130px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    background-color: #f3f7f3;
+    border: 1px solid #e4ece4;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+#landing_page .landing_monitoramento_itens div:hover {
+    background-color: #eaf4eb;
+    transform: translateY(-4px);
+}
+
+#landing_page .landing_monitoramento_itens strong {
+    color: #39884b;
+    font-size: 27px;
+}
+
+#landing_page .landing_monitoramento_itens span {
+    color: #294531;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* BENEFÍCIOS */
+
+#landing_page .landing_beneficios {
+    padding: 100px 9%;
+    background-color: #f5f8f5;
+}
+
+#landing_page .landing_beneficios_lista {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+#landing_page .landing_beneficios_lista div {
+    padding: 25px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e5ece5;
+    border-top: 3px solid #39884b;
+    transition: 0.3s;
+}
+
+#landing_page .landing_beneficios_lista div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(20, 55, 29, 0.08);
+}
+
+#landing_page .landing_beneficios_lista h3 {
+    color: #193b22;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+#landing_page .landing_beneficios_lista p {
+    color: #718075;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* CHAMADA FINAL */
+
+#landing_page .landing_final {
+    position: relative;
+    padding: 85px 20px;
+    text-align: center;
+    color: white;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(65, 135, 76, 0.25), transparent 55%),
+        #0b2512;
+}
+
+#landing_page .landing_final h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+#landing_page .landing_final p {
+    color: #c8d6ca;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* RODAPÉ */
+
+#landing_page .landing_rodape {
+    padding: 25px 15px;
+    text-align: center;
+    background-color: #06170b;
+    color: #aebcaf;
+}
+
+#landing_page .landing_rodape p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+    #landing_page .landing_cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #landing_page .landing_beneficios_lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #landing_page .landing_monitoramento {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 700px) {
+    #landing_page .landing_inicio {
+        min-height: 500px;
+        padding: 75px 25px;
+    }
+
+    #landing_page .landing_inicio h1 {
+        font-size: 37px;
+    }
+
+    #landing_page .landing_inicio p {
+        font-size: 15px;
+    }
+
+    #landing_page .landing_secao,
+    #landing_page .landing_funcionalidades,
+    #landing_page .landing_monitoramento,
+    #landing_page .landing_beneficios {
+        padding: 70px 25px;
+    }
+
+    #landing_page .landing_texto h2,
+    #landing_page .landing_titulo h2,
+    #landing_page .landing_monitoramento_texto h2 {
+        font-size: 29px;
+    }
+
+    #landing_page .landing_cards,
+    #landing_page .landing_beneficios_lista,
+    #landing_page .landing_monitoramento {
+        grid-template-columns: 1fr;
+    }
+
+    #landing_page .landing_card {
+        min-height: auto;
+    }
+
+    #landing_page .landing_monitoramento_itens {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #landing_page .landing_final h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 420px) {
+    #landing_page .landing_monitoramento_itens {
+        grid-template-columns: 1fr;
+    }
+
+    #landing_page .landing_inicio h1 {
+        font-size: 32px;
+    }
+}
