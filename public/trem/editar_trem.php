@@ -1,8 +1,10 @@
+
 <?php
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+// VERIFICAR ID DO TREM
 if (!isset($_GET['id_trem'])) {
     echo "ID do trem não informado.";
     exit;
@@ -10,6 +12,7 @@ if (!isset($_GET['id_trem'])) {
 
 $id_trem = (int) $_GET['id_trem'];
 
+// BUSCAR DADOS DO TREM
 $sql = "SELECT * FROM trens WHERE id_trem = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_trem);
@@ -23,51 +26,58 @@ if (!$trem) {
     exit;
 }
 
+// BUSCAR USUÁRIOS
+$sql_usuarios = "SELECT id_usuario, nome FROM usuarios";
+$resultado_usuarios = $conn->query($sql_usuarios);
+
+// ATUALIZAR TREM
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $modelo = $_POST['modelo'];
-    $velocidade = $_POST['velocidade'];
+    $velocidade = (int) $_POST['velocidade'];
     $linha = $_POST['linha'];
     $carga = $_POST['carga'];
+    $usuario_id = (int) $_POST['usuario_id'];
 
     $sql = "UPDATE trens
-            SET modelo=?,
-                velocidade=?,
-                linha=?,
-                carga=?
-            WHERE id_trem=?";
+            SET modelo = ?,
+                velocidade = ?,
+                linha = ?,
+                carga = ?,
+                usuario_id = ?
+            WHERE id_trem = ?";
 
     $stmt = $conn->prepare($sql);
 
-   $stmt->bind_param(
-    "ssssi",
-    $modelo,
-    $velocidade,
-    $linha,
-    $carga,
-    $id_trem
-);
+    $stmt->bind_param(
+        "sissii",
+        $modelo,
+        $velocidade,
+        $linha,
+        $carga,
+        $usuario_id,
+        $id_trem
+    );
 
     if ($stmt->execute()) {
         header("Location: listar_trem.php");
         exit();
     } else {
-        echo "Erro ao atualizar trem: " . $stmt->error;
+        $erro = "Erro ao atualizar trem: " . $stmt->error;
     }
 }
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastrar Trem</title>
+    <title>Editar Trem</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet">
@@ -76,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 
 <body>
@@ -86,9 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="sidebar">
 
         <div class="logo">
+
             <img id="imagem_logo"
                  src="../../assets/image/logo_png_branca.png"
                  alt="Logo Info Trem">
+
         </div>
 
         <ul>
@@ -140,33 +153,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
 
-        <!-- MENSAGENS -->
+        <!-- MENSAGEM DE ERRO -->
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
                  role="alert">
 
                 <strong>⚠️ Ops!</strong>
+
                 <?= htmlspecialchars($erro) ?>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                </button>
-
-            </div>
-
-        <?php endif; ?>
-
-
-        <?php if (!empty($sucesso)): ?>
-
-            <div class="alert alert-success alert-dismissible fade show"
-                 role="alert">
-
-                <strong>✅ Sucesso!</strong>
-                <?= htmlspecialchars($sucesso) ?>
 
                 <button type="button"
                         class="btn-close"
@@ -190,8 +185,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div>
+
                     <h3>Informações do trem</h3>
-                    <p>Preencha os dados para cadastrar um novo trem.</p>
+
+                    <p>Atualize os dados cadastrados do trem.</p>
+
                 </div>
 
             </div>
@@ -202,6 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="grade-formulario">
 
+
                     <!-- MODELO -->
                     <div class="campo">
 
@@ -210,6 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text"
                                id="modelo"
                                name="modelo"
+                               value="<?= htmlspecialchars($trem['modelo']) ?>"
                                placeholder="Ex: Modelo A"
                                required>
 
@@ -224,6 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="number"
                                id="velocidade"
                                name="velocidade"
+                               value="<?= htmlspecialchars($trem['velocidade']) ?>"
                                placeholder="Ex: 120"
                                required>
 
@@ -238,6 +239,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text"
                                id="linha"
                                name="linha"
+                               value="<?= htmlspecialchars($trem['linha']) ?>"
                                placeholder="Ex: Linha 1"
                                required>
 
@@ -252,13 +254,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text"
                                id="carga"
                                name="carga"
+                               value="<?= htmlspecialchars($trem['carga']) ?>"
                                placeholder="Ex: Carvão"
                                required>
 
                     </div>
 
 
-                    <!-- USUÁRIO -->
+                    <!-- USUÁRIO VINCULADO -->
                     <div class="campo campo-largo">
 
                         <label for="usuario_id">Usuário vinculado</label>
@@ -269,14 +272,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <option value="">Selecione um usuário</option>
 
-                            <?php
-                            mysqli_data_seek($resultado, 0);
+                            <?php while ($usuario = $resultado_usuarios->fetch_assoc()): ?>
 
-                            while ($usuario = mysqli_fetch_assoc($resultado)):
-                            ?>
+                                <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>"
+                                    <?= ($usuario['id_usuario'] == $trem['usuario_id']) ? 'selected' : '' ?>>
 
-                                <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>">
                                     <?= htmlspecialchars($usuario['nome']) ?>
+
                                 </option>
 
                             <?php endwhile; ?>
@@ -284,6 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </select>
 
                     </div>
+
 
                 </div>
 
@@ -293,7 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <button type="button"
                             class="botao-voltar"
-                            onclick="window.location.href='../pagina_home.php'">
+                            onclick="window.location.href='listar_trem.php'">
 
                         ← Voltar para Cadastro de Trem
 
@@ -304,7 +307,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             class="botao-cadastrar">
 
                         <i class="bi bi-train-front"></i>
-                       Editar Trem
+
+                        Editar Trem
 
                     </button>
 
