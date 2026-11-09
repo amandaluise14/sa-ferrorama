@@ -2147,12 +2147,10 @@ margin-bottom: 12px;
 
 .card-acesso:hover .seta-acesso {
     transform: translate(3px, -3px);
->>>>>>> 8c7bc4d62b35ccdb4176505612691627b5ee0dd0
 }
 
 /* RESPONSIVIDADE */
 
-<<<<<<< HEAD
 @media (max-width: 1000px) {
     #landing_page .landing_cards {
         grid-template-columns: repeat(2, 1fr);
@@ -2222,7 +2220,7 @@ margin-bottom: 12px;
         font-size: 32px;
     }
 }
-=======
+
 @media (max-width: 900px) {
     .grade-acessos {
         grid-template-columns: repeat(2, 1fr);
@@ -2234,18 +2232,20 @@ margin-bottom: 12px;
         grid-template-columns: 1fr;
     }
 }
->>>>>>> 8c7bc4d62b35ccdb4176505612691627b5ee0dd0
 
-/* LISTAGEM DE ROTAS */
+/* ===== ESTILO PADRÃO PARA TODAS AS LISTAGENS ===== */
 
-body.pagina-listagem .cartao-listagem {
+/* Cartão principal */
+.cartao-listagem,
+.forms_sensores {
     background: #fff;
     padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
-body.pagina-listagem .cabecalho-listagem {
+/* Cabeçalho */
+.cabecalho-listagem {
     display: flex;
     align-items: center;
     gap: 13px;
@@ -2254,66 +2254,89 @@ body.pagina-listagem .cabecalho-listagem {
     border-bottom: 1px solid #e5e8ef;
 }
 
-body.pagina-listagem .icone-listagem {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eef0ff;
-    color: #8b0000;
-    border-radius: 10px;
-    font-size: 22px;
+/* Título */
+.cabecalho-listagem h2,
+.forms_sensores h2 {
+    color: #670303;
 }
 
-body.pagina-listagem .tabela-rotas-container {
+/* Área da tabela */
+.tabela-container,
+.table-responsive {
     width: 100%;
     overflow-x: auto;
+    padding: 5px;
 }
 
-body.pagina-listagem .tabela-rotas {
+/* Tabelas */
+.tabela-rotas,
+.tabela-sensores,
+.tabela-usuarios,
+.tabela-listagem {
     width: 100%;
     min-width: 900px;
-    border-collapse: collapse;
+    border: 1px solid #d9d9d9;
+    outline: 5px solid #fff;
+    outline-offset: 3px;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
     font-size: 13px;
     color: #34445e;
 }
 
-body.pagina-listagem .tabela-rotas thead {
+/* Cabeçalho da tabela */
+.tabela-rotas thead,
+.tabela-sensores thead,
+.tabela-usuarios thead,
+.tabela-listagem thead {
     background: #8b0000;
-    color: white;
+    color: #fff;
 }
 
-body.pagina-listagem .tabela-rotas th {
+.tabela-rotas th,
+.tabela-sensores th,
+.tabela-usuarios th,
+.tabela-listagem th {
     padding: 15px 12px;
     text-align: left;
+    background: #8b0000;
+    color: #fff;
+    white-space: nowrap;
 }
 
-body.pagina-listagem .tabela-rotas td {
+/* Células */
+.tabela-rotas td,
+.tabela-sensores td,
+.tabela-usuarios td,
+.tabela-listagem td {
     padding: 17px 12px;
     border-bottom: 1px solid #e5e8ef;
+    vertical-align: middle;
 }
 
-body.pagina-listagem .tabela-rotas tbody tr:hover {
+/* Efeito ao passar o mouse */
+.tabela-rotas tbody tr:hover,
+.tabela-sensores tbody tr:hover,
+.tabela-usuarios tbody tr:hover,
+.tabela-listagem tbody tr:hover {
     background: #faf8f8;
 }
 
-body.pagina-listagem .botao-cadastrar {
+/* Botão cadastrar */
+.botao-cadastrar {
     margin-left: auto;
     padding: 11px 16px;
     background: #8b0000;
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 8px;
 }
 
-body.pagina-listagem.acoes-rotas {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-body.pagina-listagem .btn-rota {
+/* Botões de ação */
+.editar,
+.excluir,
+.btn-rota {
     width: 32px;
     height: 32px;
     border: none;
@@ -2322,23 +2345,12 @@ body.pagina-listagem .btn-rota {
     cursor: pointer;
 }
 
-body.pagina-listagem .btn-editar-rota {
+.editar,
+.btn-editar-rota {
     color: #8b0000;
 }
 
-body.pagina-listagem .btn-excluir-rota {
+.excluir,
+.btn-excluir-rota {
     color: #a33b3b;
-}
-
-body.pagina-listagem .tabela-rotas {
-    width: 100%;
-    border: 1px solid #d9d9d9;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #d9d9d9;
-    outline: 5px solid #ffffff;
-    outline-offset: 3px;
-    border-radius: 10px;
 }
