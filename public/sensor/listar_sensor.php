@@ -13,15 +13,19 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $tipoMensagem = 'success';
 } elseif (isset($_GET['erro'])) {
 
+
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O sensor não foi encontrado.';
+
 
     } elseif ($_GET['erro'] === 'possui_leituras') {
         $mensagem = 'Não foi possível excluir! Este sensor possui leituras cadastradas.';
 
+
     } else {
         $mensagem = 'Erro ao excluir o sensor. Tente novamente.';
     }
+
 
     $tipoMensagem = 'danger';
 }
@@ -29,6 +33,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,6 +46,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     <link rel="stylesheet" href="../../style/style.css">
 
     <title>Listagem de sensores</title>
+
 </head>
 
 <body class="pagina-listagem">
@@ -86,6 +92,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
             <div class="lista-cartao">
 
                 <?php if (!empty($mensagem)): ?>
+
                     <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
                         position-fixed top-0 start-50 translate-middle-x mt-3"
                         role="alert"
@@ -105,89 +112,88 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
                             aria-label="Fechar">
                         </button>
                     </div>
+
                 <?php endif; ?>
 
-                <form method="POST">
+                <form method="POST" class="forms_sensores">
 
-                    <div class="lista-cabecalho">
-                        <h2>Listagem de Sensores</h2>
-                    </div>
+                    <h2 id="titulo-admin">Listagem de Sensores</h2>
 
                     <div class="conteudo">
 
-                        <div class="lista-container">
+                        <div class="table-responsive">
 
-                            <table class="lista-tabela">
+                            <table class="table tabela-sensores">
 
-                                <thead>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Localização</th>
+                                <th>Descrição da Localização</th>
+                                <th>Dado Monitorado</th>
+                                <th>Ações</th>
+
+                                <?php
+
+                                include '../../infra/conexao.php';
+
+                                $sql = "SELECT * FROM sensores";
+                                $sensores = $conn->query($sql);
+
+                                while ($sensor = $sensores->fetch_assoc()) {
+                                ?>
+
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>Localização</th>
-                                        <th>Descrição da Localização</th>
-                                        <th>Dado Monitorado</th>
-                                        <th>Ações</th>
+                                        <td><?php echo $sensor['id_sensor']; ?></td>
+                                        <td><?php echo $sensor['nome']; ?></td>
+                                        <td><?php echo $sensor['localizacao']; ?></td>
+                                        <td><?php echo $sensor['descricao_localizacao']; ?></td>
+                                        <td><?php echo $sensor['dado_monitorado']; ?></td>
+
+                                        <td>
+
+                                            <button class="editar acao-tooltip"
+                                                data-tooltip="Editar"
+                                                type="button"
+                                                onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>'">
+
+                                                <i class="bi bi-pencil"></i>
+
+                                            </button>
+
+                                            <button
+                                                class="excluir acao-tooltip"
+                                                data-tooltip="Excluir"
+                                                type="button"
+                                                onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) {
+                                                    window.location.href='excluir_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>';
+                                                }">
+
+                                                <i class="bi bi-person-dash-fill"></i>
+
+                                            </button>
+
+                                        </td>
                                     </tr>
-                                </thead>
 
-                                <tbody>
-
-                                    <?php
-                                    include '../../infra/conexao.php';
-                                    $sql = "SELECT * FROM sensores";
-                                    $sensores = $conn->query($sql);
-
-                                    while ($sensor = $sensores->fetch_assoc()) {
-                                    ?>
-
-                                        <tr>
-                                            <td><?php echo $sensor['id_sensor']; ?></td>
-                                            <td><?php echo $sensor['nome']; ?></td>
-                                            <td><?php echo $sensor['localizacao']; ?></td>
-                                            <td><?php echo $sensor['descricao_localizacao']; ?></td>
-                                            <td><?php echo $sensor['dado_monitorado']; ?></td>
-
-                                            <td>
-                                                <button class="lista-editar acao-tooltip"
-                                                    data-tooltip="Editar"
-                                                    type="button"
-                                                    onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>'">
-
-                                                    <i class="bi bi-pencil"></i>
-
-                                                </button>
-
-                                                <button
-                                                    class="lista-excluir acao-tooltip"
-                                                    data-tooltip="Excluir"
-                                                    type="button"
-                                                    onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) {
-                                                        window.location.href='excluir_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>';
-                                                    }">
-
-                                                    <i class="bi bi-person-dash-fill"></i>
-
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                    <?php
-                                    }
-                                    ?>
-
-                                </tbody>
+                                <?php
+                                }
+                                ?>
 
                             </table>
+
                         </div>
 
                     </div>
+
                 </form>
 
             </div>
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
