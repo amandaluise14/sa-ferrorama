@@ -14,9 +14,19 @@ $tipoMensagem = '';
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Rota excluída com sucesso!';
     $tipoMensagem = 'success';
+
+
 } elseif (isset($_GET['erro'])) {
+
+
     if ($_GET['erro'] === 'nao_encontrado') {
-        $mensagem = 'A rota não foi encontrado.';
+        $mensagem = 'A rota não foi encontrada.';
+
+
+    } elseif ($_GET['erro'] === 'possui_trem') {
+        $mensagem = 'Não foi possível excluir! Esta rota possui um trem vinculado.';
+
+
     } else {
         $mensagem = 'Erro ao excluir a rota. Tente novamente.';
     }
