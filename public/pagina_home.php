@@ -13,6 +13,7 @@ include '../infra/clima.php';
         <title>Home</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="../style/style.css">
     </head>
@@ -29,25 +30,25 @@ include '../infra/clima.php';
           <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
                 <a href="pagina_home.php" class="menu-link">
-                    <li>Início</li>
+                    <li><i class="bi bi-house-fill"></i> Início</li>
                 </a>
 
                 <a href="pagina_relatorios.php" class="menu-link">
-                    <li>Relatórios</li>
+                    <li><i class="bi bi-file-earmark-text"></i> Relatórios</li>
                 </a>
 
                 <a href="usuario/adicionar_usuario.php" class="menu-link">
-                    <li>Adicionar usuário</li>
+                    <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
                 </a>
 
             <?php endif; ?>
 
             <a href="pagina_monitoramento.php" class="menu-link">
-                <li>Monitoramento</li>
+                <li><i class="bi bi-graph-up"></i> Monitoramento</li>
             </a>
 
             <a href="logout.php" class="menu-link">
-                <li>Sair</li>
+                <li><i class="bi bi-box-arrow-right"></i> Sair</li>
             </a>
 
 
@@ -109,12 +110,63 @@ include '../infra/clima.php';
 </div>
 
 
-        <button id="botaoHome" type="button" onclick="window.location.href='sensor/adicionar_sensor.php';">Cadastrar Sensor</button>
-        <br>
-        <button id="botaoHome" type="button" onclick="window.location.href='trem/adicionar_trem.php';">Cadastrar Trens</button>
-        <br>
-        <button id="botaoHome" type="button" onclick="window.location.href='rota/adicionar_rota.php';">Cadastrar Rotas</button>
-        <br>
+    <div class="acessos-rapidos">
+
+    <div class="titulo-acessos">
+        <h3>Acessos rápidos</h3>
+        <p>Selecione uma opção para gerenciar o sistema.</p>
+    </div>
+
+    <div class="grade-acessos">
+
+        <!-- CADASTRAR SENSOR -->
+        <a href="sensor/adicionar_sensor.php" class="card-acesso">
+
+            <div class="icone-acesso">
+                <i class="bi bi-broadcast-pin"></i>
+            </div>
+
+            <div class="info-acesso">
+                <h4>Sensores</h4>
+                <p>Cadastre e gerencie os sensores de monitoramento.</p>
+            </div>
+
+
+        </a>
+
+
+        <!-- CADASTRAR TREM -->
+        <a href="trem/adicionar_trem.php" class="card-acesso">
+
+            <div class="icone-acesso">
+                <i class="bi bi-train-front"></i>
+            </div>
+
+            <div class="info-acesso">
+                <h4>Trens</h4>
+                <p>Cadastre e gerencie os trens do sistema.</p>
+            </div>
+
+        </a>
+
+
+        <!-- CADASTRAR ROTA -->
+        <a href="rota/adicionar_rota.php" class="card-acesso">
+
+            <div class="icone-acesso">
+                <i class="bi bi-signpost-2"></i>
+            </div>
+
+            <div class="info-acesso">
+                <h4>Rotas</h4>
+                <p>Cadastre e organize as rotas ferroviárias.</p>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
     </div>
     </form> 
     </div>
