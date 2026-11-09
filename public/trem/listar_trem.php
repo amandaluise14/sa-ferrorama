@@ -4,23 +4,26 @@ session_start();
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-//mensagem de erro e sucesso ao excluir
+
 $mensagem = '';
 $tipoMensagem = '';
-
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Trem excluído com sucesso!';
     $tipoMensagem = 'success';
+
 } elseif (isset($_GET['erro'])) {
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O trem não foi encontrado.';
+
+    } elseif ($_GET['erro'] === 'possui_usuarios') {
+        $mensagem = 'Não foi possível excluir! Este trem possui usuários vinculados.';
+
     } else {
         $mensagem = 'Erro ao excluir o trem. Tente novamente.';
     }
 
     $tipoMensagem = 'danger';
 }
-
 $sql = "SELECT * FROM trens";
 $trens = mysqli_query($conn, $sql);
 
