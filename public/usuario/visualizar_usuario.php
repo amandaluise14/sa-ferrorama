@@ -1,30 +1,35 @@
 <?php
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-//mensagem de erro e sucesso ao excluir
+
 $mensagem = '';
 $tipoMensagem = '';
 
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Usuário excluído com sucesso!';
     $tipoMensagem = 'success';
-} elseif (isset($_GET['erro'])) {
+
+ } elseif (isset($_GET['erro'])) {
+
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O usuário não foi encontrado.';
+
+    } elseif ($_GET['erro'] === 'possui_trens') {
+        $mensagem = 'Não foi possível excluir! Este usuário possui trens cadastrados.';
+
     } else {
         $mensagem = 'Erro ao excluir o usuário. Tente novamente.';
     }
 
     $tipoMensagem = 'danger';
 }
-// Recebe os filtros
+
 $pesquisa = trim($_POST['pesquisar'] ?? '');
 $cargo = $_POST['cargo'] ?? '';
 $status = $_POST['status'] ?? '';
 
 $busca = "%{$pesquisa}%";
 
-// Consulta de usuários com filtros
 $sql = "SELECT usuarios.*, enderecos.cidade
         FROM usuarios
         LEFT JOIN enderecos

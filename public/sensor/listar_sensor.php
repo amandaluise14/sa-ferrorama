@@ -1,16 +1,24 @@
+
 <?php
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+
 //mensagem de erro e sucesso ao excluir
 $mensagem = '';
 $tipoMensagem = '';
+
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Sensor excluído com sucesso!';
     $tipoMensagem = 'success';
 } elseif (isset($_GET['erro'])) {
+
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O sensor não foi encontrado.';
+
+    } elseif ($_GET['erro'] === 'possui_leituras') {
+        $mensagem = 'Não foi possível excluir! Este sensor possui leituras cadastradas.';
+
     } else {
         $mensagem = 'Erro ao excluir o sensor. Tente novamente.';
     }
@@ -18,144 +26,168 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $tipoMensagem = 'danger';
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-     <link rel="stylesheet"
+
+    <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../../style/style.css">
-    <title>Listagem de sensores</title>
 
-   
+    <title>Listagem de sensores</title>
 </head>
 
-<body>
+<body class="pagina-listagem">
 
-   <div class="pagina">
-    <div class="sidebar">
+    <div class="pagina">
+        <div class="sidebar">
 
-        <div class="logo">
-        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            <div class="logo">
+                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            </div>
+
+            <ul>
+
+                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+                    <a href="../pagina_home.php" class="menu-link">
+                        <li>Início</li>
+                    </a>
+
+                    <a href="../pagina_relatorios.php" class="menu-link">
+                        <li>Relatórios</li>
+                    </a>
+
+                    <a href="../usuario/adicionar_usuario.php" class="menu-link">
+                        <li>Adicionar usuário</li>
+                    </a>
+
+                <?php endif; ?>
+
+                <!-- Aparece para administrador e usuário comum -->
+                <a href="../pagina_monitoramento.php" class="menu-link">
+                    <li>Monitoramento</li>
+                </a>
+
+                <a href="../logout.php" class="menu-link">
+                    <li>Sair</li>
+                </a>
+
+            </ul>
         </div>
 
-    <ul>
-            
-      
-         
-<?php if ($_SESSION['cargo'] === 'administrador'): ?>
+        <div class="formulario-container">
+            <div class="lista-cartao">
 
-    <a href="../pagina_home.php" class="menu-link">
-        <li>Início</li>
-    </a>
+                <?php if (!empty($mensagem)): ?>
+                    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                        position-fixed top-0 start-50 translate-middle-x mt-3"
+                        role="alert"
+                        style="z-index: 1055; width: 90%; max-width: 500px;">
 
-    <a href="../pagina_relatorios.php" class="menu-link">
-        <li>Relatórios</li>
-    </a>
+                        <?php if ($tipoMensagem === 'success'): ?>
+                            <strong>✅ Sucesso!</strong>
+                        <?php else: ?>
+                            <strong>⚠️ Atenção!</strong>
+                        <?php endif; ?>
 
-    <a href="../usuario/adicionar_usuario.php" class="menu-link">
-        <li>Adicionar usuário</li>
-    </a>
+                        <?= htmlspecialchars($mensagem) ?>
 
-<?php endif; ?>
+                        <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Fechar">
+                        </button>
+                    </div>
+                <?php endif; ?>
 
-<!-- Aparece para administrador e usuário comum -->
-<a href="../pagina_monitoramento.php" class="menu-link">
-    <li>Monitoramento</li>
-</a>
+                <form method="POST">
 
-<a href="../logout.php" class="menu-link">
-    <li>Sair</li>
-</a>
+                    <div class="lista-cabecalho">
+                        <h2>Listagem de Sensores</h2>
+                    </div>
 
-    </ul>
+                    <div class="conteudo">
+
+                        <div class="lista-container">
+
+                            <table class="lista-tabela">
+
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Localização</th>
+                                        <th>Descrição da Localização</th>
+                                        <th>Dado Monitorado</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <?php
+                                    include '../../infra/conexao.php';
+                                    $sql = "SELECT * FROM sensores";
+                                    $sensores = $conn->query($sql);
+
+                                    while ($sensor = $sensores->fetch_assoc()) {
+                                    ?>
+
+                                        <tr>
+                                            <td><?php echo $sensor['id_sensor']; ?></td>
+                                            <td><?php echo $sensor['nome']; ?></td>
+                                            <td><?php echo $sensor['localizacao']; ?></td>
+                                            <td><?php echo $sensor['descricao_localizacao']; ?></td>
+                                            <td><?php echo $sensor['dado_monitorado']; ?></td>
+
+                                            <td>
+                                                <button class="lista-editar acao-tooltip"
+                                                    data-tooltip="Editar"
+                                                    type="button"
+                                                    onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>'">
+
+                                                    <i class="bi bi-pencil"></i>
+
+                                                </button>
+
+                                                <button
+                                                    class="lista-excluir acao-tooltip"
+                                                    data-tooltip="Excluir"
+                                                    type="button"
+                                                    onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) {
+                                                        window.location.href='excluir_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>';
+                                                    }">
+
+                                                    <i class="bi bi-person-dash-fill"></i>
+
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    <?php
+                                    }
+                                    ?>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 
-    <div class="formulario-container">
-<?php if (!empty($mensagem)): ?>
-    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
-                position-fixed top-0 start-50 translate-middle-x mt-3"
-         role="alert"
-         style="z-index: 1055; width: 90%; max-width: 500px;">
-
-        <?php if ($tipoMensagem === 'success'): ?>
-            <strong>✅ Sucesso!</strong>
-        <?php else: ?>
-            <strong>⚠️ Atenção!</strong>
-        <?php endif; ?>
-
-        <?= htmlspecialchars($mensagem) ?>
-
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
-        </button>
-    </div>
-<?php endif; ?>
-        <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Listagem de Sensores</h2>
-            <div class="conteudo">
-
-             <div class="table-responsive">
-
-    <table class="table tabela-sensores">
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Localização</th>
-        <th>Descrição da Localização</th>
-        <th>Dado Monitorado</th>
-        <th>Ações</th>
-        <?php
-        include '../../infra/conexao.php';
-        $sql = "SELECT * FROM sensores";
-        $sensores = $conn->query($sql);
-        while ($sensor = $sensores->fetch_assoc()) {
-        ?>
-
-               <tr>
-                    <td><?php echo $sensor['id_sensor']; ?></td>
-                    <td><?php echo $sensor['nome']; ?></td>
-                    <td><?php echo $sensor['localizacao']; ?></td>
-                    <td><?php echo $sensor['descricao_localizacao']; ?></td>
-                    <td><?php echo $sensor['dado_monitorado']; ?></td>
-                    <td>
-                      <button class="editar acao-tooltip"
-                                            data-tooltip="Editar"
-                                            type="button"
-                                            onclick="window.location.href='editar_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>'">
-
-                                            <i class="bi bi-pencil"></i>
-
-                                        </button>
-
-                                        <button
-                                            class="excluir acao-tooltip"
-                                            data-tooltip="Excluir"
-                                            type="button"
-                                            onclick="if (confirm('Tem certeza que deseja excluir este sensor?')) {
-                                                window.location.href='excluir_sensor.php?id_sensor=<?php echo (int) $sensor['id_sensor']; ?>';
-                                            }">
-
-                                            <i class="bi bi-person-dash-fill"></i>
-
-                                        </button>
-                    </td>
-                </tr>
-        <?php
-        }
-        ?>
-    </table>
-    </div>
- 
-    </div>
-    </form> 
-    </div>  
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
