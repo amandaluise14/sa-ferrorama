@@ -110,12 +110,63 @@ include '../infra/clima.php';
 </div>
 
 
-        <button id="botaoHome" type="button" onclick="window.location.href='sensor/adicionar_sensor.php';">Cadastrar Sensor</button>
-        <br>
-        <button id="botaoHome" type="button" onclick="window.location.href='trem/adicionar_trem.php';">Cadastrar Trens</button>
-        <br>
-        <button id="botaoHome" type="button" onclick="window.location.href='rota/adicionar_rota.php';">Cadastrar Rotas</button>
-        <br>
+    <div class="acessos-rapidos">
+
+    <div class="titulo-acessos">
+        <h3>Acessos rápidos</h3>
+        <p>Selecione uma opção para gerenciar o sistema.</p>
+    </div>
+
+    <div class="grade-acessos">
+
+        <!-- CADASTRAR SENSOR -->
+        <a href="sensor/adicionar_sensor.php" class="card-acesso">
+
+            <div class="icone-acesso">
+                <i class="bi bi-broadcast-pin"></i>
+            </div>
+
+            <div class="info-acesso">
+                <h4>Sensores</h4>
+                <p>Cadastre e gerencie os sensores de monitoramento.</p>
+            </div>
+
+
+        </a>
+
+
+        <!-- CADASTRAR TREM -->
+        <a href="trem/adicionar_trem.php" class="card-acesso">
+
+            <div class="icone-acesso">
+                <i class="bi bi-train-front"></i>
+            </div>
+
+            <div class="info-acesso">
+                <h4>Trens</h4>
+                <p>Cadastre e gerencie os trens do sistema.</p>
+            </div>
+
+        </a>
+
+
+        <!-- CADASTRAR ROTA -->
+        <a href="rota/adicionar_rota.php" class="card-acesso">
+
+            <div class="icone-acesso">
+                <i class="bi bi-signpost-2"></i>
+            </div>
+
+            <div class="info-acesso">
+                <h4>Rotas</h4>
+                <p>Cadastre e organize as rotas ferroviárias.</p>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
     </div>
     </form> 
     </div>

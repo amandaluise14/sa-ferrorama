@@ -1537,3 +1537,124 @@ margin-bottom: 12px;
     }
 
 }
+
+
+/* ÁREA DE ACESSOS RÁPIDOS */
+
+.acessos-rapidos {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.titulo-acessos {
+    margin-bottom: 18px;
+}
+
+.titulo-acessos h3 {
+    color: #650000;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.titulo-acessos p {
+    color: #858585;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* GRADE DOS CARDS */
+
+.grade-acessos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    width: 100%;
+}
+
+/* CARDS */
+
+.card-acesso {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 185px;
+    padding: 23px;
+    background: #ffffff;
+    border: 1px solid #e8e5e5;
+    border-top: 4px solid #720000;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s ease;
+}
+
+.card-acesso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(70, 0, 0, 0.10);
+    border-color: #c9a5a5;
+    border-top-color: #720000;
+}
+
+/* ÍCONES */
+
+.icone-acesso {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7eeee;
+    border-radius: 10px;
+    color: #720000;
+    font-size: 23px;
+    margin-bottom: 17px;
+}
+
+/* TEXTOS */
+
+.info-acesso h4 {
+    color: #520000;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.info-acesso p {
+    color: #858585;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 240px;
+}
+
+/* SETA */
+
+.seta-acesso {
+    position: absolute;
+    right: 22px;
+    bottom: 20px;
+    color: #720000;
+    font-size: 19px;
+    transition: transform 0.2s ease;
+}
+
+.card-acesso:hover .seta-acesso {
+    transform: translate(3px, -3px);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .grade-acessos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grade-acessos {
+        grid-template-columns: 1fr;
+    }
+}
