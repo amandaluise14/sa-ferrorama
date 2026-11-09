@@ -35,135 +35,279 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Rota</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet">
-    <link rel="stylesheet" href="../../style/style.css">
-   
-</head>
-<body>
-    <div class="pagina">
-        
-    
 
+    <title>Cadastrar Rota</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="../../style/style.css">
+</head>
+
+<body>
+
+<div class="pagina">
+
+    <!-- SIDEBAR -->
     <div class="sidebar">
 
         <div class="logo">
-        <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
+            <img id="imagem_logo"
+                 src="../../assets/image/logo_png_branca.png"
+                 alt="Logo Info Trem">
         </div>
 
-    <ul>
-          
-           
-<?php if ($_SESSION['cargo'] === 'administrador'): ?>
+        <ul>
 
-    <a href="../pagina_home.php" class="menu-link">
-        <li>Início</li>
-    </a>
+            <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-    <a href="../pagina_relatorios.php" class="menu-link">
-        <li>Relatórios</li>
-    </a>
+                <a href="../pagina_home.php" class="menu-link">
+                    <li>Início</li>
+                </a>
 
-    <a href="../usuario/adicionar_usuario.php" class="menu-link">
-        <li>Adicionar usuário</li>
-    </a>
+                <a href="../pagina_relatorios.php" class="menu-link">
+                    <li>Relatórios</li>
+                </a>
 
-<?php endif; ?>
+                <a href="../usuario/adicionar_usuario.php" class="menu-link">
+                    <li>Adicionar usuário</li>
+                </a>
 
-<!-- Aparece para administrador e usuário comum -->
-<a href="../pagina_monitoramento.php" class="menu-link">
-    <li>Monitoramento</li>
-</a>
+            <?php endif; ?>
 
-<a href="../logout.php" class="menu-link">
-    <li>Sair</li>
-</a>
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li>Monitoramento</li>
+            </a>
 
+            <a href="../logout.php" class="menu-link">
+                <li>Sair</li>
+            </a>
 
-    </ul>
+        </ul>
+
     </div>
 
-    <title>Cadastar Rota </title>
-      <div class="formulario-container">
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="area-cadastro">
+
+        <!-- CABEÇALHO -->
+        <div class="cabecalho-pagina">
+
+            <div class="usuario-logado">
+                <span class="icone-usuario">◉</span>
+                <span>Administrador</span>
+            </div>
+
+            <h2>Cadastrar Rota</h2>
+
+            <p>Cadastre uma nova rota ferroviária no sistema Info Trem.</p>
+
+        </div>
+
+
+        <!-- MENSAGENS -->
         <?php if (!empty($erro)): ?>
-    <div class="alert alert-danger alert-dismissible fade show
-                position-fixed top-0 start-50 translate-middle-x mt-3"
-         role="alert"
-         style="z-index: 1055; width: 90%; max-width: 500px;">
 
-        <strong>⚠️ Ops!</strong>
-        <?= htmlspecialchars($erro) ?>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 role="alert">
 
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
-        </button>
-    </div>
-<?php endif; ?>
+                <strong>⚠️ Ops!</strong>
+                <?= htmlspecialchars($erro) ?>
 
-<?php if (!empty($sucesso)): ?>
-    <div class="alert alert-success alert-dismissible fade show
-                position-fixed top-0 start-50 translate-middle-x mt-3"
-         role="alert"
-         style="z-index: 1055; width: 90%; max-width: 500px;">
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Fechar">
+                </button>
 
-        <strong>✅ Sucesso!</strong>
-        <?= htmlspecialchars($sucesso) ?>
+            </div>
 
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
-        </button>
-    </div>
-<?php endif; ?>
-        <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">Cadastrar Rota</h2>
-            <div class="conteudo">
+        <?php endif; ?>
 
-    <label for="nome">Nome:</label>
-     <input type="text" id="nome" name="nome" placeholder="Ex: Rota da camomila" required>
-     <br><br> 
-    <label for="estacao_origem">Estação de origem:</label>
-    <input type="text" id="estacao_origem" name="estacao_origem" placeholder="Ex: Estação Guanabara" required>
-     <br><br>
-    <label for= "estacao_destino">Estação destino:</label>
-    <input type="text" id="estacao_destino" name="estacao_destino" placeholder="Ex: Estação itaum " required>
-     <br><br>
-     <label for= "distancia_total">Distância total(km):</label>
-    <input type="number" id="distancia_total" name="distancia_total" placeholder="Ex: 5km" required>
-     <br><br>
-    <label for="descricao">Descrição:</label>
-     <input type="text" id="endereco" name="descricao" placeholder="Ex: Um caminho longo" required>
-     <br><br> 
-    <label for="duracao">Tempo previsto de viagem:</label>
-     <input type="text" id="duracao" name="duracao" placeholder="5 horas" required>
-     <br><br> 
-    <label for="trem_id">Trem vinculado:</label>
-        <select name="trem_id" id="trem_id">
-            <option value="">Selecione um Trem</option>
-            <?php
-            while ($trem = mysqli_fetch_assoc($resultado)) {
-                echo "<option value='{$trem['id']}'>{$trem['modelo']}</option>";
-            }
-            ?>
-        </select>
-     <br><br> 
+
+        <?php if (!empty($sucesso)): ?>
+
+            <div class="alert alert-success alert-dismissible fade show"
+                 role="alert">
+
+                <strong>✅ Sucesso!</strong>
+                <?= htmlspecialchars($sucesso) ?>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Fechar">
+                </button>
+
+            </div>
+
+        <?php endif; ?>
 
 
 
-    <button id="botaoCadastro" type="submit">Cadastrar Rota</button>
-   <button class="btn-cancelar" type="button" onclick="window.location.href='../pagina_home.php';">Cancelar</button>
-   <button class="botaoVisualizar" type="button" onclick="window.location.href='listar_rotas.php';">Visualizar Rotas cadastradas</button>
-    </div>
-    </form> 
-    </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="cartao-formulario">
+
+
+            <div class="formulario-cabecalho">
+
+                <div class="icone-formulario">
+                    <i class="bi bi-signpost-2"></i>
+                </div>
+
+                <div>
+                    <h3>Informações da rota</h3>
+                    <p>Preencha os dados para cadastrar uma nova rota ferroviária.</p>
+                </div>
+
+            </div>
+
+
+            <form method="POST" class="form-cadastro-usuario">
+
+                <div class="grade-formulario">
+
+                    <div class="campo">
+
+                        <label for="nome">Nome da rota</label>
+
+                        <input type="text"
+                               id="nome"
+                               name="nome"
+                               placeholder="Ex: Rota Joinville - Araquari"
+                               required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="trem_id">Trem vinculado</label>
+
+                        <select name="trem_id" id="trem_id" required>
+
+                            <option value="">Selecione um trem</option>
+
+                            <?php
+                            mysqli_data_seek($resultado, 0);
+
+                            while ($trem = mysqli_fetch_assoc($resultado)):
+                            ?>
+
+                                <option value="<?= htmlspecialchars($trem['id_trem']) ?>">
+                                    <?= htmlspecialchars($trem['modelo']) ?>
+                                </option>
+
+                            <?php endwhile; ?>
+
+                        </select>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="estacao_origem">Estação de origem</label>
+
+                        <input type="text"
+                               id="estacao_origem"
+                               name="estacao_origem"
+                               placeholder="Ex: Estação Guanabara"
+                               required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="estacao_destino">Estação de destino</label>
+
+                        <input type="text"
+                               id="estacao_destino"
+                               name="estacao_destino"
+                               placeholder="Ex: Estação Itaum"
+                               required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="distancia_total">Distância total (km)</label>
+
+                        <input type="number"
+                               id="distancia_total"
+                               name="distancia_total"
+                               placeholder="Ex: 25"
+                               min="0"
+                               step="0.01"
+                               required>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="duracao">Tempo previsto de viagem</label>
+
+                        <input type="time"
+                               id="duracao"
+                               name="duracao"
+                               placeholder="Ex: 2 horas e 30 minutos"
+                               required>
+
+                    </div>
+
+
+                    <div class="campo campo-largo">
+
+                        <label for="descricao">Descrição da rota</label>
+
+                        <textarea id="descricao"
+                                  name="descricao"
+                                  rows="3"
+                                  placeholder="Descreva as características e informações da rota..."
+                                  required></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+                <div class="acoes-formulario">
+
+                    <button type="button"
+                            class="botao-voltar"
+                            onclick="window.location.href='listar_rotas.php';">
+
+                        ← Visualizar Rotas Cadastradas
+
+                    </button>
+
+                    <button type="submit"
+                            class="botao-cadastrar">
+
+                        <i class="bi bi-signpost-2"></i>
+                        Cadastrar rota
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

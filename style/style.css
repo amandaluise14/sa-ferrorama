@@ -151,7 +151,11 @@ h6 {
     font-weight: bold;
 }
 
-
+.sidebar .menu-link li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
 /* Cadastro */
 
 .conteudo-cadastro {
@@ -217,11 +221,11 @@ textarea {
 }
 
 .sidebar ul li:hover {
-    background-color: #61050552;
+    background-color: #9c0808b0;
 }
 
 .sidebar ul li.active {
-    background-color: #61050552;
+    background-color: #9c0808b0;
     font-weight: bold;
 }
 
@@ -381,16 +385,6 @@ input, select {
 .conteudo form textarea:focus {
     border-color: #8b0000;
     box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.10);
-}
-
-
-/* Radio Buttons */
-
-.conteudo form input[type="radio"] {
-    width: auto;
-    min-height: auto;
-    margin: 4px 6px 4px 0;
-    padding: 0;
 }
 
 
@@ -1382,6 +1376,31 @@ margin-bottom: 12px;
     box-shadow: 0 0 0 3px rgba(67, 86, 160, 0.08);
 }
 
+
+.form-cadastro-usuario .campo textarea {
+    width: 100%;
+    min-height: 85px;
+    resize: vertical;
+    margin: 0;
+    padding: 10px 11px;
+    border: 1px solid #dce2ed;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #34445e;
+    font-size: 12px;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-cadastro-usuario .campo textarea::placeholder {
+    color: #a2aaba;
+}
+
+.form-cadastro-usuario .campo textarea:focus {
+    border-color: #6478bd;
+    box-shadow: 0 0 0 3px rgba(67, 86, 160, 0.08);
+}
+
 /* BOTÕES */
 
 .acoes-formulario {
@@ -1429,6 +1448,60 @@ margin-bottom: 12px;
     border: 1px solid #8d0909;
     color: white;
     
+}
+
+/* sensor */
+
+.opcoes-localizacao {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.opcao-radio {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+}
+
+.opcao-radio input[type="radio"] {
+    width: 16px !important;
+    height: 16px !important;
+    min-height: 16px !important;
+    margin: 0 9px 0 0 !important;
+    accent-color: #4356a0;
+    cursor: pointer;
+}
+
+.opcao-radio span {
+    flex: 1;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid #dce2ed;
+    border-radius: 6px;
+    color: #34445e;
+    font-size: 12px;
+    background-color: #ffffff;
+}
+
+.opcao-radio span i {
+    color: #4356a0;
+    font-size: 17px;
+}
+
+.opcao-radio input[type="radio"]:checked + span {
+    border-color: #4356a0;
+    background-color: #f0f2fa;
+    color: #4356a0;
+}
+
+.opcao-radio:hover span {
+    border-color: #6478bd;
 }
 /* RESPONSIVIDADE */
 
