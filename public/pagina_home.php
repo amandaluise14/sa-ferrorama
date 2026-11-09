@@ -13,6 +13,7 @@ include '../infra/clima.php';
         <title>Home</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="../style/style.css">
     </head>
@@ -29,25 +30,25 @@ include '../infra/clima.php';
           <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
                 <a href="pagina_home.php" class="menu-link">
-                    <li>Início</li>
+                    <li><i class="bi bi-house-fill"></i> Início</li>
                 </a>
 
                 <a href="pagina_relatorios.php" class="menu-link">
-                    <li>Relatórios</li>
+                    <li><i class="bi bi-file-earmark-text"></i> Relatórios</li>
                 </a>
 
                 <a href="usuario/adicionar_usuario.php" class="menu-link">
-                    <li>Adicionar usuário</li>
+                    <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
                 </a>
 
             <?php endif; ?>
 
             <a href="pagina_monitoramento.php" class="menu-link">
-                <li>Monitoramento</li>
+                <li><i class="bi bi-graph-up"></i> Monitoramento</li>
             </a>
 
             <a href="logout.php" class="menu-link">
-                <li>Sair</li>
+                <li><i class="bi bi-box-arrow-right"></i> Sair</li>
             </a>
 
 

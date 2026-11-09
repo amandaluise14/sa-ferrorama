@@ -100,7 +100,7 @@ h6 {
     width: 20%;
     min-width: 20%;
     min-height: 100vh;
-    background-color: #700000;
+    background-color: #807878;
     flex-shrink: 0;
 }
 
@@ -177,7 +177,7 @@ h6 {
     width: 20%;
     min-width: 250px;
     min-height: 100vh;
-    background-color: #700000;
+    background-color: #3d0f0f;
 }
 
 input,
@@ -217,11 +217,11 @@ textarea {
 }
 
 .sidebar ul li:hover {
-    background-color: #990000;
+    background-color: #61050552;
 }
 
 .sidebar ul li.active {
-    background-color: #b30000;
+    background-color: #61050552;
     font-weight: bold;
 }
 
@@ -288,7 +288,7 @@ textarea {
 .sidebar {
     width: 20%;
     min-height: 100vh;
-    background-color: #700000;
+    background-color: #3d0f0f;
 }
 
 .conteudo {
@@ -1230,4 +1230,237 @@ margin-bottom: 12px;
         max-width: 100%;
         padding: 18px;
     }
+}
+
+
+/* =====================================
+   TELA DE CADASTRAR USUÁRIO
+===================================== */
+
+.area-cadastro {
+    flex: 1;
+    min-width: 0;
+    min-height: 100vh;
+    background-color: #f4f6fa;
+    padding: 25px 30px;
+}
+
+/* CABEÇALHO */
+
+.cabecalho-pagina {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.usuario-logado {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    color: #34445e;
+    font-size: 13px;
+}
+
+.icone-usuario {
+    font-size: 23px;
+}
+
+.cabecalho-pagina h2 {
+    color: #4b1313;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin: 0 0 7px;
+}
+
+.cabecalho-pagina p {
+    color: #8b96a8;
+    font-size: 12px;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e4ec;
+}
+
+/* CARTÃO DO FORMULÁRIO */
+
+.cartao-formulario {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* CABEÇALHO DO CARTÃO */
+
+.formulario-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-bottom: 17px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e5e8ef;
+}
+
+.icone-formulario {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eef0ff;
+    color: #635e5e;
+    border-radius: 10px;
+    font-size: 23px;
+}
+
+.formulario-cabecalho h3 {
+    font-size: 15px;
+    color: #413b3b;
+    margin: 0 0 5px;
+}
+
+.formulario-cabecalho p {
+    color: #8993a4;
+    font-size: 11px;
+    margin: 0;
+}
+
+/* FORMULÁRIO */
+
+.form-cadastro-usuario {
+    display: block;
+    width: 100%;
+}
+
+.grade-formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px 21px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.campo-largo {
+    grid-column: span 2;
+}
+
+.form-cadastro-usuario .campo label {
+    color: #34445e !important;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.form-cadastro-usuario .campo input,
+.form-cadastro-usuario .campo select {
+    width: 100% !important;
+    height: 38px;
+    min-height: 38px;
+    margin: 0 !important;
+    padding: 8px 11px;
+    border: 1px solid #dce2ed;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #34445e;
+    font-size: 14px;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-cadastro-usuario .campo input::placeholder {
+    color: #a2aaba;
+}
+
+.form-cadastro-usuario .campo input:focus,
+.form-cadastro-usuario .campo select:focus {
+    border-color: #6478bd;
+    box-shadow: 0 0 0 3px rgba(67, 86, 160, 0.08);
+}
+
+/* BOTÕES */
+
+.acoes-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 17px;
+    border-top: 1px solid #e5e8ef;
+}
+
+.botao-voltar,
+.botao-cadastrar {
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}
+
+.botao-voltar {
+    background-color: white;
+    border: 1px solid #a06262;
+    color: #a06262;
+}
+
+.botao-voltar:hover {
+    background-color: #f0f2fa;
+}
+
+.botao-cadastrar {
+    background-color: #8d0909;
+    border: 1px solid #8d0909;
+    color: white;
+}
+
+.botao-cadastrar:hover {
+    background-color: #8d0909;
+}
+
+.botao-cadastrar {
+    background-color: #8d0909;
+    border: 1px solid #8d0909;
+    color: white;
+    
+}
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+
+    .area-cadastro {
+        padding: 25px 20px;
+    }
+
+    .cartao-formulario {
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .grade-formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-largo {
+        grid-column: span 1;
+    }
+
+    .acoes-formulario {
+        flex-direction: column-reverse;
+    }
+
+    .botao-voltar,
+    .botao-cadastrar {
+        width: 100%;
+    }
+
 }
