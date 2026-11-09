@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -17,6 +16,10 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'A rota não foi encontrada.';
+
+    } elseif ($_GET['erro'] === 'possui_trem') {
+        $mensagem = 'Não foi possível excluir! Esta rota possui um trem vinculado.';
+
     } else {
         $mensagem = 'Erro ao excluir a rota. Tente novamente.';
     }
@@ -95,7 +98,6 @@ if (!$resultado) {
     </div>
 
 
-    <!-- CONTEÚDO PRINCIPAL -->
 
     <main class="area-cadastro">
 
@@ -107,8 +109,6 @@ if (!$resultado) {
             </div>
         </div>
 
-
-        <!-- MENSAGENS -->
 
         <?php if (!empty($mensagem)): ?>
 
@@ -126,7 +126,6 @@ if (!$resultado) {
         <?php endif; ?>
 
 
-        <!-- NOVO CARTÃO DE LISTAGEM -->
 
         <section class="cartao-listagem">
 
@@ -150,8 +149,6 @@ if (!$resultado) {
 
             </div>
 
-
-            <!-- TABELA NOVA -->
 
             <div class="tabela-rotas-container">
 
@@ -188,9 +185,13 @@ if (!$resultado) {
                                         <?= htmlspecialchars($rota['estacao_origem']) ?>
                                     </td>
 
-                                    <td>
-                                        <?= htmlspecialchars($rota['estacao_destino']) ?>
-                                    </td>
+                                        <button
+                                            class="excluir acao-tooltip"
+                                            data-tooltip="Excluir"
+                                            type="button"
+                                            onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
+                                               window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
+                                            }">
 
                                     <td>
                                         <?= htmlspecialchars($rota['distancia_total']) ?> km

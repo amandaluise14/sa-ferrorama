@@ -4,7 +4,7 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-// VERIFICAR ID DO TREM
+
 if (!isset($_GET['id_trem'])) {
     echo "ID do trem não informado.";
     exit;
@@ -12,7 +12,6 @@ if (!isset($_GET['id_trem'])) {
 
 $id_trem = (int) $_GET['id_trem'];
 
-// BUSCAR DADOS DO TREM
 $sql = "SELECT * FROM trens WHERE id_trem = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_trem);
@@ -26,11 +25,9 @@ if (!$trem) {
     exit;
 }
 
-// BUSCAR USUÁRIOS
 $sql_usuarios = "SELECT id_usuario, nome FROM usuarios";
 $resultado_usuarios = $conn->query($sql_usuarios);
 
-// ATUALIZAR TREM
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $modelo = $_POST['modelo'];
@@ -93,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="pagina">
 
-    <!-- SIDEBAR -->
+
     <div class="sidebar">
 
         <div class="logo">
@@ -135,10 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="area-cadastro">
 
-        <!-- CABEÇALHO -->
         <div class="cabecalho-pagina">
 
             <div class="usuario-logado">
@@ -153,7 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
 
-        <!-- MENSAGEM DE ERRO -->
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
@@ -174,10 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
 
-        <!-- CARTÃO DO FORMULÁRIO -->
         <div class="cartao-formulario">
 
-            <!-- CABEÇALHO DO CARTÃO -->
+    
             <div class="formulario-cabecalho">
 
                 <div class="icone-formulario">
@@ -195,13 +188,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
 
-            <!-- FORMULÁRIO -->
             <form method="POST" class="form-cadastro-usuario">
 
                 <div class="grade-formulario">
 
-
-                    <!-- MODELO -->
                     <div class="campo">
 
                         <label for="modelo">Modelo do trem</label>
@@ -215,8 +205,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
 
-
-                    <!-- VELOCIDADE -->
                     <div class="campo">
 
                         <label for="velocidade">Velocidade limite (km/h)</label>
@@ -230,8 +218,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
 
-
-                    <!-- LINHA -->
                     <div class="campo">
 
                         <label for="linha">Linha</label>
@@ -244,9 +230,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                required>
 
                     </div>
-
-
-                    <!-- CARGA -->
                     <div class="campo">
 
                         <label for="carga">Carga transportada</label>
@@ -260,8 +243,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
 
-
-                    <!-- USUÁRIO VINCULADO -->
                     <div class="campo campo-largo">
 
                         <label for="usuario_id">Usuário vinculado</label>
@@ -290,26 +271,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 </div>
 
-
-                <!-- BOTÕES -->
                 <div class="acoes-formulario">
 
                     <button type="button"
                             class="botao-voltar"
                             onclick="window.location.href='listar_trem.php'">
-
                         ← Voltar para Cadastro de Trem
-
                     </button>
 
 
                     <button type="submit"
                             class="botao-cadastrar">
-
                         <i class="bi bi-train-front"></i>
-
                         Editar Trem
-
                     </button>
 
                 </div>

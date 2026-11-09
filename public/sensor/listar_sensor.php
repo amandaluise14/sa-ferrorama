@@ -12,8 +12,13 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Sensor excluído com sucesso!';
     $tipoMensagem = 'success';
 } elseif (isset($_GET['erro'])) {
+
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O sensor não foi encontrado.';
+
+    } elseif ($_GET['erro'] === 'possui_leituras') {
+        $mensagem = 'Não foi possível excluir! Este sensor possui leituras cadastradas.';
+
     } else {
         $mensagem = 'Erro ao excluir o sensor. Tente novamente.';
     }

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status_usuario = $_POST['status_usuario'];
    
  if ($senha !== '') {
-    // Atualiza também a senha
+
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, endereco=?, cpf=?, cargo=?, data_nascimento=?, status_usuario=? WHERE id_usuario=?";
@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssssssssi", $nome, $email, $senha, $telefone, $endereco, $cpf, $cargo, $data_nascimento, $status_usuario, $id_usuario);
 
 } else {
-    // Mantém a senha atual se o campo ficar vazio
     $sql = "UPDATE usuarios SET
             nome=?, email=?, telefone=?, endereco=?,
             cpf=?, cargo=?, data_nascimento=?, status_usuario=?
