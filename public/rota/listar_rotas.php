@@ -12,9 +12,14 @@ $tipoMensagem = '';
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Rota excluída com sucesso!';
     $tipoMensagem = 'success';
+
 } elseif (isset($_GET['erro'])) {
     if ($_GET['erro'] === 'nao_encontrado') {
-        $mensagem = 'A rota não foi encontrado.';
+        $mensagem = 'A rota não foi encontrada.';
+
+    } elseif ($_GET['erro'] === 'possui_trem') {
+        $mensagem = 'Não foi possível excluir! Esta rota possui um trem vinculado.';
+
     } else {
         $mensagem = 'Erro ao excluir a rota. Tente novamente.';
     }
@@ -155,7 +160,7 @@ if (!$resultado) {
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
-                                                window.location.href='excluir_rota.php?id=<?php echo (int) $rota['id_rota']; ?>';
+                                               window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
                                             }">
 
                                             <i class="bi bi-person-dash-fill"></i>

@@ -1,3 +1,4 @@
+
 <?php
 
 if (!isset($_GET['id'])) {
@@ -10,18 +11,49 @@ $id_usuario = $_GET['id'];
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-$sql = "DELETE FROM usuarios WHERE id_usuario = ?";
-$stmt = $conn->prepare($sql);
+// Verifica se o usuário possui algum trem cadastrado
+$sql_verifica = "SELECT COUNT(*) AS total FROM trens WHERE usuario_id = ?";
+$stmt = $conn->prepare($sql_verifica);
+
 if (!$stmt) {
     header("Location: visualizar_usuario.php?erro=falha");
     exit;
 }
+
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$dados = $resultado->fetch_assoc();
+
+
+$stmt->close();
+
+if ($dados['total'] > 0) {
+    header("Location: visualizar_usuario.php?erro=possui_trens");
+    exit;
+}
+
+// Impede a exclusão se possuir trens
+if ($dados['total'] > 0) {
+    header("Location: visualizar_usuario.php?erro=possui_trens");
+    exit;
+}
+
+// Exclui o usuário
+$sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    header("Location: visualizar_usuario.php?erro=falha");
+    exit;
+}
+
 $stmt->bind_param("i", $id_usuario);
 
 if ($stmt->execute()) {
     if ($stmt->affected_rows > 0) {
 
-       
         if ($_SESSION['id_usuario'] == $id_usuario) {
             session_unset();
             session_destroy();
@@ -45,3 +77,5 @@ if ($stmt->execute()) {
 $stmt->close();
 exit;
 ?>
+
+

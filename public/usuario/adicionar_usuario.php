@@ -1,3 +1,120 @@
+<?php 
+
+
+include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
+$erro = '';
+$sucesso = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST ['telefone'];
+    $cpf = $_POST ['cpf'];
+    $cargo = $_POST ['cargo'];
+    $data_nascimento = $_POST ['data_nascimento'];
+    $status_usuario = $_POST ['status_usuario'];
+
+
+    // Cria um hash seguro para a senha 
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    
+    // Dados do endereço
+    $cep = preg_replace('/\D/', '', $_POST['cep']);
+    $endereco = $_POST['endereco'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $uf = strtoupper($_POST['uf']);
+
+
+    // Inicia a transação para evitar cadastros incompletos
+    $conn->begin_transaction();
+
+
+    try {
+
+
+        // Cadastra o endereço
+        $sqlEndereco = "INSERT INTO enderecos
+        (cep, logradouro, bairro, cidade, uf)
+        VALUES (?, ?, ?, ?, ?)";
+
+
+        $stmtEndereco = $conn->prepare($sqlEndereco);
+
+
+        $stmtEndereco->bind_param(
+            "sssss",
+            $cep,
+            $endereco,
+            $bairro,
+            $cidade,
+            $uf
+        );
+
+
+        if (!$stmtEndereco->execute()) {
+            throw new Exception($stmtEndereco->error);
+        }
+
+
+        // Recupera o ID do endereço cadastrado
+        $id_endereco = $conn->insert_id;
+
+
+        $stmtEndereco->close();
+
+
+
+
+    $sql = "INSERT INTO usuarios
+(nome, email, senha, telefone, cpf, cargo,
+data_nascimento, status_usuario, id_endereco)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+$stmt = $conn->prepare($sql);
+
+
+$stmt->bind_param(
+    "ssssssssi",
+    $nome,
+    $email,
+    $senhaHash,
+    $telefone,
+    $cpf,
+    $cargo,
+    $data_nascimento,
+    $status_usuario,
+    $id_endereco
+);
+    if (!$stmt->execute()) {
+            throw new Exception($stmt->error);
+        }
+
+
+        $stmt->close();
+
+
+        // Confirma os cadastros
+        $conn->commit();
+
+
+        $sucesso = "Novo usuário/administrador cadastrado!";
+
+
+    } catch (Exception $e) {
+
+
+        // Desfaz o cadastro se ocorrer um erro
+        $conn->rollback();
+
+
+        $erro = "Erro ao cadastrar usuário/administrador: "
+              . $e->getMessage();
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
