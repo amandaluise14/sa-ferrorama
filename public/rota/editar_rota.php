@@ -225,10 +225,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
                         <label for="nome">Nome da rota</label>
 
-                        <input type="text"
-                               id="nome"
-                               name="nome"
-                               placeholder="Ex: Rota Joinville - Araquari"
+                        <input type="text" id="nome" name="nome" value="<?php echo $rota['nome']; ?>" placeholder="Ex: Rota Joinville - Araquari"
                                required>
 
                     </div>
@@ -236,7 +233,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     <div class="campo">
 
                         <label for="trem_id">Trem vinculado</label>
-
                         <select name="trem_id" id="trem_id" required>
 
                             <option value="">Selecione um trem</option>
@@ -261,10 +257,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
                         <label for="estacao_origem">Estação de origem</label>
 
-                        <input type="text"
-                               id="estacao_origem"
-                               name="estacao_origem"
-                               placeholder="Ex: Estação Guanabara"
+                        <input type="text" id="estacao_origem" name="estacao_origem" value="<?php echo $rota['estacao_origem']; ?>" placeholder="Ex: Estação Guanabara"
                                required>
 
                     </div>
@@ -273,11 +266,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
                         <label for="estacao_destino">Estação de destino</label>
 
-                        <input type="text"
-                               id="estacao_destino"
-                               name="estacao_destino"
-                               placeholder="Ex: Estação Itaum"
-                               required>
+                        <input type="text" id="estacao_destino" name="estacao_destino" value="<?php echo $rota['estacao_destino']; ?>" placeholder="Ex: Estação Itaum"
+                    required>
 
                     </div>
 
@@ -285,10 +275,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
                         <label for="distancia_total">Distância total (km)</label>
 
-                        <input type="number"
-                               id="distancia_total"
-                               name="distancia_total"
-                               placeholder="Ex: 25"
+                        <input type="number" id="distancia_total" name="distancia_total" value="<?php echo $rota['distancia_total']; ?>" placeholder="Ex: 25"
                                min="0"
                                step="0.01"
                                required>
@@ -303,6 +290,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                         <input type="time"
                                id="duracao"
                                name="duracao"
+                               value="<?php echo $rota['duracao']; ?>"
                                placeholder="Ex: 2 horas e 30 minutos"
                                required>
 
@@ -317,7 +305,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                                   name="descricao"
                                   rows="3"
                                   placeholder="Descreva as características e informações da rota..."
-                                  required></textarea>
+                                  required><?php echo $rota['descricao']; ?></textarea>
 
                     </div>
 
