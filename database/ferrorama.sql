@@ -29,9 +29,7 @@ id_sensor INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nome VARCHAR(50) NOT NULL,
 localizacao VARCHAR(50) NOT NULL,
 descricao_localizacao VARCHAR(100) NOT NULL,
-dado_monitorado VARCHAR(50) NOT NULL,
-rota_id INT,
-    FOREIGN KEY (rota_id) REFERENCES rotas(id_rota)
+dado_monitorado VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE rotas (
@@ -63,5 +61,15 @@ ADD CONSTRAINT fk_usuario_endereco
 FOREIGN KEY (id_endereco)
 REFERENCES enderecos(id_endereco);
 
-alter table rotas
-add column rota_id INT NULL,
+
+ALTER TABLE sensores
+ADD CONSTRAINT fk_sensor_rota
+FOREIGN KEY (rota_id) REFERENCES rotas(id_rota);
+
+ALTER TABLE sensores
+ADD CONSTRAINT fk_sensor_rota
+FOREIGN KEY (rota_id)
+REFERENCES rotas(id_rota);
+
+ALTER TABLE sensores
+DROP COLUMN localizacao;
