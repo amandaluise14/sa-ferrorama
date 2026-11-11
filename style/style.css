@@ -2221,9 +2221,13 @@ margin-bottom: 12px;
     }
 }
 
+@media (max-width: 900px) {
+    .grade-acessos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* CONTEÚDO DE MONITORAMENTO */
-
-
 
 #conteudo_monitoramento {
     width: 100%;
