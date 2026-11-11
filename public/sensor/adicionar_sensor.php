@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dado_monitorado = $_POST['dado_monitorado'];
     $rota_id = $_POST['rota_id'];
 
-    $sql = "INSERT INTO sensores (nome, localizacao, descricao_localizacao, dado_monitorado, rota_id) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO sensores (nome, descricao_localizacao, dado_monitorado, rota_id) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $nome, $localizacao, $descricao_localizacao, $dado_monitorado, $rota_id);
+    $stmt->bind_param("ssss", $nome, $descricao_localizacao, $dado_monitorado, $rota_id);
     if ($stmt->execute() === TRUE) {
         $sucesso = "Novo sensor cadastrado com sucesso!";
     } else {
