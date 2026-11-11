@@ -39,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+          <script src="../js/persistencia_formularios.js" defer></script>
 </head>
 
 <body>
 
 <div class="pagina">
-
-    <!-- SIDEBAR -->
     <div class="sidebar">
 
         <div class="logo">
@@ -84,11 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </div>
 
-
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="area-cadastro">
-
-        <!-- CABEÇALHO -->
         <div class="cabecalho-pagina">
 
             <div class="usuario-logado">
@@ -102,8 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </div>
 
-
-        <!-- MENSAGENS -->
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
@@ -142,10 +136,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
 
-        <!-- CARTÃO DO FORMULÁRIO -->
         <div class="cartao-formulario">
 
-            <!-- CABEÇALHO DO CARTÃO -->
             <div class="formulario-cabecalho">
 
                 <div class="icone-formulario">
@@ -159,13 +151,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             </div>
 
-
-            <!-- FORMULÁRIO -->
             <form method="POST" class="form-cadastro-usuario">
 
                 <div class="grade-formulario">
-
-                    <!-- NOME DO SENSOR -->
                     <div class="campo campo-largo">
 
                         <label for="nome">Nome do sensor</label>
@@ -175,14 +163,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                name="nome"
                                placeholder="Ex: Sensor de velocidade do trem 77"
                                required>
-
                     </div>
-
-
-                    <!-- LOCALIZAÇÃO -->
                     <div class="campo campo-largo">
 
-                        <label>Localização do sensor</label>
+                        <!-- <label>Localização do sensor</label>
 
                         <div class="opcoes-localizacao">
 
@@ -217,12 +201,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             </label>
 
-                        </div>
+                        </div> --->
 
                     </div>
-
-
-                    <!-- DESCRIÇÃO DA LOCALIZAÇÃO -->
                     <div class="campo campo-largo">
 
                         <label for="descricao_localizacao">
@@ -236,9 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                required>
 
                     </div>
-
-
-                    <!-- DADO MONITORADO -->
                     <div class="campo campo-largo">
 
                         <label for="dado_monitorado">
@@ -250,29 +228,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                name="dado_monitorado"
                                placeholder="Ex: Velocidade"
                                required>
-
                     </div>
 
                 </div>
 
-
-                <!-- BOTÕES -->
-               <div class="acoes-formulario">
-
+                <div class="acoes-formulario">
                     <button type="button"
                             class="botao-voltar"
-                            onclick="window.location.href='listar_sensor.php';">
-
+                            onclick="window.location.href='listar_rotas.php';">
                         ← Visualizar Sensores Cadastrados
-
                     </button>
-
                     <button type="submit"
                             class="botao-cadastrar">
-
-                        <i class="bi bi-broadcast-pin"></i>
-                        Cadastrar sensor
-
+                        <i class="bi bi-signpost-2"></i>
+                        Cadastrar rota
                     </button>
 
                 </div>

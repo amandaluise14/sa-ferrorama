@@ -112,6 +112,8 @@ $stmt->bind_param(
           rel="stylesheet">
 
     <link rel="stylesheet" href="../../style/style.css">
+
+    <script src="../js/persistencia_formularios.js" defer></script>
 </head>
 
 <body>

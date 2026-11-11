@@ -8,8 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-echo "senhaHash". $senhaHash;
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
 
@@ -40,7 +38,6 @@ echo "senhaHash". $senhaHash;
         }
     } else {
         $erro = "E-mail não encontrado!";
-        echo "senhaHash". $senhaHash;
     }
 
     $stmt->close();
