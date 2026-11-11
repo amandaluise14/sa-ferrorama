@@ -2403,3 +2403,38 @@ margin-bottom: 12px;
 
 .cartao-listagem {
 }
+
+
+.campo-pesquisa {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.campo-pesquisa input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.campo-pesquisa input:focus {
+    border-color: #7b0000;
+    box-shadow: 0 0 4px rgba(123, 0, 0, 0.2);
+}
+
+.btn-pesquisar {
+    background-color: #7b0000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-pesquisar:hover {
+    background-color: #590000;
+}

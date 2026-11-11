@@ -34,14 +34,55 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
     $tipoMensagem = 'danger';
 }
-$sql = "SELECT * FROM rotas ORDER BY id_rota";
-$resultado = mysqli_query($conn, $sql);
+
+$pesquisa = trim($_GET['pesquisar'] ?? '');
+
+$busca = "%{$pesquisa}%";
+
+$sql = "SELECT * FROM rotas
+        WHERE (
+            ? = ''
+            OR estacao_origem LIKE ?
+            OR estacao_destino LIKE ?
+            OR descricao LIKE ?
+        )
+        ORDER BY id_rota";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+    "ssss",
+    $pesquisa,
+    $busca,
+    $busca,
+    $busca
+);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
+if (!$resultado) {
+    die("Erro ao consultar as rotas: " . mysqli_error($conn));
+}
+
 
 
 if (!$resultado) {
     die("Erro ao consultar as rotas: " . mysqli_error($conn));
 }
 
+    <?php endwhile; ?>
+
+<?php else: ?>
+
+    <tr>
+        <td colspan="8" class="text-center">
+            Nenhuma rota encontrada.
+        </td>
+    </tr>
+
+<?php endif; ?>
 
 ?>
 
@@ -143,6 +184,21 @@ if (!$resultado) {
 
 
         <div class="conteudo">
+
+        <form method="GET" action="" class="campo-pesquisa">
+    <input
+        type="text"
+        id="pesquisar"
+        name="pesquisar"
+        placeholder="Buscar por estação ou descrição..."
+        value="<?php echo htmlspecialchars($pesquisa, ENT_QUOTES, 'UTF-8'); ?>"
+    >
+
+    <button type="submit" class="btn-pesquisar">
+        <i class="bi bi-search"></i>
+        Pesquisar
+    </button>
+</form>
 
 
             <h2 class="titulo-admin">Listar Rotas</h2>
