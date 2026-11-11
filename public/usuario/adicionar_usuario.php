@@ -1,3 +1,104 @@
+<?php 
+
+
+include '../../infra/conexao.php';
+include '../../infra/verificar_admin.php';
+$erro = '';
+$sucesso = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST ['telefone'];
+    $cpf = $_POST ['cpf'];
+    $cargo = $_POST ['cargo'];
+    $data_nascimento = $_POST ['data_nascimento'];
+    $status_usuario = $_POST ['status_usuario'];
+
+
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $cep = preg_replace('/\D/', '', $_POST['cep']);
+    $endereco = $_POST['endereco'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $uf = strtoupper($_POST['uf']);
+
+    $conn->begin_transaction();
+
+
+    try {
+
+        $sqlEndereco = "INSERT INTO enderecos
+        (cep, logradouro, bairro, cidade, uf)
+        VALUES (?, ?, ?, ?, ?)";
+
+
+        $stmtEndereco = $conn->prepare($sqlEndereco);
+
+
+        $stmtEndereco->bind_param(
+            "sssss",
+            $cep,
+            $endereco,
+            $bairro,
+            $cidade,
+            $uf
+        );
+
+
+        if (!$stmtEndereco->execute()) {
+            throw new Exception($stmtEndereco->error);
+        }
+
+        $id_endereco = $conn->insert_id;
+
+        $stmtEndereco->close();
+
+    $sql = "INSERT INTO usuarios
+(nome, email, senha, telefone, cpf, cargo,
+data_nascimento, status_usuario, id_endereco)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+$stmt = $conn->prepare($sql);
+
+
+$stmt->bind_param(
+    "ssssssssi",
+    $nome,
+    $email,
+    $senhaHash,
+    $telefone,
+    $cpf,
+    $cargo,
+    $data_nascimento,
+    $status_usuario,
+    $id_endereco
+);
+    if (!$stmt->execute()) {
+            throw new Exception($stmt->error);
+        }
+
+
+        $stmt->close();
+
+        $conn->commit();
+
+
+        $sucesso = "Novo usuário/administrador cadastrado!";
+
+
+    } catch (Exception $e) {
+
+        $conn->rollback();
+
+
+        $erro = "Erro ao cadastrar usuário/administrador: "
+              . $e->getMessage();
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,7 +118,6 @@
 
 <div class="pagina">
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
 
         <div class="logo">
@@ -50,10 +150,9 @@
 
     </div>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+
     <main class="area-cadastro">
 
-        <!-- CABEÇALHO -->
         <div class="cabecalho-pagina">
 
             <div class="usuario-logado">
@@ -67,7 +166,6 @@
 
         </div>
 
-        <!-- MENSAGENS -->
         <?php if (!empty($erro)): ?>
             <div class="alert alert-danger">
                 <?= htmlspecialchars($erro) ?>
@@ -79,8 +177,6 @@
                 <?= htmlspecialchars($sucesso) ?>
             </div>
         <?php endif; ?>
-
-        <!-- CARTÃO DO FORMULÁRIO -->
         <div class="cartao-formulario">
 
             <div class="formulario-cabecalho">
@@ -185,8 +281,6 @@
                     </div>
 
                 </div>
-
-                <!-- BOTÕES -->
                 <div class="acoes-formulario">
 
                     <button type="button" class="botao-voltar"

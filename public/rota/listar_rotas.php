@@ -1,7 +1,8 @@
-
 <?php
 
+
 session_start();
+
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
@@ -9,29 +10,45 @@ include '../../infra/verificar_admin.php';
 $mensagem = '';
 $tipoMensagem = '';
 
+
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Rota excluída com sucesso!';
     $tipoMensagem = 'success';
+
+
 } elseif (isset($_GET['erro'])) {
+
+
     if ($_GET['erro'] === 'nao_encontrado') {
-        $mensagem = 'A rota não foi encontrado.';
+        $mensagem = 'A rota não foi encontrada.';
+
+
+    } elseif ($_GET['erro'] === 'possui_trem') {
+        $mensagem = 'Não foi possível excluir! Esta rota possui um trem vinculado.';
+
+
     } else {
         $mensagem = 'Erro ao excluir a rota. Tente novamente.';
     }
+
 
     $tipoMensagem = 'danger';
 }
 $sql = "SELECT * FROM rotas ORDER BY id_rota";
 $resultado = mysqli_query($conn, $sql);
 
+
 if (!$resultado) {
     die("Erro ao consultar as rotas: " . mysqli_error($conn));
 }
 
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 
 <head>
     <meta charset="UTF-8">
@@ -43,45 +60,60 @@ if (!$resultado) {
     <title>Listar Rotas</title>
 </head>
 
+
 <body>
+
 
 <div class="pagina">
 
+
     <div class="sidebar">
+
 
         <div class="logo">
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
+
         <ul>
 
+
             <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
 
                 <a href="../pagina_home.php" class="menu-link">
                     <li>Início</li>
                 </a>
 
+
                 <a href="../pagina_relatorios.php" class="menu-link">
                     <li>Relatórios</li>
                 </a>
+
 
                 <a href="../usuario/adicionar_usuario.php" class="menu-link">
                     <li>Adicionar usuário</li>
                 </a>
 
+
             <?php endif; ?>
+
 
             <a href="../pagina_monitoramento.php" class="menu-link">
                 <li>Monitoramento</li>
             </a>
 
+
             <a href="../logout.php" class="menu-link">
                 <li>Sair</li>
             </a>
 
+
         </ul>
 
+
     </div>
+
 
     <div class="formulario-container">
         <?php if (!empty($mensagem)): ?>
@@ -90,13 +122,16 @@ if (!$resultado) {
          role="alert"
          style="z-index: 1055; width: 90%; max-width: 500px;">
 
+
         <?php if ($tipoMensagem === 'success'): ?>
             <strong>✅ Sucesso!</strong>
         <?php else: ?>
             <strong>⚠️ Atenção!</strong>
         <?php endif; ?>
 
+
         <?= htmlspecialchars($mensagem) ?>
+
 
         <button type="button"
                 class="btn-close"
@@ -106,13 +141,18 @@ if (!$resultado) {
     </div>
 <?php endif; ?>
 
+
         <div class="conteudo">
+
 
             <h2 class="titulo-admin">Listar Rotas</h2>
 
+
             <div class="table-responsive">
 
+
                 <table class="table tabela-sensores">
+
 
                     <thead>
                         <tr>
@@ -127,9 +167,12 @@ if (!$resultado) {
                         </tr>
                     </thead>
 
+
                     <tbody>
 
+
                         <?php while ($rota = mysqli_fetch_assoc($resultado)): ?>
+
 
                             <tr>
                                 <td><?php echo $rota['id_rota']; ?></td>
@@ -141,46 +184,63 @@ if (!$resultado) {
                                 <td><?php echo $rota['trem_id']; ?></td>
                                 <td>
 
+
                                         <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
                                             type="button"
                                             onclick="window.location.href='editar_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>'">
 
+
                                             <i class="bi bi-pencil"></i>
 
+
                                         </button>
+
 
                                         <button
                                             class="excluir acao-tooltip"
                                             data-tooltip="Excluir"
                                             type="button"
                                             onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
-                                                window.location.href='excluir_rota.php?id=<?php echo (int) $rota['id_rota']; ?>';
+                                                window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
                                             }">
+
 
                                             <i class="bi bi-person-dash-fill"></i>
 
+
                                         </button>
+
 
                                     </td>
 
+
                                 </tr>
+
 
                         <?php endwhile; ?>
 
+
                     </tbody>
+
 
                 </table>
 
+
             </div>
+
 
         </div>
 
+
     </div>
+
 
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
