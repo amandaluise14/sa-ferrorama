@@ -2,17 +2,22 @@
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+
 $erro = '';
 $sucesso = '';
+
+$sql_rotas = "SELECT id_rota, nome FROM rotas";
+$resultado = $conn->query($sql_rotas);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
-    $localizacao = $_POST['localizacao'];
     $descricao_localizacao = $_POST['descricao_localizacao'];
     $dado_monitorado = $_POST['dado_monitorado'];
+    $rota_id = $_POST['rota_id'];
 
-    $sql = "INSERT INTO sensores (nome, localizacao, descricao_localizacao, dado_monitorado) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO sensores (nome, localizacao, descricao_localizacao, dado_monitorado, rota_id) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $nome, $localizacao, $descricao_localizacao, $dado_monitorado);
+    $stmt->bind_param("ssss", $nome, $localizacao, $descricao_localizacao, $dado_monitorado, $rota_id);
     if ($stmt->execute() === TRUE) {
         $sucesso = "Novo sensor cadastrado com sucesso!";
     } else {
@@ -154,8 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" class="form-cadastro-usuario">
 
                 <div class="grade-formulario">
-                    <div class="campo campo-largo">
 
+                    <div class="campo campo-largo">
                         <label for="nome">Nome do sensor</label>
 
                         <input type="text"
@@ -191,7 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
 
-                    </div>
                     <div class="campo campo-largo">
 
                         <label for="descricao_localizacao">

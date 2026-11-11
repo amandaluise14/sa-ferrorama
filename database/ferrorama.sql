@@ -62,3 +62,6 @@ ADD COLUMN id_endereco INT NULL,
 ADD CONSTRAINT fk_usuario_endereco
 FOREIGN KEY (id_endereco)
 REFERENCES enderecos(id_endereco);
+
+alter table rotas
+add column rota_id INT NULL,
