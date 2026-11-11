@@ -164,7 +164,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                placeholder="Ex: Sensor de velocidade do trem 77"
                                required>
                     </div>
-                    <div class="campo campo-largo">
+
+                    <div class="campo">
+
+                        <label for="rota_id">Rota vinculada</label>
+
+                        <select name="rota_id"
+                                id="rota_id"
+                                required>
+
+                            <option value="">Selecione uma rota</option>
+
+                            <?php
+                            mysqli_data_seek($resultado, 0);
+
+                            while ($rota = mysqli_fetch_assoc($resultado)):
+                            ?>
+
+                                <option value="<?= htmlspecialchars($rota['id_rota']) ?>">
+                                    <?= htmlspecialchars($rota['nome']) ?>
+                                </option>
+
+                            <?php endwhile; ?>
+
+                        </select>
+
+                    </div>
+
 
                         <!-- <label>Localização do sensor</label>
 
