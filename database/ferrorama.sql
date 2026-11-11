@@ -62,14 +62,15 @@ FOREIGN KEY (id_endereco)
 REFERENCES enderecos(id_endereco);
 
 
+-- 1. Criar a coluna
+ALTER TABLE sensores
+ADD COLUMN rota_id INT;
+
+-- 2. Criar o relacionamento
 ALTER TABLE sensores
 ADD CONSTRAINT fk_sensor_rota
 FOREIGN KEY (rota_id) REFERENCES rotas(id_rota);
 
-ALTER TABLE sensores
-ADD CONSTRAINT fk_sensor_rota
-FOREIGN KEY (rota_id)
-REFERENCES rotas(id_rota);
-
+-- 3. Excluir a coluna antiga
 ALTER TABLE sensores
 DROP COLUMN localizacao;
