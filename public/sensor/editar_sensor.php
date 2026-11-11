@@ -57,7 +57,6 @@ $id_sensor = (int) $_POST['id_sensor'];
 
 <div class="pagina">
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
 
         <div class="logo">
@@ -96,8 +95,6 @@ $id_sensor = (int) $_POST['id_sensor'];
 
     </div>
 
-
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="area-cadastro">
 
         <!-- CABEÇALHO -->
@@ -113,9 +110,6 @@ $id_sensor = (int) $_POST['id_sensor'];
             <p>Atualize as informações do sensor abaixo.</p>
 
         </div>
-
-
-        <!-- MENSAGENS -->
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
@@ -153,11 +147,8 @@ $id_sensor = (int) $_POST['id_sensor'];
 
         <?php endif; ?>
 
-
-        <!-- CARTÃO DO FORMULÁRIO -->
         <div class="cartao-formulario">
 
-            <!-- CABEÇALHO DO CARTÃO -->
             <div class="formulario-cabecalho">
 
                 <div class="icone-formulario">
@@ -170,38 +161,27 @@ $id_sensor = (int) $_POST['id_sensor'];
                 </div>
 
             </div>
-
-
-            <!-- FORMULÁRIO -->
             <form method="POST" class="form-cadastro-usuario">
 
                 <div class="grade-formulario">
 
-                    <!-- NOME DO SENSOR -->
                     <div class="campo campo-largo">
 
                         <label for="nome">Nome do sensor</label>
 
-                        <input type="text"
-                               id="nome"
-                               name="nome"
-                               placeholder="Ex: Sensor de velocidade do trem 77"
+                        <input type="text" id="nome" name="nome" value="<?php echo $sensor['nome']; ?>" placeholder="Ex: Sensor de velocidade do trem 77"
                                required>
 
                     </div>
-
-
-                    <!-- LOCALIZAÇÃO -->
                     <div class="campo campo-largo">
 
                         <label>Localização do sensor</label>
 
-                        <div class="opcoes-localizacao">
+                        <!-- <div class="opcoes-localizacao">
 
                             <label class="opcao-radio" for="localizacao_trem">
 
-                                <input type="radio"
-                                       id="localizacao_trem"
+                                <input type="radio" id="localizacao_trem"
                                        name="localizacao"
                                        value="Trem"
                                        required>
@@ -211,64 +191,42 @@ $id_sensor = (int) $_POST['id_sensor'];
                                     Trem
                                 </span>
 
-                            </label>
+                            </label> -->
                             
-
+<!-- 
                             <label class="opcao-radio" for="localizacao_rota">
 
-                                <input type="radio"
-                                       id="localizacao_rota"
-                                       name="localizacao"
+                                <input type="radio" id="localizacao_rota" value="<?php echo $sensor['localizacao']; ?>" name="localizacao"
                                        value="Rota"
                                        required>
-
                                 <span>
                                     <i class="bi bi-signpost-2"></i>
                                     Rota
                                 </span>
-
                             </label>
-
                         </div>
-
-                    </div>
-
-
-                    <!-- DESCRIÇÃO DA LOCALIZAÇÃO -->
+                    </div> -->
                     <div class="campo campo-largo">
 
                         <label for="descricao_localizacao">
                             Descrição da localização
                         </label>
 
-                        <input type="text"
-                               id="descricao_localizacao"
-                               name="descricao_localizacao"
+                        <input type="text" id="descricao_localizacao"  name="descricao_localizacao" value="<?php echo $sensor['descricao_localizacao']; ?>"
                                placeholder="Ex: Sensor de velocidade localizado na rota"
                                required>
-
                     </div>
-
-
-                    <!-- DADO MONITORADO -->
                     <div class="campo campo-largo">
 
                         <label for="dado_monitorado">
                             Tipo do dado monitorado
                         </label>
 
-                        <input type="text"
-                               id="dado_monitorado"
-                               name="dado_monitorado"
+                        <input type="text" id="dado_monitorado" name="dado_monitorado" value="<?php echo $sensor['dado_monitorado']; ?>"
                                placeholder="Ex: Velocidade"
                                required>
-
                     </div>
-
                 </div>
-
-
-                <!-- BOTÕES -->
                 <div class="acoes-formulario">
 
                     <button type="button"

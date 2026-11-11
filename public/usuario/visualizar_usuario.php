@@ -171,10 +171,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
             <h2 id="titulo-admin">
                 Visualizar Usuários/Administradores
             </h2>
-
-            <div class="conteudo">
-
-    
+<div class="cartao-listagem">
                 <section class="cards">
 
                     <div class="card-total">
@@ -319,7 +316,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                 </tr>
 
                             <?php endwhile; ?>
-
+                            </div>
                         </table>
                         <button class="botaoVisualizar" type="button"
                             onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
@@ -337,17 +334,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                     </tbody>
 
                 </table>
-
-                <button
-                    class="botaoVisualizar"
-                    type="button"
-                    onclick="window.location.href='adicionar_usuario.php'">
-
-                    Ir para adicionar
-
-                </button>
-
-            </div>
 
         </form>
 

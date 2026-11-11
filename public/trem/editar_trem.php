@@ -196,11 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <label for="modelo">Modelo do trem</label>
 
-                        <input type="text"
-                               id="modelo"
-                               name="modelo"
-                               value="<?= htmlspecialchars($trem['modelo']) ?>"
-                               placeholder="Ex: Modelo A"
+                        <input type="text" id="modelo"name="modelo" value="<?= htmlspecialchars($trem['modelo']) ?>" placeholder="Ex: Modelo A"
                                required>
 
                     </div>
@@ -209,11 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <label for="velocidade">Velocidade limite (km/h)</label>
 
-                        <input type="number"
-                               id="velocidade"
-                               name="velocidade"
-                               value="<?= htmlspecialchars($trem['velocidade']) ?>"
-                               placeholder="Ex: 120"
+                        <input type="number" id="velocidade" name="velocidade" value="<?= htmlspecialchars($trem['velocidade']) ?>"placeholder="Ex: 120"
                                required>
 
                     </div>
@@ -222,11 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <label for="linha">Linha</label>
 
-                        <input type="text"
-                               id="linha"
-                               name="linha"
-                               value="<?= htmlspecialchars($trem['linha']) ?>"
-                               placeholder="Ex: Linha 1"
+                        <input type="text" id="linha" name="linha" value="<?= htmlspecialchars($trem['linha']) ?>" placeholder="Ex: Linha 1"
                                required>
 
                     </div>
@@ -234,11 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <label for="carga">Carga transportada</label>
 
-                        <input type="text"
-                               id="carga"
-                               name="carga"
-                               value="<?= htmlspecialchars($trem['carga']) ?>"
-                               placeholder="Ex: Carvão"
+                        <input type="text" id="carga" name="carga" value="<?= htmlspecialchars($trem['carga']) ?>" placeholder="Ex: Carvão"
                                required>
 
                     </div>
@@ -251,6 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 id="usuario_id"
                                 required>
 
+                     value="<?php echo $trem['usuario_id']; ?>"
                             <option value="">Selecione um usuário</option>
 
                             <?php while ($usuario = $resultado_usuarios->fetch_assoc()): ?>
