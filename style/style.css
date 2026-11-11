@@ -532,22 +532,6 @@ background-color: #858484;
     cursor: pointer;
 }
 
-/* Filtros */
-
-.filtros {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-}
-
-.filtros label {
-    margin: 0;
-
-    margin-left: 20%;
-    margin-right: 20%;
-}
-
 .forms_rotas{
     width: 130%;
 }
@@ -562,59 +546,65 @@ background-color: #858484;
     background-color: white;
 }
 
+/* Filtros */
+
+.filtros {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+    flex-wrap: nowrap;
+}
+
+.filtros input {
+    flex: 1;
+    min-width: 0;
+}
+
 .filtros select {
-    width: 170px;
-    height: 38px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 5px 10px;
-    background-color: white;
+    width: 160px;
+    flex-shrink: 0;
 }
 
 .filtros button {
-    background-color: #7b0000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 20px;
-    height: 38px;
-}
-
-.filtros button:hover {
-    background-color: #990000;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* Os cards principais */
 
 .cards {
     display: flex;
-    
-    gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    gap: 16px;
+    margin-bottom: 25px;
+    margin-top: 20px;
     flex-wrap: wrap;
-    
 }
 
 .card-total {
-    background-color: white;
-    width: 180px;
-    min-height: 110px;
-    padding: 15px;
-    border-radius: 8px;
+    flex: 1;
+    min-width: 150px;
+    background-color: #ffffff;
+    border: 1px solid #edf0f5;
+    border-radius: 10px;
+    padding: 18px;
     text-align: center;
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 .card-total h5 {
-    font-size: 15px;
-    margin-bottom: 12px;
+    font-size: 14px;
+    color: #526078;
+    font-weight: 500;
 }
 
 .card-total p {
     font-size: 22px;
     font-weight: bold;
-    margin: 0;
+    color: #252525;
+    margin-bottom: 0;
 }
 
 
@@ -654,6 +644,19 @@ background-color: #858484;
     overflow-x: auto;
 }
 
+/* Cabeçalho da tabela */
+.cabecalho-tabela {
+    background-color: #800000;
+    color: #ffffff;
+}
+
+.cabecalho-tabela th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.cabecalho-tabela th:last-child {
+    border-radius: 0 10px 10px 0;
+}
 /* Ações de excluir e editar */
 
 .excluir {
@@ -2399,7 +2402,4 @@ margin-bottom: 12px;
     border-radius: 12px;
     padding: 22px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.cartao-listagem {
 }

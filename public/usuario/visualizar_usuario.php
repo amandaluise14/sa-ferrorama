@@ -167,11 +167,11 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 <?php endif; ?>
 
         <form method="POST" class="forms">
-
-            <h2 id="titulo-admin">
-                Visualizar Usuários/Administradores
-            </h2>
+            <h2>Visualizar Usuários/Administradores</h2>
+            <p>Cadastre um novo usuário ou administrador no sistema Info Trem.</p>
 <div class="cartao-listagem">
+    <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
+
                 <section class="cards">
 
                     <div class="card-total">
@@ -257,7 +257,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                 <table class="tabela">
 
                     <thead>
-                        <tr>
+                        <tr class="cabecalho-tabela">
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
@@ -316,7 +316,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                 </tr>
 
                             <?php endwhile; ?>
-                            </div>
                         </table>
                         <button class="botaoVisualizar" type="button"
                             onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
