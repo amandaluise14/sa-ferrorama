@@ -7,7 +7,7 @@ A IA foi utilizada principalmente para tirar dúvidas, buscar ideias, entender c
 # Como utilizamos a IA
 Ao longo do desenvolvimento, utilizamos o ChatGPT em praticamente todas as etapas, desde o planejamento até os ajustes finais do sistema.
 
-* **Planejamento e organização**
+**Planejamento e organização**
 Ajuda na organização das ideias e funcionalidades do sistema.
 Sugestões sobre a estrutura das páginas.
 Orientações sobre como organizar os elementos e informações do projeto.
