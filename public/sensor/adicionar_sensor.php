@@ -191,44 +191,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
 
-
-                        <!-- <label>Localização do sensor</label>
-
-                        <div class="opcoes-localizacao">
-
-                            <label class="opcao-radio" for="localizacao_trem">
-
-                                <input type="radio"
-                                       id="localizacao_trem"
-                                       name="localizacao"
-                                       value="Trem"
-                                       required>
-
-                                <span>
-                                    <i class="bi bi-train-front"></i>
-                                    Trem
-                                </span>
-
-                            </label>
-                            
-
-                            <label class="opcao-radio" for="localizacao_rota">
-
-                                <input type="radio"
-                                       id="localizacao_rota"
-                                       name="localizacao"
-                                       value="Rota"
-                                       required>
-
-                                <span>
-                                    <i class="bi bi-signpost-2"></i>
-                                    Rota
-                                </span>
-
-                            </label>
-
-                        </div> --->
-
                     </div>
                     <div class="campo campo-largo">
 
