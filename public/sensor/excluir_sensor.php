@@ -11,28 +11,28 @@ $id_sensor = $_GET['id_sensor'];
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-// Verifica se o sensor possui leituras cadastradas
-$sql_verifica = "SELECT COUNT(*) AS total FROM leituras WHERE sensor_id = ?";
-$stmt = $conn->prepare($sql_verifica);
+// // Verifica se o sensor possui leituras cadastradas
+// $sql_verifica = "SELECT COUNT(*) AS total FROM leituras WHERE sensor_id = ?";
+// $stmt = $conn->prepare($sql_verifica);
 
-if (!$stmt) {
-    header("Location: listar_sensor.php?erro=falha");
-    exit;
-}
+// if (!$stmt) {
+//     header("Location: listar_sensor.php?erro=falha");
+//     exit;
+// }
 
-$stmt->bind_param("i", $id_sensor);
-$stmt->execute();
+// $stmt->bind_param("i", $id_sensor);
+// $stmt->execute();
 
-$resultado = $stmt->get_result();
-$dados = $resultado->fetch_assoc();
+// $resultado = $stmt->get_result();
+// $dados = $resultado->fetch_assoc();
 
-$stmt->close();
+// $stmt->close();
 
-// Impede a exclusão se possuir leituras
-if ($dados['total'] > 0) {
-    header("Location: listar_sensor.php?erro=possui_leituras");
-    exit;
-}
+// // Impede a exclusão se possuir leituras
+// if ($dados['total'] > 0) {
+//     header("Location: listar_sensor.php?erro=possui_leituras");
+//     exit;
+// }
 
 // Exclui o sensor
 $sql = "DELETE FROM sensores WHERE id_sensor = ?";

@@ -60,13 +60,3 @@ ADD COLUMN id_endereco INT NULL,
 ADD CONSTRAINT fk_usuario_endereco
 FOREIGN KEY (id_endereco)
 REFERENCES enderecos(id_endereco);
-
-CREATE TABLE leituras (
-    id_leitura INT PRIMARY KEY AUTO_INCREMENT,
-    sensor_id INT NOT NULL,
-    valor DECIMAL(10,2) NOT NULL,
-    data_leitura DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (sensor_id)
-    REFERENCES sensores(id_sensor)
-    ON DELETE RESTRICT
-);
