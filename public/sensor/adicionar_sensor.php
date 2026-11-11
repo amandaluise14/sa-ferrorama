@@ -201,9 +201,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             </label>
 
-                        </div>
+                        </div> --->
 
-                    </div> -->
+                    </div>
                     <div class="campo campo-largo">
 
                         <label for="descricao_localizacao">
