@@ -69,6 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <script src="../js/persistencia_formularios.js" defer></script>
 </head>
 
 <body>
@@ -114,11 +116,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </div>
 
-
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="area-cadastro">
 
-        <!-- CABEÇALHO -->
         <div class="cabecalho-pagina">
 
             <div class="usuario-logado">
@@ -132,8 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </div>
 
-
-        <!-- MENSAGENS -->
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
@@ -171,11 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php endif; ?>
 
-
-        <!-- CARTÃO DO FORMULÁRIO -->
         <div class="cartao-formulario">
-
-            <!-- CABEÇALHO DO CARTÃO -->
             <div class="formulario-cabecalho">
 
                 <div class="icone-formulario">
@@ -188,14 +181,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
             </div>
-
-
-            <!-- FORMULÁRIO -->
             <form method="POST" class="form-cadastro-usuario">
 
                 <div class="grade-formulario">
-
-                    <!-- MODELO -->
                     <div class="campo">
 
                         <label for="modelo">Modelo do trem</label>
@@ -205,11 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                name="modelo"
                                placeholder="Ex: Modelo A"
                                required>
-
                     </div>
-
-
-                    <!-- VELOCIDADE -->
                     <div class="campo">
 
                         <label for="velocidade">Velocidade limite (km/h)</label>
@@ -221,9 +205,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                required>
 
                     </div>
-
-
-                    <!-- LINHA -->
                     <div class="campo">
 
                         <label for="linha">Linha</label>
@@ -236,8 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </div>
 
-
-                    <!-- CARGA -->
                     <div class="campo">
 
                         <label for="carga">Carga transportada</label>
@@ -247,11 +226,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                name="carga"
                                placeholder="Ex: Carvão"
                                required>
-
                     </div>
 
-
-                    <!-- USUÁRIO -->
                     <div class="campo campo-largo">
 
                         <label for="usuario_id">Usuário vinculado</label>
@@ -279,9 +255,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                 </div>
-
-
-                <!-- BOTÕES -->
                 <div class="acoes-formulario">
 
                     <button type="button"

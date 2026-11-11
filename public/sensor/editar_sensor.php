@@ -193,7 +193,7 @@ $id_sensor = (int) $_POST['id_sensor'];
 
                             </label> -->
                             
-
+<!-- 
                             <label class="opcao-radio" for="localizacao_rota">
 
                                 <input type="radio" id="localizacao_rota" value="<?php echo $sensor['localizacao']; ?>" name="localizacao"
@@ -205,7 +205,7 @@ $id_sensor = (int) $_POST['id_sensor'];
                                 </span>
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="campo campo-largo">
 
                         <label for="descricao_localizacao">
@@ -222,9 +222,7 @@ $id_sensor = (int) $_POST['id_sensor'];
                             Tipo do dado monitorado
                         </label>
 
-                        <input type="text"
-                               id="dado_monitorado"
-                               name="dado_monitorado"
+                        <input type="text" id="dado_monitorado" name="dado_monitorado" value="<?php echo $sensor['dado_monitorado']; ?>"
                                placeholder="Ex: Velocidade"
                                required>
                     </div>

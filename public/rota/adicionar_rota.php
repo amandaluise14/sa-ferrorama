@@ -48,14 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../js/persistencia_formularios.js" defer></script>
 </head>
 
 <body>
 
 <div class="pagina">
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
 
         <div class="logo">
@@ -94,11 +93,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
     </div>
 
-
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="area-cadastro">
 
-        <!-- CABEÇALHO -->
         <div class="cabecalho-pagina">
 
             <div class="usuario-logado">
@@ -112,8 +108,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
         </div>
 
-
-        <!-- MENSAGENS -->
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
