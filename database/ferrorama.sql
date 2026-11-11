@@ -29,7 +29,9 @@ id_sensor INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nome VARCHAR(50) NOT NULL,
 localizacao VARCHAR(50) NOT NULL,
 descricao_localizacao VARCHAR(100) NOT NULL,
-dado_monitorado VARCHAR(50) NOT NULL
+dado_monitorado VARCHAR(50) NOT NULL,
+rota_id INT,
+    FOREIGN KEY (rota_id) REFERENCES rotas(id_rota)
 );
 
 CREATE TABLE rotas (

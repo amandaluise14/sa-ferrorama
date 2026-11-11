@@ -1,170 +1,343 @@
-# sa-ferrorama
-# Sistema de Gerenciamento Ferroviário
+# SA Ferrorama
+
+## Sistema de Gerenciamento Ferroviário
 
 ## Proposta do Sistema
 
-O projeto tem como proposta o desenvolvimento de um sistema de gerenciamento ferroviário, denominado SA Ferrorama, voltado para o controle, organização e monitoramento de uma malha ferroviária. O sistema será responsável por centralizar informações relacionadas aos trens, linhas, rotas, sensores e demais elementos envolvidos na operação ferroviária, facilitando o acompanhamento e a gestão dos dados.
+O **SA Ferrorama** é um sistema de gerenciamento ferroviário desenvolvido com o objetivo de facilitar o controle, a organização e o monitoramento de uma malha ferroviária. A plataforma centraliza informações relacionadas aos trens, linhas, rotas, sensores e usuários, permitindo um acompanhamento mais organizado das operações ferroviárias.
 
-A plataforma contará com diferentes níveis de acesso. Os administradores poderão realizar o cadastro, alteração, consulta e exclusão de informações, mantendo os dados do sistema sempre atualizados. Já os usuários terão acesso a uma interface de visualização, na qual poderão acompanhar as informações disponíveis sobre os trens, linhas, rotas e monitoramentos realizados pelo sistema.
+O sistema possui diferentes níveis de acesso, permitindo que administradores gerenciem os cadastros e que usuários visualizem as informações disponibilizadas pela plataforma.
 
-Um dos principais objetivos da SA Ferrorama é utilizar a Internet das Coisas (IoT) para auxiliar no monitoramento dos trens. Para isso, sensores poderão coletar informações importantes durante o funcionamento da operação, como velocidade, localização, desempenho, presença ou passagem do trem e possíveis situações anormais ou falhas. Esses dados poderão ser enviados para o sistema em tempo real, permitindo que sejam acompanhados por meio de um painel de monitoramento.
+Além disso, o projeto propõe a utilização da Internet das Coisas (IoT) para auxiliar no monitoramento ferroviário, por meio de sensores capazes de coletar informações relacionadas à velocidade, localização, desempenho e possíveis falhas nos trens.
 
-A utilização dos sensores possibilita uma visão mais precisa das condições de funcionamento dos trens e da malha ferroviária. A partir dos dados coletados, o sistema poderá auxiliar na identificação de problemas, acompanhamento do desempenho dos veículos, prevenção de falhas e tomada de decisões pelos responsáveis pela operação.
+Dessa forma, o SA Ferrorama busca integrar tecnologia, gerenciamento de informações e monitoramento em uma única plataforma, contribuindo para uma operação ferroviária mais organizada, eficiente e segura.
 
-Dessa forma, a SA Ferrorama busca integrar gerenciamento de dados, monitoramento e tecnologia IoT em uma única plataforma. O projeto tem como finalidade tornar o acompanhamento da operação ferroviária mais organizado, eficiente e seguro, proporcionando aos administradores informações que auxiliem no controle da malha e aos usuários uma visualização clara dos dados e monitoramentos disponíveis.
+## Problema que o Sistema Busca Resolver
 
----
+O gerenciamento de uma malha ferroviária envolve diversas informações, como cadastros de trens, rotas, sensores, usuários e dados de monitoramento. Quando essas informações não estão centralizadas, o acompanhamento das operações pode se tornar mais difícil, prejudicando a organização e a identificação de possíveis problemas.
+
+O SA Ferrorama busca solucionar essa dificuldade por meio de uma plataforma que reúne essas informações em um único ambiente, facilitando o gerenciamento dos dados, a consulta dos registros e o acompanhamento das condições operacionais.
 
 ## Objetivos do Projeto
 
-* Desenvolver um sistema organizado para gerenciamento ferroviário;
-* Permitir o cadastro e controle de trens, rotas e sensores;
-* Monitorar informações em tempo real relacionadas ao desempenho dos trens;
-* Facilitar a visualização de dados pelos usuários;
-* Gerar relatórios para análise de desempenho e funcionamento do sistema.
+- Desenvolver um sistema organizado para gerenciamento ferroviário;
+- Permitir o cadastro e o controle de trens, rotas e sensores;
+- Facilitar o gerenciamento de usuários e seus respectivos níveis de acesso;
+- Possibilitar o acompanhamento de informações relacionadas ao funcionamento dos trens;
+- Facilitar a visualização dos dados pelos usuários;
+- Disponibilizar relatórios para análise das informações do sistema;
+- Propor a integração de tecnologias IoT para o monitoramento ferroviário.
+
+## Principais Funcionalidades
+
+O sistema possui módulos destinados ao gerenciamento das principais informações ferroviárias.
+
+### Gerenciamento de Usuários
+
+- Cadastro de usuários;
+- Edição de informações cadastradas;
+- Exclusão de usuários;
+- Consulta e visualização de usuários;
+- Definição de perfil de acesso;
+- Controle de status da conta (Ativo/Inativo).
+
+### Gerenciamento de Trens
+
+- Cadastro de trens;
+- Edição das informações dos trens;
+- Exclusão de registros;
+- Consulta dos trens cadastrados;
+- Armazenamento de informações como modelo, velocidade, linha e carga.
+
+### Gerenciamento de Rotas
+
+- Cadastro de rotas ferroviárias;
+- Edição das informações das rotas;
+- Exclusão de rotas;
+- Consulta das rotas cadastradas;
+- Registro de estações de origem e destino;
+- Associação de sensores às rotas.
+
+### Gerenciamento de Sensores
+
+- Cadastro de sensores;
+- Edição das informações;
+- Exclusão de sensores;
+- Consulta dos sensores cadastrados;
+- Armazenamento de localização e tipo de dado monitorado.
+
+### Monitoramento
+
+- Visualização das informações relacionadas ao funcionamento ferroviário;
+- Acompanhamento dos dados disponibilizados pelo sistema;
+- Apresentação de informações de monitoramento;
+- Possibilidade de integração com sensores IoT.
+
+### Relatórios
+
+- Página destinada à apresentação de relatórios;
+- Organização de informações para análise;
+- Visualização de indicadores relacionados à operação ferroviária.
+
+## 5. Tecnologias Utilizadas
+
+O desenvolvimento do SA Ferrorama utiliza as seguintes tecnologias:
+
+| Tecnologia | Utilização |
+|---|---|
+| HTML5 | Estruturação das páginas |
+| CSS3 | Estilização e organização visual |
+| JavaScript | Interações e funcionalidades da interface |
+| PHP | Processamento e comunicação com o servidor |
+| MySQL | Armazenamento e gerenciamento dos dados |
+| Bootstrap | Componentes e organização da interface |
+| XAMPP | Ambiente de desenvolvimento local |
+| phpMyAdmin | Administração do banco de dados |
+| Visual Studio Code | Editor de código utilizado no desenvolvimento |
+
+## Requisitos para Executar o Sistema
+
+Para executar o SA Ferrorama em ambiente local, são necessários:
+
+- Computador com Windows, Linux ou macOS;
+- Navegador atualizado, como Google Chrome;
+- XAMPP instalado e configurado;
+- PHP e MySQL disponibilizados pelo XAMPP;
+- phpMyAdmin para administração do banco de dados;
+- Visual Studio Code ou outro editor de código (opcional, para alterações no projeto).
+
+## Instalação e Configuração
+
+Para executar o projeto localmente, siga as etapas:
+
+1. Instale o XAMPP no computador.
+2. Inicie os serviços Apache e MySQL pelo painel de controle do XAMPP.
+3. Localize a pasta de instalação do XAMPP.
+4. Acesse a pasta `htdocs`.
+5. Copie a pasta do projeto SA Ferrorama para dentro de `htdocs`.
+6. Abra o projeto no Visual Studio Code.
+7. Verifique as configurações de conexão com o banco de dados no arquivo `infra/conexao.php`.
+8. Configure o banco de dados conforme as orientações da próxima seção.
+
+## Configuração e Importação do Banco de Dados
+
+O sistema utiliza o MySQL para armazenar as informações de usuários, trens, sensores e rotas.
+
+Para configurar o banco de dados:
+
+1. Inicie o Apache e o MySQL no XAMPP.
+2. Abra o navegador e acesse `http://localhost/phpmyadmin`.
+3. Crie um banco de dados com o nome `sa_ferrorama1`.
+4. Acesse a opção **Importar** no phpMyAdmin.
+5. Selecione o arquivo SQL do projeto.
+6. Execute a importação e aguarde a criação das tabelas.
+
+Após a importação, verifique se as tabelas foram criadas corretamente.
+
+O arquivo `infra/conexao.php` deve estar configurado com as informações correspondentes ao banco de dados local.
+
+**Observação:** O nome do arquivo SQL e seu caminho devem ser atualizados nesta documentação conforme a localização real do arquivo no projeto.
+
+## Como Iniciar a Aplicação
+
+Depois de configurar o ambiente e o banco de dados:
+
+1. Abra o painel do XAMPP.
+2. Inicie os serviços Apache e MySQL.
+3. Abra o navegador.
+4. Digite o endereço local do projeto:
+
+`http://localhost/NOME_DA_PASTA/public/login.php`
+
+5. Realize o login utilizando uma conta cadastrada no banco de dados.
+6. Após a autenticação, o usuário será direcionado às páginas disponíveis conforme seu perfil de acesso.
+
+Substitua `NOME_DA_PASTA` pelo nome da pasta utilizada dentro de `htdocs`.
+
+## Perfis de Acesso e Permissões
+
+O SA Ferrorama possui dois perfis de acesso:
+
+### Administrador
+
+O administrador possui permissões de gerenciamento do sistema, podendo:
+
+- Cadastrar, consultar, editar e excluir usuários;
+- Gerenciar trens;
+- Gerenciar rotas;
+- Gerenciar sensores;
+- Acessar os módulos administrativos;
+- Consultar as informações disponibilizadas pelo sistema.
+
+### Usuário
+
+O usuário possui acesso às funcionalidades de visualização disponibilizadas pela plataforma, podendo:
+
+- Acessar a página inicial;
+- Consultar informações dos trens;
+- Visualizar informações das rotas;
+- Acompanhar os dados de monitoramento disponíveis;
+- Consultar as informações e os relatórios liberados para seu perfil.
+
+## Integrantes e Contribuições
+
+O projeto SA Ferrorama foi desenvolvido em equipe, com a participação dos seguintes integrantes:
+
+| Integrante | Contribuição |
+|---|---|
+| [Nome do integrante 1] | [Descrever contribuição] |
+| [Nome do integrante 2] | [Descrever contribuição] |
+| [Nome do integrante 3] | [Descrever contribuição] |
+| [Nome do integrante 4] | [Descrever contribuição] |
+| [Nome do integrante 5] | [Descrever contribuição] |
+
+## Segurança e Credenciais
+
+O acesso às funcionalidades internas é protegido por autenticação e controle de permissões.
+
+As credenciais utilizadas durante o desenvolvimento devem ser mantidas em ambiente local ou em arquivos de configuração apropriados.
+
+**Não devem ser publicadas senhas reais, dados pessoais ou credenciais de acesso no repositório.**
+
+Caso sejam disponibilizadas contas de demonstração, deverão ser utilizadas exclusivamente para fins de apresentação do projeto.
 
 ---
 
-## Funcionalidades Previstas
+# Requisitos Funcionais
 
-* Cadastro de usuários realizado pelos administradores;
-* Cadastro de trens;
-* Cadastro de rotas;
-* Cadastro e gerenciamento de sensores;
-* Monitoramento das linhas ferroviárias;
-* Visualização das informações do sistema;
-* Visualização de cadastros de administrador e usuários;
-* Geração de relatórios analíticos.
+Os requisitos funcionais descrevem as funcionalidades e operações que o sistema SA Ferrorama deve disponibilizar aos seus usuários.
 
-## Requisitos Funcionais
+**Descrição de RF**
 
-RF Descrição
+**RF01** O sistema deve permitir cadastrar usuários.
 
-RF01 O sistema deve permitir cadastrar usuário.
+**RF02** O sistema deve permitir excluir usuários.
 
-RF02 O sistema deve permitir excluir usuário.
+**RF03** O sistema deve permitir atualizar os dados dos usuários.
 
-RF03 O sistema deve permitir atualizar usuário.
+**RF04** O sistema deve permitir cadastrar sensores.
 
-RF04 O sistema deve permitir cadastrar sensor.
+**RF05** O sistema deve permitir excluir sensores.
 
-RF05 O sistema deve permitir excluir sensor.
+**RF06** O sistema deve permitir atualizar os dados dos sensores.
 
-RF06 O sistema deve permitir atualizar sensor.
+**RF07** O sistema deve permitir cadastrar trens.
 
-RF07 O sistema deve permitir cadastrar trem.
+**RF08** O sistema deve permitir excluir trens.
 
-RF08 O sistema deve permitir excluir trem.
+**RF09** O sistema deve permitir atualizar os dados dos trens.
 
-RF09 O sistema deve permitir atualizar trem.
+**RF10** O sistema deve permitir cadastrar rotas ferroviárias.
 
-RF10 O sistema deve permitir cadastrar rota.
+**RF11** O sistema deve permitir excluir rotas.
 
-RF11 O sistema deve permitir excluir rota.
+**RF12** O sistema deve permitir atualizar os dados das rotas.
 
-RF11 O sistema deve permitir atualizar rota.
+**RF13** O sistema deve exibir o status operacional do trem monitorado.
 
-RF13 O sistema deve exibir status operacional do trem monitorado.
+**RF14** O sistema deve permitir visualizar informações de localização em quilômetros.
 
-RF14 O sistema deve permitir visualizar informações de localização em quilômetros.
+**RF15** O sistema deve permitir visualizar a quantidade de passageiros por viagem.
 
-RF15 O sistema deve permitir visualizar quantidade de passageiros por horário.
+**RF16** O sistema deve permitir visualizar a quantidade de atrasos por dia da semana.
 
-RF16 O sistema deve permitir visualizar quantidade de atrasos por dia da semana.
+**RF17** O sistema deve exibir o último acesso dos usuários cadastrados.
 
-RF17 O sistema deve exibir último acesso dos usuários cadastrados.
+**RF18** O sistema deve permitir visualizar os sensores cadastrados.
 
-RF18 O sistema deve permitir visualizar sensores cadastrados.
+**RF19** O sistema deve impedir a exclusão de sensores que possuam dados registrados.
 
-RF19 O sistema deve impedir a exclusão de sensores que possuam dados registrados.
+**RF20** O sistema deve permitir consultar os usuários cadastrados.
 
-RF20 O sistema deve permitir pesquisar usuários cadastrados.
+**RF21** O sistema deve apresentar gráficos de velocidade, atrasos e passageiros.
 
-RF21 O sistema deve apresentar gráficos de velocidade, atrasos e passageiros.
+**RF22** O sistema deve permitir visualizar mapas de localização das linhas ferroviárias.
 
-RF22 O sistema deve permitir visualizar mapas de localização das linhas ferroviárias.
+**RF23** O sistema deve permitir realizar pesquisas sobre linhas ferroviárias.
 
-RF23 O sistema deve permitir pesquisar linhas ferroviárias.
+**RF24** O sistema deve exibir alertas e notícias recentes do sistema ferroviário.
 
-RF24 O sistema deve exibir alertas e notícias recentes do sistema ferroviário.
+**RF25** O sistema deve permitir gerar relatórios.
 
-RF25 O sistema deve permitir gerar relatórios.
+**RF26** O sistema deve permitir filtrar relatórios por tipo e dados.
 
-RF26 O sistema deve permitir filtrar relatórios por tipo e data.
+**RF27** O sistema deve permitir visualizar relatórios gerados.
 
-RF27 O sistema deve permitir visualizar relatórios gerados.
+**RF28** O sistema deve permitir a recuperação de senha por meio da opção "Esqueceu a senha".
 
-RF28 O sistema deve permitir recuperação de senha através da opção “Esqueceu a senha”.
+**RF29** O sistema deve permitir definir o tipo de conta (Administrador ou Usuário).
 
-RF29 O sistema deve permitir definir tipo de conta (Administrador ou Usuário).
+**RF30** O sistema deve permitir definir o status da conta (Ativo/Inativo).
 
-RF30 O sistema deve permitir definir o status da conta (Ativo/Inativo).
+**RF31** O sistema deve validar os campos obrigatórios no cadastro de usuários.
 
-RF31 O sistema deve validar os campos obrigatórios no cadastro de usuários.
+**RF32** O sistema deve exibir uma mensagem de sucesso ao cadastrar um usuário.
 
-RF32 O sistema deve exibir mensagem de sucesso ao cadastrar um usuário.
+**RF33** O sistema deve permitir visualizar a lista de administradores e usuários.
 
-RF33 O sistema deve permitir visualizar a lista de administradores e usuários.
+**RF34** O sistema deve permitir filtrar usuários por tipo de conta e status.
 
-RF34 O sistema deve permitir filtrar usuários por tipo de conta e status.
+**RF35** O sistema deve manter a navegação lateral entre os módulos do sistema.
 
-RF35 O sistema deve manter navegação lateral entre os módulos do sistema
+**RF36** O sistema deve permitir realizar logout.
 
-RF36 O sistema deve permitir realizar logout do sistema.
+**RF37** O sistema deve solicitar confirmação antes de encerrar a sessão.
 
-RF37 O sistema deve solicitar confirmação antes de sair do sistema.
+**RF38** O sistema deve permitir visualizar detalhes completos dos relatórios.
 
-RF38 O sistema deve permitir visualizar detalhes completos de relatórios.
+**RF39** O sistema deve apresentar a quantidade de atrasos do dia.
 
-RF39 O sistema deve apresentar a quantidade de atrasos do dia.
+**RF40** O sistema deve apresentar o percentual de pontualidade.
 
-RF40 O sistema deve apresentar percentual de pontualidade.
+**RF41** O sistema deve apresentar a quantidade de falhas registradas.
 
-RF41 O sistema deve apresentar quantidade de falhas registradas.
+**RF42** O sistema deve solicitar confirmação antes de excluir registros.
 
-RF42 O sistema deve permitir confirmação de exclusão antes de remover registros.
+---
 
-## Regras de Negócio
+# Regras de Negócio
 
-RN Descrição
+As regras de negócio estabelecem as condições e restrições que devem ser respeitadas durante a utilização do sistema, garantindo a organização, a segurança e o funcionamento adequado das operações.
 
-RN1 O sistema deve exibir dados de monitoramento em tempo real.
+**Descrição de RN**
 
-RN2 Apenas usuários com credenciais válidas podem acessar o sistema.
+**RN01** O sistema deve exibir os dados de monitoramento em tempo real, quando houver integração e disponibilidade dos dados dos sensores.
 
-RN3 O login é obrigatório para acesso às funcionalidades internas.
+**RN02** Apenas usuários com credenciais válidas podem acessar o sistema.
 
-RN4 Cada sensor deve possuir nome, localização e tipo de dado.
+**RN03** O login é obrigatório para acessar as funcionalidades internas.
 
-RN5 Todo sensor deve estar vinculado a um trem.
+**RN04** Cada sensor deve possuir nome, localização e tipo de dado monitorado.
 
-RN6 Sensores com dados registrados não podem ser excluídos.
+**RN05** Todo sensor deve estar relacionado a um trem.
 
-RN7 Ao tentar excluir, deve ser exibida uma mensagem de erro.
+**RN06** Sensores que possuam dados registrados não podem ser excluídos.
 
-RN8 A exclusão de sensores exige confirmação prévia do usuário.
+**RN07** Ao tentar excluir um sensor que possua dados registrados, o sistema deve exibir uma mensagem de erro.
 
-RN9 O status operacional é classificado como:Normal,Alerta,Falha
+**RN08** A exclusão de sensores deve exigir confirmação prévia do usuário.
 
-RN10 Os relatórios devem ser gerados com base em dados reais.
+**RN09** O status operacional dos trens deve ser classificado como: Normal, Alerta ou Falha.
 
-RN11 Os relatórios devem conter gráficos para análise.
+**RN10** Os relatórios devem ser gerados com base nos dados registrados no sistema.
 
-RN12 É permitido filtrar relatórios por período.
+**RN11** Os relatórios devem apresentar gráficos para facilitar a análise das informações.
 
-RN13 É permitido filtrar relatórios por tipo de falha.
+**RN12** Os relatórios devem permitir filtros por período.
 
-RN14 Ao realizar logout, a sessão do usuário é encerrada.
+**RN13** Os relatórios devem permitir filtros por tipo de falha.
 
-RN15 O acesso ao sistema é bloqueado sem autenticação.
+**RN14** Ao realizar logout, a sessão do usuário deve ser encerrada.
 
-RN16 O sistema deve exibir mensagem de erro para login inválido.
+**RN15** O acesso às páginas internas deve ser bloqueado para usuários não autenticados.
 
-RN17 O sistema deve validar e-mail e senha no momento do login.
+**RN16** O sistema deve exibir uma mensagem de erro quando o login for realizado com credenciais inválidas.
 
-RN18 O sistema deve exibir mensagem de erro para login inválido.
+**RN17** O sistema deve validar o e-mail e a senha informados no momento do login.
 
-RN19 O sistema deve permitir vincular sensores às rotas e trens.
+**RN18** O sistema deve impedir o acesso de contas inativas.
+
+**RN19** O sistema deve permitir vincular sensores às rotas e aos trens.
 
 # Utilização de Inteligência Artificial
 
@@ -263,5 +436,6 @@ Por isso, foi necessário analisar, adaptar e testar as respostas antes de utili
 O ChatGPT foi uma ferramenta de apoio muito utilizada durante o desenvolvimento do SA Ferrorama. Recorremos a ele em diferentes situações, desde dúvidas simples sobre programação até problemas mais específicos envolvendo o funcionamento do sistema.
 Com essa experiência, conseguimos aprender mais sobre as tecnologias utilizadas, encontrar soluções para dificuldades e melhorar algumas partes do projeto.
 A IA facilitou o processo de desenvolvimento, mas não substituiu o trabalho da equipe, que continuou responsável pelas alterações, adaptações, decisões e testes realizados no sistema.
+
 
 

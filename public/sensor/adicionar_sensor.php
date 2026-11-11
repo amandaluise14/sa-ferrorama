@@ -164,44 +164,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                placeholder="Ex: Sensor de velocidade do trem 77"
                                required>
                     </div>
-                    <div class="campo campo-largo">
 
-                        <!-- <label>Localização do sensor</label>
+                    <div class="campo">
 
-                        <div class="opcoes-localizacao">
+                        <label for="rota_id">Rota vinculada</label>
 
-                            <label class="opcao-radio" for="localizacao_trem">
+                        <select name="rota_id"
+                                id="rota_id"
+                                required>
 
-                                <input type="radio"
-                                       id="localizacao_trem"
-                                       name="localizacao"
-                                       value="Trem"
-                                       required>
+                            <option value="">Selecione uma rota</option>
 
-                                <span>
-                                    <i class="bi bi-train-front"></i>
-                                    Trem
-                                </span>
+                            <?php
+                            mysqli_data_seek($resultado, 0);
 
-                            </label>
-                            
+                            while ($rota = mysqli_fetch_assoc($resultado)):
+                            ?>
 
-                            <label class="opcao-radio" for="localizacao_rota">
+                                <option value="<?= htmlspecialchars($rota['id_rota']) ?>">
+                                    <?= htmlspecialchars($rota['nome']) ?>
+                                </option>
 
-                                <input type="radio"
-                                       id="localizacao_rota"
-                                       name="localizacao"
-                                       value="Rota"
-                                       required>
+                            <?php endwhile; ?>
 
-                                <span>
-                                    <i class="bi bi-signpost-2"></i>
-                                    Rota
-                                </span>
+                        </select>
 
-                            </label>
-
-                        </div> --->
+                    </div>
 
                     </div>
                     <div class="campo campo-largo">
