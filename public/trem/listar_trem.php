@@ -24,12 +24,16 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
     $tipoMensagem = 'danger';
 }
-$sql = "SELECT * FROM trens";
+$sql = "SELECT trens.*, usuarios.nome AS nome_usuario
+        FROM trens
+        LEFT JOIN usuarios ON trens.usuario_id = usuarios.id_usuario";
+
 $trens = mysqli_query($conn, $sql);
 
 if (!$trens) {
     die("Erro ao consultar os trens: " . mysqli_error($conn));
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -125,6 +129,7 @@ if (!$trens) {
                 <th>Velocidade</th>
                 <th>Linha</th>
                 <th>Carga</th>
+                <th>usuario</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -141,11 +146,12 @@ if (!$trens) {
                     <td><?php echo $trem['carga']; ?></td>
                     <td>
 
+                    <td>
+                        <?php echo $trem['nome_usuario'] ?? 'nao vinculado'; ?>
+            </td>
 
-                      <button class="editar acao-tooltip"
-
-
-                                        <button class="editar acao-tooltip"
+<td>
+                    
 
                       <button class="editar acao-tooltip"
                                             data-tooltip="Editar"
