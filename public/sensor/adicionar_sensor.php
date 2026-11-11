@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-          
+
           <script src="../js/persistencia_formularios.js" defer></script>
 </head>
 
@@ -231,22 +231,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                 </div>
-               <div class="acoes-formulario">
 
+                <div class="acoes-formulario">
                     <button type="button"
                             class="botao-voltar"
-                            onclick="window.location.href='listar_sensor.php';">
-
+                            onclick="window.location.href='listar_rotas.php';">
                         ← Visualizar Sensores Cadastrados
-
                     </button>
-
                     <button type="submit"
                             class="botao-cadastrar">
-
-                        <i class="bi bi-broadcast-pin"></i>
-                        Cadastrar sensor
-
+                        <i class="bi bi-signpost-2"></i>
+                        Cadastrar rota
                     </button>
 
                 </div>
