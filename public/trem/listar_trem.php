@@ -24,12 +24,16 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
     $tipoMensagem = 'danger';
 }
-$sql = "SELECT * FROM trens";
+$sql = "SELECT trens.*, usuarios.nome AS nome_usuario
+        FROM trens
+        LEFT JOIN usuarios ON trens.usuario_id = usuarios.id_usuario";
+
 $trens = mysqli_query($conn, $sql);
 
 if (!$trens) {
     die("Erro ao consultar os trens: " . mysqli_error($conn));
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -125,58 +129,48 @@ if (!$trens) {
                 <th>Velocidade</th>
                 <th>Linha</th>
                 <th>Carga</th>
+                <th>Usuário</th>
                 <th>Ações</th>
             </tr>
         </thead>
 
         <tbody>
 
-            <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
+           <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
 
-                <tr>
-                    <td><?php echo $trem['id_trem']; ?></td>
-                    <td><?php echo $trem['modelo']; ?></td>
-                    <td><?php echo $trem['velocidade']; ?></td>
-                    <td><?php echo $trem['linha']; ?></td>
-                    <td><?php echo $trem['carga']; ?></td>
-                    <td>
+<tr>
+    <td><?php echo $trem['id_trem']; ?></td>
+    <td><?php echo $trem['modelo']; ?></td>
+    <td><?php echo $trem['velocidade']; ?></td>
+    <td><?php echo $trem['linha']; ?></td>
+    <td><?php echo $trem['carga']; ?></td>
 
+    
+    <td>
+        <?php echo $trem['nome_usuario'] ?? 'Não vinculado'; ?>
+    </td>
 
-                      <button class="editar acao-tooltip"
+    
+    <td>
+        <button class="editar acao-tooltip"
+            data-tooltip="Editar"
+            type="button"
+            onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
+            <i class="bi bi-pencil"></i>
+        </button>
 
+        <button class="excluir acao-tooltip"
+            data-tooltip="Excluir"
+            type="button"
+            onclick="if (confirm('Tem certeza que deseja excluir este trem?')) {
+                window.location.href='excluir_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>';
+            }">
+            <i class="bi bi-person-dash-fill"></i>
+        </button>
+    </td>
+</tr>
 
-                                        <button class="editar acao-tooltip"
-
-                      <button class="editar acao-tooltip"
-                                            data-tooltip="Editar"
-                                            type="button"
-                                            onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
-
-                                            <i class="bi bi-pencil"></i>
-
-                                        </button>
-
-                                        <button
-                                            class="excluir acao-tooltip"
-                                            data-tooltip="Excluir"
-                                            type="button"
-                                            onclick="if (confirm('Tem certeza que deseja excluir este trem?')) {
-                                                window.location.href='excluir_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>';
-                                            }">
-
-                                            <i class="bi bi-person-dash-fill"></i>
-
-                                        </button>
-
-                    </td>
-
-
-                                    </td>
-
-                    </td>
-                </tr>
-
-            <?php endwhile; ?>
+<?php endwhile; ?>
 
         </tbody>
     </table>
