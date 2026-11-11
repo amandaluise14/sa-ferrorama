@@ -2147,12 +2147,11 @@ margin-bottom: 12px;
 
 .card-acesso:hover .seta-acesso {
     transform: translate(3px, -3px);
->>>>>>> 8c7bc4d62b35ccdb4176505612691627b5ee0dd0
+
 }
 
 /* RESPONSIVIDADE */
 
-<<<<<<< HEAD
 @media (max-width: 1000px) {
     #landing_page .landing_cards {
         grid-template-columns: repeat(2, 1fr);
@@ -2222,7 +2221,7 @@ margin-bottom: 12px;
         font-size: 32px;
     }
 }
-=======
+
 @media (max-width: 900px) {
     .grade-acessos {
         grid-template-columns: repeat(2, 1fr);
@@ -2234,4 +2233,4 @@ margin-bottom: 12px;
         grid-template-columns: 1fr;
     }
 }
->>>>>>> 8c7bc4d62b35ccdb4176505612691627b5ee0dd0
+
