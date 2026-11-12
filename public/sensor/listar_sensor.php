@@ -84,7 +84,6 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
         </div>
 
         <div class="formulario-container">
-            <div class="lista-cartao">
 
                 <?php if (!empty($mensagem)): ?>
 
@@ -110,23 +109,31 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
                 <?php endif; ?>
 
-                <form method="POST" class="forms_sensores">
+        <form method="POST" class="forms_sensores">
+            <h2 id="titulo-admin">
+                Visualizar Sensores
+            </h2>
 
-                    <h2 id="titulo-admin">Listagem de Sensores</h2>
+            <p class="descricao-listagem">
+                Consulte, filtre e gerencie os sensores cadastrados no sistema Info Trem.
+            </p>
 
-                    <div class="conteudo">
+            <div class="cartao-listagem">
 
                         <div class="table-responsive">
 
-                            <table class="table tabela-sensores">
+                            <table class="tabela">
 
+                            <thead>
+                            <tr class="cabecalho-tabela">
                                 <th>ID</th>
                                 <th>Nome</th>
                                 <th>Rota vinculada</th>
                                 <th>Descrição da Localização</th>
                                 <th>Dado Monitorado</th>
                                 <th>Ações</th>
-
+                            </tr>
+                            </thead>
                                 <?php
 
                                 $sql = "SELECT sensores.*, rotas.nome AS nome_rota
@@ -180,17 +187,18 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
                         </div>
 
-                    </div>
-
-                    
+                    <button class="botaoVisualizar" type="button"
+                    onclick="window.location.href='adicionar_sensor.php';">
+                    + Novo Sensor
+                </button>
 
                 </form>
 
             </div>
-        </div>
+    
 
+        </form>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
