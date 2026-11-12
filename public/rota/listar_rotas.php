@@ -221,7 +221,7 @@ if (!$resultado) {
                     </div>
 
                     <button class="botaoVisualizar" type="button"
-                        onclick="window.location.href='adicionar_rotas.php';">
+                        onclick="window.location.href='adicionar_rota.php';">
 
                         + Nova Rota
 
