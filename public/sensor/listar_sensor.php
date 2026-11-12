@@ -109,16 +109,35 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
                 <?php endif; ?>
 
-        <form method="POST" class="forms_sensores">
-            <h2 id="titulo-admin">
-                Visualizar Sensores
-            </h2>
+    <form method="GET" class="forms_sensores">
 
-            <p class="descricao-listagem">
-                Consulte, filtre e gerencie os sensores cadastrados no sistema Info Trem.
-            </p>
+    <h2 id="titulo-admin">
+        Visualizar Sensores
+    </h2>
+
+    <p class="descricao-listagem">
+        Consulte e gerencie os sensores cadastrados no sistema Info Trem.
+    </p>
+
+    <div class="pesquisa-sensores-layout">
+        <input
+            type="text"
+            name="pesquisa"
+            class="pesquisa-sensores-input"
+            placeholder="Pesquisar sensores..."
+            value="<?= htmlspecialchars($_GET['pesquisa'] ?? '') ?>"
+        >
+
+        <button type="submit" class="pesquisa-sensores-btn">
+            <i class="bi bi-search"></i>
+            Pesquisar
+        </button>
+    </div>
+
+</form>
 
             <div class="cartao-listagem">
+ 
 
                         <div class="table-responsive">
 
@@ -136,12 +155,26 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
                             </thead>
                                 <?php
 
-                                $sql = "SELECT sensores.*, rotas.nome AS nome_rota
-                                        FROM sensores
-                                        LEFT JOIN rotas
-                                        ON sensores.rota_id = rotas.id_rota";
+                               $pesquisa = $_GET['pesquisa'] ?? '';
 
-                                $sensores = $conn->query($sql);
+                    $sql = "SELECT sensores.*, rotas.nome AS nome_rota
+                    FROM sensores
+                    LEFT JOIN rotas
+                    ON sensores.rota_id = rotas.id_rota
+                    WHERE sensores.nome LIKE ?
+                    OR rotas.nome LIKE ?
+                    OR sensores.descricao_localizacao LIKE ?
+                    OR sensores.dado_monitorado LIKE ?";
+
+                $stmt = $conn->prepare($sql);
+
+                $busca = "%$pesquisa%";
+
+                $stmt->bind_param("ssss", $busca, $busca, $busca, $busca);
+
+                $stmt->execute();
+
+                $sensores = $stmt->get_result();
 
                                 while ($sensor = $sensores->fetch_assoc()) {
                                 ?>
@@ -197,7 +230,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
             </div>
     
 
-        </form>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 

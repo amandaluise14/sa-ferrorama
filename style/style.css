@@ -2535,3 +2535,159 @@ margin-bottom: 12px;
         margin-top: 20px;
     }
 }
+
+
+/* =================================
+   BARRA DE PESQUISA - SENSORES
+================================= */
+
+.pesquisa-sensores-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 21px 0 16px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pesquisa-sensores-input {
+    flex: 1;
+    height: 42px;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 0 14px;
+
+    background-color: #ffffff;
+    border: 1px solid #d9dce2;
+    border-radius: 8px;
+
+    color: #333333;
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pesquisa-sensores-input::placeholder {
+    color: #999999;
+}
+
+.pesquisa-sensores-input:focus {
+    border-color: #850000;
+    box-shadow: 0 0 0 3px rgba(133, 0, 0, 0.08);
+}
+
+.pesquisa-sensores-btn {
+    height: 42px;
+    min-width: 118px;
+    box-sizing: border-box;
+    margin: 0 !important;
+    align-self: center;
+    transform: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 17px;
+
+
+    background-color: #850000;
+    border: 1px solid #850000;
+    border-radius: 8px;
+
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.pesquisa-sensores-btn i {
+    font-size: 15px;
+}
+
+.pesquisa-sensores-btn:hover {
+    background-color: #650000;
+    border-color: #650000;
+    box-shadow: 0 3px 8px rgba(101, 0, 0, 0.15);
+}
+
+.pesquisa-sensores-btn:active {
+    background-color: #500000;
+}
+
+/* =================================
+   ORGANIZAÇÃO DA LISTAGEM DE SENSORES
+================================= */
+
+.pagina-listagem .formulario-container {
+    flex: 1;
+    min-width: 0;
+    padding: 60px 50px;
+    display: block;
+}
+
+.pagina-listagem .forms_sensores {
+    width: 100%;
+    display: block;
+}
+
+/* Barra de pesquisa */
+
+.pagina-listagem .pesquisa-sensores-layout {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 26px 0 28px;
+}
+
+.pagina-listagem .pesquisa-sensores-input {
+    flex: 1;
+    width: 0 !important;
+    min-width: 0;
+    height: 42px;
+    margin: 0 !important;
+}
+
+/* Botão pesquisar */
+
+.pagina-listagem .pesquisa-sensores-btn {
+    flex-shrink: 0;
+    height: 42px;
+    margin: 0 !important;
+}
+
+/* Cartão da tabela */
+
+.pagina-listagem .cartao-listagem {
+    width: 100%;
+    padding: 22px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Tabela */
+
+.pagina-listagem .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.pagina-listagem .tabela {
+    width: 100%;
+}
+
+/* Botão novo sensor */
+
+.pagina-listagem .botaoVisualizar {
+    margin-top: 20px;
+}
