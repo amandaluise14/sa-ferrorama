@@ -6,7 +6,7 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-// Mensagem de erro e sucesso ao excluir
+// Mensagens de sucesso e erro
 $mensagem = '';
 $tipoMensagem = '';
 
@@ -29,12 +29,36 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $tipoMensagem = 'danger';
 }
 
-$sql = "SELECT * FROM rotas ORDER BY id_rota";
-$resultado = mysqli_query($conn, $sql);
+// PESQUISA DE ROTAS
 
-if (!$resultado) {
-    die("Erro ao consultar as rotas: " . mysqli_error($conn));
-}
+$pesquisa = $_GET['pesquisa'] ?? '';
+
+$sql = "SELECT * FROM rotas
+        WHERE estacao_origem LIKE ?
+        OR estacao_destino LIKE ?
+        OR distancia_total LIKE ?
+        OR descricao LIKE ?
+        OR CAST(duracao AS CHAR) LIKE ?
+        OR CAST(trem_id AS CHAR) LIKE ?
+        ORDER BY id_rota";
+
+$stmt = $conn->prepare($sql);
+
+$busca = "%$pesquisa%";
+
+$stmt->bind_param(
+    "ssssss",
+    $busca,
+    $busca,
+    $busca,
+    $busca,
+    $busca,
+    $busca
+);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
 
 ?>
 
@@ -125,7 +149,7 @@ if (!$resultado) {
 
             <?php endif; ?>
 
-            <form method="POST" class="forms_sensores">
+            <div class="forms_sensores">
 
                 <h2 id="titulo-admin">
                     Visualizar Rotas
@@ -134,6 +158,27 @@ if (!$resultado) {
                 <p class="descricao-listagem">
                     Consulte e gerencie as rotas cadastradas no sistema Info Trem.
                 </p>
+
+                <!-- BARRA DE PESQUISA -->
+
+                <form method="GET" class="pesquisa-sensores-layout">
+
+                    <input
+                        type="text"
+                        name="pesquisa"
+                        class="pesquisa-sensores-input"
+                        placeholder="Pesquisar rotas..."
+                        value="<?= htmlspecialchars($pesquisa) ?>"
+                    >
+
+                    <button type="submit" class="pesquisa-sensores-btn">
+                        <i class="bi bi-search"></i>
+                        Pesquisar
+                    </button>
+
+                </form>
+
+                <!-- TABELA DE ROTAS -->
 
                 <div class="cartao-listagem">
 
@@ -156,42 +201,42 @@ if (!$resultado) {
 
                             <tbody>
 
-                                <?php if (mysqli_num_rows($resultado) > 0): ?>
+                                <?php if ($resultado->num_rows > 0): ?>
 
-                                    <?php while ($rota = mysqli_fetch_assoc($resultado)): ?>
+                                    <?php while ($rota = $resultado->fetch_assoc()): ?>
 
                                         <tr>
-                                            <td><?php echo $rota['id_rota']; ?></td>
 
-                                            <td><?php echo $rota['estacao_origem']; ?></td>
+                                            <td><?= $rota['id_rota']; ?></td>
 
-                                            <td><?php echo $rota['estacao_destino']; ?></td>
+                                            <td><?= htmlspecialchars($rota['estacao_origem']); ?></td>
 
-                                            <td><?php echo $rota['distancia_total']; ?></td>
+                                            <td><?= htmlspecialchars($rota['estacao_destino']); ?></td>
 
-                                            <td><?php echo $rota['descricao']; ?></td>
+                                            <td><?= htmlspecialchars($rota['distancia_total']); ?></td>
 
-                                            <td><?php echo $rota['duracao']; ?></td>
+                                            <td><?= htmlspecialchars($rota['descricao']); ?></td>
 
-                                            <td><?php echo $rota['trem_id'] ?? 'Não vinculado'; ?></td>
+                                            <td><?= htmlspecialchars($rota['duracao']); ?></td>
+
+                                            <td><?= htmlspecialchars($rota['trem_id'] ?? 'Não vinculado'); ?></td>
 
                                             <td>
 
                                                 <button class="editar acao-tooltip"
                                                     data-tooltip="Editar"
                                                     type="button"
-                                                    onclick="window.location.href='editar_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>'">
+                                                    onclick="window.location.href='editar_rota.php?id_rota=<?= (int) $rota['id_rota']; ?>'">
 
                                                     <i class="bi bi-pencil"></i>
 
                                                 </button>
 
-                                                <button
-                                                    class="excluir acao-tooltip"
+                                                <button class="excluir acao-tooltip"
                                                     data-tooltip="Excluir"
                                                     type="button"
                                                     onclick="if (confirm('Tem certeza que deseja excluir esta rota?')) {
-                                                        window.location.href='excluir_rota.php?id_rota=<?php echo (int) $rota['id_rota']; ?>';
+                                                        window.location.href='excluir_rota.php?id_rota=<?= (int) $rota['id_rota']; ?>';
                                                     }">
 
                                                     <i class="bi bi-person-dash-fill"></i>
@@ -208,7 +253,7 @@ if (!$resultado) {
 
                                     <tr>
                                         <td colspan="8">
-                                            Nenhuma rota cadastrada.
+                                            Nenhuma rota encontrada.
                                         </td>
                                     </tr>
 
@@ -229,7 +274,7 @@ if (!$resultado) {
 
                 </div>
 
-            </form>
+            </div>
 
         </div>
 

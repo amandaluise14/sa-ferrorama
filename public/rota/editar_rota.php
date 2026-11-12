@@ -24,6 +24,13 @@ $stmt->close();
 if (!$rota) {
     die("Rota não encontrada.");
 }
+$sqlTrens = "SELECT id_trem, modelo FROM trens ORDER BY id_trem";
+
+$trens = mysqli_query($conn, $sqlTrens);
+
+if (!$trens) {
+    die("Erro ao consultar os trens: " . mysqli_error($conn));
+}
 
 if (isset($_POST['id_rota'])) {
 
@@ -102,7 +109,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
 <div class="pagina">
 
-    <!-- SIDEBAR -->
+
     <div class="sidebar">
 
         <div class="logo">
@@ -218,6 +225,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
 
             <form method="POST" class="form-cadastro-usuario">
+            <input type="hidden" name="id_rota" value="<?= $rota['id_rota']; ?>">
 
                 <div class="grade-formulario">
 
@@ -230,26 +238,29 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
                     </div>
 
-                    <div class="campo">
+                        
+<div class="campo">
 
-                        <label for="trem_id">Trem vinculado</label>
-                        <select name="trem_id" id="trem_id" required>
+    <label for="trem_id">Trem vinculado</label>
 
-                            <option value="">Selecione um trem</option>
+    <select name="trem_id" id="trem_id" required>
 
-                            <?php
-                            mysqli_data_seek($resultado, 0);
+        <option value="">Selecione um trem</option>
 
-                            while ($trem = mysqli_fetch_assoc($resultado)):
-                            ?>
+        <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
 
-                                <option value="<?= htmlspecialchars($trem['id_trem']) ?>">
-                                    <?= htmlspecialchars($trem['modelo']) ?>
-                                </option>
+            <option
+                value="<?= $trem['id_trem'] ?>"
+                <?= ($rota['trem_id'] == $trem['id_trem']) ? 'selected' : '' ?>
+            >
+                <?= htmlspecialchars($trem['modelo']) ?>
+            </option>
 
-                            <?php endwhile; ?>
+        <?php endwhile; ?>
 
-                        </select>
+    </select>
+
+</div>
 
                     </div>
 
@@ -327,7 +338,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                             class="botao-cadastrar">
 
                         <i class="bi bi-signpost-2"></i>
-                        Cadastrar rota
+                        Editar Rota
 
                     </button>
 
