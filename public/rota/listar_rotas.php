@@ -224,12 +224,22 @@ if (!$resultado) {
 
                 </table>
 
+                <div class="acoes-formulario">
+
+                    <button type="button"
+                            class="botao-voltar"
+                            onclick="window.location.href='adcionar_rotas.php';">
+
+                        ← Voltar para Cadastrar Rotas
+
+                    </button>
+                        </div>
+
 
             </div>
 
 
         </div>
-
 
     </div>
 
