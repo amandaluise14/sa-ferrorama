@@ -2535,3 +2535,666 @@ margin-bottom: 12px;
         margin-top: 20px;
     }
 }
+
+
+/* =========================================
+   MONITORAMENTO DOS SENSORES
+========================================= */
+
+#conteudo_monitoramento,
+.conteudo-monitoramento {
+    width: 100%;
+    min-height: 100vh;
+    padding: 45px;
+    box-sizing: border-box;
+    background: #f4f4f4;
+}
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.titulo_monitoramento {
+    color: #720000;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px 0 35px;
+}
+
+.cabecalho-monitoramento {
+    margin-bottom: 30px;
+}
+
+.cabecalho-monitoramento h1 {
+    color: #720000;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+.cabecalho-monitoramento p {
+    color: #8290a5;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* =========================================
+   PESQUISA
+========================================= */
+
+.pesquisa_monitoramento,
+.formulario-busca {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 15px !important;
+    width: 100%;
+    margin: 25px 0 40px;
+}
+
+.pesquisa_monitoramento input {
+    width: 210px !important;
+    min-width: 0;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 12px;
+    flex: 0 1 210px !important;
+    box-sizing: border-box;
+    border: 1px solid #d5d5d5;
+    border-radius: 7px;
+    background: #ffffff;
+    outline: none;
+}
+
+.pesquisa_monitoramento input:focus {
+    border-color: #720000;
+}
+
+.formulario-busca .campo-busca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+    background: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 7px;
+}
+
+.campo-busca i {
+    color: #720000;
+    font-size: 18px;
+}
+
+.campo-busca input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.pesquisa_monitoramento .botao_pesquisar {
+    width: 45px !important;
+    min-width: 45px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 45px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #720000;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-buscar {
+    height: 45px;
+    padding: 0 22px;
+    background: #720000;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pesquisa_monitoramento .botao_pesquisar:hover,
+.botao-buscar:hover {
+    background: #4b1111;
+}
+
+.pesquisa_monitoramento .botao_pesquisar i {
+    font-size: 18px;
+}
+
+.pesquisa_monitoramento .botao_ver_todos {
+    width: 125px !important;
+    min-width: 125px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 125px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #720000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.pesquisa_monitoramento .botao_ver_todos:hover {
+    background: #4b1111;
+}
+
+/* =========================================
+   LISTA DE SENSORES
+========================================= */
+
+.lista_sensores_monitoramento,
+.lista-sensores {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* =========================================
+   LINK DO SENSOR
+========================================= */
+
+.link_sensor_monitoramento,
+.link-sensor {
+    display: block;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.link_sensor_monitoramento:hover,
+.link-sensor:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================================
+   CARD ÚNICO DO SENSOR
+========================================= */
+
+.sensor_monitoramento,
+.card-sensor {
+    width: 100%;
+    min-width: 0;
+    min-height: 108px;
+    box-sizing: border-box;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 16px;
+
+    padding: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-top: 4px solid #800000;
+    border-radius: 11px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.sensor_monitoramento:hover,
+.card-sensor:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================================
+   ÍCONE DO SENSOR
+========================================= */
+
+.icone_sensor_monitoramento,
+.icone-sensor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    background: #f8eeee;
+    color: #800000;
+
+    border-radius: 11px;
+    font-size: 23px;
+}
+
+/* =========================================
+   INFORMAÇÕES DO SENSOR
+========================================= */
+
+.informacoes_sensor_monitoramento,
+.informacoes-sensor {
+    flex: 1;
+    min-width: 0;
+}
+
+.sensor_monitoramento h3,
+.card-sensor h3 {
+    color: #650000;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
+    text-decoration: none;
+    margin: 0 0 7px;
+    overflow-wrap: anywhere;
+}
+
+.nome_sensor_monitoramento {
+    color: #650000;
+    font-size: 15px;
+    text-align: left;
+    margin: 0 0 7px;
+    overflow-wrap: anywhere;
+}
+
+.informacoes_sensor_monitoramento p,
+.informacoes-sensor p {
+    color: #8290a5;
+    font-size: 13px;
+    margin: 0 0 5px;
+    overflow-wrap: anywhere;
+}
+
+.informacoes_sensor_monitoramento span,
+.informacoes-sensor span {
+    color: #777;
+    font-size: 12px;
+}
+
+/* =========================================
+   SETA DO CARD
+========================================= */
+
+.seta_sensor_monitoramento,
+.seta-sensor {
+    color: #800000;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   MENSAGEM SEM SENSOR
+========================================= */
+
+.mensagem_sem_sensor,
+.nenhum-sensor {
+    grid-column: 1 / -1;
+    padding: 30px;
+    text-align: center;
+    color: #720000;
+    font-size: 15px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+.mensagem_sem_sensor i,
+.nenhum-sensor i {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.mensagem_sem_sensor p,
+.nenhum-sensor p {
+    margin-top: 10px;
+}
+
+/* =========================================
+   TEXTO VER DETALHES
+========================================= */
+
+.texto_ver_detalhes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: #800000;
+    font-weight: bold;
+}
+
+/* =========================================
+   IMAGEM DA ROTA
+========================================= */
+
+.imagem_rota {
+    display: block;
+    width: 50%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   CABEÇALHO DAS SEÇÕES DE DETALHES
+========================================= */
+
+.cabecalho_secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.cabecalho_secao .titulo_secao {
+    margin: 0;
+}
+
+/* =========================================
+   STATUS DE OPERAÇÃO
+========================================= */
+
+.status_operacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    background: #e8f7ed;
+    color: #218838;
+    border: 1px solid #c5e8cf;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+.bolinha_status {
+    width: 9px;
+    height: 9px;
+    background: #28a745;
+    border-radius: 50%;
+}
+
+/* =========================================
+   RESPONSIVIDADE - TABLETS
+========================================= */
+
+@media (max-width: 1000px) {
+
+    #conteudo_monitoramento,
+    .conteudo-monitoramento {
+        padding: 30px;
+    }
+
+    .lista_sensores_monitoramento,
+    .lista-sensores {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 18px;
+    }
+
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    #conteudo_monitoramento,
+    .conteudo-monitoramento {
+        padding: 25px 15px;
+    }
+
+    .lista_sensores_monitoramento,
+    .lista-sensores {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .pesquisa_monitoramento,
+    .formulario-busca {
+        flex-wrap: wrap !important;
+    }
+
+    .pesquisa_monitoramento input {
+        flex: 1 1 150px !important;
+    }
+
+    .formulario-busca .campo-busca {
+        flex: 1 1 100%;
+    }
+
+    .sensor_monitoramento,
+    .card-sensor {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .sensor_monitoramento h3,
+    .card-sensor h3 {
+        font-size: 15px;
+    }
+
+    .imagem_rota {
+        width: 100%;
+        height: 180px;
+    }
+
+    .status_operacao {
+        margin-top: 0;
+    }
+
+}
+
+        /* CONTEÚDO PRINCIPAL */
+
+        .conteudo-detalhes {
+            width: 100%;
+            padding: 35px;
+            background: #f4f4f4;
+        }
+
+        #conteudo_detalhes {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* BOTÃO VOLTAR */
+
+        .botao-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            color: #800000;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .botao-voltar:hover {
+            color: #a00000;
+        }
+
+        /* CABEÇALHO */
+
+        .cabecalho-detalhes {
+            margin-bottom: 25px;
+        }
+
+        .cabecalho-detalhes h1 {
+            margin: 0 0 8px;
+            color: #800000;
+            font-size: 28px;
+        }
+
+        .cabecalho-detalhes p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* PAINÉIS */
+
+        .painel-detalhes {
+            margin-bottom: 22px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .titulo-secao {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+            color: #800000;
+            font-size: 19px;
+        }
+
+        .titulo-secao i {
+            font-size: 21px;
+        }
+
+        /* INFORMAÇÕES */
+
+        .grade-informacoes {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .informacao {
+            padding: 16px;
+            border: 1px solid #eee;
+            border-radius: 9px;
+            background: #fafafa;
+        }
+
+        .informacao span {
+            display: block;
+            margin-bottom: 8px;
+            color: #888;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .informacao p {
+            margin: 0;
+            color: #333;
+            font-size: 15px;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        /* SENSOR NÃO ENCONTRADO */
+
+        .mensagem-erro {
+            padding: 45px 20px;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .mensagem-erro i {
+            color: #800000;
+            font-size: 40px;
+        }
+
+        .mensagem-erro h2 {
+            margin: 15px 0 8px;
+            color: #800000;
+        }
+
+        .mensagem-erro p {
+            color: #666;
+        }
+
+        .botao-retornar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 7px;
+            background: #800000;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .botao-retornar:hover {
+            background: #a00000;
+            color: #fff;
+        }
+
+        /* AVISO */
+
+        .aviso-detalhes {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 15px;
+            border: 1px solid #eadada;
+            border-radius: 8px;
+            background: #fffafa;
+            color: #755555;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .aviso-detalhes i {
+            color: #800000;
+            font-size: 17px;
+        }
+
+        @media (max-width: 700px) {
+
+            .conteudo-detalhes {
+                padding: 20px 15px;
+            }
+
+            .grade-informacoes {
+                grid-template-columns: 1fr;
+            }
+
+            .cabecalho-detalhes h1 {
+                font-size: 23px;
+            }
+
+            .painel-detalhes {
+                padding: 18px;
+            }
+
+        }
