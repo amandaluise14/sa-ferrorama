@@ -155,26 +155,30 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
                             </thead>
                                 <?php
 
-                               $pesquisa = $_GET['pesquisa'] ?? '';
+                          $pesquisa = $_GET['pesquisa'] ?? '';
 
-                    $sql = "SELECT sensores.*, rotas.nome AS nome_rota
-                    FROM sensores
-                    LEFT JOIN rotas
-                    ON sensores.rota_id = rotas.id_rota
-                    WHERE sensores.nome LIKE ?
-                    OR rotas.nome LIKE ?
-                    OR sensores.descricao_localizacao LIKE ?
-                    OR sensores.dado_monitorado LIKE ?";
+$sql = "SELECT sensores.*, rotas.nome AS nome_rota
+        FROM sensores
+        LEFT JOIN rotas
+        ON sensores.rota_id = rotas.id_rota
+        WHERE sensores.nome LIKE ?
+        OR rotas.nome LIKE ?
+        OR sensores.descricao_localizacao LIKE ?
+        OR sensores.dado_monitorado LIKE ?";
 
-                $stmt = $conn->prepare($sql);
+$stmt = $conn->prepare($sql);
 
-                $busca = "%$pesquisa%";
+if (!$stmt) {
+    die("Erro na consulta: " . $conn->error);
+}
 
-                $stmt->bind_param("ssss", $busca, $busca, $busca, $busca);
+$busca = "%$pesquisa%";
 
-                $stmt->execute();
+$stmt->bind_param("ssss", $busca, $busca, $busca, $busca);
 
-                $sensores = $stmt->get_result();
+$stmt->execute();
+
+$sensores = $stmt->get_result();
 
                                 while ($sensor = $sensores->fetch_assoc()) {
                                 ?>
@@ -224,8 +228,6 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
                     onclick="window.location.href='adicionar_sensor.php';">
                     + Novo Sensor
                 </button>
-
-                </form>
 
             </div>
     
