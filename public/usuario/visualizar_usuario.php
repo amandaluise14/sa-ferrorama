@@ -1,3 +1,4 @@
+
 <?php
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
@@ -9,7 +10,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Usuário excluído com sucesso!';
     $tipoMensagem = 'success';
 
- } elseif (isset($_GET['erro'])) {
+} elseif (isset($_GET['erro'])) {
 
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O usuário não foi encontrado.';
@@ -38,7 +39,7 @@ $sql = "SELECT usuarios.*, enderecos.cidade
         AND (? = '' OR usuarios.cargo = ?)
         AND (? = '' OR usuarios.status_usuario = ?)
         ORDER BY usuarios.id_usuario";
-        
+
 $stmt = $conn->prepare($sql);
 
 $stmt->bind_param(
@@ -91,11 +92,12 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Visualizar Usuários/Administradores</title>
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"> 
-     
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="../../style/style.css">
 </head>
@@ -144,33 +146,43 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
     </div>
 
     <div class="formulario-container">
-        <?php if (!empty($mensagem)): ?>
-    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
-                position-fixed top-0 start-50 translate-middle-x mt-3"
-         role="alert"
-         style="z-index: 1055; width: 90%; max-width: 500px;">
 
-        <?php if ($tipoMensagem === 'success'): ?>
-            <strong>✅ Sucesso!</strong>
-        <?php else: ?>
-            <strong>⚠️ Atenção!</strong>
+        <?php if (!empty($mensagem)): ?>
+
+            <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
+                position-fixed top-0 start-50 translate-middle-x mt-3"
+                role="alert"
+                style="z-index: 1055; width: 90%; max-width: 500px;">
+
+                <?php if ($tipoMensagem === 'success'): ?>
+                    <strong>✅ Sucesso!</strong>
+                <?php else: ?>
+                    <strong>⚠️ Atenção!</strong>
+                <?php endif; ?>
+
+                <?= htmlspecialchars($mensagem) ?>
+
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Fechar">
+                </button>
+
+            </div>
+
         <?php endif; ?>
 
-        <?= htmlspecialchars($mensagem) ?>
-
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
-        </button>
-    </div>
-<?php endif; ?>
-
         <form method="POST" class="forms">
-            <h2>Visualizar Usuários/Administradores</h2>
-            <p>Cadastre um novo usuário ou administrador no sistema Info Trem.</p>
-<div class="cartao-listagem">
-    <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
+
+            <h2 id="titulo-admin">
+                Visualizar Usuários/Administradores
+            </h2>
+
+            <p class="descricao-listagem">
+                Consulte, filtre e gerencie os usuários cadastrados no sistema Info Trem.
+            </p>
+
+            <div class="cartao-listagem">
 
                 <section class="cards">
 
@@ -196,7 +208,6 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                 </section>
 
-        
                 <section class="filtros">
 
                     <input
@@ -254,93 +265,117 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                 </section>
 
-                <table class="tabela">
+                <div class="table-responsive">
 
-                    <thead>
-                        <tr class="cabecalho-tabela">
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Telefone</th>
-                            <th>Endereço</th>
-                            <th>Data de Nascimento</th>
-                            <th>CPF</th>
-                            <th>Tipo de conta</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
+                    <table class="tabela">
 
-                    <tbody>
+                        <thead>
+                            <tr class="cabecalho-tabela">
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Endereço</th>
+                                <th>Data de Nascimento</th>
+                                <th>CPF</th>
+                                <th>Tipo de conta</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
 
-                        <?php if ($usuarios->num_rows > 0): ?>
+                        <tbody>
 
-                            <?php while ($usuario = $usuarios->fetch_assoc()): ?>
+                            <?php if ($usuarios->num_rows > 0): ?>
+
+                                <?php while ($usuario = $usuarios->fetch_assoc()): ?>
+
+                                    <tr>
+
+                                        <td><?php echo $usuario['id_usuario']; ?></td>
+
+                                        <td><?php echo $usuario['nome']; ?></td>
+
+                                        <td><?php echo $usuario['email']; ?></td>
+
+                                        <td><?php echo $usuario['telefone']; ?></td>
+
+                                        <td><?php echo $usuario['cidade']; ?></td>
+
+                                        <td><?php echo $usuario['data_nascimento']; ?></td>
+
+                                        <td>
+                                            <?php
+                                            $cpf = $usuario['cpf'];
+                                            echo '***.***.***-' . substr($cpf, -2);
+                                            ?>
+                                        </td>
+
+                                        <td><?php echo $usuario['cargo']; ?></td>
+
+                                        <td><?php echo $usuario['status_usuario']; ?></td>
+
+                                        <td>
+
+                                            <button class="editar acao-tooltip"
+                                                data-tooltip="Editar"
+                                                type="button"
+                                                onclick="window.location.href='editar_usuario.php?id_usuario=<?php echo (int) $usuario['id_usuario']; ?>'">
+
+                                                <i class="bi bi-pencil"></i>
+
+                                            </button>
+
+                                            <button
+                                                class="excluir acao-tooltip"
+                                                data-tooltip="Excluir"
+                                                type="button"
+                                                onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                                                    window.location.href='excluir_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>';
+                                                }">
+
+                                                <i class="bi bi-person-dash-fill"></i>
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+                                <?php endwhile; ?>
+
+                            <?php else: ?>
 
                                 <tr>
-
-                         <td><?php echo $usuario['id_usuario']; ?></td>
-                                    <td><?php echo $usuario['nome']; ?></td>
-                                    <td><?php echo $usuario['email']; ?></td>
-                                    <td><?php echo $usuario['telefone']; ?></td>
-                                    <td><?php echo $usuario['cidade']; ?></td>
-                                    <td><?php echo $usuario['data_nascimento']; ?></td>
-                                    <td><?php $cpf = $usuario['cpf']; echo '***.***.***-' . substr($cpf, -2);?></td>
-                                    <td><?php echo $usuario['cargo']; ?></td>
-                                    <td><?php echo $usuario['status_usuario']; ?></td>
-                                    <td>
-
-                                        <button class="editar acao-tooltip"
-                                            data-tooltip="Editar"
-                                            type="button"
-                                            onclick="window.location.href='editar_usuario.php?id_usuario=<?php echo (int) $usuario['id_usuario']; ?>'">
-
-                                            <i class="bi bi-pencil"></i>
-
-                                        </button>
-
-                                        <button
-                                            class="excluir acao-tooltip"
-                                            data-tooltip="Excluir"
-                                            type="button"
-                                            onclick="if (confirm('Tem certeza que deseja excluir este usuário?')) {
-                                                window.location.href='excluir_usuario.php?id=<?php echo (int) $usuario['id_usuario']; ?>';
-                                            }">
-
-                                            <i class="bi bi-person-dash-fill"></i>
-
-                                        </button>
-
+                                    <td colspan="10">
+                                        Nenhum usuário encontrado.
                                     </td>
-
                                 </tr>
 
-                            <?php endwhile; ?>
-                        </table>
-                        <button class="botaoVisualizar" type="button"
-                            onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
+                            <?php endif; ?>
 
-                        <?php else: ?>
+                        </tbody>
 
-                            <tr>
-                                <td colspan="10">
-                                    Nenhum usuário encontrado.
-                                </td>
-                            </tr>
+                    </table>
 
-                        <?php endif; ?>
+                </div>
 
-                    </tbody>
+                <button class="botaoVisualizar" type="button"
+                    onclick="window.location.href='adicionar_usuario.php';">
+                    + Novo Usuário
+                </button>
 
-                </table>
+            </div>
 
         </form>
 
     </div>
 
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
 
-<!-- Foi utilizado ajuda da inteligência artrificial para auxiliar na criação da funcionalidade da pesquisa e filtros  -->
+<!-- Foi utilizada ajuda da inteligência artificial para auxiliar na criação da funcionalidade da pesquisa e filtros -->

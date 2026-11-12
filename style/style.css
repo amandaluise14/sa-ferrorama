@@ -249,8 +249,16 @@ textarea {
 }
 
 #titulo-admin {
-    color: #700000;
+    color: #650000;
+    font-size: 24px;
     font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.descricao-listagem {
+    color: #8290a5;
+    font-size: 13px;
+    margin-bottom: 20px;
 }
 
 #imagemUsuario {
@@ -550,9 +558,8 @@ background-color: #858484;
 
 .filtros {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     width: 100%;
     margin-bottom: 25px;
     flex-wrap: nowrap;
@@ -560,15 +567,20 @@ background-color: #858484;
 
 .filtros input {
     flex: 1;
-    min-width: 0;
+    min-width: 150px;
+    height: 40px;
 }
 
 .filtros select {
     width: 160px;
+    height: 40px;
     flex-shrink: 0;
+    border: 1px solid #ddd;
+    margin:auto
 }
 
 .filtros button {
+    height: 40px;
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -2403,10 +2415,6 @@ margin-bottom: 12px;
     padding: 22px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
-
-.cartao-listagem {
-}
-
 
 .campo-pesquisa {
     display: flex;
