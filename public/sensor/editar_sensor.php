@@ -1,39 +1,79 @@
+
 <?php
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
+
 $erro = '';
 $sucesso = '';
-$id_sensor = $_GET['id_sensor'] ?? '';
 
-$sql = "SELECT * FROM sensores WHERE id_sensor = $id_sensor";
-$resultado = $conn->query($sql);
-$sensor = $resultado->fetch_assoc();
+$id_sensor = (int) ($_GET['id_sensor'] ?? 0);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST['id_sensor']) || empty($_POST['id_sensor'])) {
+if ($id_sensor <= 0) {
     die("ID do sensor não foi enviado.");
 }
 
-$id_sensor = (int) $_POST['id_sensor'];
+// Buscar os dados do sensor
+$sql = "SELECT * FROM sensores WHERE id_sensor = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_sensor);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$sensor = $resultado->fetch_assoc();
+
+if (!$sensor) {
+    die("Sensor não encontrado.");
+}
+
+// Atualizar sensor
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (!isset($_POST['id_sensor']) || empty($_POST['id_sensor'])) {
+        die("ID do sensor não foi enviado.");
+    }
+
+    $id_sensor = (int) $_POST['id_sensor'];
+
     $nome = $_POST['nome'];
-    $localizacao = $_POST['localizacao'];
+    $rota_id = (int) $_POST['rota_id'];
     $descricao_localizacao = $_POST['descricao_localizacao'];
     $dado_monitorado = $_POST['dado_monitorado'];
 
-    $sql = "UPDATE sensores SET nome=?, localizacao=?, descricao_localizacao=?, dado_monitorado=? WHERE id_sensor=?";
+    $sql = "UPDATE sensores 
+            SET nome=?, rota_id=?, descricao_localizacao=?, dado_monitorado=? 
+            WHERE id_sensor=?";
+
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $nome, $localizacao, $descricao_localizacao, $dado_monitorado, $id_sensor);
+
+    $stmt->bind_param(
+        "sissi",
+        $nome,
+        $rota_id,
+        $descricao_localizacao,
+        $dado_monitorado,
+        $id_sensor
+    );
+
     if ($stmt->execute() === TRUE) {
         $sucesso = "Sensor atualizado com sucesso!";
+
+        // Atualizar os dados exibidos no formulário
+        $sensor['nome'] = $nome;
+        $sensor['rota_id'] = $rota_id;
+        $sensor['descricao_localizacao'] = $descricao_localizacao;
+        $sensor['dado_monitorado'] = $dado_monitorado;
+
     } else {
-        $erro =  'Erro ao atualizar o sensor!' . $stmt->error;
+        $erro = 'Erro ao atualizar o sensor!' . $stmt->error;
     }
 }
 
+// Buscar as rotas cadastradas
+$sql_rotas = "SELECT * FROM rotas";
+$rotas = $conn->query($sql_rotas);
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -110,6 +150,7 @@ $id_sensor = (int) $_POST['id_sensor'];
             <p>Atualize as informações do sensor abaixo.</p>
 
         </div>
+
         <?php if (!empty($erro)): ?>
 
             <div class="alert alert-danger alert-dismissible fade show"
@@ -127,7 +168,6 @@ $id_sensor = (int) $_POST['id_sensor'];
             </div>
 
         <?php endif; ?>
-
 
         <?php if (!empty($sucesso)): ?>
 
@@ -161,72 +201,82 @@ $id_sensor = (int) $_POST['id_sensor'];
                 </div>
 
             </div>
+
             <form method="POST" class="form-cadastro-usuario">
+
+                <input type="hidden" name="id_sensor"
+                       value="<?php echo $sensor['id_sensor']; ?>">
 
                 <div class="grade-formulario">
 
                     <div class="campo campo-largo">
-
                         <label for="nome">Nome do sensor</label>
 
-                        <input type="text" id="nome" name="nome" value="<?php echo $sensor['nome']; ?>" placeholder="Ex: Sensor de velocidade do trem 77"
+                        <input type="text"
+                               id="nome"
+                               name="nome"
+                               value="<?php echo htmlspecialchars($sensor['nome']); ?>"
+                               placeholder="Ex: Sensor de velocidade do trem 77"
                                required>
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="rota_id">Rota vinculada</label>
+
+                        <select name="rota_id"
+                                id="rota_id"
+                                required>
+
+                            <option value="">Selecione uma rota</option>
+
+                            <?php while ($rota = $rotas->fetch_assoc()): ?>
+
+                                <option value="<?= $rota['id_rota'] ?>"
+                                    <?= ($sensor['rota_id'] == $rota['id_rota']) ? 'selected' : '' ?>>
+
+                                    <?= htmlspecialchars($rota['nome']) ?>
+
+                                </option>
+
+                            <?php endwhile; ?>
+
+                        </select>
 
                     </div>
-                    <div class="campo campo-largo">
 
-                        <label>Localização do sensor</label>
-
-                        <!-- <div class="opcoes-localizacao">
-
-                            <label class="opcao-radio" for="localizacao_trem">
-
-                                <input type="radio" id="localizacao_trem"
-                                       name="localizacao"
-                                       value="Trem"
-                                       required>
-
-                                <span>
-                                    <i class="bi bi-train-front"></i>
-                                    Trem
-                                </span>
-
-                            </label> -->
-                            
-<!-- 
-                            <label class="opcao-radio" for="localizacao_rota">
-
-                                <input type="radio" id="localizacao_rota" value="<?php echo $sensor['localizacao']; ?>" name="localizacao"
-                                       value="Rota"
-                                       required>
-                                <span>
-                                    <i class="bi bi-signpost-2"></i>
-                                    Rota
-                                </span>
-                            </label>
-                        </div>
-                    </div> -->
                     <div class="campo campo-largo">
 
                         <label for="descricao_localizacao">
                             Descrição da localização
                         </label>
 
-                        <input type="text" id="descricao_localizacao"  name="descricao_localizacao" value="<?php echo $sensor['descricao_localizacao']; ?>"
+                        <input type="text"
+                               id="descricao_localizacao"
+                               name="descricao_localizacao"
+                               value="<?php echo htmlspecialchars($sensor['descricao_localizacao']); ?>"
                                placeholder="Ex: Sensor de velocidade localizado na rota"
                                required>
+
                     </div>
+
                     <div class="campo campo-largo">
 
                         <label for="dado_monitorado">
                             Tipo do dado monitorado
                         </label>
 
-                        <input type="text" id="dado_monitorado" name="dado_monitorado" value="<?php echo $sensor['dado_monitorado']; ?>"
+                        <input type="text"
+                               id="dado_monitorado"
+                               name="dado_monitorado"
+                               value="<?php echo htmlspecialchars($sensor['dado_monitorado']); ?>"
                                placeholder="Ex: Velocidade"
                                required>
+
                     </div>
+
                 </div>
+
                 <div class="acoes-formulario">
 
                     <button type="button"
@@ -241,7 +291,7 @@ $id_sensor = (int) $_POST['id_sensor'];
                             class="botao-cadastrar">
 
                         <i class="bi bi-broadcast-pin"></i>
-                       Editar sensor
+                        Editar sensor
 
                     </button>
 
@@ -255,11 +305,7 @@ $id_sensor = (int) $_POST['id_sensor'];
 
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
-
-
-

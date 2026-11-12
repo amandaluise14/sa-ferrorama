@@ -4,28 +4,22 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-//mensagem de erro e sucesso ao excluir
+// mensagem de erro e sucesso ao excluir
 $mensagem = '';
 $tipoMensagem = '';
 
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $mensagem = 'Sensor excluído com sucesso!';
     $tipoMensagem = 'success';
-} elseif (isset($_GET['erro'])) {
 
+} elseif (isset($_GET['erro'])) {
 
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O sensor não foi encontrado.';
 
-
-    } elseif ($_GET['erro'] === 'possui_leituras') {
-        $mensagem = 'Não foi possível excluir! Este sensor possui leituras cadastradas.';
-
-
     } else {
         $mensagem = 'Erro ao excluir o sensor. Tente novamente.';
     }
-
 
     $tipoMensagem = 'danger';
 }
@@ -127,16 +121,18 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
                                 <th>ID</th>
                                 <th>Nome</th>
-                                <th>Localização</th>
+                                <th>Rota vinculada</th>
                                 <th>Descrição da Localização</th>
                                 <th>Dado Monitorado</th>
                                 <th>Ações</th>
 
                                 <?php
 
-                                include '../../infra/conexao.php';
+                                $sql = "SELECT sensores.*, rotas.nome AS nome_rota
+                                        FROM sensores
+                                        LEFT JOIN rotas
+                                        ON sensores.rota_id = rotas.id_rota";
 
-                                $sql = "SELECT * FROM sensores";
                                 $sensores = $conn->query($sql);
 
                                 while ($sensor = $sensores->fetch_assoc()) {
@@ -145,7 +141,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
                                     <tr>
                                         <td><?php echo $sensor['id_sensor']; ?></td>
                                         <td><?php echo $sensor['nome']; ?></td>
-                                        <td><?php echo $sensor['localizacao']; ?></td>
+                                        <td><?php echo $sensor['nome_rota'] ?? 'Sem rota vinculada'; ?></td>
                                         <td><?php echo $sensor['descricao_localizacao']; ?></td>
                                         <td><?php echo $sensor['dado_monitorado']; ?></td>
 
@@ -197,3 +193,4 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 </body>
 
 </html>
+

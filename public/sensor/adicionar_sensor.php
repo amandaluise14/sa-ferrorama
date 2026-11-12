@@ -227,13 +227,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="acoes-formulario">
                     <button type="button"
                             class="botao-voltar"
-                            onclick="window.location.href='listar_rotas.php';">
+                            onclick="window.location.href='listar_sensor.php';">
                         ← Visualizar Sensores Cadastrados
                     </button>
                     <button type="submit"
                             class="botao-cadastrar">
                         <i class="bi bi-signpost-2"></i>
-                        Cadastrar rota
+                        Cadastrar Sensor
                     </button>
 
                 </div>
