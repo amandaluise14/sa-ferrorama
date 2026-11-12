@@ -33,9 +33,6 @@ include '../infra/clima.php';
                     <li><i class="bi bi-house-fill"></i> Início</li>
                 </a>
 
-                <a href="pagina_relatorios.php" class="menu-link">
-                    <li><i class="bi bi-file-earmark-text"></i> Relatórios</li>
-                </a>
 
                 <a href="usuario/adicionar_usuario.php" class="menu-link">
                     <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
@@ -59,55 +56,10 @@ include '../infra/clima.php';
      <div class="formulario-container">
         <form method="POST" class="forms_sensores">
             <h2 id="titulo-admin">Bem vindo, Administrador</h2>
+
+    <div class="painel-superior">
+ 
             <div class="conteudo">
-
-  <div class="card-clima">
-
-    <div class="clima-cabecalho">
-        <div>
-            <h5>Clima atual</h5>
-            <p>Joinville - SC</p>
-        </div>
-
-        <i class="bi bi-cloud-sun clima-icone"></i>
-    </div>
-
-    <div class="clima-temperatura">
-        <h2><?php echo $temperatura; ?>°C</h2>
-        <span><?php echo $condicao; ?></span>
-    </div>
-
-    <div class="clima-informacoes">
-
-        <div class="clima-item">
-            <i class="bi bi-droplet"></i>
-            <div>
-                <small>Umidade</small>
-                <p><?php echo $umidade; ?>%</p>
-            </div>
-        </div>
-
-        <div class="clima-item">
-            <i class="bi bi-clock"></i>
-            <div>
-                <small>Última atualização</small>
-                <p>
-                    <?php echo date(
-                        'd/m/Y H:i',
-                        strtotime($horario)
-                    ); ?>
-                </p>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="clima-rodape">
-        <span>Fonte: Open-Meteo</span>
-        <i class="bi bi-cloud-check"></i>
-    </div>
-
-</div>
 
 
     <div class="acessos-rapidos">
@@ -167,7 +119,55 @@ include '../infra/clima.php';
     </div>
 
 </div>
+ <div class="card-clima">
+
+    <div class="clima-cabecalho">
+        <div>
+            <h5>Clima atual</h5>
+            <p>Joinville - SC</p>
+        </div>
+
+        <i class="bi bi-cloud-sun clima-icone"></i>
     </div>
+
+    <div class="clima-temperatura">
+        <h2><?php echo $temperatura; ?>°C</h2>
+        <span><?php echo $condicao; ?></span>
+    </div>
+
+    <div class="clima-informacoes">
+
+        <div class="clima-item">
+            <i class="bi bi-droplet"></i>
+            <div>
+                <small>Umidade</small>
+                <p><?php echo $umidade; ?>%</p>
+            </div>
+        </div>
+
+        <div class="clima-item">
+            <i class="bi bi-clock"></i>
+            <div>
+                <small>Última atualização</small>
+                <p>
+                    <?php echo date(
+                        'd/m/Y H:i',
+                        strtotime($horario)
+                    ); ?>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clima-rodape">
+        <span>Fonte: Open-Meteo</span>
+        <i class="bi bi-cloud-check"></i>
+    </div>
+
+</div>
+    </div>
+          </div>
     </form> 
     </div>
     </body>

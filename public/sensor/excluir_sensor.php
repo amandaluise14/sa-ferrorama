@@ -34,6 +34,19 @@ include '../../infra/verificar_admin.php';
 //     exit;
 // }
 
+$sql = "SELECT rota_id FROM sensores WHERE id_sensor = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_sensor);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$sensor = $resultado->fetch_assoc();
+
+if ($sensor && $sensor['rota_id'] != NULL) {
+    header("Location: listar_sensor.php?erro=em_rota");
+    exit;
+}
+
 // Exclui o sensor
 $sql = "DELETE FROM sensores WHERE id_sensor = ?";
 $stmt = $conn->prepare($sql);
