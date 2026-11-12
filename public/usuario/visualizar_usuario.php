@@ -167,10 +167,10 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 <?php endif; ?>
 
         <form method="POST" class="forms">
-            <h2>Visualizar Usuários/Administradores</h2>
-            <p>Cadastre um novo usuário ou administrador no sistema Info Trem.</p>
+            
+            <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
+            <p class="descricao-listagem">Consulte, filtre e gerencie os usuários cadastrados no sistema Info Trem.</p>
 <div class="cartao-listagem">
-    <h2 id="titulo-admin">Visualizar Usuários/Administradores</h2>
 
                 <section class="cards">
 
@@ -253,7 +253,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                     </button>
 
                 </section>
-
+<div class="table-responsive">
                 <table class="tabela">
 
                     <thead>
@@ -318,7 +318,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                             <?php endwhile; ?>
                         </table>
                         <button class="botaoVisualizar" type="button"
-                            onclick="window.location.href='adicionar_usuario.php';">Voltar para adicionar Usuário/administrador</button>
+                            onclick="window.location.href='adicionar_usuario.php';">+ Novo Usuário</button>
 
                         <?php else: ?>
 
@@ -333,12 +333,13 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                     </tbody>
 
                 </table>
-
+</div>
         </form>
 
     </div>
 
 </div>
+</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
