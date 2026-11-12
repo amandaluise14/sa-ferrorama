@@ -27,7 +27,6 @@ usuario_id INT,
 CREATE TABLE sensores (
 id_sensor INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nome VARCHAR(50) NOT NULL,
-localizacao VARCHAR(50) NOT NULL,
 descricao_localizacao VARCHAR(100) NOT NULL,
 dado_monitorado VARCHAR(50) NOT NULL
 );

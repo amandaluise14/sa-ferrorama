@@ -4,7 +4,6 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-// mensagem de erro e sucesso ao excluir
 $mensagem = '';
 $tipoMensagem = '';
 
@@ -17,6 +16,9 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     if ($_GET['erro'] === 'nao_encontrado') {
         $mensagem = 'O sensor não foi encontrado.';
 
+    } elseif ($_GET['erro'] === 'em_rota') {
+        $mensagem = 'Não foi possível excluir! Este sensor está vinculado a uma rota.';
+
     } else {
         $mensagem = 'Erro ao excluir o sensor. Tente novamente.';
     }
@@ -24,7 +26,6 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $tipoMensagem = 'danger';
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
