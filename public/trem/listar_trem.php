@@ -27,16 +27,29 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
     $tipoMensagem = 'danger';
 }
 
+// PESQUISA DE TRENS
+
+$pesquisa = $_GET['pesquisa'] ?? '';
+
 $sql = "SELECT trens.*, usuarios.nome AS nome_usuario
         FROM trens
         LEFT JOIN usuarios
-        ON trens.usuario_id = usuarios.id_usuario";
+        ON trens.usuario_id = usuarios.id_usuario
+        WHERE trens.modelo LIKE ?
+        OR trens.velocidade LIKE ?
+        OR CAST(trens.linha AS CHAR) LIKE ?
+        OR trens.carga LIKE ?
+        OR usuarios.nome LIKE ?";
 
-$trens = mysqli_query($conn, $sql);
+$stmt = $conn->prepare($sql);
 
-if (!$trens) {
-    die("Erro ao consultar os trens: " . mysqli_error($conn));
-}
+$busca = "%$pesquisa%";
+
+$stmt->bind_param("sssss", $busca, $busca, $busca, $busca, $busca);
+
+$stmt->execute();
+
+$trens = $stmt->get_result();
 
 ?>
 
@@ -88,7 +101,6 @@ if (!$trens) {
 
                 <?php endif; ?>
 
-                <!-- Aparece para administrador e usuário comum -->
                 <a href="../pagina_monitoramento.php" class="menu-link">
                     <li>Monitoramento</li>
                 </a>
@@ -128,7 +140,7 @@ if (!$trens) {
 
             <?php endif; ?>
 
-            <form method="POST" class="forms_sensores">
+            <div class="forms_sensores">
 
                 <h2 id="titulo-admin">
                     Visualizar Trens
@@ -137,6 +149,27 @@ if (!$trens) {
                 <p class="descricao-listagem">
                     Consulte e gerencie os trens cadastrados no sistema Info Trem.
                 </p>
+
+                <!-- BARRA DE PESQUISA -->
+
+                <form method="GET" class="pesquisa-sensores-layout">
+
+                    <input
+                        type="text"
+                        name="pesquisa"
+                        class="pesquisa-sensores-input"
+                        placeholder="Pesquisar trens..."
+                        value="<?= htmlspecialchars($pesquisa) ?>"
+                    >
+
+                    <button type="submit" class="pesquisa-sensores-btn">
+                        <i class="bi bi-search"></i>
+                        Pesquisar
+                    </button>
+
+                </form>
+
+                <!-- TABELA DE TRENS -->
 
                 <div class="cartao-listagem">
 
@@ -160,24 +193,24 @@ if (!$trens) {
 
                             <tbody>
 
-                                <?php if (mysqli_num_rows($trens) > 0): ?>
+                                <?php if ($trens->num_rows > 0): ?>
 
-                                    <?php while ($trem = mysqli_fetch_assoc($trens)): ?>
+                                    <?php while ($trem = $trens->fetch_assoc()): ?>
 
                                         <tr>
 
-                                            <td><?php echo $trem['id_trem']; ?></td>
+                                            <td><?= $trem['id_trem']; ?></td>
 
-                                            <td><?php echo $trem['modelo']; ?></td>
+                                            <td><?= htmlspecialchars($trem['modelo']); ?></td>
 
-                                            <td><?php echo $trem['velocidade']; ?></td>
+                                            <td><?= htmlspecialchars($trem['velocidade']); ?></td>
 
-                                            <td><?php echo $trem['linha']; ?></td>
+                                            <td><?= htmlspecialchars($trem['linha']); ?></td>
 
-                                            <td><?php echo $trem['carga']; ?></td>
+                                            <td><?= htmlspecialchars($trem['carga']); ?></td>
 
                                             <td>
-                                                <?php echo $trem['nome_usuario'] ?? 'Não vinculado'; ?>
+                                                <?= htmlspecialchars($trem['nome_usuario'] ?? 'Não vinculado'); ?>
                                             </td>
 
                                             <td>
@@ -185,7 +218,7 @@ if (!$trens) {
                                                 <button class="editar acao-tooltip"
                                                     data-tooltip="Editar"
                                                     type="button"
-                                                    onclick="window.location.href='editar_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>'">
+                                                    onclick="window.location.href='editar_trem.php?id_trem=<?= (int) $trem['id_trem']; ?>'">
 
                                                     <i class="bi bi-pencil"></i>
 
@@ -195,7 +228,7 @@ if (!$trens) {
                                                     data-tooltip="Excluir"
                                                     type="button"
                                                     onclick="if (confirm('Tem certeza que deseja excluir este trem?')) {
-                                                        window.location.href='excluir_trem.php?id_trem=<?php echo (int) $trem['id_trem']; ?>';
+                                                        window.location.href='excluir_trem.php?id_trem=<?= (int) $trem['id_trem']; ?>';
                                                     }">
 
                                                     <i class="bi bi-person-dash-fill"></i>
@@ -233,7 +266,7 @@ if (!$trens) {
 
                 </div>
 
-            </form>
+            </div>
 
         </div>
 
