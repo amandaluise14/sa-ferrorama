@@ -57,12 +57,26 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
                     <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
                 </a>
 
+                 <a href="rota/adicionar_rota.php" class="menu-link">
+                    <li><i class="bi bi-signpost-2"></i> Rotas</li>
+                </a>
+
+                 <a href="trem/adicionar_trem.php" class="menu-link">
+                    <li><i class="bi bi-train-front"></i> Trens</li>
+                </a>
+
+                 <a href="sensor/adicionar_sensor.php" class="menu-link">
+                    <li><i class="bi bi-broadcast-pin"></i> Sensores</li>
+                </a>
+
+
+
             <?php endif; ?>
 
             <a href="pagina_monitoramento.php" class="menu-link">
                 <li><i class="bi bi-graph-up"></i> Monitoramento</li>
             </a>
-
+            <br>
             <a href="logout.php" class="menu-link">
                 <li><i class="bi bi-box-arrow-right"></i> Sair</li>
             </a>
