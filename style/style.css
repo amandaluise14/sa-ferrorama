@@ -655,7 +655,6 @@ background-color: #858484;
     width: 100%;
     overflow-x: auto;
 }
-
 /* Cabeçalho da tabela */
 .cabecalho-tabela {
     background-color: #800000;
@@ -3351,3 +3350,56 @@ margin-bottom: 12px;
 .pagina-listagem .botaoVisualizar {
     margin-top: 20px;
 }
+
+.titulo-trem {
+    color: #700000;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* ÁREA DOS GRÁFICOS */
+
+        .graficos-trens {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card-grafico {
+            background-color: white;
+            border-radius: 12px;
+            padding: 22px;
+            width: calc(50% - 13px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-grafico h3 {
+            color: #7b0000;
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .card-grafico p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .area-grafico {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        @media (max-width: 768px) {
+
+            .card-grafico {
+                width: 100%;
+            }
+
+        }

@@ -12,7 +12,9 @@ function esc($valor)
 // Pesquisa
 $busca = trim($_GET['busca'] ?? '');
 
-// Consulta dos sensores
+
+// CONSULTA DOS SENSORES
+
 $sql = "SELECT
             sensores.*,
             rotas.nome AS nome_rota
@@ -54,6 +56,97 @@ if ($busca !== '') {
 
 }
 
+
+// CONSULTA DOS TRENS
+
+$sqlTrens = "SELECT
+                trens.*,
+                usuarios.nome AS nome_usuario
+             FROM trens
+             LEFT JOIN usuarios
+                ON trens.usuario_id = usuarios.id_usuario";
+
+if ($busca !== '') {
+
+    $sqlTrens .= " WHERE
+                    CAST(trens.id_trem AS CHAR) LIKE ?
+                    OR trens.modelo LIKE ?
+                    OR CAST(trens.velocidade AS CHAR) LIKE ?
+                    OR CAST(trens.linha AS CHAR) LIKE ?
+                    OR CAST(trens.carga AS CHAR) LIKE ?
+                    OR usuarios.nome LIKE ?";
+
+    $stmtTrens = $conn->prepare($sqlTrens);
+
+    $termo = '%' . $busca . '%';
+
+    $stmtTrens->bind_param(
+        "ssssss",
+        $termo,
+        $termo,
+        $termo,
+        $termo,
+        $termo,
+        $termo
+    );
+
+    $stmtTrens->execute();
+
+    $resultadoTrens = $stmtTrens->get_result();
+
+} else {
+
+    $sqlTrens .= " ORDER BY trens.id_trem DESC";
+
+    $resultadoTrens = $conn->query($sqlTrens);
+
+}
+
+
+// ==================================
+// DADOS DOS GRÁFICOS
+// ==================================
+
+
+// GRÁFICO DE VELOCIDADE DOS TRENS
+
+$sqlVelocidade = "SELECT id_trem, modelo, velocidade
+                  FROM trens
+                  ORDER BY id_trem";
+
+$resultadoVelocidade = $conn->query($sqlVelocidade);
+
+$nomesTrens = [];
+$velocidadesTrens = [];
+
+while ($trem = $resultadoVelocidade->fetch_assoc()) {
+
+    $nomesTrens[] = 'Trem ' . $trem['id_trem'] . ' - ' . $trem['modelo'];
+
+    $velocidadesTrens[] = (float) $trem['velocidade'];
+
+}
+
+
+// GRÁFICO DE QUANTIDADE POR MODELO
+
+$sqlModelo = "SELECT modelo, COUNT(*) AS quantidade
+              FROM trens
+              GROUP BY modelo";
+
+$resultadoModelo = $conn->query($sqlModelo);
+
+$nomesModelos = [];
+$quantidadeModelos = [];
+
+while ($modelo = $resultadoModelo->fetch_assoc()) {
+
+    $nomesModelos[] = $modelo['modelo'];
+
+    $quantidadeModelos[] = (int) $modelo['quantidade'];
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +165,11 @@ if ($busca !== '') {
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
     >
 
 </head>
@@ -128,6 +226,7 @@ if ($busca !== '') {
 
     </aside>
 
+
     <!-- CONTEÚDO -->
 
     <main class="conteudo-monitoramento">
@@ -139,10 +238,11 @@ if ($busca !== '') {
             <h1>Monitoramento</h1>
 
             <p>
-                Visualize e acompanhe os sensores do sistema.
+                Visualize e acompanhe os sensores e trens do sistema.
             </p>
 
         </div>
+
 
         <!-- PESQUISA -->
 
@@ -155,7 +255,7 @@ if ($busca !== '') {
                 <input
                     type="text"
                     name="busca"
-                    placeholder="Pesquisar sensor..."
+                    placeholder="Pesquisar sensor ou trem..."
                     value="<?= esc($busca) ?>"
                 >
 
@@ -166,6 +266,7 @@ if ($busca !== '') {
             </button>
 
         </form>
+
 
         <!-- CARDS DOS SENSORES -->
 
@@ -230,9 +331,147 @@ if ($busca !== '') {
 
         </div>
 
+
+        <!-- TABELA DOS TRENS -->
+
+        <h2 class="titulo-trem">Trens cadastrados</h2>
+
+        <div class="table-responsive">
+
+            <table class="tabela">
+
+                <thead>
+
+                    <tr class="cabecalho-tabela">
+
+                        <th>Modelo</th>
+                        <th>Velocidade Limite</th>
+                        <th>Linha</th>
+                        <th>Carga</th>
+                        <th>Usuário responsável</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <?php if ($resultadoTrens && $resultadoTrens->num_rows > 0): ?>
+
+                        <?php while ($trem = $resultadoTrens->fetch_assoc()): ?>
+
+                            <tr>
+
+                                <td><?= esc($trem['modelo']) ?></td>
+
+                                <td><?= esc($trem['velocidade']) ?></td>
+
+                                <td><?= esc($trem['linha']) ?></td>
+
+                                <td><?= esc($trem['carga']) ?></td>
+
+                                <td><?= esc($trem['nome_usuario'] ?: 'Não informado') ?></td>
+
+                            </tr>
+
+                        <?php endwhile; ?>
+
+                    <?php else: ?>
+
+                        <tr>
+
+                            <td colspan="5">
+                                Nenhum trem encontrado.
+                            </td>
+
+                        </tr>
+
+                    <?php endif; ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- GRÁFICOS DOS TRENS -->
+
+        <h2 class="titulo-trem">Relatórios dos Trens</h2>
+
+        <div class="graficos-trens">
+
+            <!-- GRÁFICO DE VELOCIDADE -->
+
+            <div class="card-grafico">
+
+                <h3>Velocidade dos Trens</h3>
+
+                <p>
+                    Compare a velocidade registrada em cada trem.
+                </p>
+
+                <div class="area-grafico">
+
+                    <canvas id="graficoVelocidade"></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- GRÁFICO DE MODELOS -->
+
+            <div class="card-grafico">
+
+                <h3>Quantidade de Trens por Modelo</h3>
+
+                <p>
+                    Visualize a quantidade de trens cadastrados por modelo.
+                </p>
+
+                <div class="area-grafico">
+
+                    <canvas id="graficoModelo"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </main>
 
 </div>
+
+
+<!-- DADOS DOS GRÁFICOS VINDOS DO PHP -->
+
+<script>
+
+    window.dadosGraficos = {
+
+        nomesTrens: <?= json_encode($nomesTrens) ?>,
+
+        velocidadesTrens: <?= json_encode($velocidadesTrens) ?>,
+
+        nomesModelos: <?= json_encode($nomesModelos) ?>,
+
+        quantidadeModelos: <?= json_encode($quantidadeModelos) ?>
+
+    };
+
+</script>
+
+
+<!-- BIBLIOTECA CHART.JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ARQUIVO JAVASCRIPT DOS GRÁFICOS -->
+
+<script src="js/graficos_trens.js"></script>
+
 
 </body>
 </html>
@@ -241,6 +480,10 @@ if ($busca !== '') {
 
 if (isset($stmt)) {
     $stmt->close();
+}
+
+if (isset($stmtTrens)) {
+    $stmtTrens->close();
 }
 
 ?>
