@@ -192,36 +192,40 @@ while ($modelo = $resultadoModelo->fetch_assoc()) {
 
         </div>
 
-        <ul>
+          <ul>
 
-            <?php if (($_SESSION['cargo'] ?? '') === 'administrador'): ?>
+                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-                <a href="pagina_home.php" class="menu-link">
-                    <li>Início</li>
-                </a>
-
-                <a href="pagina_relatorios.php" class="menu-link">
-                    <li>Relatórios</li>
+                    <a href="pagina_home.php" class="menu-link">
+                    <li><i class="bi bi-house-fill"></i> Início</li>
                 </a>
 
                 <a href="usuario/adicionar_usuario.php" class="menu-link">
-                    <li>Adicionar usuário</li>
+                    <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
                 </a>
+
+                 <a href="rota/adicionar_rota.php" class="menu-link">
+                    <li><i class="bi bi-signpost-2"></i> Rotas</li>
+                </a>
+
+                 <a href="trem/adicionar_trem.php" class="menu-link">
+                    <li><i class="bi bi-train-front"></i> Trens</li>
+                </a>
+
+                 <a href="sensor/adicionar_sensor.php" class="menu-link">
+                    <li><i class="bi bi-broadcast-pin"></i> Sensores</li>
+                </a>
+
 
             <?php endif; ?>
 
             <a href="pagina_monitoramento.php" class="menu-link">
-                <li>Monitoramento</li>
+                <li><i class="bi bi-graph-up"></i> Monitoramento</li>
             </a>
-
-            <a href="sensor/listar_sensor.php" class="menu-link">
-                <li>Listar sensores</li>
-            </a>
-
+            <br>
             <a href="logout.php" class="menu-link">
-                <li>Sair</li>
+                <li><i class="bi bi-box-arrow-right"></i> Sair</li>
             </a>
-
         </ul>
 
     </aside>

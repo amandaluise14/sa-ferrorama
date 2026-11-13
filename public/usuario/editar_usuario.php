@@ -65,8 +65,14 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuário</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"rel="stylesheet">
+    <<link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
     <link rel="stylesheet" href="../../style/style.css">
+
+    <script src="../js/persistencia_formularios.js" defer></script>
 </head>
 <body>
     <div class="pagina">
@@ -76,34 +82,40 @@ $stmt->close();
         <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
         </div>
 
-    <ul>
+        <ul>
+    <?php if ($_SESSION['cargo'] === 'administrador'): ?>
 
-         <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+                    <a href="../pagina_home.php" class="menu-link">
+                    <li><i class="bi bi-house-fill"></i> Início</li>
+                </a>
 
-    <a href="../pagina_home.php" class="menu-link">
-        <li>Início</li>
-    </a>
+                <a href="adicionar_usuario.php" class="menu-link">
+                    <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
+                </a>
 
-    <a href="../pagina_relatorios.php" class="menu-link">
-        <li>Relatórios</li>
-    </a>
+                 <a href="../rota/adicionar_rota.php" class="menu-link">
+                    <li><i class="bi bi-signpost-2"></i> Rotas</li>
+                </a>
 
-    <a href="../../adicionar_usuario.php" class="menu-link">
-        <li>Adicionar usuário</li>
-    </a>
+                 <a href="../trem/adicionar_trem.php" class="menu-link">
+                    <li><i class="bi bi-train-front"></i> Trens</li>
+                </a>
 
-<?php endif; ?>
+                 <a href="../sensor/adicionar_sensor.php" class="menu-link">
+                    <li><i class="bi bi-broadcast-pin"></i> Sensores</li>
+                </a>
 
 
-<a href="../pagina_monitoramento.php" class="menu-link">
-    <li>Monitoramento</li>
-</a>
+            <?php endif; ?>
 
-<a href="../logout.php" class="menu-link">
-    <li>Sair</li>
-</a>
-
-    </ul>
+            <a href="../pagina_monitoramento.php" class="menu-link">
+                <li><i class="bi bi-graph-up"></i> Monitoramento</li>
+            </a>
+            <br>
+            <a href="../logout.php" class="menu-link">
+                <li><i class="bi bi-box-arrow-right"></i> Sair</li>
+            </a>
+        </ul>
     </div>
      <title>Editar Usuário </title>
       <div class="formulario-container">
