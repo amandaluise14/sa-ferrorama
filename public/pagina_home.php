@@ -4,6 +4,25 @@ include '../infra/conexao.php';
 include '../infra/verificar_admin.php';
 include '../infra/clima.php';
 
+$sql_totais = "SELECT
+    (SELECT COUNT(*) FROM rotas) AS total_rotas,
+    (SELECT COUNT(*) FROM trens) AS total_trens,
+    (SELECT COUNT(*) FROM sensores) AS total_sensores";
+
+$resultado_totais = mysqli_query($conn, $sql_totais);
+
+$totais = mysqli_fetch_assoc($resultado_totais); 
+
+$sql_usuarios = "SELECT
+    COUNT(*) AS total_usuarios,
+    SUM(CASE WHEN cargo = 'administrador' THEN 1 ELSE 0 END) AS total_administradores,
+    SUM(CASE WHEN cargo = 'usuário' THEN 1 ELSE 0 END) AS total_comuns
+    FROM usuarios";
+
+$resultado_usuarios = mysqli_query($conn, $sql_usuarios);
+
+$usuarios = mysqli_fetch_assoc($resultado_usuarios);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br"> 
@@ -165,9 +184,102 @@ include '../infra/clima.php';
         <i class="bi bi-cloud-check"></i>
     </div>
 
+
 </div>
+
+ <!-- USUÁRIOS DO SISTEMA -->
+<div class="card-usuarios">
+
+    <div class="titulo-controle">
+        <h3>Usuários do sistema</h3>
+        <p>Resumo dos usuários cadastrados.</p>
+    </div>
+
+    <div class="usuario-item">
+        <div class="usuario-icone">
+            <i class="bi bi-people"></i>
+        </div>
+
+        <div>
+            <h2><?php echo $usuarios['total_comuns']; ?></h2>
+            <h4>Usuários</h4>
+            <p>Usuários cadastrados</p>
+        </div>
+    </div>
+
+    <div class="usuario-item">
+        <div class="usuario-icone">
+            <i class="bi bi-person-badge"></i>
+        </div>
+
+        <div>
+            <h2><?php echo $usuarios['total_administradores']; ?></h2>
+            <h4>Administradores</h4>
+            <p>Administradores cadastrados</p>
+        </div>
+    </div>
+
+    <div class="total-usuarios">
+        <span>Total de contas no sistema</span>
+        <strong><?php echo $usuarios['total_usuarios']; ?></strong>
+    </div>
+
+
     </div>
           </div>
+
+          <!-- CONTROLE GERAL -->
+<div class="controle-geral">
+
+    <div class="titulo-controle">
+        <h3>Controle geral</h3>
+        <p>Resumo dos registros cadastrados no sistema.</p>
+    </div>
+
+    <div class="grade-controle">
+
+        <div class="card-controle">
+            <div class="icone-controle">
+                <i class="bi bi-signpost-2"></i>
+            </div>
+
+            <div class="info-controle">
+                <h2><?php echo $totais['total_rotas']; ?></h2>
+                <h4>Rotas cadastradas</h4>
+                <p>Total de rotas no sistema</p>
+            </div>
+        </div>
+
+        <div class="card-controle">
+            <div class="icone-controle">
+                <i class="bi bi-train-front"></i>
+            </div>
+
+            <div class="info-controle">
+                <h2><?php echo $totais['total_trens']; ?></h2>
+                <h4>Trens cadastrados</h4>
+                <p>Total de trens no sistema</p>
+            </div>
+        </div>
+
+        <div class="card-controle">
+            <div class="icone-controle">
+                <i class="bi bi-broadcast-pin"></i>
+            </div>
+
+            <div class="info-controle">
+                <h2><?php echo $totais['total_sensores']; ?></h2>
+                <h4>Sensores cadastrados</h4>
+                <p>Total de sensores no sistema</p>
+            </div>
+        </div>
+
+
+</div>
+
+    </div>
+</div>
+
     </form> 
     </div>
     </body>

@@ -11,6 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
 
+ $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+ echo "senhaHash". $senhaHash;
+
     if (!$stmt) {
         die("Erro no prepare: " . $conn->error);
     }
@@ -38,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         $erro = "E-mail não encontrado!";
+         echo "senhaHash". $senhaHash;
     }
 
     $stmt->close();
