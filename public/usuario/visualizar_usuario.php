@@ -31,10 +31,16 @@ $status = $_POST['status'] ?? '';
 
 $busca = "%{$pesquisa}%";
 
-$sql = "SELECT usuarios.*, enderecos.cidade
+$sql = "SELECT
+            usuarios.*,
+            enderecos.cep,
+            enderecos.logradouro,
+            enderecos.bairro,
+            enderecos.cidade,
+            enderecos.uf
         FROM usuarios
         LEFT JOIN enderecos
-        ON usuarios.id_endereco = enderecos.id_endereco
+            ON usuarios.id_endereco = enderecos.id_endereco
         WHERE (? = '' OR usuarios.nome LIKE ? OR usuarios.email LIKE ?)
         AND (? = '' OR usuarios.cargo = ?)
         AND (? = '' OR usuarios.status_usuario = ?)
@@ -310,7 +316,21 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
                                         <td><?php echo $usuario['telefone']; ?></td>
 
-                                        <td><?php echo $usuario['cidade']; ?></td>
+                                        <td>
+                                                <?php
+                                                if (!empty($usuario['id_endereco'])) {
+
+                                                    echo htmlspecialchars(
+                                                        $usuario['cidade'] . '/' 
+                                                    );
+
+                                                } else {
+
+                                                    echo 'Endereço não cadastrado';
+
+                                                }
+                                                ?>
+                                        </td>
 
                                         <td><?php echo $usuario['data_nascimento']; ?></td>
 
