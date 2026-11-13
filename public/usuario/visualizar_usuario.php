@@ -321,7 +321,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
                                                 if (!empty($usuario['id_endereco'])) {
 
                                                     echo htmlspecialchars(
-                                                        $usuario['cidade'] . '/' 
+                                                        $usuario['cidade']  
                                                     );
 
                                                 } else {

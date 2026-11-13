@@ -224,6 +224,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+          <script src="../js/persistencia_formularios.js" defer></script>
+
+          <script src="../js/validacoes.js" defer></script>
 
 </head>
 
@@ -401,6 +404,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                required>
                     </div>
 
+                    <!-- DATA DE NASCIMENTO -->
+                    <div class="campo">
+                        <label for="data_nascimento">Data de nascimento</label>
+
+                        <input type="date"
+                               id="data_nascimento"
+                               name="data_nascimento"
+                               value="<?= htmlspecialchars($usuario['data_nascimento']) ?>"
+                               required>
+                    </div>
+
+
                     
 <!-- ENDEREÇO -->
 <div class="campo">
@@ -464,17 +479,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                name="cpf"
                                value="<?= htmlspecialchars($usuario['cpf']) ?>"
                                placeholder="000.000.000-00"
-                               required>
-                    </div>
-
-                    <!-- DATA DE NASCIMENTO -->
-                    <div class="campo">
-                        <label for="data_nascimento">Data de nascimento</label>
-
-                        <input type="date"
-                               id="data_nascimento"
-                               name="data_nascimento"
-                               value="<?= htmlspecialchars($usuario['data_nascimento']) ?>"
                                required>
                     </div>
 

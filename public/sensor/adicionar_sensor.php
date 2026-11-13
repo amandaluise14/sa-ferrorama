@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="grade-formulario">
 
-                    <div class="campo campo-largo">
+                    <div class="campo">
                         <label for="nome">Nome do sensor</label>
 
                         <input type="text"
