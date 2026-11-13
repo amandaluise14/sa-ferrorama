@@ -24,20 +24,12 @@ if ($id_sensor) {
                 rotas.estacao_destino,
                 rotas.distancia_total,
                 rotas.descricao AS descricao_rota,
-                rotas.duracao,
-
-                trens.modelo AS modelo_trem,
-                trens.velocidade,
-                trens.linha,
-                trens.carga
+                rotas.duracao
 
             FROM sensores
 
             LEFT JOIN rotas
                 ON sensores.rota_id = rotas.id_rota
-
-            LEFT JOIN trens
-                ON rotas.trem_id = trens.id_trem
 
             WHERE sensores.id_sensor = ?
 
