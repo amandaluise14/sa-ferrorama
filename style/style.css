@@ -2457,18 +2457,19 @@ margin-bottom: 12px;
 .painel-superior .conteudo {
     display: flex;
     align-items: flex-start;
-    gap: 55px;
+    gap: 60px;
     width: 100%;
     min-height: auto;
     padding: 0;
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     background: transparent;
 }
 
 /* CARD DE CLIMA */
 
 .painel-superior .card-clima {
-    width: 380px;
+    width: 390px;
     max-width: 380px;
     flex-shrink: 0;
 }
@@ -3403,3 +3404,182 @@ margin-bottom: 12px;
             }
 
         }
+/* CONTROLE GERAL */
+
+.controle-geral {
+    width: 100%;
+    margin-top: 35px;
+}
+
+.titulo-controle h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #650000;
+    margin-bottom: 5px;
+}
+
+.titulo-controle p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 18px;
+}
+
+.grade-controle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card-controle {
+    background: #fff;
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid #e8e3e3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.card-controle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+}
+
+.icone-controle {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    border-radius: 10px;
+    background: #f7eeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone-controle i {
+    font-size: 25px;
+    color: #800000;
+}
+
+.info-controle h2 {
+    font-size: 27px;
+    font-weight: 700;
+    color: #650000;
+    margin: 0 0 3px;
+}
+
+.info-controle h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px;
+}
+
+.info-controle p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .grade-controle {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CARD DE USUÁRIOS */
+/* CARD DE USUÁRIOS */
+
+.card-usuarios {
+    background: #fff;
+    border-radius: 10px;
+    padding: 22px;
+    border: 1px solid #e8e3e3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 350px;
+    height: 427px;
+    box-sizing: border-box;
+}
+
+/* INFORMAÇÕES DOS USUÁRIOS */
+
+.card-usuarios .titulo-controle h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #650000;
+    margin-bottom: 5px;
+}
+
+.card-usuarios .titulo-controle p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.usuario-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    margin-bottom: 12px;
+}
+
+.usuario-icone {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 10px;
+    background: #f7eeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuario-icone i {
+    font-size: 22px;
+    color: #800000;
+}
+
+.usuario-item h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #650000;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.usuario-item h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 4px 0;
+}
+
+.usuario-item p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* TOTAL DE CONTAS */
+
+.total-usuarios {
+    border-top: 1px solid #eee;
+    margin-top: 25px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.total-usuarios strong {
+    color: #650000;
+    font-size: 19px;
+    font-weight: 700;
+}
