@@ -202,7 +202,7 @@ Localize o registro desejado na tabela.
 
 A tabela apresenta as colunas ID, Nome, E-mail, Telefone, Endereço, Data de Nascimento, CPF, Tipo de conta, Status e Ações. O CPF aparece parcialmente oculto na listagem.
 
-![Usuários cadastrados](./assets/image/manual/visualizar%20usuário.webp)
+![Usuários cadastrados](./assets/image/manual/visualizar_usuario.webp)
 
 6.5. Como editar um usuário
 Na listagem, localize a conta que deseja modificar.
