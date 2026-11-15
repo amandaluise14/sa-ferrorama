@@ -94,7 +94,8 @@ O cartão Usuários do sistema apresenta um resumo da quantidade de usuários e 
 
 Na área Controle geral, são exibidas as quantidades de rotas, trens e sensores cadastrados. Esses indicadores permitem consultar rapidamente o volume de registros existentes.
 
-![Página inicial do administrador](./manual/bemvindoadm.webp)
+![Página inicial do administrador](./manual/bem%20vindo%20adm.webp)
+
 5. NAVEGAÇÃO PELO MENU LATERAL
 O menu lateral fica localizado no lado esquerdo da tela e permite acessar as principais áreas do sistema. As opções identificadas nas telas do perfil Administrador são:
 
