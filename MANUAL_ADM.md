@@ -1,11 +1,20 @@
 MANUAL DE UTILIZAÇÃO DO SISTEMA INFOTREM
+
 Sistema: InfoTrem – Tecnologia em Movimento
+
 Versão: 1.0
+
 Ano: 2026
+
 Local: Joinville – SC
 
-Este documento reúne as orientações de utilização do InfoTrem para os dois perfis de acesso: Administrador e Usuário. Consulte a seção correspondente ao perfil da sua conta.
+
+Este documento reúne as orientações de utilização do InfoTrem para os dois perfis de acesso: Administrador e Usuário. 
+
+Consulte a seção correspondente ao perfil da sua conta.
+
 PARTE I — PERFIL ADMINISTRADOR
+
 MANUAL DE UTILIZAÇÃO DO SISTEMA INFOTREM
 
 PERFIL: ADMINISTRADOR
@@ -19,7 +28,10 @@ Ano: 2026
 Local: Joinville – SC
 
 1. APRESENTAÇÃO DO SISTEMA
+
+
 O InfoTrem é um sistema desenvolvido para auxiliar no gerenciamento e monitoramento ferroviário. A plataforma permite organizar informações relacionadas aos usuários, trens, rotas e sensores, além de disponibilizar recursos para acompanhar informações operacionais.
+
 
 O sistema possui diferentes níveis de acesso, sendo eles Administrador e Usuário. Cada perfil possui permissões específicas, de acordo com suas responsabilidades.
 
