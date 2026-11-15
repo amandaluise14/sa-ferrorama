@@ -1,15 +1,17 @@
+
 <?php
 
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
+$erro = '';
+$sucesso = '';
 
-if (!isset($_GET['id_trem'])) {
-    echo "ID do trem não informado.";
-    exit;
+$id_trem = $_GET['id_trem'] ?? $_POST['id_trem'] ?? '';
+
+if ($id_trem == '') {
+    die("ID do trem não fornecido.");
 }
-
-$id_trem = (int) $_GET['id_trem'];
 
 $sql = "SELECT * FROM trens WHERE id_trem = ?";
 $stmt = $conn->prepare($sql);
@@ -18,22 +20,27 @@ $stmt->execute();
 
 $resultado = $stmt->get_result();
 $trem = $resultado->fetch_assoc();
+$stmt->close();
 
 if (!$trem) {
-    echo "Trem não encontrado.";
-    exit;
+    die("Trem não encontrado.");
 }
 
-$sql_usuarios = "SELECT id_usuario, nome FROM usuarios";
+$sql_usuarios = "SELECT id_usuario, nome FROM usuarios ORDER BY id_usuario";
 $resultado_usuarios = $conn->query($sql_usuarios);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (!$resultado_usuarios) {
+    die("Erro ao consultar usuários: " . $conn->error);
+}
 
+if (isset($_POST['id_trem'])) {
+
+    $id = $_POST['id_trem'];
     $modelo = $_POST['modelo'];
-    $velocidade = (int) $_POST['velocidade'];
+    $velocidade = $_POST['velocidade'];
     $linha = $_POST['linha'];
     $carga = $_POST['carga'];
-    $usuario_id = (int) $_POST['usuario_id'];
+    $usuario_id = $_POST['usuario_id'];
 
     $sql = "UPDATE trens
             SET modelo = ?,
@@ -46,21 +53,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(
-        "sissii",
+        "ssisii",
         $modelo,
         $velocidade,
         $linha,
         $carga,
         $usuario_id,
-        $id_trem
+        $id
     );
 
     if ($stmt->execute()) {
-        header("Location: listar_trem.php");
-        exit();
+
+        $sucesso = "Trem atualizado com sucesso!";
+
+        $sql = "SELECT * FROM trens WHERE id_trem = ?";
+        $consulta = $conn->prepare($sql);
+        $consulta->bind_param("i", $id);
+        $consulta->execute();
+
+        $resultado = $consulta->get_result();
+        $trem = $resultado->fetch_assoc();
+
+        $consulta->close();
+
     } else {
-        $erro = "Erro ao atualizar trem: " . $stmt->error;
+
+        $erro = "Erro ao atualizar trem.";
+
     }
+
+    $stmt->close();
 }
 
 ?>
@@ -155,47 +177,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
 
-        <?php if (!empty($erro)): ?>
 
-            <div class="alert alert-danger alert-dismissible fade show"
-                 role="alert">
+    <?php if (!empty($erro)): ?>
 
-                <strong>⚠️ Ops!</strong>
+    <div class="alert alert-danger alert-dismissible fade show"
+         role="alert">
 
-                <?= htmlspecialchars($erro) ?>
+        <strong>⚠️ Ops!</strong>
+        <?= htmlspecialchars($erro) ?>
 
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                </button>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
 
-            </div>
+    </div>
 
-        <?php endif; ?>
+<?php endif; ?>
 
 
-        <div class="cartao-formulario">
+<?php if (!empty($sucesso)): ?>
 
-    
-            <div class="formulario-cabecalho">
+    <div class="alert alert-success alert-dismissible fade show"
+         role="alert">
 
-                <div class="icone-formulario">
-                    <i class="bi bi-train-front"></i>
-                </div>
+        <strong>✅ Sucesso!</strong>
+        <?= htmlspecialchars($sucesso) ?>
 
-                <div>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Fechar">
+        </button>
 
-                    <h3>Informações do trem</h3>
+    </div>
 
-                    <p>Atualize os dados cadastrados do trem.</p>
+<?php endif; ?>
 
-                </div>
+<div class="cartao-formulario">
 
-            </div>
+    <div class="formulario-cabecalho">
+
+        <div class="icone-formulario">
+            <i class="bi bi-train-front"></i>
+        </div>
+
+        <div>
+            <h3>Informações do trem</h3>
+            <p>Preencha os dados para atualizar as informações do trem.</p>
+        </div>
+
+    </div>
+
 
 
             <form method="POST" class="form-cadastro-usuario">
+                <input type="hidden" name="id_trem" value="<?= $trem['id_trem']; ?>">
 
                 <div class="grade-formulario">
 
@@ -236,29 +274,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="campo campo-largo">
 
-                        <label for="usuario_id">Usuário vinculado</label>
+    <label for="usuario_id">Usuário vinculado</label>
 
-                        <select name="usuario_id"
-                                id="usuario_id"
-                                required>
+    <select name="usuario_id" id="usuario_id" required>
 
-                     value="<?php echo $trem['usuario_id']; ?>"
-                            <option value="">Selecione um usuário</option>
+        <option value="">Selecione um usuário</option>
 
-                            <?php while ($usuario = $resultado_usuarios->fetch_assoc()): ?>
+        <?php while ($usuario = $resultado_usuarios->fetch_assoc()): ?>
 
-                                <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>"
-                                    <?= ($usuario['id_usuario'] == $trem['usuario_id']) ? 'selected' : '' ?>>
+            <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>"
+                <?= ($usuario['id_usuario'] == $trem['usuario_id']) ? 'selected' : '' ?>>
 
-                                    <?= htmlspecialchars($usuario['nome']) ?>
+                <?= htmlspecialchars($usuario['nome']) ?>
 
-                                </option>
+            </option>
 
-                            <?php endwhile; ?>
+        <?php endwhile; ?>
 
-                        </select>
+    </select>
 
-                    </div>
+</div>
 
 
                 </div>

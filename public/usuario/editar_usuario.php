@@ -414,8 +414,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                value="<?= htmlspecialchars($usuario['data_nascimento']) ?>"
                                required>
                     </div>
-
-
                     
 <!-- ENDEREÇO -->
 <div class="campo">
