@@ -17,6 +17,7 @@ Versão: 1.0
 Ano: 2026
 
 Local: Joinville – SC
+
 1. APRESENTAÇÃO DO SISTEMA
 O InfoTrem é um sistema desenvolvido para auxiliar no gerenciamento e monitoramento ferroviário. A plataforma permite organizar informações relacionadas aos usuários, trens, rotas e sensores, além de disponibilizar recursos para acompanhar informações operacionais.
 
@@ -25,16 +26,17 @@ O sistema possui diferentes níveis de acesso, sendo eles Administrador e Usuár
 O administrador possui acesso às funcionalidades de gerenciamento, podendo realizar cadastros, consultar informações, editar e excluir registros disponíveis no sistema.
 
 Este manual apresenta o passo a passo para utilizar as principais funcionalidades disponíveis no perfil Administrador.
-Página inicial pública (Landing Page)
+
+1.1Página inicial pública (Landing Page)
 Antes de realizar o login, o visitante pode visualizar a página pública do InfoTrem, também chamada de landing page. Essa página apresenta o propósito do projeto e explica, de forma resumida, a proposta da plataforma: organizar, gerenciar e monitorar informações ferroviárias com apoio de tecnologia e Internet das Coisas (IoT).
 
 Na parte superior, a página destaca a mensagem “Mais controle e tecnologia para o transporte ferroviário”, acompanhada de um botão “Conheça o sistema”. Esse botão funciona como um convite para que o visitante avance e conheça melhor a solução.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Página inicial do InfoTrem](./assets/image/manual/landing_page.webp)
 
 Ao continuar a navegação, a seção “Por que o InfoTrem?” contextualiza a necessidade de centralizar informações de trens, linhas, rotas e sensores. Em seguida, a seção “O que o sistema oferece?” apresenta os recursos da plataforma. Assim, a landing page tem função institucional e informativa: apresentar o projeto antes do acesso à área restrita.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Apresentação do sistema](./assets/image/manual/landing_page2.webp)
 
 2. COMO ACESSAR O SISTEMA
 O acesso ao InfoTrem é realizado por meio do XAMPP, que disponibiliza o servidor local necessário para executar o sistema no computador.
@@ -49,7 +51,8 @@ Com os serviços ativos, abra um navegador e acesse o endereço local configurad
 
 Quando a tela de acesso for exibida, informe as credenciais de uma conta cadastrada para continuar.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Tela de login](./assets/image/manual/login.webp)
+
 3. COMO REALIZAR O LOGIN
 O login é o procedimento utilizado para identificar o usuário e permitir o acesso às funcionalidades correspondentes ao seu tipo de conta.
 
@@ -71,10 +74,13 @@ Caso os dados estejam incorretos, o acesso não será realizado. Confira as info
 
 4. CONHECENDO A PÁGINA INICIAL
 Após realizar o login, o administrador será direcionado à página inicial do InfoTrem. Nessa tela, são apresentadas informações gerais do sistema e atalhos para acessar algumas das principais funcionalidades.
+
 4.1. Mensagem de boas-vindas
 Na parte superior da página, aparece uma mensagem de boas-vindas que identifica o perfil conectado ao sistema.
+
 4.2. Acessos rápidos
 A página inicial apresenta cartões de acesso rápido para as áreas de Sensores, Trens e Rotas. Ao selecionar um desses cartões, o administrador é direcionado à área correspondente para consultar ou gerenciar os registros.
+
 4.3. Clima atual
 O cartão Clima atual apresenta informações meteorológicas referentes à cidade de Joinville – SC. Nele podem ser visualizadas:
 
@@ -89,6 +95,7 @@ Data e horário da última atualização.
 Fonte das informações meteorológicas.
 
 As informações são apresentadas para consulta e podem sofrer alterações conforme as atualizações dos dados climáticos.
+
 4.4. Usuários do sistema e controle geral
 O cartão Usuários do sistema apresenta um resumo da quantidade de usuários e administradores cadastrados, além do total de contas no sistema.
 
@@ -114,8 +121,10 @@ Monitoramento: direciona para a tela de acompanhamento das informações dos sen
 Sair: permite encerrar a sessão atual.
 
 Para acessar uma dessas áreas, basta clicar sobre a opção desejada.
+
 6. CADASTRO E GERENCIAMENTO DE USUÁRIOS
 O gerenciamento de usuários permite ao administrador cadastrar novas contas, consultar os registros existentes, atualizar informações e administrar os acessos ao sistema.
+
 6.1. Como cadastrar um usuário
 Para realizar um novo cadastro:
 
@@ -153,7 +162,8 @@ Confira todas as informações preenchidas e clique em Cadastrar usuário.
 
 Após o cadastro, o sistema deverá registrar as informações fornecidas.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Cadastro de usuário](./assets/image/manual/cadastrar%20usuario.webp)
+
 6.2. Tipos de conta
 Durante o cadastro, o administrador deverá selecionar o tipo de conta que será atribuído à pessoa:
 
@@ -162,12 +172,14 @@ Administrador: possui permissões de gerenciamento do sistema.
 Usuário: possui acesso às funcionalidades disponibilizadas para o perfil comum.
 
 A escolha do tipo de conta determina quais funcionalidades estarão disponíveis para cada pessoa.
+
 6.3. Status da conta
 O campo Status da conta permite definir a situação do cadastro:
 
 Ativo: indica que a conta está habilitada.
 
 Inativo: indica que a conta está desativada.
+
 6.4. Como consultar usuários cadastrados
 Acesse a área de usuários por meio da opção Adicionar usuário.
 
@@ -185,9 +197,8 @@ Localize o registro desejado na tabela.
 
 A tabela apresenta as colunas ID, Nome, E-mail, Telefone, Endereço, Data de Nascimento, CPF, Tipo de conta, Status e Ações. O CPF aparece parcialmente oculto na listagem.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Usuários cadastrados](./assets/image/manual/visualizar%20usu%C3%A1rio.webp)
 
-.
 6.5. Como editar um usuário
 Na listagem, localize a conta que deseja modificar.
 
@@ -203,7 +214,8 @@ Confira os campos Cargo e Status e altere-os, se necessário.
 
 Após revisar as informações, clique em Editar usuário para salvar as alterações.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Edição de usuário](./assets/image/manual/Editar_usu%C3%A1rio.webp)
+
 6.6. Como excluir um usuário
 Acesse a listagem de usuários cadastrados.
 
@@ -216,8 +228,10 @@ Confira se o usuário selecionado está correto.
 Confirme a operação, caso o sistema apresente uma solicitação de confirmação.
 
 A exclusão deve ser realizada com atenção, pois pode afetar o acesso da pessoa ao sistema.
+
 7. CADASTRO E GERENCIAMENTO DE ROTAS
 A área de rotas permite organizar os trajetos ferroviários, relacionando estações de origem e destino aos trens cadastrados.
+
 7.1. Como cadastrar uma rota
 Acesse a opção Rotas pelo menu lateral.
 
@@ -239,7 +253,8 @@ No campo Descrição da rota, apresente características ou informações adicio
 
 Revise os dados e clique em Cadastrar rota.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Cadastro de rota](./assets/image/manual/Cadastrar_rota.webp)
+
 7.2. Como consultar rotas cadastradas
 Na área de Rotas, acesse a opção Visualizar Rotas.
 
@@ -251,7 +266,8 @@ Consulte os dados apresentados na tabela.
 
 A listagem apresenta as colunas ID, Estação de Origem, Estação de Destino, Distância, Descrição, Tempo Estimado, Trem vinculado e Ações. O botão + Nova Rota permite iniciar um novo cadastro.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Rotas cadastradas](./assets/image/manual/visualizar_rota.webp)
+
 7.3. Como editar uma rota
 Na listagem de rotas, localize o registro que deseja modificar.
 
@@ -263,7 +279,8 @@ Atualize os campos necessários: nome da rota, trem vinculado, estação de orig
 
 Confira as informações e clique em Editar Rota para salvar as alterações.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Edição de rota](./assets/image/manual/Editar_rota.webp)
+
 7.4. Como excluir uma rota
 Acesse a listagem de rotas.
 
@@ -276,8 +293,10 @@ Confira as informações da rota selecionada.
 Confirme a operação, caso o sistema solicite.
 
 Antes de excluir uma rota, verifique se existem sensores vinculados a ela.
+
 8. CADASTRO E GERENCIAMENTO DE TRENS
 A área de trens permite registrar, consultar e atualizar as informações dos veículos ferroviários cadastrados no InfoTrem.
+
 8.1. Como cadastrar um trem
 Acesse a opção Trens pelo menu lateral.
 
@@ -295,7 +314,8 @@ No campo Usuário vinculado, selecione o usuário relacionado ao registro.
 
 Confira todas as informações e clique em Cadastrar trem.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Cadastro de trem](./assets/image/manual/cadastrar_trem.webp)
+
 8.2. Como consultar os trens cadastrados
 Acesse a área de Trens.
 
@@ -307,7 +327,8 @@ Consulte as informações organizadas na tabela.
 
 A listagem apresenta as colunas ID, Modelo, Velocidade, Linha, Carga, Usuário e Ações. O botão + Novo Trem permite iniciar outro cadastro.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Trens cadastrados](./assets/image/manual/visualizar_trens.webp)
+
 8.3. Como editar um trem
 Na listagem de trens, localize o registro que deseja modificar.
 
@@ -319,7 +340,8 @@ Atualize os campos Modelo do trem, Velocidade limite, Linha, Carga transportada 
 
 Confira as informações e clique em Editar Trem para salvar as alterações.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Edição de trem](./assets/image/manual/editar_trem.webp)
+
 8.4. Como excluir um trem
 Acesse a listagem de trens.
 
@@ -332,8 +354,10 @@ Confira se selecionou o trem correto.
 Confirme a operação, caso seja solicitada.
 
 Antes de excluir um trem, verifique se ele está relacionado a alguma rota.
+
 9. CADASTRO E GERENCIAMENTO DE SENSORES
 Os sensores são utilizados para registrar informações relacionadas à operação ferroviária. No InfoTrem, o administrador pode cadastrar sensores, vinculá-los às rotas e definir qual tipo de dado será monitorado.
+
 9.1. Como cadastrar um sensor
 Acesse a opção Sensores pelo menu lateral.
 
@@ -349,7 +373,8 @@ Em Tipo do dado monitorado, informe qual informação será acompanhada, como te
 
 Confira os dados preenchidos e clique em Cadastrar Sensor.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Cadastro de sensor](./assets/image/manual/Cadastrar_sensor.webp)
+
 9.2. Como consultar sensores cadastrados
 Acesse a área de Sensores.
 
@@ -361,7 +386,8 @@ Consulte as informações apresentadas na tabela.
 
 A listagem apresenta as colunas ID, Nome, Rota vinculada, Descrição da localização, Dado Monitorado e Ações. O botão + Novo Sensor permite iniciar um novo cadastro.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Sensores cadastrados](./assets/image/manual/visualizar_sensor.webp)
+
 9.3. Como editar um sensor
 Na listagem de sensores, localize o registro que deseja modificar.
 
@@ -375,7 +401,8 @@ Confira as informações e clique em Editar sensor para salvar as alterações.
 
 Retorne à listagem para verificar o registro atualizado.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Edição de sensor](./assets/image/manual/editar_sensor.webp)
+
 9.4. Como excluir um sensor
 Acesse a listagem de sensores.
 
@@ -388,6 +415,8 @@ Confira se o registro selecionado está correto.
 Confirme a operação, caso o sistema solicite.
 
 Antes de excluir um sensor, verifique se existem informações ou registros relacionados a ele
+
+
 10. MONITORAMENTO FERROVIÁRIO
 A funcionalidade Monitoramento permite visualizar informações relacionadas aos sensores e aos trens cadastrados no InfoTrem.
 
@@ -399,7 +428,8 @@ Aguarde o carregamento da página.
 
 Observe os cartões de sensores, a tabela de trens e os gráficos apresentados.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Monitoramento ferroviário](./assets/image/manual/monitoramento_1.webp)
+
 10.1. Pesquisa e visualização dos sensores
 Na parte superior da tela existe um campo de pesquisa identificado como Pesquisar sensor ou trem. Esse campo permite localizar informações relacionadas a um sensor ou trem.
 
@@ -410,6 +440,7 @@ Digite o nome ou a identificação do sensor ou trem que deseja localizar.
 Clique em Pesquisar para realizar a consulta.
 
 Os cartões apresentados na tela exibem o nome do sensor, a descrição da localização e o tipo de dado monitorado. Cada cartão possui um acesso para visualizar os detalhes disponíveis.
+
 10.2. Visualização detalhada do Sensor de velocidade 14
 Para consultar informações específicas de um sensor, selecione o acesso de detalhes disponível no cartão correspondente. Na tela apresentada, o título identifica o equipamento como “Sensor de velocidade 14” e a faixa verde informa que ele está em “Operação normal”.
 
@@ -419,7 +450,8 @@ A seção “Informações da rota” apresenta uma imagem ilustrativa do trajet
 
 Observação: a tela mostra “Sensor de velocidade 14” como nome do equipamento, enquanto o campo “ID do sensor” apresenta o número #13. O nome e o identificador são informações diferentes e devem ser considerados conforme aparecem no sistema.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Monitoramento dos sensores](./assets/image/manual/monitoramento_2.webp)
+
 10.3. Trens cadastrados
 A seção Trens cadastrados apresenta uma tabela com os trens registrados no sistema. Nela podem ser consultadas as seguintes informações:
 
@@ -441,7 +473,8 @@ Quantidade de Trens por Modelo: gráfico circular que apresenta a distribuição
 
 Os gráficos auxiliam na visualização e comparação dos dados registrados no sistema. As informações exibidas dependem dos registros disponíveis.
 
-[Inserir imagem/ captura de tela correspondente.]
+![Monitoramento dos trens](./assets/image/manual/monitoramento_3.webp)
+
 11. COMO REALIZAR O LOGOUT
 O logout é o procedimento utilizado para encerrar o acesso ao sistema.
 
@@ -456,6 +489,7 @@ Confirme o encerramento da sessão, se solicitado.
 Aguarde o redirecionamento para a tela de acesso.
 
 É recomendado realizar esse procedimento sempre que terminar de utilizar o sistema, principalmente em computadores compartilhados.
+
 12. CONSIDERAÇÕES FINAIS
 O perfil Administrador possui a responsabilidade de organizar e gerenciar as informações cadastradas no InfoTrem.
 
