@@ -1,3 +1,4 @@
+
 <?php
 
 include '../../infra/conexao.php';
@@ -178,17 +179,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $sucesso = "Usuário atualizado com sucesso!";
 
-        $stmt = $conn->prepare($sql = "SELECT usuarios.*, 
-                                             enderecos.cep,
-                                             enderecos.logradouro,
-                                             enderecos.bairro,
-                                             enderecos.cidade,
-                                             enderecos.uf
-                                      FROM usuarios
-                                      LEFT JOIN enderecos
-                                      ON usuarios.id_endereco = enderecos.id_endereco
-                                      WHERE usuarios.id_usuario = ?");
+        // ATUALIZAR OS DADOS EXIBIDOS NA TELA
+        $sql = "SELECT usuarios.*, 
+                       enderecos.cep,
+                       enderecos.logradouro,
+                       enderecos.bairro,
+                       enderecos.cidade,
+                       enderecos.uf
+                FROM usuarios
+                LEFT JOIN enderecos
+                ON usuarios.id_endereco = enderecos.id_endereco
+                WHERE usuarios.id_usuario = ?";
 
+        $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id_usuario);
         $stmt->execute();
 
@@ -205,7 +208,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -224,9 +226,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-          <script src="../js/persistencia_formularios.js" defer></script>
 
-          <script src="../js/validacoes.js" defer></script>
+    <script src="../js/persistencia_formularios.js" defer></script>
+
+    <script src="../js/validacoes.js" defer></script>
 
 </head>
 
@@ -414,59 +417,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                value="<?= htmlspecialchars($usuario['data_nascimento']) ?>"
                                required>
                     </div>
-                    
-<!-- ENDEREÇO -->
-<div class="campo">
-    <label for="cep">CEP</label>
-    <input type="text"
-           id="cep"
-           name="cep"
-           value="<?= htmlspecialchars($usuario['cep'] ?? '') ?>"
-           placeholder="00000-000"
-           required>
-</div>
 
-<div class="campo campo-largo">
-    <label for="logradouro">Logradouro</label>
-    <input type="text"
-           id="logradouro"
-           name="logradouro"
-           value="<?= htmlspecialchars($usuario['logradouro'] ?? '') ?>"
-           placeholder="Rua, número e complemento"
-           required>
-</div>
+                    <!-- CEP -->
+                    <div class="campo">
+                        <label for="cep">CEP</label>
 
-<div class="campo">
-    <label for="bairro">Bairro</label>
-    <input type="text"
-           id="bairro"
-           name="bairro"
-           value="<?= htmlspecialchars($usuario['bairro'] ?? '') ?>"
-           placeholder="Bairro"
-           required>
-</div>
+                        <input type="text"
+                               id="cep"
+                               name="cep"
+                               value="<?= htmlspecialchars($usuario['cep'] ?? '') ?>"
+                               placeholder="00000-000"
+                               maxlength="9"
+                               required>
+                    </div>
 
-<div class="campo">
-    <label for="cidade">Cidade</label>
-    <input type="text"
-           id="cidade"
-           name="cidade"
-           value="<?= htmlspecialchars($usuario['cidade'] ?? '') ?>"
-           placeholder="Cidade"
-           required>
-</div>
+                    <!-- LOGRADOURO -->
+                    <div class="campo campo-largo">
+                        <label for="logradouro">Logradouro</label>
 
-<div class="campo">
-    <label for="uf">Estado (UF)</label>
-    <input type="text"
-           id="uf"
-           name="uf"
-           maxlength="2"
-           value="<?= htmlspecialchars($enderecos['uf'] ?? '') ?>"
-           placeholder="SC"
-           required>
-</div>
+                        <input type="text"
+                               id="logradouro"
+                               name="logradouro"
+                               value="<?= htmlspecialchars($usuario['logradouro'] ?? '') ?>"
+                               placeholder="Rua, número e complemento"
+                               required>
+                    </div>
 
+                    <!-- BAIRRO -->
+                    <div class="campo">
+                        <label for="bairro">Bairro</label>
+
+                        <input type="text"
+                               id="bairro"
+                               name="bairro"
+                               value="<?= htmlspecialchars($usuario['bairro'] ?? '') ?>"
+                               placeholder="Bairro"
+                               required>
+                    </div>
+
+                    <!-- CIDADE -->
+                    <div class="campo">
+                        <label for="cidade">Cidade</label>
+
+                        <input type="text"
+                               id="cidade"
+                               name="cidade"
+                               value="<?= htmlspecialchars($usuario['cidade'] ?? '') ?>"
+                               placeholder="Cidade"
+                               required>
+                    </div>
+
+                    <!-- UF -->
+                    <div class="campo">
+                        <label for="uf">Estado (UF)</label>
+
+                        <input type="text"
+                               id="uf"
+                               name="uf"
+                               maxlength="2"
+                               value="<?= htmlspecialchars($usuario['uf'] ?? '') ?>"
+                               placeholder="SC"
+                               required>
+                    </div>
 
                     <!-- CPF -->
                     <div class="campo">
@@ -558,6 +570,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 
 </div>
+
+<!-- API VIA CEP -->
+<script>
+
+document.getElementById('cep').addEventListener('blur', async function () {
+
+    const cep = this.value.replace(/\D/g, '');
+
+    if (cep.length !== 8) {
+        return;
+    }
+
+    try {
+
+        const resposta = await fetch(
+            '../consultar_cep.php?cep=' + cep
+        );
+
+        if (!resposta.ok) {
+            throw new Error('Falha na consulta do CEP.');
+        }
+
+        const dados = await resposta.json();
+
+        if (dados.erro || dados.error) {
+            alert(dados.erro || dados.error);
+            return;
+        }
+
+        document.getElementById('logradouro').value = dados.logradouro || '';
+        document.getElementById('bairro').value = dados.bairro || '';
+        document.getElementById('cidade').value = dados.localidade || '';
+        document.getElementById('uf').value = dados.uf || '';
+
+    } catch (erro) {
+
+        alert('Não foi possível consultar o CEP. Tente novamente.');
+
+    }
+
+});
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
