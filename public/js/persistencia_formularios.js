@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     formularios.forEach((formulario, indice) => {
 
         // Identifica cada formulário
-        const identificador = formulario.id || 
-            formulario.getAttribute('action') || 
-            window.location.pathname + '_form_' + indice;
+        const identificador = formulario.id ||
+    formulario.getAttribute('action') ||
+    window.location.pathname + window.location.search + '_form_' + indice;
 
         const chave = 'formulario_' + identificador;
 

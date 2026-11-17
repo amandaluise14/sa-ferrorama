@@ -227,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <script src="../js/persistencia_formularios.js" defer></script>
+    <!-- <script src="../js/persistencia_formularios.js" defer></script> -->
 
     <script src="../js/validacoes.js" defer></script>
 

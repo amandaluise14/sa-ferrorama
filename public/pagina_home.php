@@ -113,7 +113,7 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
 
             <div class="info-acesso">
                 <h4>Sensores</h4>
-                <p>Cadastre e gerencie os sensores de monitoramento.</p>
+                <p>Visualize e gerencie os sensores de monitoramento.</p>
             </div>
 
 
@@ -129,7 +129,7 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
 
             <div class="info-acesso">
                 <h4>Trens</h4>
-                <p>Cadastre e gerencie os trens do sistema.</p>
+                <p>Visualize e gerencie os trens do sistema.</p>
             </div>
 
         </a>
@@ -143,7 +143,7 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
 
             <div class="info-acesso">
                 <h4>Rotas</h4>
-                <p>Cadastre e organize as rotas ferroviárias.</p>
+                <p>Visualize e organize as rotas ferroviárias.</p>
             </div>
 
         </a>
