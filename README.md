@@ -4,7 +4,7 @@
 
 ## Proposta do Sistema
 
-O **SA Ferrorama** é um sistema de gerenciamento ferroviário desenvolvido com o objetivo de facilitar o controle, a organização e o monitoramento de uma malha ferroviária. A plataforma centraliza informações relacionadas aos trens, linhas, rotas, sensores e usuários, permitindo um acompanhamento mais organizado das operações ferroviárias.
+A **SA Ferrorama** é um sistema de gerenciamento ferroviário desenvolvido com o objetivo de facilitar o controle, a organização e o monitoramento de uma malha ferroviária. A plataforma centraliza informações relacionadas aos trens, linhas, rotas, sensores e usuários, permitindo um acompanhamento mais organizado das operações ferroviárias.
 
 O sistema possui diferentes níveis de acesso, permitindo que administradores gerenciem os cadastros e que usuários visualizem as informações disponibilizadas pela plataforma.
 
@@ -16,7 +16,7 @@ Dessa forma, o SA Ferrorama busca integrar tecnologia, gerenciamento de informa�
 
 O gerenciamento de uma malha ferroviária envolve diversas informações, como cadastros de trens, rotas, sensores, usuários e dados de monitoramento. Quando essas informações não estão centralizadas, o acompanhamento das operações pode se tornar mais difícil, prejudicando a organização e a identificação de possíveis problemas.
 
-O SA Ferrorama busca solucionar essa dificuldade por meio de uma plataforma que reúne essas informações em um único ambiente, facilitando o gerenciamento dos dados, a consulta dos registros e o acompanhamento das condições operacionais.
+A SA Ferrorama busca solucionar essa dificuldade por meio de uma plataforma que reúne essas informações em um único ambiente, facilitando o gerenciamento dos dados, a consulta dos registros e o acompanhamento das condições operacionais.
 
 ## Objetivos do Projeto
 
