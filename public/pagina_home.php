@@ -105,7 +105,7 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
     <div class="grade-acessos">
 
         <!-- CADASTRAR SENSOR -->
-        <a href="sensor/adicionar_sensor.php" class="card-acesso">
+        <a href="sensor/visualizar_sensor.php" class="card-acesso">
 
             <div class="icone-acesso">
                 <i class="bi bi-broadcast-pin"></i>
@@ -121,7 +121,7 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
 
 
         <!-- CADASTRAR TREM -->
-        <a href="trem/adicionar_trem.php" class="card-acesso">
+        <a href="trem/visualizar_trem.php" class="card-acesso">
 
             <div class="icone-acesso">
                 <i class="bi bi-train-front"></i>
@@ -136,7 +136,7 @@ $usuarios = mysqli_fetch_assoc($resultado_usuarios);
 
 
         <!-- CADASTRAR ROTA -->
-        <a href="rota/adicionar_rota.php" class="card-acesso">
+       <a href="rota/visualizar_rota.php" class="card-acesso">
 
             <div class="icone-acesso">
                 <i class="bi bi-signpost-2"></i>
