@@ -202,139 +202,86 @@ As credenciais utilizadas durante o desenvolvimento devem ser mantidas em ambien
 Caso sejam disponibilizadas contas de demonstração, deverão ser utilizadas exclusivamente para fins de apresentação do projeto.
 
 ---
+## Requisitos Funcionais
 
-# Requisitos Funcionais
+RF01 O sistema deve permitir cadastrar usuários.
 
-Os requisitos funcionais descrevem as funcionalidades e operações que o sistema SA Ferrorama deve disponibilizar aos seus usuários.
+RF02 O sistema deve permitir excluir usuários.
 
-**Descrição de RF**
+RF03 O sistema deve permitir atualizar os dados dos usuários.
 
-**RF01** O sistema deve permitir cadastrar usuários.
+RF04 O sistema deve permitir cadastrar sensores.
 
-**RF02** O sistema deve permitir excluir usuários.
+RF05 O sistema deve permitir excluir sensores.
 
-**RF03** O sistema deve permitir atualizar os dados dos usuários.
+RF06 O sistema deve permitir atualizar os dados dos sensores.
 
-**RF04** O sistema deve permitir cadastrar sensores.
+RF07 O sistema deve permitir cadastrar trens.
 
-**RF05** O sistema deve permitir excluir sensores.
+RF08 O sistema deve permitir excluir trens.
 
-**RF06** O sistema deve permitir atualizar os dados dos sensores.
+RF09 O sistema deve permitir atualizar os dados dos trens.
 
-**RF07** O sistema deve permitir cadastrar trens.
+RF10 O sistema deve permitir cadastrar rotas ferroviárias.
 
-**RF08** O sistema deve permitir excluir trens.
+RF11 O sistema deve permitir excluir rotas.
 
-**RF09** O sistema deve permitir atualizar os dados dos trens.
+RF12 O sistema deve permitir atualizar os dados das rotas.
 
-**RF10** O sistema deve permitir cadastrar rotas ferroviárias.
+RF13 O sistema deve exibir o status operacional do trem monitorado.
 
-**RF11** O sistema deve permitir excluir rotas.
+RF14 O sistema deve permitir visualizar os sensores cadastrados.
 
-**RF12** O sistema deve permitir atualizar os dados das rotas.
+RF15 O sistema deve impedir a exclusão de sensores que possuam dados registrados.
 
-**RF13** O sistema deve exibir o status operacional do trem monitorado.
+RF16 O sistema deve permitir consultar os usuários cadastrados.
 
-**RF14** O sistema deve permitir visualizar informações de localização em quilômetros.
+RF17 O sistema deve permitir visualizar mapas de localização das linhas ferroviárias.
 
-**RF15** O sistema deve permitir visualizar a quantidade de passageiros por viagem.
+RF18 O sistema deve permitir realizar pesquisas sobre linhas ferroviárias.
 
-**RF16** O sistema deve permitir visualizar a quantidade de atrasos por dia da semana.
+RF19 O sistema deve exibir alertas e notícias recentes do sistema ferroviário.
 
-**RF17** O sistema deve exibir o último acesso dos usuários cadastrados.
+RF20 O sistema deve permitir definir o tipo de conta (Administrador ou Usuário).
 
-**RF18** O sistema deve permitir visualizar os sensores cadastrados.
+RF21 O sistema deve permitir definir o status da conta (Ativo/Inativo).
 
-**RF19** O sistema deve impedir a exclusão de sensores que possuam dados registrados.
+RF22 O sistema deve validar os campos obrigatórios no cadastro de usuários.
 
-**RF20** O sistema deve permitir consultar os usuários cadastrados.
+RF23 O sistema deve exibir uma mensagem de sucesso ao cadastrar um usuário.
 
-**RF21** O sistema deve apresentar gráficos de velocidade, atrasos e passageiros.
+RF24 O sistema deve permitir visualizar a lista de administradores e usuários.
 
-**RF22** O sistema deve permitir visualizar mapas de localização das linhas ferroviárias.
+RF25 O sistema deve permitir filtrar usuários por tipo de conta e status.
 
-**RF23** O sistema deve permitir realizar pesquisas sobre linhas ferroviárias.
+RF26 O sistema deve manter a navegação lateral entre os módulos do sistema.
 
-**RF24** O sistema deve exibir alertas e notícias recentes do sistema ferroviário.
+RF27 O sistema deve permitir realizar logout.
 
-**RF25** O sistema deve permitir gerar relatórios.
+RF28 O sistema deve solicitar confirmação antes de encerrar a sessão.
 
-**RF26** O sistema deve permitir filtrar relatórios por tipo e dados.
+RF29 O sistema deve solicitar confirmação antes de excluir registros.
 
-**RF27** O sistema deve permitir visualizar relatórios gerados.
+## Regras de Negócio
 
-**RF28** O sistema deve permitir a recuperação de senha por meio da opção "Esqueceu a senha".
+RN01 Apenas usuários com credenciais válidas podem acessar o sistema.
 
-**RF29** O sistema deve permitir definir o tipo de conta (Administrador ou Usuário).
+RN02 O login é obrigatório para acessar as funcionalidades internas.
 
-**RF30** O sistema deve permitir definir o status da conta (Ativo/Inativo).
+RN03 Cada sensor deve possuir nome, localização e tipo de dado monitorado.
 
-**RF31** O sistema deve validar os campos obrigatórios no cadastro de usuários.
+RN04 Ao tentar excluir um sensor que possua dados registrados, o sistema deve exibir uma mensagem de erro.
 
-**RF32** O sistema deve exibir uma mensagem de sucesso ao cadastrar um usuário.
+RN05 A exclusão de sensores deve exigir confirmação prévia do usuário.
 
-**RF33** O sistema deve permitir visualizar a lista de administradores e usuários.
+RN06 Os relatórios devem apresentar gráficos para facilitar a análise das informações.
 
-**RF34** O sistema deve permitir filtrar usuários por tipo de conta e status.
+RN07 Ao realizar logout, a sessão do usuário deve ser encerrada.
 
-**RF35** O sistema deve manter a navegação lateral entre os módulos do sistema.
+RN08 O acesso às páginas internas deve ser bloqueado para usuários não autenticados.
 
-**RF36** O sistema deve permitir realizar logout.
+RN09 O sistema deve exibir uma mensagem de erro quando o login for realizado com credenciais inválidas.
 
-**RF37** O sistema deve solicitar confirmação antes de encerrar a sessão.
+RN10 O sistema deve validar o e-mail e a senha informados no momento do login.
 
-**RF38** O sistema deve permitir visualizar detalhes completos dos relatórios.
-
-**RF39** O sistema deve apresentar a quantidade de atrasos do dia.
-
-**RF40** O sistema deve apresentar o percentual de pontualidade.
-
-**RF41** O sistema deve apresentar a quantidade de falhas registradas.
-
-**RF42** O sistema deve solicitar confirmação antes de excluir registros.
-
----
-
-# Regras de Negócio
-
-As regras de negócio estabelecem as condições e restrições que devem ser respeitadas durante a utilização do sistema, garantindo a organização, a segurança e o funcionamento adequado das operações.
-
-**Descrição de RN**
-
-**RN01** O sistema deve exibir os dados de monitoramento em tempo real, quando houver integração e disponibilidade dos dados dos sensores.
-
-**RN02** Apenas usuários com credenciais válidas podem acessar o sistema.
-
-**RN03** O login é obrigatório para acessar as funcionalidades internas.
-
-**RN04** Cada sensor deve possuir nome, localização e tipo de dado monitorado.
-
-**RN05** Todo sensor deve estar relacionado a um trem.
-
-**RN06** Sensores que possuam dados registrados não podem ser excluídos.
-
-**RN07** Ao tentar excluir um sensor que possua dados registrados, o sistema deve exibir uma mensagem de erro.
-
-**RN08** A exclusão de sensores deve exigir confirmação prévia do usuário.
-
-**RN09** O status operacional dos trens deve ser classificado como: Normal, Alerta ou Falha.
-
-**RN10** Os relatórios devem ser gerados com base nos dados registrados no sistema.
-
-**RN11** Os relatórios devem apresentar gráficos para facilitar a análise das informações.
-
-**RN12** Os relatórios devem permitir filtros por período.
-
-**RN13** Os relatórios devem permitir filtros por tipo de falha.
-
-**RN14** Ao realizar logout, a sessão do usuário deve ser encerrada.
-
-**RN15** O acesso às páginas internas deve ser bloqueado para usuários não autenticados.
-
-**RN16** O sistema deve exibir uma mensagem de erro quando o login for realizado com credenciais inválidas.
-
-**RN17** O sistema deve validar o e-mail e a senha informados no momento do login.
-
-**RN18** O sistema deve impedir o acesso de contas inativas.
-
-**RN19** O sistema deve permitir vincular sensores às rotas e aos trens.
+RN11 O sistema deve impedir o acesso de contas inativas.
