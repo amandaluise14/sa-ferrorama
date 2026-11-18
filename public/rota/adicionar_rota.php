@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $trem_id = $_POST ['trem_id'];
 
 
-
     $sql = "INSERT INTO rotas (nome, estacao_origem, estacao_destino, distancia_total, descricao, duracao, trem_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssss", $nome, $estacao_origem, $estacao_destino, $distancia_total,  $descricao, $duracao,$trem_id);
