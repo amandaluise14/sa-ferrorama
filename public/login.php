@@ -4,13 +4,16 @@ include '../infra/conexao.php';
 
 $erro = '';
 
+  // Recebe os dados do formulário de login //
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
+    // Consulta o banco de dados para verificar se o usuário existe //
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
 
+    // Hash da senha recebida do formulário //
  $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
  echo "senhaHash". $senhaHash;
 
@@ -29,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
 
+        //Verifica senha//
         if (password_verify($senha, $usuario['senha'])) {
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nome'] = $usuario['nome'];
