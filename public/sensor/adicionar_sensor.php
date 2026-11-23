@@ -110,44 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Cadastre um novo sensor para monitoramento no sistema Info Trem.</p>
 
         </div>
-
-        <?php if (!empty($erro)): ?>
-
-            <div class="alert alert-danger alert-dismissible fade show"
-                 role="alert">
-
-                <strong>⚠️ Ops!</strong>
-                <?= htmlspecialchars($erro) ?>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                </button>
-
-            </div>
-
-        <?php endif; ?>
-
-
-        <?php if (!empty($sucesso)): ?>
-
-            <div class="alert alert-success alert-dismissible fade show"
-                 role="alert">
-
-                <strong>✅ Sucesso!</strong>
-                <?= htmlspecialchars($sucesso) ?>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                </button>
-
-            </div>
-
-        <?php endif; ?>
-
+<script src="../../infra/mensagem_sucesso.php"></script>
 
         <div class="cartao-formulario">
 
