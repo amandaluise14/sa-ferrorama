@@ -14,15 +14,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cargo = $_POST ['cargo'];
     $data_nascimento = $_POST ['data_nascimento'];
     $status_usuario = $_POST ['status_usuario'];
-
-
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
     $cep = preg_replace('/\D/', '', $_POST['cep']);
     $endereco = $_POST['endereco'];
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
     $uf = strtoupper($_POST['uf']);
+
+    $erros = [];
+
+// Verificar campos obrigatórios
+if (
+    empty($nome) || empty($email) || empty($senha) ||
+    empty($telefone) || empty($cpf) || empty($data_nascimento) ||
+    empty($cep) || empty($endereco) || empty($bairro) ||
+    empty($cidade) || empty($uf) || empty($cargo) ||
+    empty($status_usuario)
+) {
+    $erros[] = "Preencha todos os campos obrigatórios.";
+}
+
+// Verificar e-mail
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $erros[] = "Digite um e-mail válido.";
+}
+
+// Verificar telefone
+$telefoneNumeros = preg_replace('/\D/', '', $telefone);
+
+if (!preg_match('/^\d{10,11}$/', $telefoneNumeros)) {
+    $erros[] = "Digite um telefone válido com DDD.";
+}
+
+// Verificar CPF
+$cpfNumeros = preg_replace('/\D/', '', $cpf);
+
+if (!preg_match('/^\d{11}$/', $cpfNumeros)) {
+    $erros[] = "O CPF deve possuir 11 números.";
+}
+
+// Verificar senha
+if (strlen($senha) < 5) {
+    $erros[] = "A senha deve possuir pelo menos 5 caracteres.";
+}
+
+// Verificar data de nascimento
+if ($data_nascimento > date('Y-m-d')) {
+    $erros[] = "A data de nascimento não pode ser futura.";
+}
+
+if (!empty($erros)) {
+
+    $erro = implode(' ', $erros);
+
+} else {
+
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $conn->begin_transaction();
+
+    try {
+        // Aqui continua o seu código atual
+        // de cadastro do endereço e do usuário.
+
+    } catch (Exception $e) {
+
+        $conn->rollback();
+
+        $erro = "Erro ao cadastrar usuário: " . $e->getMessage();
+    }
+}
+
+
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     $conn->begin_transaction();
 
@@ -114,8 +177,7 @@ $stmt->bind_param(
 
     <link rel="stylesheet" href="../../style/style.css">
 
-    <script src="../js/persistencia_formularios.js" defer></script>
-    <script src="../js/validacoes.js" defer></script>
+    <!-- <script src="../js/persistencia_formularios.js" defer></script> -->
 </head>
 
 <body>
