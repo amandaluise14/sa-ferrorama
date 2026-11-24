@@ -245,18 +245,9 @@ $stmt->bind_param(
             <p>Cadastre um novo usuário ou administrador no sistema Info Trem.</p>
 
         </div>
+       <?php include '../../infra/mensagem_sucesso.php'; ?>
 
-        <?php if (!empty($erro)): ?>
-            <div class="alert alert-danger">
-                <?= htmlspecialchars($erro) ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if (!empty($sucesso)): ?>
-            <div class="alert alert-success">
-                <?= htmlspecialchars($sucesso) ?>
-            </div>
-        <?php endif; ?>
+       
         <div class="cartao-formulario">
 
             <div class="formulario-cabecalho">

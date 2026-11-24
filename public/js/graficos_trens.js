@@ -1,4 +1,4 @@
-
+// Receber os dados enviados pelo PHP
 const nomesTrens = window.dadosGraficos.nomesTrens;
 const velocidadesTrens = window.dadosGraficos.velocidadesTrens;
 
@@ -8,6 +8,7 @@ const quantidadeModelos = window.dadosGraficos.quantidadeModelos;
 
 // GRÁFICO DE VELOCIDADE DOS TRENS
 
+// Buscar o espaço onde o gráfico será exibido
 const ctxVelocidade = document.getElementById('graficoVelocidade');
 
 new Chart(ctxVelocidade, {
@@ -36,6 +37,7 @@ new Chart(ctxVelocidade, {
 
         responsive: true,
 
+        // Não manter o tamanho original
         maintainAspectRatio: false,
 
         plugins: {
@@ -47,7 +49,7 @@ new Chart(ctxVelocidade, {
         },
 
         scales: {
-
+ // Configurações do eixo vertical
             y: {
 
                 beginAtZero: true,
@@ -68,6 +70,7 @@ new Chart(ctxVelocidade, {
 
 // GRÁFICO DE QUANTIDADE POR MODELO
 
+// Buscar o espaço onde o gráfico será exibido
 const ctxModelo = document.getElementById('graficoModelo');
 
 new Chart(ctxModelo, {

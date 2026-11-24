@@ -303,43 +303,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </div>
 
-        <!-- MENSAGEM DE ERRO -->
-        <?php if (!empty($erro)): ?>
-
-            <div class="alert alert-danger alert-dismissible fade show"
-                 role="alert">
-
-                <strong>⚠️ Ops!</strong>
-                <?= htmlspecialchars($erro) ?>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                </button>
-
-            </div>
-
-        <?php endif; ?>
-
-        <!-- MENSAGEM DE SUCESSO -->
-        <?php if (!empty($sucesso)): ?>
-
-            <div class="alert alert-success alert-dismissible fade show"
-                 role="alert">
-
-                <strong>✅ Sucesso!</strong>
-                <?= htmlspecialchars($sucesso) ?>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                </button>
-
-            </div>
-
-        <?php endif; ?>
+        <?php include '../../infra/mensagem_sucesso.php'; ?>
 
         <!-- CARTÃO DO FORMULÁRIO -->
         <div class="cartao-formulario">
