@@ -4,11 +4,11 @@ include '../infra/conexao.php';
 include '../infra/verificar_admin.php';
 
 // Buscar sensores
-$sql = "SELECT * FROM sensores ORDER BY id_sensor DESC";
+$sql = "SELECT * FROM sensores ORDER BY id_sensor";
 $resultado = $conn->query($sql);
 
 // Buscar trens
-$sql = "SELECT * FROM trens ORDER BY id_trem DESC";
+$sql = "SELECT * FROM trens ORDER BY id_trem";
 $resultadoTrens = $conn->query($sql);
 
 // Dados do gráfico de velocidade
