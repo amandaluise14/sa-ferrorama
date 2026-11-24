@@ -3,26 +3,24 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-$mensagem = '';
-$tipoMensagem = '';
+$erro = '';
+$sucesso = '';
 
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
-    $mensagem = 'Usuário excluído com sucesso!';
-    $tipoMensagem = 'success';
+
+    $sucesso = 'Usuário excluído com sucesso!';
 
 } elseif (isset($_GET['erro'])) {
 
     if ($_GET['erro'] === 'nao_encontrado') {
-        $mensagem = 'O usuário não foi encontrado.';
+        $erro = 'O usuário não foi encontrado.';
 
     } elseif ($_GET['erro'] === 'possui_trens') {
-        $mensagem = 'Não foi possível excluir! Este usuário possui trens cadastrados.';
+        $erro = 'Não foi possível excluir! Este usuário possui trens cadastrados.';
 
     } else {
-        $mensagem = 'Erro ao excluir o usuário. Tente novamente.';
+        $erro = 'Erro ao excluir o usuário. Tente novamente.';
     }
-
-    $tipoMensagem = 'danger';
 }
 
 $pesquisa = trim($_POST['pesquisar'] ?? '');
@@ -163,30 +161,7 @@ $totalAtivos = $resultadoAtivos->fetch_assoc()['total'];
 
     <div class="formulario-container">
 
-        <?php if (!empty($mensagem)): ?>
-
-            <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
-                position-fixed top-0 start-50 translate-middle-x mt-3"
-                role="alert"
-                style="z-index: 1055; width: 90%; max-width: 500px;">
-
-                <?php if ($tipoMensagem === 'success'): ?>
-                    <strong>✅ Sucesso!</strong>
-                <?php else: ?>
-                    <strong>⚠️ Atenção!</strong>
-                <?php endif; ?>
-
-                <?= htmlspecialchars($mensagem) ?>
-
-                <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert"
-                    aria-label="Fechar">
-                </button>
-
-            </div>
-
-        <?php endif; ?>
+       <?php include '../../infra/mensagem_sucesso.php'; ?>
 
         <form method="POST" class="forms">
 
