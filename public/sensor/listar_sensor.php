@@ -4,26 +4,24 @@
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-$mensagem = '';
-$tipoMensagem = '';
+$erro = '';
+$sucesso = '';
 
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
-    $mensagem = 'Sensor excluído com sucesso!';
-    $tipoMensagem = 'success';
+
+    $sucesso = 'Sensor excluído com sucesso!';
 
 } elseif (isset($_GET['erro'])) {
 
     if ($_GET['erro'] === 'nao_encontrado') {
-        $mensagem = 'O sensor não foi encontrado.';
+        $erro = 'O sensor não foi encontrado.';
 
     } elseif ($_GET['erro'] === 'em_rota') {
-        $mensagem = 'Não foi possível excluir! Este sensor está vinculado a uma rota.';
+        $erro = 'Não foi possível excluir! Este sensor está vinculado a uma rota.';
 
     } else {
-        $mensagem = 'Erro ao excluir o sensor. Tente novamente.';
+        $erro = 'Erro ao excluir o sensor. Tente novamente.';
     }
-
-    $tipoMensagem = 'danger';
 }
 ?>
 <!DOCTYPE html>
@@ -92,29 +90,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
 
         <div class="formulario-container">
 
-                <?php if (!empty($mensagem)): ?>
-
-                    <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
-                        position-fixed top-0 start-50 translate-middle-x mt-3"
-                        role="alert"
-                        style="z-index: 1055; width: 90%; max-width: 500px;">
-
-                        <?php if ($tipoMensagem === 'success'): ?>
-                            <strong>✅ Sucesso!</strong>
-                        <?php else: ?>
-                            <strong>⚠️ Atenção!</strong>
-                        <?php endif; ?>
-
-                        <?= htmlspecialchars($mensagem) ?>
-
-                        <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Fechar">
-                        </button>
-                    </div>
-
-                <?php endif; ?>
+       <?php include '../../infra/mensagem_sucesso.php'; ?>
 
     <form method="GET" class="forms_sensores">
 

@@ -110,8 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Cadastre um novo sensor para monitoramento no sistema Info Trem.</p>
 
         </div>
-<script src="../../infra/mensagem_sucesso.php"></script>
-
+<?php include '../../infra/mensagem_sucesso.php'; ?>
         <div class="cartao-formulario">
 
             <div class="formulario-cabecalho">
