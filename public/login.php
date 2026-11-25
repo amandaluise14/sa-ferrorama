@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-// Exibe uma mensagem de erro caso o usuário digite o e-mail ou a senha incorretamente //
+<!-- Exibe uma mensagem de erro caso o usuário digite o e-mail ou a senha incorretamente  -->
     <?php if (!empty($erro)): ?>
         <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3"
              role="alert" style="z-index: 1055; width: 90%; max-width: 500px;">

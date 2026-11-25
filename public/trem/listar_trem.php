@@ -185,16 +185,16 @@ $trens = $stmt->get_result();
 
                                             <td><?= $trem['id_trem']; ?></td>
 
-                                            <td><?= htmlspecialchars($trem['modelo']); ?></td>
+                                            <td><?= ($trem['modelo']); ?></td>
 
-                                            <td><?= htmlspecialchars($trem['velocidade']); ?></td>
+                                            <td><?= ($trem['velocidade']); ?></td>
 
-                                            <td><?= htmlspecialchars($trem['linha']); ?></td>
+                                            <td><?= ($trem['linha']); ?></td>
 
-                                            <td><?= htmlspecialchars($trem['carga']); ?></td>
+                                            <td><?= ($trem['carga']); ?></td>
 
                                             <td>
-                                                <?= htmlspecialchars($trem['nome_usuario'] ?? 'Não vinculado'); ?>
+                                                <?= ($trem['nome_usuario'] ?? 'Não vinculado'); ?>
                                             </td>
 
                                             <td>

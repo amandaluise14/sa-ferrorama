@@ -193,17 +193,17 @@ $resultado = $stmt->get_result();
 
                                             <td><?= $rota['id_rota']; ?></td>
 
-                                            <td><?= htmlspecialchars($rota['estacao_origem']); ?></td>
+                                            <td><?= ($rota['estacao_origem']); ?></td>
 
-                                            <td><?= htmlspecialchars($rota['estacao_destino']); ?></td>
+                                            <td><?= ($rota['estacao_destino']); ?></td>
 
-                                            <td><?= htmlspecialchars($rota['distancia_total']); ?></td>
+                                            <td><?= ($rota['distancia_total']); ?></td>
 
-                                            <td><?= htmlspecialchars($rota['descricao']); ?></td>
+                                            <td><?= ($rota['descricao']); ?></td>
 
-                                            <td><?= htmlspecialchars($rota['duracao']); ?></td>
+                                            <td><?= ($rota['duracao']); ?></td>
 
-                                            <td><?= htmlspecialchars($rota['trem_id'] ?? 'Não vinculado'); ?></td>
+                                            <td><?= ($rota['trem_id'] ?? 'Não vinculado'); ?></td>
 
                                             <td>
 
