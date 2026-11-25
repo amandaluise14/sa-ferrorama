@@ -1,4 +1,3 @@
-
 <?php
 
 include '../../infra/conexao.php';
@@ -97,234 +96,191 @@ if (isset($_POST['id_trem'])) {
 
     <title>Editar Trem</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../../style/style.css">
 
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
 
 <body>
 
-<div class="pagina">
+    <div class="pagina">
 
 
-    <div class="sidebar">
+        <div class="sidebar">
 
-        <div class="logo">
+            <div class="logo">
 
-            <img id="imagem_logo"
-                 src="../../assets/image/logo_png_branca.png"
-                 alt="Logo Info Trem">
+                <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
 
-        </div>
-
-        <ul>
-
-            <?php if ($_SESSION['cargo'] === 'administrador'): ?>
-
-                <a href="../pagina_home.php" class="menu-link">
-                    <li><i class="bi bi-house-fill"></i> Início</li>
-                </a>
-
-                <a href="../usuario/adicionar_usuario.php" class="menu-link">
-                    <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
-                </a>
-
-                 <a href="../rota/adicionar_rota.php" class="menu-link">
-                    <li><i class="bi bi-signpost-2"></i> Rotas</li>
-                </a>
-
-                 <a href="../trem/adicionar_trem.php" class="menu-link">
-                    <li><i class="bi bi-train-front"></i> Trens</li>
-                </a>
-
-                 <a href="../sensor/adicionar_sensor.php" class="menu-link">
-                    <li><i class="bi bi-broadcast-pin"></i> Sensores</li>
-                </a>
-
-
-            <?php endif; ?>
-
-            <a href="../pagina_monitoramento.php" class="menu-link">
-                <li><i class="bi bi-graph-up"></i> Monitoramento</li>
-            </a>
-            <br>
-            <a href="../logout.php" class="menu-link">
-                <li><i class="bi bi-box-arrow-right"></i> Sair</li>
-            </a>
-        </ul>
-
-    </div>
-
-
-    <main class="area-cadastro">
-
-        <div class="cabecalho-pagina">
-
-            <div class="usuario-logado">
-                <span class="icone-usuario">◉</span>
-                <span>Administrador</span>
             </div>
 
-            <h2>Editar Trem</h2>
+            <ul>
 
-            <p>Atualize as informações do trem no sistema Info Trem.</p>
+                <?php if ($_SESSION['cargo'] === 'administrador'): ?>
+
+                    <a href="../pagina_home.php" class="menu-link">
+                        <li><i class="bi bi-house-fill"></i> Início</li>
+                    </a>
+
+                    <a href="../usuario/adicionar_usuario.php" class="menu-link">
+                        <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
+                    </a>
+
+                    <a href="../rota/adicionar_rota.php" class="menu-link">
+                        <li><i class="bi bi-signpost-2"></i> Rotas</li>
+                    </a>
+
+                    <a href="../trem/adicionar_trem.php" class="menu-link">
+                        <li><i class="bi bi-train-front"></i> Trens</li>
+                    </a>
+
+                    <a href="../sensor/adicionar_sensor.php" class="menu-link">
+                        <li><i class="bi bi-broadcast-pin"></i> Sensores</li>
+                    </a>
+
+
+                <?php endif; ?>
+
+                <a href="../pagina_monitoramento.php" class="menu-link">
+                    <li><i class="bi bi-graph-up"></i> Monitoramento</li>
+                </a>
+                <br>
+                <a href="../logout.php" class="menu-link">
+                    <li><i class="bi bi-box-arrow-right"></i> Sair</li>
+                </a>
+            </ul>
 
         </div>
 
 
+        <main class="area-cadastro">
 
-    <?php if (!empty($erro)): ?>
+            <div class="cabecalho-pagina">
 
-    <div class="alert alert-danger alert-dismissible fade show"
-         role="alert">
-
-        <strong>⚠️ Ops!</strong>
-        <?= htmlspecialchars($erro) ?>
-
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
-        </button>
-
-    </div>
-
-<?php endif; ?>
-
-
-<?php if (!empty($sucesso)): ?>
-
-    <div class="alert alert-success alert-dismissible fade show"
-         role="alert">
-
-        <strong>✅ Sucesso!</strong>
-        <?= htmlspecialchars($sucesso) ?>
-
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Fechar">
-        </button>
-
-    </div>
-
-<?php endif; ?>
-
-<div class="cartao-formulario">
-
-    <div class="formulario-cabecalho">
-
-        <div class="icone-formulario">
-            <i class="bi bi-train-front"></i>
-        </div>
-
-        <div>
-            <h3>Informações do trem</h3>
-            <p>Preencha os dados para atualizar as informações do trem.</p>
-        </div>
-
-    </div>
-
-
-
-            <form method="POST" class="form-cadastro-usuario">
-                <input type="hidden" name="id_trem" value="<?= $trem['id_trem']; ?>">
-
-                <div class="grade-formulario">
-
-                    <div class="campo">
-
-                        <label for="modelo">Modelo do trem</label>
-
-                        <input type="text" id="modelo"name="modelo" value="<?= htmlspecialchars($trem['modelo']) ?>" placeholder="Ex: Modelo A"
-                               required>
-
-                    </div>
-
-                    <div class="campo">
-
-                        <label for="velocidade">Velocidade limite (km/h)</label>
-
-                        <input type="number" id="velocidade" name="velocidade" value="<?= htmlspecialchars($trem['velocidade']) ?>"placeholder="Ex: 120"
-                               required>
-
-                    </div>
-
-                    <div class="campo">
-
-                        <label for="linha">Linha</label>
-
-                        <input type="text" id="linha" name="linha" value="<?= htmlspecialchars($trem['linha']) ?>" placeholder="Ex: Linha 1"
-                               required>
-
-                    </div>
-                    <div class="campo">
-
-                        <label for="carga">Carga transportada</label>
-
-                        <input type="text" id="carga" name="carga" value="<?= htmlspecialchars($trem['carga']) ?>" placeholder="Ex: Carvão"
-                               required>
-
-                    </div>
-
-                    <div class="campo campo-largo">
-
-    <label for="usuario_id">Usuário vinculado</label>
-
-    <select name="usuario_id" id="usuario_id" required>
-
-        <option value="">Selecione um usuário</option>
-
-        <?php while ($usuario = $resultado_usuarios->fetch_assoc()): ?>
-
-            <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>"
-                <?= ($usuario['id_usuario'] == $trem['usuario_id']) ? 'selected' : '' ?>>
-
-                <?= htmlspecialchars($usuario['nome']) ?>
-
-            </option>
-
-        <?php endwhile; ?>
-
-    </select>
-
-</div>
-
-
+                <div class="usuario-logado">
+                    <span class="icone-usuario">◉</span>
+                    <span>Administrador</span>
                 </div>
 
-                <div class="acoes-formulario">
+                <h2>Editar Trem</h2>
 
-                    <button type="button"
-                            class="botao-voltar"
-                            onclick="window.location.href='listar_trem.php'">
-                        ← Voltar para Cadastro de Trem
-                    </button>
+                <p>Atualize as informações do trem no sistema Info Trem.</p>
+
+            </div>
 
 
-                    <button type="submit"
-                            class="botao-cadastrar">
+
+            <?php include '../../infra/mensagem_sucesso.php'; ?>
+
+            <div class="cartao-formulario">
+
+                <div class="formulario-cabecalho">
+
+                    <div class="icone-formulario">
                         <i class="bi bi-train-front"></i>
-                        Editar Trem
-                    </button>
+                    </div>
+
+                    <div>
+                        <h3>Informações do trem</h3>
+                        <p>Preencha os dados para atualizar as informações do trem.</p>
+                    </div>
 
                 </div>
 
-            </form>
+                <form method="POST" class="form-cadastro-usuario">
+                    <input type="hidden" name="id_trem" value="<?= $trem['id_trem']; ?>">
 
-        </div>
+                    <div class="grade-formulario">
 
-    </main>
+                        <div class="campo">
 
-</div>
+                            <label for="modelo">Modelo do trem</label>
+
+                            <input type="text" id="modelo" name="modelo"
+                                value="<?= htmlspecialchars($trem['modelo']) ?>" placeholder="Ex: Modelo A" required>
+
+                        </div>
+
+                        <div class="campo">
+
+                            <label for="velocidade">Velocidade limite (km/h)</label>
+
+                            <input type="number" id="velocidade" name="velocidade"
+                                value="<?= htmlspecialchars($trem['velocidade']) ?>" placeholder="Ex: 120" required>
+
+                        </div>
+
+                        <div class="campo">
+
+                            <label for="linha">Linha</label>
+
+                            <input type="text" id="linha" name="linha" value="<?= htmlspecialchars($trem['linha']) ?>"
+                                placeholder="Ex: Linha 1" required>
+
+                        </div>
+                        <div class="campo">
+
+                            <label for="carga">Carga transportada</label>
+
+                            <input type="text" id="carga" name="carga" value="<?= htmlspecialchars($trem['carga']) ?>"
+                                placeholder="Ex: Carvão" required>
+
+                        </div>
+
+                        <div class="campo campo-largo">
+
+                            <label for="usuario_id">Usuário vinculado</label>
+
+                            <select name="usuario_id" id="usuario_id" required>
+
+                                <option value="">Selecione um usuário</option>
+
+                                <?php while ($usuario = $resultado_usuarios->fetch_assoc()): ?>
+
+                                    <option value="<?= htmlspecialchars($usuario['id_usuario']) ?>"
+                                        <?= ($usuario['id_usuario'] == $trem['usuario_id']) ? 'selected' : '' ?>>
+
+                                        <?= htmlspecialchars($usuario['nome']) ?>
+
+                                    </option>
+
+                                <?php endwhile; ?>
+
+                            </select>
+
+                        </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+                    </div>
+
+                    <div class="acoes-formulario">
+
+                        <button type="button" class="botao-voltar" onclick="window.location.href='listar_trem.php'">
+                            ← Voltar para Cadastro de Trem
+                        </button>
+
+
+                        <button type="submit" class="botao-cadastrar">
+                            <i class="bi bi-train-front"></i>
+                            Editar Trem
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

@@ -5,26 +5,24 @@ session_start();
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
 
-$mensagem = '';
-$tipoMensagem = '';
+$erro = '';
+$sucesso = '';
 
 if (isset($_GET['sucesso']) && $_GET['sucesso'] === 'excluido') {
-    $mensagem = 'Trem excluído com sucesso!';
-    $tipoMensagem = 'success';
+
+    $sucesso = 'Trem excluído com sucesso!';
 
 } elseif (isset($_GET['erro'])) {
 
     if ($_GET['erro'] === 'nao_encontrado') {
-        $mensagem = 'O trem não foi encontrado.';
+        $erro = 'O trem não foi encontrado.';
 
     } elseif ($_GET['erro'] === 'possui_usuarios') {
-        $mensagem = 'Não foi possível excluir! Este trem possui usuários vinculados.';
+        $erro = 'Não foi possível excluir! Este trem possui usuários vinculados.';
 
     } else {
-        $mensagem = 'Erro ao excluir o trem. Tente novamente.';
+        $erro = 'Erro ao excluir o trem. Tente novamente.';
     }
-
-    $tipoMensagem = 'danger';
 }
 
 // PESQUISA DE TRENS
@@ -123,30 +121,8 @@ $trens = $stmt->get_result();
 
         <div class="formulario-container">
 
-            <?php if (!empty($mensagem)): ?>
+<?php include '../../infra/mensagem_sucesso.php'; ?>
 
-                <div class="alert alert-<?= $tipoMensagem ?> alert-dismissible fade show
-                    position-fixed top-0 start-50 translate-middle-x mt-3"
-                    role="alert"
-                    style="z-index: 1055; width: 90%; max-width: 500px;">
-
-                    <?php if ($tipoMensagem === 'success'): ?>
-                        <strong>✅ Sucesso!</strong>
-                    <?php else: ?>
-                        <strong>⚠️ Atenção!</strong>
-                    <?php endif; ?>
-
-                    <?= htmlspecialchars($mensagem) ?>
-
-                    <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Fechar">
-                    </button>
-
-                </div>
-
-            <?php endif; ?>
 
             <div class="forms_sensores">
 
@@ -209,16 +185,16 @@ $trens = $stmt->get_result();
 
                                             <td><?= $trem['id_trem']; ?></td>
 
-                                            <td><?= htmlspecialchars($trem['modelo']); ?></td>
+                                            <td><?= ($trem['modelo']); ?></td>
 
-                                            <td><?= htmlspecialchars($trem['velocidade']); ?></td>
+                                            <td><?= ($trem['velocidade']); ?></td>
 
-                                            <td><?= htmlspecialchars($trem['linha']); ?></td>
+                                            <td><?= ($trem['linha']); ?></td>
 
-                                            <td><?= htmlspecialchars($trem['carga']); ?></td>
+                                            <td><?= ($trem['carga']); ?></td>
 
                                             <td>
-                                                <?= htmlspecialchars($trem['nome_usuario'] ?? 'Não vinculado'); ?>
+                                                <?= ($trem['nome_usuario'] ?? 'Não vinculado'); ?>
                                             </td>
 
                                             <td>
