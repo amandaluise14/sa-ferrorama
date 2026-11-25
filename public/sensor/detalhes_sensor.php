@@ -4,7 +4,7 @@ include '../../infra/verificar_admin.php';
 
 
 // Receber ID do sensor
-$id_sensor = $_GET['id_sensor'] ?? 0;
+$id_sensor = $_GET['id_sensor'];
 $sensor = null;
 $rota = null;
 
