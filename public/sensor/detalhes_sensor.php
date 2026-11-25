@@ -1,40 +1,13 @@
 <?php
 include '../../infra/conexao.php';
 include '../../infra/verificar_admin.php';
-<<<<<<< HEAD
-function esc($valor)
-{
-    return htmlspecialchars((string) ($valor ?? ''), ENT_QUOTES, 'UTF-8');
-}
-// Recebe o ID do sensor enviado pela página de monitoramento
-$id_sensor = filter_input(INPUT_GET, 'id_sensor', FILTER_VALIDATE_INT);
-$sensor = null;
-if ($id_sensor) {
-    $sql = "SELECT
-                sensores.*,
-                rotas.nome AS nome_rota,
-                rotas.estacao_origem,
-                rotas.estacao_destino,
-                rotas.distancia_total,
-                rotas.descricao AS descricao_rota,
-                rotas.duracao
-            FROM sensores
-            LEFT JOIN rotas
-                ON sensores.rota_id = rotas.id_rota
-            WHERE sensores.id_sensor = ?
-            LIMIT 1";
-    $stmt = $conn->prepare($sql);
-    if ($stmt) {
-        $stmt->bind_param("i", $id_sensor);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-        $sensor = $resultado->fetch_assoc();
-=======
+
 
 // Receber ID do sensor
 $id_sensor = $_GET['id_sensor'] ?? 0;
 $sensor = null;
 $rota = null;
+
 
 // Buscar sensor
 if ($id_sensor) {
@@ -46,6 +19,7 @@ if ($id_sensor) {
     $sensor = $resultado->fetch_assoc();
     $stmt->close();
 
+
     // Buscar rota
     if ($sensor && $sensor['rota_id']) {
         $id_rota = $sensor['rota_id'];
@@ -55,27 +29,17 @@ if ($id_sensor) {
         $stmt->execute();
         $resultado = $stmt->get_result();
         $rota = $resultado->fetch_assoc();
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
         $stmt->close();
     }
 }
 ?>
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="pt-br">
-=======
 <html lang="pt-BR">
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/style.css">
-<<<<<<< HEAD
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-=======
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
     <title>Detalhes do Sensor | Info Trem</title>
 </head>
 <body>
@@ -83,14 +47,7 @@ if ($id_sensor) {
     <!-- MENU LATERAL -->
     <div class="sidebar">
         <div class="logo">
-<<<<<<< HEAD
-            <img
-                id="imagem_logo"
-                src="../../assets/image/logo_png_branca.png"
-                alt="Logo Info Trem">
-=======
             <img id="imagem_logo" src="../../assets/image/logo_png_branca.png" alt="Logo Info Trem">
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
         </div>
         <ul>
             <?php if ($_SESSION['cargo'] === 'administrador'): ?>
@@ -100,15 +57,6 @@ if ($id_sensor) {
                 <a href="../usuario/adicionar_usuario.php" class="menu-link">
                     <li><i class="bi bi-person-plus"></i> Adicionar usuário</li>
                 </a>
-<<<<<<< HEAD
-                 <a href="../rota/adicionar_rota.php" class="menu-link">
-                    <li><i class="bi bi-signpost-2"></i> Rotas</li>
-                </a>
-                 <a href="../trem/adicionar_trem.php" class="menu-link">
-                    <li><i class="bi bi-train-front"></i> Trens</li>
-                </a>
-                 <a href="../sensor/adicionar_sensor.php" class="menu-link">
-=======
                 <a href="../rota/adicionar_rota.php" class="menu-link">
                     <li><i class="bi bi-signpost-2"></i> Rotas</li>
                 </a>
@@ -116,7 +64,6 @@ if ($id_sensor) {
                     <li><i class="bi bi-train-front"></i> Trens</li>
                 </a>
                 <a href="../sensor/adicionar_sensor.php" class="menu-link">
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
                     <li><i class="bi bi-broadcast-pin"></i> Sensores</li>
                 </a>
             <?php endif; ?>
@@ -129,132 +76,38 @@ if ($id_sensor) {
             </a>
         </ul>
     </div>
+
+
     <!-- CONTEÚDO -->
     <div class="conteudo_pagina conteudo-detalhes">
         <main id="conteudo_detalhes">
-<<<<<<< HEAD
-            <a
-                href="../pagina_monitoramento.php"
-                class="botao-voltar">
-                <i class="bi bi-arrow-left"></i>
-                Voltar ao monitoramento
-=======
             <a href="../pagina_monitoramento.php" class="botao-voltar">
                 <i class="bi bi-arrow-left"></i> Voltar ao monitoramento
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
             </a>
+
+
             <?php if ($sensor): ?>
                 <!-- CABEÇALHO -->
                 <div class="cabecalho-detalhes">
                     <h1>
                         <i class="bi bi-cpu"></i>
-<<<<<<< HEAD
-                        <?= esc($sensor['nome']) ?>
-                    </h1>
-                    <p>
-                        Informações do sensor
-                        #<?= (int) $sensor['id_sensor'] ?>
-                    </p>
-                        <div class="status_operacao">
-=======
                         <?= htmlspecialchars($sensor['nome']) ?>
                     </h1>
                     <div class="status_operacao">
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
                         <span class="bolinha_status"></span>
                         Operação normal
                     </div>
                 </div>
-<<<<<<< HEAD
-                <!-- INFORMAÇÕES DO SENSOR -->
-                <section class="painel-detalhes">
-                    <h2 class="titulo-secao">
-                        <i class="bi bi-broadcast-pin"></i>
-                        Dados do sensor
-=======
+
 
                 <!-- DADOS DO SENSOR -->
                 <section class="painel-detalhes">
                     <h2 class="titulo-secao">
                         <i class="bi bi-broadcast-pin"></i> Dados do sensor
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
                     </h2>
                     <div class="grade-informacoes">
                         <div class="informacao">
                             <span>ID do sensor</span>
-<<<<<<< HEAD
-                            <p>
-                                #<?= (int) $sensor['id_sensor'] ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Nome do sensor</span>
-                            <p>
-                                <?= esc($sensor['nome']) ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Descrição da localização</span>
-                            <p>
-                                <?= esc($sensor['descricao_localizacao']) ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Dado monitorado</span>
-                            <p>
-                                <?= esc($sensor['dado_monitorado']) ?>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                <!-- INFORMAÇÕES DA ROTA -->
-                <section class="painel-detalhes">
-                    <h2 class="titulo-secao">
-                        <i class="bi bi-signpost-2"></i>
-                        Informações da rota
-                    </h2>
-                    <img
-            src="../../assets/image/rota_ilustrativa.png"
-            alt="Imagem ilustrativa de uma ferrovia"
-            class="imagem_rota"
-        >
-                    <div class="grade-informacoes">
-                        <div class="informacao">
-                            <span>Nome da rota</span>
-                            <p>
-                                <?= esc($sensor['nome_rota'] ?: 'Sem rota vinculada') ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Estação de origem</span>
-                            <p>
-                                <?= esc($sensor['estacao_origem'] ?: 'Não informada') ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Estação de destino</span>
-                            <p>
-                                <?= esc($sensor['estacao_destino'] ?: 'Não informada') ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Distância total</span>
-                            <p>
-                                <?= esc($sensor['distancia_total'] ?: 'Não informada') ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Duração</span>
-                            <p>
-                                <?= esc($sensor['duracao'] ?: 'Não informada') ?>
-                            </p>
-                        </div>
-                        <div class="informacao">
-                            <span>Descrição da rota</span>
-                            <p>
-                                <?= esc($sensor['descricao_rota'] ?: 'Não informada') ?>
-                            </p>
-=======
                             <p>#<?= $sensor['id_sensor'] ?></p>
                         </div>
                         <div class="informacao">
@@ -271,6 +124,7 @@ if ($id_sensor) {
                         </div>
                     </div>
                 </section>
+
 
                 <!-- DADOS DA ROTA -->
                 <section class="painel-detalhes">
@@ -302,7 +156,6 @@ if ($id_sensor) {
                         <div class="informacao">
                             <span>Descrição da rota</span>
                             <p><?= htmlspecialchars($rota['descricao']) ?></p>
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
                         </div>
                     </div>
                 </section>
@@ -311,21 +164,9 @@ if ($id_sensor) {
                 <div class="mensagem-erro">
                     <i class="bi bi-exclamation-circle"></i>
                     <h2>Sensor não encontrado</h2>
-<<<<<<< HEAD
-                    <p>
-                        O sensor solicitado não existe ou o identificador
-                        informado é inválido.
-                    </p>
-                    <a
-                        href="../pagina_monitoramento.php"
-                        class="botao-retornar">
-                        <i class="bi bi-arrow-left"></i>
-                        Voltar ao monitoramento
-=======
                     <p>O sensor solicitado não existe ou o identificador informado é inválido.</p>
                     <a href="../pagina_monitoramento.php" class="botao-retornar">
                         <i class="bi bi-arrow-left"></i> Voltar ao monitoramento
->>>>>>> ccc3b94ed9857d4841aa3f2b9f4977d3722c9caa
                     </a>
                 </div>
             <?php endif; ?>
