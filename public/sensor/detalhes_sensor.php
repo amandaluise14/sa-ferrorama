@@ -129,27 +129,27 @@ if ($id_sensor) {
                     <div class="grade-informacoes">
                         <div class="informacao">
                             <span>Nome da rota</span>
-                            <p><?= htmlspecialchars($rota['nome'] ?? 'Sem rota vinculada') ?></p>
+                            <p><?= htmlspecialchars($rota['nome']) ?></p>
                         </div>
                         <div class="informacao">
                             <span>Estação de origem</span>
-                            <p><?= htmlspecialchars($rota['estacao_origem'] ?? 'Não informada') ?></p>
+                            <p><?= htmlspecialchars($rota['estacao_origem']) ?></p>
                         </div>
                         <div class="informacao">
                             <span>Estação de destino</span>
-                            <p><?= htmlspecialchars($rota['estacao_destino'] ?? 'Não informada') ?></p>
+                            <p><?= htmlspecialchars($rota['estacao_destino']) ?></p>
                         </div>
                         <div class="informacao">
                             <span>Distância total</span>
-                            <p><?= htmlspecialchars($rota['distancia_total'] ?? 'Não informada') ?></p>
+                            <p><?= htmlspecialchars($rota['distancia_total']) ?></p>
                         </div>
                         <div class="informacao">
                             <span>Duração</span>
-                            <p><?= htmlspecialchars($rota['duracao'] ?? 'Não informada') ?></p>
+                            <p><?= htmlspecialchars($rota['duracao']) ?></p>
                         </div>
                         <div class="informacao">
                             <span>Descrição da rota</span>
-                            <p><?= htmlspecialchars($rota['descricao'] ?? 'Não informada') ?></p>
+                            <p><?= htmlspecialchars($rota['descricao']) ?></p>
                         </div>
                     </div>
                 </section>
